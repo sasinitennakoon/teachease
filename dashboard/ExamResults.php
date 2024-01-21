@@ -1,3 +1,6 @@
+<?php
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,8 +14,29 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.2/main.css" integrity="sha384-LiWsxj4vMfsO8uyNnTVqSfeLqqkKD2pwWqFnSa6UqVqwKn9FlnNy5wKb3bYxs84p" crossorigin="anonymous">
 </head>
 <body>
-    <div class="user-info">
-        
+<div class="user-info">
+        <img src="./IMG/loginicon.png" alt="User Icon">
+        <span>User Name</span>
+    </div>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="logo">
+            <img src="./IMG/logo1.png" alt="Logo">
+        </div>
+        <hr color="white">
+        <nav>
+            <ul>
+                <li><a href="FirstPage.php"><i class="fas fa-tachometer-alt"></i>&nbsp; Dashboard</a></li>
+                <li><a href="MyStudent.php"><i class="fas fa-users"></i>&nbsp;My Students</a></li>
+                <li><a href="MyClasses.php"><i class="fas fa-chalkboard-teacher"></i>&nbsp; My Classes</a></li>
+                <li><a href="Schedule.php"><i class="fas fa-calendar-alt"></i>&nbsp; Schedule</a></li>
+                <li><a href="StudyMeterials.php"><i class="fas fa-book"></i>&nbsp; Study Materials</a></li>
+                <li><a href="Attendance.php"><i class="fas fa-check-circle"></i>&nbsp; Attendance</a></li>
+                <li><a href="ExamResults.php"><i class="fas fa-poll"></i>&nbsp; Exam Results</a></li>
+                <li><a href="Messages.php"><i class="fas fa-envelope"></i>&nbsp;Messages</a></li>
+                <li><a href="Feedback.php"><i class="fas fa-comment"></i>&nbsp;Feedback</a></li>
+            </ul>
+        </nav>
     </div>
     <div class="content">
         <!-- Your page content goes here -->
