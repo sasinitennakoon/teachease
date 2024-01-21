@@ -8,14 +8,69 @@
 
     <!-- Latest FullCalendar CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.2/main.css" integrity="sha384-LiWsxj4vMfsO8uyNnTVqSfeLqqkKD2pwWqFnSa6UqVqwKn9FlnNy5wKb3bYxs84p" crossorigin="anonymous">
+    <script type="text/javascript" 
+        src="https://unpkg.com/@cometchat/chat-sdk-javascript@latest/CometChat.js">
+    </script>
+
 </head>
 <body>
+    <script>
+        let appID = "2446382463d97217";
+        let region = "us";
+        let appSetting = new CometChat.AppSettingsBuilder()
+                            .subscribePresenceForAllUsers()
+                            .setRegion(region)
+                            .autoEstablishSocketConnection(true)
+                            .build();
+        CometChat.init(appID, appSetting).then(
+        () => {
+            console.log("Initialization completed successfully");
+        }, error => {
+            console.log("Initialization failed with error:", error);
+        }
+        );
+
+        let authKey = "92db77889fabeac2e6bce0c885af481bcc1ec8b0";
+        var UID = "user1";
+        var name = "Kevin";
+
+        var user = new CometChat.User(UID);
+
+        user.setName(name);
+
+        CometChat.createUser(user, authKey).then(
+            user => {
+                console.log("user created", user);
+            }, error => {
+                console.log("error", error);
+            }
+        )
+
+        var UID = "SUPERHERO1";
+        //var authKey = "92db77889fabeac2e6bce0c885af481bcc1ec8b0";
+
+        CometChat.getLoggedinUser().then(
+            (user) => {
+                        if(!user){
+                    CometChat.login(UID, authKey).then(
+                    user => {
+                        console.log("Login Successful:", { user });    
+                    }, error => {
+                        console.log("Login failed with exception:", { error });    
+                    }
+                    );
+                }
+                }, error => {
+                        console.log("Some Error Occured", { error });
+                }
+        );
+    </script>
     <div class="user-info">
         
     </div>
     <div class="content">
         <!-- Your page content goes here -->
         <h1>Messages</h1>
-
+    </div>
 </body>
 </html>
