@@ -38,19 +38,19 @@
 			</div>
 
 		  <div class="button-container">
-			<a href="signup/studentsignup.php">
+			<a href="signup/student.php">
 				<button class ="btn1">
 					<span>Student</span>
 				</button>
 			</a>
 			
-			<a a href="signup/teachersignup.php">
+			<a a href="signup/teacher.php">
 				<button class = "btn1">
 					<span>Teacher</span>
 				</button>
 			</a>
 
-			<a href="signup/parentsignup.php">
+			<a href="signup/parent.php">
 				<button class = "btn1">
 					<span>Parent</span>
 				</button>
