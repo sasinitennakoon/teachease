@@ -9,6 +9,7 @@ body {
     background-color: white;
     color: black;
 }
+
 .sidebar {
     height: 100vh;
     width: 250px;
@@ -35,7 +36,7 @@ nav a {
     color: white;
     display: block;
     padding: 10px;
-    text-align: center;
+    text-align: left;
     margin-bottom: 10px;
 }
 
@@ -67,7 +68,7 @@ nav a {
     width: 80%;
     align-items: center;
     background-color:  rgb(28, 28, 111); /* Set the default background color */
-    text-align: center; /* Center the text */
+    text-align: left; /* Center the text */
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -76,6 +77,12 @@ nav a {
     background-color: #ffffff; /* Change this to the desired hover background color */
     color: #000000; /* Change this to the desired hover text color */
     transform: scale(1.05); /* Add a slight scale effect on hover */
+}
+
+.sidebar nav ul li .active {
+    background-color: #ffffff; /* Change this to the desired hover background color */
+    color: #000000; /* Change this to the desired hover text color */
+     /* Add a slight scale effect on hover */
 }
 
 /* Add some spacing between navigation items */
@@ -235,4 +242,38 @@ nav {
     height: 30px;
     border-radius: 50%;
     margin-right: 10px;
+}
+
+.panel8 {
+    flex: 1;
+    background-color: #f0f0f0;
+    padding: 20px;
+    margin: 10px ;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 250px;
+    height: 420px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+table{
+    width: 1100px;
+}
+
+.button{
+    width: 500px;
+    padding: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background-color: rgb(43, 43, 151);
+    color: aliceblue;
+}
+
+
+.button:hover{
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.but{
+    padding: 20px;
 }
