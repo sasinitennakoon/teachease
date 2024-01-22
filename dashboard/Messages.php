@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="./CSS/FirstPage.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <!-- Latest FullCalendar CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.2/main.css" integrity="sha384-LiWsxj4vMfsO8uyNnTVqSfeLqqkKD2pwWqFnSa6UqVqwKn9FlnNy5wKb3bYxs84p" crossorigin="anonymous">
+    
     <script type="text/javascript" 
         src="https://unpkg.com/@cometchat/chat-sdk-javascript@latest/CometChat.js">
     </script>
@@ -58,7 +58,7 @@
 			console.log("Initialization completed successfully");
 			//You can now call login function.
 			CometChatWidget.login({
-				"uid": "john_doe"
+				"uid": "user1"
 			}).then(response => {
 				CometChatWidget.launch({
 					"widgetID": "ba6deb25-85a1-4834-8031-19a93649f004",
