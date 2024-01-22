@@ -1,0 +1,525 @@
+body{
+		   background-size:cover;
+		   margin: 0;
+		   padding: 0;
+		   background-repeat:no-repeat;
+		   background-attachment: fixed;
+		   height:100%;
+		  }
+
+
+	p {color:white;
+	   }
+
+	b a{color:white;
+			width:100%
+		}
+
+	b a:hover{
+		background-color: rgb(14, 16, 63);
+	}
+	
+	ul{
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		background-color: white; 
+		margin: 0;
+		padding: 0;
+  list-style-type: none;
+  overflow: hidden;
+		}
+
+	li{
+		float: right;
+	  }
+
+	li a, .dropbtn{color:#191970;
+		text-align:center;
+		display:block;
+		text-decoration:none;
+		padding:16px 20px;
+		display: block;
+		}
+
+	li a:hover {
+		background-color: #191970;
+		color: white;
+	}
+
+	
+	.btn-sign {
+		width: 70px;
+		height: 10px;
+		margin: 0px 10px 0px 10px;
+		border-radius: 15px;
+		background-color: #191970;
+		color: white;
+		line-height: 10px;
+		text-align: center;
+		box-shadow: 0px 4px 4px 0px rgba(0,0,0,0.25);
+	}
+	
+	.btn-log {
+		width: 70px;
+		height: 10px;
+		border-radius: 15px;
+		background-color: #D9D9D9;
+		color: #191970;
+		text-align: center;
+		line-height:10px;
+		box-shadow: 0px 4px 4px 0px rgba(0,0,0,0.25);
+		margin-top: 5px;
+	
+	}
+	
+	.btn-log:hover {
+		background-color: #191970;
+		color: white;
+	}
+
+	.btn-sign:hover {
+		background-color: white;
+		color: #191970;
+	}
+	
+	.btn-sign1 {
+		width: 200px;
+		height: 60px;
+		margin: 0px 10px 0px 255px;
+		border-radius: 15px;
+		background-color: #191970;
+		color: white;
+		line-height: 100px;
+		text-align: center;
+		box-shadow: 0px 4px 4px 0px rgba(0,0,0,0.25);
+		text-decoration: none;
+	}
+	
+	.btn-sign1:hover {
+		background-color: white;
+		color: #191970;
+	}
+	
+	/*.img3 {
+		border-radius: 41px;
+	}*/
+	
+
+	li.dropdown {
+		
+		display: inline-block;
+	}
+
+	.dropdown-content {
+		display: none;
+		position: absolute;
+		background-color: black;
+		min-width: 160px;
+		box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+		z-index: 1;
+	}
+
+	.dropdown-content a {
+		
+		color: white;
+		padding: 12px 16px;
+		text-decoration: none;
+		display: block;
+	}
+
+	.dropdown:hover .dropdown-content {
+		display: block;
+	}
+	.dropdown-content a:hover {
+		background-color: rgb(14, 16, 63);
+	}
+
+	.dropdown:hover {
+		color: rgb(14, 16, 63);
+	}
+	
+	.row {
+		display: -webkit-flex;
+		display: flex;
+	}
+	
+	.column {
+		-webkit-flex: 1;
+		-ms-flex: 1;
+		flex: 1;
+		padding: 15px;
+		 /* Should be removed. Only for demonstration */
+		margin: 0px 0px 0px 0px;
+	}
+	
+	.img1 {
+		display: flex;
+		width: 288px;
+		height: 53px;
+		color: #191970;
+		font-family: Lexend Zetta;
+		font-size: 40px;
+		font-style: normal;
+		line-height: normal;
+		justify-content: center;
+		font-weight: 700;
+		flex-direction: column;
+		flex-shrink: 0;
+		text-indent: 25px;
+		margin-top: 114px;
+		margin-left: 87px;
+		letter-spacing: 4px;
+	
+	}
+	
+	.img2 {
+		text-align: center; 
+		display: flex;
+		max-width: 100%;
+		color: #191970;
+		font-family: Lexend Zetta;
+		font-size: 40px;
+		font-style: normal;
+		line-height: normal;
+		justify-content: center;
+		font-weight: 700;
+		flex-direction: column;
+		flex-shrink: 0;
+		text-indent: 25px;
+		margin-left: 87px;
+		letter-spacing: 4px;
+		margin-bottom: 75px;
+	
+	}
+	
+	.img4 {
+		display: flex;
+		color: #191970;
+		font-family: Lexend Zetta;
+		font-size: 40px;
+		font-style: normal;
+		line-height: normal;
+		justify-content: center;
+		font-weight: 700;
+		flex-direction: column;
+		flex-shrink: 0;
+		text-indent: 25px;
+		margin-top: 550px;
+		margin-left: 150px;
+		
+		letter-spacing: 4px;
+	
+	}
+	
+	ul img {
+		width: 120px;
+		height: 80px;
+		
+	}
+	
+	
+	.login {
+		display: flex;
+		width: 288px;
+		height: 53px;
+		color: #191970;
+		font-family: Lexend Zetta;
+		font-size: 60px;
+		font-style: normal;
+		line-height: normal;
+		justify-content: center;
+		font-weight: 700;
+		flex-direction: column;
+		flex-shrink: 0;
+		text-indent: 25px;
+		margin-top: 100;
+		margin-left: 285px;
+		margin-top: 100px;
+		letter-spacing: 4px;
+	}
+	
+	.text1 {
+		width: 150px;
+		height: 30px;
+		color: #191970;
+		font-family: Lexend Zetta;
+		font-size: 24px;
+		font-style: normal;
+		line-height: normal;
+		font-weight: 700;
+		flex-shrink: 0;
+	}
+	
+	.text2 {
+		display: flex;
+		width: 570px;
+		height: 150px;
+		flex-direction: column;
+		justify-content: center;
+		flex-shrink: 0;
+		color: #191970;
+		text-align: left;
+		font-family: Lexend Zetta;
+		font-size: 60px;
+		font-style: normal;
+		font-weight: 400;
+		line-height: normal;
+	}
+	
+	.text3 {
+		display: flex;
+		width: 350px;
+		height: 5px;
+		flex-direction: column;
+		justify-content: center;
+		flex-shrink: 0;
+		color: #191970;
+		text-align: center;
+		font-family: Lacquer;
+		font-size: 32px;
+		font-style: normal;
+		font-weight: 400;
+		line-height: normal;
+	}
+	
+	#ip1 {
+		border-radius: 25px;
+		border: 2px solid #191970;
+		padding: 20px; 
+		width: 300px;
+		height: 15px;  
+	}
+	
+	#ip2 {
+		width: 200px;
+		height: 30px;
+		color: #191970;
+		font-family: Lexend Zetta;
+		font-size: 15px;
+		font-style: normal;
+		line-height: normal;
+		font-weight: 700;
+		flex-shrink: 0;
+		margin-left:430px;
+	}
+	
+	#ip3 {
+		width: 200px;
+		height: 25px;
+		color: #191970;
+		font-family: Lexend Zetta;
+		font-size: 15px;
+		font-style: normal;
+		line-height: 15px;
+		font-weight: 700;
+		flex-shrink: 0;
+		margin-left:30px;
+		margin-top: 30px;
+		text-decoration: none;
+	}
+	
+	#ip4 {
+		border-radius: 25px;
+		border: 2px solid #191970;
+		padding: 20px; 
+		width: 200px;
+		height: 15px;  
+	}
+	
+	#id1 {
+		color: #9C9C9C;
+		margin-left:250px;
+		margin-top: 30px;
+		letter-spacing: 3px;
+	}
+	
+	.cont1 {
+		margin-left:250px;
+		margin-top:1px;
+		letter-spacing: 3px;
+	}
+	.button-container {
+		display: flex;
+		flex-direction: row;
+		justify-content: flex-start;
+		align-items: flex-start;
+		margin-right: 10px; /* Add some margin to separate the buttons from the right column */
+		margin-top: 20px; /* Add margin to space the buttons from the About Us content */
+	}
+	
+	.btn	{
+		position: relative;
+		width: 170px;
+		height: 50px;
+		line-height: 50px;
+		border-radius: 30px;
+		border: 3px solid #191970;
+		background-color: #191970;
+		text-align: center;
+		color: #FFF;
+		font-size: 1.2em;
+		transition: all .3s ease-in;
+		-webkit-transition: all .3s ease-in;
+		cursor:pointer;
+		margin-left: 300px;
+		margin-top: 30px;
+	}
+
+	.btn:hover	{
+		background-color: #FFF;
+		color: #000;
+	}
+	
+	.btn1:hover {
+		background-color: #FFF;
+		color: #000;
+	}
+	
+	.btn1 {
+		position: relative;
+		width: 170px;
+		height: 50px;
+		line-height: 30px;
+		border-radius: 30px;
+		border: 3px solid #191970;
+		background-color: #191970;
+		text-align: center;
+		color: #FFF;
+		font-size: 1.2em;
+		transition: all .3s ease-in;
+		-webkit-transition: all .3s ease-in;
+		cursor:pointer;
+		margin: 60px 120px 3px 20px;
+		text-decoration: none;
+		/*box-shadow: 0px 4px 4px 0px;*/
+	}
+	
+	
+	
+	#grad1 {
+		height: 86px;
+		background-image: linear-gradient(white,#191970);
+	}
+	
+	
+	input[type=submit]
+	{
+		margin: 0px 20px 40px 40px;
+		box-shadow: 0px 4px 4px 0px rgba(0,0,0,0.25);
+		background-color: #191970;
+		color: white;
+		text-align: center;		
+		line-height: 10px;
+		cursor: pointer;
+	}
+	
+	.btn1 a {
+		color: white;
+	}
+	
+	.btn a:hover {
+		color: #191970;
+	}
+	/*.btn11 {
+		margin-left: 200px;
+	}
+	
+	.btn12 {
+		margin-left: 280px;
+	}
+
+	
+/* Style for the About Us section */
+#about {
+    padding: 48px;
+    text-align: center;
+	color:#191970
+}
+
+#about h2 {
+    font-size: 60px;
+	font-family: Lexend Zetta;
+	font-weight: 400;
+    margin-bottom: 50px; /* Add more margin below the heading */
+}
+
+.column {
+    display: inline-block;
+    width: 45%; 
+    vertical-align: top; 
+    margin: 0 10px; 
+    padding: 10px;  
+}
+
+.column p {
+	
+    font-size: 20px;
+	font-family: Lexend Zetta;
+	color: #191970;
+    line-height: 1.5;
+	margin-top:150px;
+}
+
+.column img {
+	margin-left: 175px;
+    max-width: 100%; 
+    display: block; 
+}
+
+#services {
+	background: #191970;
+	color: white;
+	padding: 48px;
+	text-align: center;
+}
+
+#services h2 {
+	font-size: 60px;
+	font-family: Lexend Zetta;
+	font-weight: 400;
+	margin-bottom: 50px; 
+}
+
+.service-card {
+	display: inline-block;
+	width: 30%; 
+	vertical-align: top; 
+	margin: 10px; 
+	padding: 20px; 
+	background: #FFF;
+	border-radius: 10px;
+	font-family: Lexend Zetta;
+	color: #191970;
+}
+.service-card p{
+	color: #191970;
+}
+.service-card img {
+	max-width: 100%; 
+	display: block; 
+	margin-left: 100px;
+	height: 200;
+	width:  200;
+}
+
+/* Footer Styles */
+footer {
+    background: #191970;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+.footer-content {
+    font-size: 16px;
+    font-family: Arial, sans-serif;
+}
+
+.footer-content p {
+    margin: 0;
+}
