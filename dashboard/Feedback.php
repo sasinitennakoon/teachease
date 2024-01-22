@@ -7,7 +7,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Teacher Dashboard</title>
-    <link rel="stylesheet" href="./CSS/Feedback.css">
+    <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="./CSS/FirstPage.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <!-- Latest FullCalendar CSS -->
@@ -34,7 +34,7 @@
                 <li><a href="Attendance.php"><i class="fas fa-check-circle"></i>&nbsp; Attendance</a></li>
                 <li><a href="ExamResults.php"><i class="fas fa-poll"></i>&nbsp; Exam Results</a></li>
                 <li><a href="Messages.php"><i class="fas fa-envelope"></i>&nbsp;Messages</a></li>
-                <li><a href="Feedback.php"><i class="fas fa-comment"></i>&nbsp;Feedback</a></li>
+                <li><a href="Feedback.php" class="active"><i class="fas fa-comment"></i>&nbsp;Feedback</a></li>
             </ul>
         </nav>
     </div>
