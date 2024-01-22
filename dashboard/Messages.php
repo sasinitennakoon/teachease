@@ -15,60 +15,10 @@
     <script type="text/javascript" 
         src="https://unpkg.com/@cometchat/chat-sdk-javascript@latest/CometChat.js">
     </script>
-
+    <script defer src="https://widget-js.cometchat.io/v3/cometchatwidget.js"></script>
 </head>
 <body>
-    <script>
-        let appID = "25147122fbfc7b73";
-        let region = "us";
-        let appSetting = new CometChat.AppSettingsBuilder()
-                            .subscribePresenceForAllUsers()
-                            .setRegion(region)
-                            .autoEstablishSocketConnection(true)
-                            .build();
-        CometChat.init(appID, appSetting).then(
-        () => {
-            console.log("Initialization completed successfully");
-        }, error => {
-            console.log("Initialization failed with error:", error);
-        }
-        );
-
-        let authKey = "c53134f9fefc924b5f0863e1d9494acd8b30d0dc";
-        var UID = "user1";
-        var name = "Kevin";
-
-        var user = new CometChat.User(UID);
-
-        user.setName(name);
-
-        CometChat.createUser(user, authKey).then(
-            user => {
-                console.log("user created", user);
-            }, error => {
-                console.log("error", error);
-            }
-        )
-
-        var UID = "SUPERHERO1";
-        //var authKey = "92db77889fabeac2e6bce0c885af481bcc1ec8b0";
-
-        CometChat.getLoggedinUser().then(
-            (user) => {
-                        if(!user){
-                    CometChat.login(UID, authKey).then(
-                    user => {
-                        console.log("Login Successful:", { user });    
-                    }, error => {
-                        console.log("Login failed with exception:", { error });    
-                    }
-                    );
-                }
-                }, error => {
-                        console.log("Some Error Occured", { error });
-                }
-        );
-    </script>
+    
     <div class="user-info">
         <img src="./IMG/loginicon.png" alt="User Icon">
         <span>User Name</span>
@@ -97,6 +47,38 @@
     <div class="content">
         <!-- Your page content goes here -->
         <h1>Messages</h1>
+        <div id="cometchat"></div>
+	<script>
+	window.addEventListener('DOMContentLoaded', (event) => {
+		CometChatWidget.init({
+			"appID": "25147122fbfc7b73",
+			"appRegion": "us",
+			"authKey": "c53134f9fefc924b5f0863e1d9494acd8b30d0dc"
+		}).then(response => {
+			console.log("Initialization completed successfully");
+			//You can now call login function.
+			CometChatWidget.login({
+				"uid": "john_doe"
+			}).then(response => {
+				CometChatWidget.launch({
+					"widgetID": "ba6deb25-85a1-4834-8031-19a93649f004",
+					"target": "#cometchat",
+					"roundedCorners": "true",
+					"height": "450px",
+					"width": "800px",
+					"defaultID": 'superhero1', //default UID (user) or GUID (group) to show,
+					"defaultType": 'user' //user or group
+				});
+			}, error => {
+				console.log("User login failed with error:", error);
+				//Check the reason for error and take appropriate action.
+			});
+		}, error => {
+			console.log("Initialization failed with error:", error);
+			//Check the reason for error and take appropriate action.
+		});
+	});
+	</script>
     </div>
 </body>
 </html>
