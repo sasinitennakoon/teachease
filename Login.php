@@ -3,11 +3,11 @@
 
 	if(isset($_POST['login']))
 	{
-		$username = $_POST['email'];
+		$username = $_POST['username'];
 		$password = $_POST['password'];
-		$role = $_POST['role'];
+		
 
-		$sql = "select * from `$role` where username='$username'";
+		$sql = "select * from `userlist` where username='$username'";
 
 		if($result = mysqli_query($link,$sql))
 		{
@@ -15,6 +15,7 @@
 			{
 				$hashpassword = $row['password'];
 				$fname = $row['firstname'];
+				$role = $row['role'];
 
 				if($password == $hashpassword)
 				{
@@ -98,14 +99,14 @@
 
             <div class="input-box">
               <span class="details">Password</span>
-              <input type="password" name="password"placeholder="Enter Password" required>
+              <input type="password" name="password" placeholder="Enter Password" required>
             </div>
 
           </div>
 
           <div class="button">
-            <button type="submit" name="submit" value="Login">Login</button>
-            <span class="signup-link"><br><br>Don't have an account? <a href="student.html">Signup</a></span>
+            <input type="submit" name="login" value="Login" class="btn">
+            <span class="signup-link"><br><br>Don't have an account? <a href="index.php">Signup</a></span>
           </div>
         </form>
 

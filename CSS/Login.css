@@ -147,7 +147,7 @@ form .button {
   margin: 45px 0;
 }
 
-form .button button {
+form .button .button {
   height: 100%;
   width: 50%;
   outline: none;
@@ -232,5 +232,23 @@ form .button1 button:hover {
 
 .button1 button:hover {
   background-color: #848ea7;
+}
+
+.btn {
+  background-color: #191970;
+  color: #FFF;
+  font-family: Lexend Zetta;
+  font-size: 20px;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+.btn:hover {
+  background-color: #FFF;
+  color: #191970;
+  border: 2px solid #191970;
 }
 
