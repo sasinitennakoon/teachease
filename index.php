@@ -10,7 +10,7 @@
 	<body>
     
 	<ul>
-	<img src = "dashboard/IMG/logo.png" />
+	<img src = "Teacher/IMG/logo.png" />
 	
 	<li style="float: right"><a href="login.php" class = "btn-log">Login</a></li></button>
 	<!--<li style="float: left">
@@ -61,7 +61,7 @@
 		
 		<div class= "column">
 			<div class="img2">
-			<img src = "dashboard/IMG/main2.jpg" width="400" height="400">
+			<img src = "Teacher/IMG/main2.jpg" width="400" height="400">
 			</div>
 		</div>
 
@@ -70,17 +70,17 @@
 	<div id="services">
         <h2 style="text-align: center;">Services</h2>
         <div class="service-card">
-            <img src="dashboard/IMG/tutor.jpg" alt="Online Tutors" width="200" height="200">
+            <img src="Teacher/IMG/tutor.jpg" alt="Online Tutors" width="200" height="200">
             <h3>Online Tutors</h3>
             <p>Get tutoring from experienced educators to help you excel in your studies.</p>
         </div>
         <div class="service-card">
-            <img src="dashboard/IMG/solostudy.jpg" alt="Self Study" width="200" height="200">
+            <img src="Teacher/IMG/solostudy.jpg" alt="Self Study" width="200" height="200">
             <h3>Solo Study</h3>
             <p>Access a wide range of tools and resources to enhance your self-study skills and knowledge.</p>
         </div>
         <div class="service-card">
-            <img src="dashboard/IMG/groupstudy.avif" alt="Group Study" width="200" height="200">
+            <img src="Teacher/IMG/groupstudy.jpg" alt="Group Study" width="200" height="200">
             <h3>Group Study</h3>
             <p >Collaborate with peers and join study groups to learn together and share knowledge effectively.</p>
         </div>
@@ -89,7 +89,7 @@
 	<div id="about">
 		<h2 style="text-align: center;">About Us</h2>
 		<div class="column">
-			<img src="dashboard/IMG/aboutus.avif" alt="About Us Image" width="400" height="400">
+			<img src="Teacher/IMG/aboutus.jpg" alt="About Us Image" width="400" height="400">
 		</div>
 		<div class="column">
 			<p >
