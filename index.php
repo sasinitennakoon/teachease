@@ -80,7 +80,7 @@
             <p>Access a wide range of tools and resources to enhance your self-study skills and knowledge.</p>
         </div>
         <div class="service-card">
-            <img src="Teacher/IMG/groupstudy.avif" alt="Group Study" width="200" height="200">
+            <img src="Teacher/IMG/groupstudy.jpg" alt="Group Study" width="200" height="200">
             <h3>Group Study</h3>
             <p >Collaborate with peers and join study groups to learn together and share knowledge effectively.</p>
         </div>
@@ -89,7 +89,7 @@
 	<div id="about">
 		<h2 style="text-align: center;">About Us</h2>
 		<div class="column">
-			<img src="Teacher/IMG/aboutus.avif" alt="About Us Image" width="400" height="400">
+			<img src="Teacher/IMG/aboutus.jpg" alt="About Us Image" width="400" height="400">
 		</div>
 		<div class="column">
 			<p >
