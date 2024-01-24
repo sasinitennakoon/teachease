@@ -21,23 +21,29 @@
 				{
 					//if($row['status'] != 'unregistered')
 					//{
-						if($role == 'Parent')
+						if($role == 'parent')
 						{
 							session_start();
+							$result1 = mysqli_query($link,"select * from `$role` where username='$username'") or die(mysqli_error($link));
+							$row = mysqli_fetch_array($result1);
 							$_SESSION['id']=$row['parent_id'];
 							echo "Login Successful. Welcome, $fname!";
 							header("refresh:3;url=Parent/Parent_dashboard.php");
 						}
-						else if($role == 'Teacher')
+						else if($role == 'teacher')
 						{
 							session_start();
+							$result1 = mysqli_query($link,"select * from `$role` where username='$username'") or die(mysqli_error($link));
+							$row = mysqli_fetch_array($result1);
 							$_SESSION['id']=$row['teacher_id'];
 							echo "Login Successful. Welcome, $fname!";
-							header("refresh:3;url=Teacher/teacher_dashboard.php");
+							header("refresh:3;url=Teacher/FirstPage.php");
 						}
-						else if($role == 'Student')
+						else if($role == 'student')
 						{
 							session_start();
+							$result1 = mysqli_query($link,"select * from `$role` where username='$username'") or die(mysqli_error($link));
+							$row = mysqli_fetch_array($result1);
 							$_SESSION['id']=$row['student_id'];
 							echo "Login Successful. Welcome, $fname!";
 							header("refresh:3;url=Student/Student_dashboard.php");
