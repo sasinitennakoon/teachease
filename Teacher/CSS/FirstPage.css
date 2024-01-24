@@ -229,13 +229,41 @@ nav {
 
 /* Login icon and name*/
 .user-info {
-    position: absolute;
+    position: fixed;
     top: 10px;
     right: 15px;
     display: flex;
     align-items: center;
     color: rgb(0, 0, 0);
+    cursor: pointer;
 }
+
+.user-info .dropdown .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    right: 0;
+}
+
+.user-info .dropdown .dropdown-content a {
+    padding: 12px 16px;
+    display: block;
+    text-decoration: none;
+    color: #333;
+}
+
+.user-info .dropdown .dropdown-content a:hover {
+    background-color: #f1f1f1;
+}
+
+.user-info:hover .dropdown .dropdown-content {
+    display: block;
+}
+
+
 
 .user-info img {
     width: 30px;
