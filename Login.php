@@ -28,7 +28,7 @@
 							$row = mysqli_fetch_array($result1);
 							$_SESSION['id']=$row['parent_id'];
 							echo "Login Successful. Welcome, $fname!";
-							header("refresh:3;url=Parent/Parent_dashboard.php");
+							header("refresh:0;url=Parent/Parent_dashboard.php");
 						}
 						else if($role == 'teacher')
 						{
@@ -37,7 +37,7 @@
 							$row = mysqli_fetch_array($result1);
 							$_SESSION['id']=$row['teacher_id'];
 							echo "Login Successful. Welcome, $fname!";
-							header("refresh:3;url=Teacher/FirstPage.php");
+							header("refresh:0;url=Teacher/FirstPage.php");
 						}
 						else if($role == 'student')
 						{
@@ -46,8 +46,20 @@
 							$row = mysqli_fetch_array($result1);
 							$_SESSION['id']=$row['student_id'];
 							echo "Login Successful. Welcome, $fname!";
-							header("refresh:3;url=Student/Student_dashboard.php");
+							header("refresh:0;url=Student/Student_dashboard.php");
 						}
+						else if($role == 'admin')
+						{
+							session_start();
+							$result1 = mysqli_query($link,"select * from `users` where username='$username'") or die(mysqli_error($link));
+							$row = mysqli_fetch_array($result1);
+							$_SESSION['id']=$row['user_id'];
+							echo "Login Successful. Welcome, $fname!";
+							header("refresh:0;url=Admin/dashboard.php");
+						}
+						
+							
+						
 					//}
 					/*else
 					{
@@ -63,6 +75,15 @@
 			{
 				echo "Login failed.User not found";
 			}
+		}
+		else if($result = mysqli_query($link,"select * from `users` where username='$username'"))
+		{
+			session_start();
+			$row1 = mysqli_fetch_array($result1);
+			$_SESSION['id']=$row['user_id'];
+			$fname1 = $row1['firstname'];
+			echo "Login Successful. Welcome, $fname1!";
+			header("refresh:0;url=Admin/dashboard.php");
 		}
 		else
 		{

@@ -1,4 +1,9 @@
-<?php
+<?php include '../database/db_con.php'; ?>
+<?php include '../session.php'; ?>
+
+<?php 
+	$query= mysqli_query($link,"select * from teacher where teacher_id = '$session_id'")or die(mysqli_error());
+	$row = mysqli_fetch_array($query);
 ?>
 
 <!DOCTYPE html>
@@ -19,10 +24,18 @@
 </head>
 <body>
     
-    <div class="user-info">
-        <img src="./IMG/loginicon.png" alt="User Icon">
-        <span>User Name</span>
-    </div>
+            <div class="dropdown" style="float:right;">
+			  <button class="dropbtn">
+              <img src="./IMG/loginicon.png" alt="User Icon">
+                <?php echo $row['firstname']; ?>
+				<i class="fa fa-caret-down"></i>
+			  </button>
+			  <div class="dropdown-content">
+				<a href="MyProfile.php"><i class="fa fa-fw fa-user"></i>Profile</a>
+				<a href="ResetPassword.php"><i class="fa fa-fw fa-unlock-alt"></i>Change Password</a>
+				<a href="../logout.php"><i class="fa fa-fw fa-sign-out"></i>Log out</a>
+			  </div>
+			</div> 
     <!-- Sidebar -->
     <div class="sidebar">
         <div class="logo">
