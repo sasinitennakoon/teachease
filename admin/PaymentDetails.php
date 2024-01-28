@@ -13,6 +13,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Teacher Dashboard</title>
     <link rel="stylesheet" href="././css/FirstPage.css">
+    <link integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <!-- Latest FullCalendar CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.2/main.css" integrity="sha384-LiWsxj4vMfsO8uyNnTVqSfeLqqkKD2pwWqFnSa6UqVqwKn9FlnNy5wKb3bYxs84p" crossorigin="anonymous">
@@ -64,13 +65,23 @@
             <div class="panel">
                 <div class="but">
                 <a href="Paymentall.php"><button class="button">View All</button></a>
+                <form method="post" action="process.php">
+                <table>
+                <tr>
+						<td id = "name" name="Joe">Joe</td>
+						
+						<td id="price" name="150.00">Rs.150.00</td>
+						<td><input type='submit' class = "btn" onclick="buyNow();"></td>
+                        
+					  </tr>
+                </table>
+</form>
                 </div>
             </div>
         </div>
     </div>
     
-    <script>
-        // Your additional JavaScript code for PaymentDetails.html can be added here.
-    </script>
+    <script src="https://www.payhere.lk/lib/payhere.js"></script>
+<script src="script.js"></script>
 </body>
 </html>

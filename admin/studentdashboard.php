@@ -41,6 +41,17 @@
                             <th>Other Details</th>
                         </tr>
                     </thead>
+                    <tbody>
+                        <tr>
+                            <td>Student ID</td>
+                            <td>First Name</td>
+                            <td>Last Name</td>
+                            <td>Address</td>
+                            <td>E-mail</td>
+                            <td>Phone Number</td>
+                            <td>Other Details</td>
+                        </tr>
+                    </tbody>
                 </table>
             </div>
             <button class="add-button" onclick="openAddDetailsForm()">Add New</button>
