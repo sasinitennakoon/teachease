@@ -18,10 +18,18 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.2/main.css" integrity="sha384-LiWsxj4vMfsO8uyNnTVqSfeLqqkKD2pwWqFnSa6UqVqwKn9FlnNy5wKb3bYxs84p" crossorigin="anonymous">
 </head>
 <body>
-    <div class="user-info">
-        <img src="././img/loginicon.png" alt="User Icon">
-        <span><?php echo $row['firstname']; ?></span>
-    </div>
+<div class="dropdown" style="float:right;">
+			  <<div class="dropbtn">
+              <img src="./IMG/loginicon.png" alt="User Icon">
+                <?php echo $row['firstname']; ?>
+				<i class="fa fa-caret-down"></i>
+                </div>
+			  <div class="dropdown-content">
+				<a href="MyProfile.php"><i class="fa fa-fw fa-user"></i>Profile</a>
+				<a href="ResetPassword.php"><i class="fa fa-fw fa-unlock-alt"></i>Change Password</a>
+				<a href="../logout.php"><i class="fa fa-fw fa-sign-out-alt"></i>Log out</a>
+			  </div>
+			</div> 
     <!-- Sidebar -->
     <div class="sidebar">
         <div class="logo">

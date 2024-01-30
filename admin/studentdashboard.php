@@ -43,12 +43,12 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td>Student ID</td>
-                            <td>First Name</td>
-                            <td>Last Name</td>
-                            <td>Address</td>
-                            <td>E-mail</td>
-                            <td>Phone Number</td>
+                            <td>S1001</td>
+                            <td>AAAA</td>
+                            <td>BBBB</td>
+                            <td>Jaffna</td>
+                            <td>aaaa@gmail.com</td>
+                            <td>0766463204</td>
                             <td>Other Details</td>
                         </tr>
                     </tbody>
