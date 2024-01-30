@@ -63,6 +63,25 @@
 
         <div class="panels">
             <div class="panel">
+            
+                <table border="0">
+                    <thead>
+                        <tr>
+                            <th>Subject</th>
+                            <th>Amount</th>
+                            <th></th>  
+                        </tr>
+                    </thead>
+                    <thead>
+                        <tr>
+                            <td>Maths</td>
+                            <td>1000</td>
+                            <td><a href="public/checkout.html"><button class="button">Make Payment</button></a></td>
+                        </tr>
+                    </thead>
+
+                </table>
+               
                 <div class="but">
                 <a href="Paymentall.php"><button class="button">View All</button></a>
                 

@@ -27,7 +27,7 @@
 			  <div class="dropdown-content">
 				<a href="MyProfile.php"><i class="fa fa-fw fa-user"></i>Profile</a>
 				<a href="ResetPassword.php"><i class="fa fa-fw fa-unlock-alt"></i>Change Password</a>
-				<a href="../logout.php"><i class="fa fa-fw fa-sign-out"></i>Log out</a>
+				<a href="../logout.php"><i class="fa fa-fw fa-sign-out-alt"></i>Log out</a>
 			  </div>
 			</div> 
     <!-- Sidebar -->

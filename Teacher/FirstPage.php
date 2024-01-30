@@ -14,10 +14,7 @@
     <title>Teacher Dashboard</title>
     <link rel="stylesheet" href="./CSS/FirstPage.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <link rel="stylesheet" href="styles.css">
     
-
-    <!-- Latest FullCalendar CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.2/main.css" integrity="sha384-LiWsxj4vMfsO8uyNnTVqSfeLqqkKD2pwWqFnSa6UqVqwKn9FlnNy5wKb3bYxs84p" crossorigin="anonymous">
 
 </head>
@@ -31,9 +28,9 @@
 			  <div class="dropdown-content">
 				<a href="MyProfile.php"><i class="fa fa-fw fa-user"></i>Profile</a>
 				<a href="ResetPassword.php"><i class="fa fa-fw fa-unlock-alt"></i>Change Password</a>
-				<a href="../logout.php"><i class="fa fa-fw fa-sign-out"></i>Log out</a>
+				<a href="../logout.php"><i class="fa fa-fw fa-sign-out-alt"></i>Log out</a>
 			  </div>
-			</div> 
+			</div>
     <!-- Sidebar -->
     <div class="sidebar">
         <div class="logo">
