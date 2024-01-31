@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link href="'https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+    <link rel="stylesheet" href="css/analytics.css">
+  </head>
+  <body>
+
+      <!-- Main -->
+      <main class="main-container">
+        <div class="main-title">
+          <h2>TEACHER ANALYSIS DASHBOARD</h2>
+        </div>
+
+        <div class="main-cards">
+
+          <div class="card">
+            <div class="card-inner">
+              <h3>TOTAL STUDENTS</h3>
+              <span class="material-icons-outlined">inventory_2</span>
+            </div>
+            <h1>272</h1>
+          </div>
+
+          <div class="card">
+            <div class="card-inner">
+              <h3>TOTAL CLASSES</h3>
+              <span class="material-icons-outlined">category</span>
+            </div>
+            <h1>5</h1>
+          </div>
+
+          <div class="card">
+            <div class="card-inner">
+              <h3>MONTHLY EARNINGS</h3>
+              <span class="material-icons-outlined">groups</span>
+            </div>
+            <h1>150000</h1>
+          </div>
+
+          <div class="card">
+            <div class="card-inner">
+              <h3>STUDENT LEAVE REQUESTS</h3>
+              <span class="material-icons-outlined">notification_important</span>
+            </div>
+            <h1>16</h1>
+          </div>
+
+        </div>
+
+        <div class="charts">
+
+          <div class="charts-card">
+            <h2 class="chart-title">Top 5 Scoring Students</h2>
+            <div id="bar-chart"></div>
+          </div>
+
+          <div class="charts-card">
+            <h2 class="chart-title">Average Marks of Students</h2>
+            <div id="area-chart"></div>
+          </div>
+
+          <div class="charts-card">
+            <h2 class="chart-title">Average attendance of Students</h2>
+            <div id="attendance-chart"></div>
+          </div>
+
+          <div class="charts-card">
+            <h2 class="chart-title">Overall Student Assessment Completion Rate</h2>
+            <div id="radialBarchart"></div>
+          </div>
+
+        </div>
+      </main>
+      <!-- End Main -->
+
+    </div>
+
+    <!-- Scripts -->
+    <!-- ApexCharts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.35.5/apexcharts.min.js"></script>
+    <!-- Custom JS -->
+    <script src="js/analytics.js"></script>
+  </body>
+</html>

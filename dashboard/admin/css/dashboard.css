@@ -1,0 +1,246 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #C2D9FF;
+}
+
+.sidebar nav ul li.active a {
+    background-color: white;
+    color: black;
+}
+.sidebar {
+    height: 97vh;
+    width: 250px;
+    background-color: rgb(28, 28, 111);
+    padding-top: 20px;
+    position: relative;
+    
+}
+
+.logo img {
+    width: 100%;
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 30px;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+nav a {
+    text-decoration: none;
+    color: white;
+    display: block;
+    padding: 10px;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.content {
+    margin-left: 125px;
+    padding: 15px;
+    position: relative;
+    margin-top: -360px;
+
+}
+
+/* dashboard.css */
+
+/* Style the list items */
+/* Remove list item dots and adjust margin */
+.sidebar nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 15px;
+}
+
+/* Style the links to look like buttons */
+.sidebar nav ul li a {
+    display: block;
+    padding: 15px;
+    text-decoration: none;
+    color: #ffffff; /* Set the default text color */
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    width: 80%;
+    align-items: center;
+    background-color:  rgb(28, 28, 111); /* Set the default background color */
+    text-align: center; /* Center the text */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Change the background color and text color when hovered */
+.sidebar nav ul li a:hover {
+    background-color: #ffffff; /* Change this to the desired hover background color */
+    color: #000000; /* Change this to the desired hover text color */
+    transform: scale(1.05); /* Add a slight scale effect on hover */
+}
+
+/* Add some spacing between navigation items */
+.sidebar nav ul li {
+    margin-bottom: 10px;
+}
+
+/* Style the logo */
+.logo img {
+    width: 80%;
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 20px;
+}
+
+/* Add a border-bottom to separate the logo from navigation */
+.logo {
+    border-bottom: 1px solid #fff;
+    padding-bottom: 20px;
+}
+
+/* Adjust padding for the whole navigation */
+nav {
+    padding-left: 10px;
+}
+
+/* Add some padding and border to the logo for a subtle frame effect */
+.logo {
+    padding: 10px;
+    border: 1px solid  rgb(28, 28, 111);
+    border-radius: 10px;
+}
+
+
+/* dashboard.css */
+
+/* Style for panels */
+.panels {
+    display: flex;
+    flex-wrap: wrap;
+
+}
+.panelsD {
+    display: flex;
+    flex-wrap: wrap;
+    width: 80%;
+    padding-left: 10%;
+    padding-top: 5%;
+
+}
+.panelsD1 {
+    display: flex;
+    flex-wrap: wrap;
+    width: 40%;
+    padding-left: 30%;
+
+}
+.panel {
+    flex: 1;
+    background-color: #f0f0f0;
+    padding: 20px;
+    margin: 10px ;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 250px;
+    height: 80px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.panel h2 {
+    color: #333;
+}
+
+.panel p {
+    color: #444242;
+}
+.panel:hover,
+.panel1:hover,
+.panel2:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+
+/*------------*/
+.panel2 {
+    flex: 1;
+    background-color: #f0f0f0;
+    padding: 20px;
+    margin: 10px ;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 40%;
+    height: 150px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: center; /* Center-align panel content */
+    margin-bottom: 20px; /* Add bottom margin for spacing between panels */
+}
+
+.panel2 h2 {
+    color: #333;
+    text-align: center;
+}
+
+.panel2 p {
+    color: #444242;
+}
+.panel2 button{
+    background-color: #3498db;
+    color: #fff;
+    padding: 15px 25px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Add a smooth transition for transform property */
+    font-size: 16px;
+    margin-top: 10px; /* Add some top margin for spacing */
+    
+}
+.panel2 button:hover {
+    background-color: #2980b9; /* Change background color on hover */
+    transform: scale(1.05);
+}
+/* Style for the <hr> element */
+
+
+/* bar charts */
+.panel1 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.panel1 p {
+    width: 45%; /* Adjust the width of the paragraphs as needed */
+}
+
+#barChart {
+    width: 45%; /* Adjust the width of the canvas as needed */
+    height: auto;
+}
+
+/*Note pad*/
+.panelsD .panel2 textarea {
+    width: 100%;
+    height: 50px;
+    padding: 10px;
+    box-sizing: border-box;
+    margin-top: 10px;
+}
+
+
+/* Login icon and name*/
+.user-info {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    display: flex;
+    align-items: center;
+    color: rgb(0, 0, 0);
+}
+
+.user-info img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-right: 10px;
+}

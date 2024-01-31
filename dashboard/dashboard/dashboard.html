@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teacher Dashboard</title>
+    <link rel="stylesheet" href="../CSS/dashboard.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
+
+    <!-- Latest FullCalendar CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.2/main.css" integrity="sha384-LiWsxj4vMfsO8uyNnTVqSfeLqqkKD2pwWqFnSa6UqVqwKn9FlnNy5wKb3bYxs84p" crossorigin="anonymous">
+    
+</head>
+<body>
+    <div class="user-info">
+        
+    </div>
+
+   
+    <!-- Content -->
+    <div class="content">
+        <!-- Your page content goes here -->
+        <h1 style="text-align: center;">Welcome to Your Dashboard!</h1>
+
+        <!-- Inserting small panels -->
+        <div class="panels">
+            <div class="panel">
+                <h2> Total Students</h2>
+                
+            </div>
+
+            <div class="panel4">
+                <h2>Total Classes</h2>
+                
+            </div>
+
+            <div class="panel5">
+                <h2>Average Rating</h2>
+                
+            </div>
+
+            <div class="panel6">
+                <h2>Total Earnings</h2>
+            </div>
+        </div>
+
+        <!-- Calendar Panel -->
+        <div class="panelsD">
+            <div class="panel1">
+                <p><b>Student Overall Progress</b></p>
+                <canvas id="barChart"></canvas>
+            </div>
+
+            <div class="panel2">
+                <iframe src="https://calendar.google.com/calendar/embed?height=300&wkst=1&bgcolor=%23ffffff&ctz=UTC&showTitle=0&showNav=1&showPrint=0&showTabs=1&showCalendars=0&showDate=1&showTz=0&src=ZW4ubGsjaG9saWRheUBncm91cC52LmNhbGVuZGFyLmdvb2dsZS5jb20&color=%230B8043" style="border:solid 0px #777" width="520" height="160" frameborder="0" scrolling="no"></iframe>
+            </div>
+        </div>
+
+        <div class="panelsD">
+            <div class="panel1">
+                <h2>My Courses</h2>
+            </div>
+
+            <div class="panel2">
+                <h2>Personal Notes</h2>
+                <textarea rows="10" cols="50" placeholder="Type your notes here..."></textarea>
+            </div>
+        </div>
+    </div>
+
+    <!-- Your custom JavaScript for the chart -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- Your custom JavaScript for the navigation and content loading -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var navLinks = document.querySelectorAll('.sidebar nav ul li a');
+
+            navLinks.forEach(function (link) {
+                link.addEventListener('click', function (event) {
+                    // Prevent the default link behavior
+                    event.preventDefault();
+
+                    // Remove the 'active' class from all links
+                    navLinks.forEach(function (navLink) {
+                        navLink.parentElement.classList.remove('active');
+                    });
+
+                    // Add the 'active' class to the clicked link's parent
+                    link.parentElement.classList.add('active');
+
+                    // Load the content of the clicked link's href (HTML file)
+                    loadContent(link.getAttribute('href'));
+                });
+            });
+
+            // Function to load content into the 'content' div
+            function loadContent(url) {
+                var xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function () {
+                    if (this.readyState == 4 && this.status == 200) {
+                        document.querySelector('.content').innerHTML = this.responseText;
+                    }
+                };
+                xhttp.open("GET", url, true);
+                xhttp.send();
+            }
+
+            // Sample data for the bar chart
+            var data = {
+                labels: ["January", "February", "March", "April", "May"],
+                datasets: [{
+                    label: "Number of Students",
+                    data: [20, 35, 40, 25, 30],
+                    backgroundColor: " rgb(28, 28, 111)",
+                    borderColor: "rgba(75,192,192,1)",
+                    borderWidth: 1
+                }]
+            };
+
+            // Get the canvas element and render the bar chart
+            var ctx = document.getElementById("barChart").getContext("2d");
+            var myBarChart = new Chart(ctx, {
+                type: 'bar',
+                data: data,
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+
+            // Load the default content for the "Dashboard" link
+            var defaultLink = document.querySelector('.sidebar nav ul li a[href="dashboard.html"]');
+            defaultLink.parentElement.classList.add('active');
+            loadContent(defaultLink.getAttribute('href'));
+        });
+    </script>
+</body>
+</html>
