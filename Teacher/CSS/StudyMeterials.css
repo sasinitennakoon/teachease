@@ -126,20 +126,7 @@
 }
 
 
-button{
-    width: 100px;
-    padding: 10px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    background-color: rgb(43, 43, 151);
-    color: aliceblue;
-    border-radius: 8px;
-}
 
-
-.button:hover{
-    transform: translateY(-5px);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-}
 
 .panel_1:hover,
 .panel_2:hover{
