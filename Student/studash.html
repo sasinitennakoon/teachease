@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard</title>
+    <!--<link rel="stylesheet" href="../admin/css/dashboard.css"> -->
+    <link rel="stylesheet" href="././css/firstpage.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+
+<body>
+<div class="dropdown" style="float:right;">
+<div class="dropbtn">
+              <img src="./img/loginicon.png" alt="User Icon">
+                <?php echo $row['firstname']; ?>
+				<i class="fa fa-caret-down"></i>
+                </div>
+			  <div class="dropdown-content">
+				<a href="MyProfile.php"><i class="fa fa-fw fa-user"></i>Profile</a>
+				<a href="ResetPassword.php"><i class="fa fa-fw fa-unlock-alt"></i>Change Password</a>
+				<a href="../logout.php"><i class="fa fa-fw fa-sign-out-alt"></i>Log out</a>
+			  </div>
+			</div> 
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="logo">
+            <img src="././img/logo1.png" alt="Logo">
+        </div>
+        <hr color="white">
+        <nav>
+            <ul>
+                <li><a href="dashboard.php" class="active"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                <li><a href="MyCourses.html"><i class="fas fa-bullhorn"></i> My Courses</a></li>
+                <li><a href="StudyMaterials.html"><i class="fas fa-dollar-sign"></i> Study Materials</a></li>
+                <li><a href="Tasks.html"><i class="fas fa-book"></i> Tasks</a></li>
+                <li><a href="Progress.html"><i class="fas fa-flask"></i> Progress Report</a></li>
+                <li><a href="ExamR.php"><i class="fas fa-chalkboard"></i> Exam Results</a></li>
+                <li><a href="msg.html"><i class="fas fa-certificate"></i> Messages</a></li>
+                <li><a href="Feedback.php"><i class="fas fa-comment"></i> Feedback Collection</a></li>
+
+            </ul>
+        </nav>
+    </div>
+
+   
+    <!-- Content -->
+    <div class="content">
+        
+        <h1>Welcome to Your Dashboard</h1>
+
+        
+       
+        <div class="panels">
+            <div class="panel">
+                <h2>Your Current Rank</h2>
+            </div>            
+
+            <div class="panel">
+                <h2>Completed Tasks</h2>
+            </div>
+
+            <!--div class="panel3">
+                <h2>Completed Tasks</h2>
+            </div>
+
+            <div class="panel4">
+                <h2>Completed Tasks</h2>
+            </div>
+        </div-->
+
+        <!--div class="panelsD1">
+            <div class="panel2">
+                <h2>Strats You Got</h2>
+            </div>
+        </div>
+
+        <div class="panelsD1">
+            <div class="panel2">
+                <h2>Today Active Hours</h2>
+            </div>
+        </div-->
+    </div>
+    
+</body>
+</html>
