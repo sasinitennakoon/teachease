@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -144,3 +145,151 @@
     </script>
 </body>
 </html>
+=======
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="././css/FirstPage.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+
+</head>
+<body>
+    <div class="user-info">
+        <img src="././img/loginicon.png" alt="User Icon">
+        <span>User Name</span>
+    </div>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="logo">
+            <img src="././img/logo1.png" alt="Logo">
+        </div>
+        <hr color="white">
+        <nav>
+            <ul>
+                <li><a href="dashboard.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                <li><a href="Announcements.html"><i class="fas fa-bullhorn"></i> Announcements</a></li>
+                <li><a href="PaymentDetails.html"><i class="fas fa-dollar-sign"></i> Payment Details</a></li>
+                <li><a href="Courses.html"><i class="fas fa-book"></i> Courses</a></li>
+                <li><a href="Subjects.html"><i class="fas fa-flask"></i> Subjects</a></li>
+                <li><a href="Classes.html"><i class="fas fa-chalkboard"></i> Classes</a></li>
+                <li><a href="Certificates.html"><i class="fas fa-certificate"></i> Certificates</a></li>
+                <li><a href="RankingSystem.html"><i class="fas fa-trophy"></i> Ranking System</a></li>
+                <li><a href="Feedback.html"><i class="fas fa-comment"></i> Feedback Collection</a></li>
+
+            </ul>
+        </nav>
+    </div>
+
+    <!-- Content -->
+    <div class="content">
+        <!-- Your page content goes here -->
+        <h1>Welcome to Your Dashboard</h1>
+
+        <!-- Inserting small panels -->
+        <div class="panels">
+            <div class="panel">
+                <h2>Student Dashboard</h2>
+                <button>Go To Student Dashboard</button>
+            </div>
+
+            <div class="panel">
+                <h2>Parent Dashboard</h2>
+                <button>Go To Parent Dashboard</button>
+            </div>
+
+            <div class="panel">
+                <h2>Teacher Dashboard</h2>
+                <button>Go To Teacher Dashboard</button>
+            </div>
+        </div>
+        <div class="panelsD">
+            <div class="panel1">
+                <h2>My Courses</h2>
+                <p>Content for Panel 1 goes here.</p>
+            </div>
+
+            <div class="panel2">
+                <h2>Personal Notes</h2>
+                <textarea rows="10" cols="50" placeholder="Type your notes here..."></textarea>
+            </div>
+        </div>
+    </div>
+
+    <!-- Your custom JavaScript for the chart -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- Your custom JavaScript for the navigation and content loading -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            /*
+            var navLinks = document.querySelectorAll('.sidebar nav ul li a');
+
+            navLinks.forEach(function (link) {
+                link.addEventListener('click', function (event) {
+                    // Prevent the default link behavior
+                    event.preventDefault();
+
+                    // Remove the 'active' class from all links
+                    navLinks.forEach(function (navLink) {
+                        navLink.parentElement.classList.remove('active');
+                    });
+
+                    // Add the 'active' class to the clicked link's parent
+                    link.parentElement.classList.add('active');
+
+                    // Load the content of the clicked link's href (HTML file)
+                    loadContent(link.getAttribute('href'));
+                });
+            });*/
+
+            // Function to load content into the 'content' div
+            function loadContent(url) {
+                var xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function () {
+                    if (this.readyState == 4 && this.status == 200) {
+                        document.querySelector('.content').innerHTML = this.responseText;
+
+                        // Sample data for the bar chart
+                        var data = {
+                            labels: ["January", "February", "March", "April", "May"],
+                            datasets: [{
+                                label: "Number of Students",
+                                data: [20, 35, 40, 25, 30],
+                                backgroundColor: "rgb(28, 28, 111)",
+                                borderColor: "rgba(75,192,192,1)",
+                                borderWidth: 1
+                            }]
+                        };
+
+                        // Get the canvas element and render the bar chart
+                        var ctx = document.getElementById("barChart").getContext("2d");
+                        var myBarChart = new Chart(ctx, {
+                            type: 'bar',
+                            data: data,
+                            options: {
+                                scales: {
+                                    y: {
+                                        beginAtZero: true
+                                    }
+                                }
+                            }
+                        });
+                    }
+                };
+                xhttp.open("GET", url, true);
+                xhttp.send();
+            }
+
+            // Load the default content for the "Dashboard" link
+            var defaultLink = document.querySelector('.sidebar nav ul li a[href="dashboard.html"]');
+            defaultLink.parentElement.classList.add('active');
+            loadContent(defaultLink.getAttribute('href'));
+        });
+    </script>
+</body>
+</html>
+>>>>>>> 5c353e88065af721f05c144a253b549129691613

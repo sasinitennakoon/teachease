@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .content{
     padding-top: 30px;
 }
@@ -56,4 +57,64 @@ button{
 .content h2,h3{
     text-align: left;
     padding-left: 8%;
+=======
+.content{
+    padding-top: 30px;
+}
+body {
+    margin: 20;
+    font-family: Arial, sans-serif;
+}
+.content h1{
+    text-align: center;
+}
+.panel{
+    height: 310px;
+}
+
+table{
+    width: 1100px;
+}
+
+button{
+    width: 150px;
+    padding: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background-color: rgb(43, 43, 151);
+    color: aliceblue;
+    border-radius: 25px;
+}
+
+.button:hover{
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.but{
+    padding: 10px;
+    padding-left: 85%;
+}
+
+.panels {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.panel {
+    background-color: hsl(0, 4%, 87%);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin: 10px;
+    width: 1300px;
+
+}
+.content h2,h3{
+    text-align: left;
+    padding-left: 8%;
+>>>>>>> 5c353e88065af721f05c144a253b549129691613
 }

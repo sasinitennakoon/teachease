@@ -43,7 +43,11 @@
             <ul>
                 <li><a href="FirstPage.php"><i class="fas fa-tachometer-alt"></i>&nbsp; Dashboard</a></li>
                 <li><a href="MyStudent.php"><i class="fas fa-users"></i>&nbsp;My Students</a></li>
+<<<<<<< HEAD
                 <li><a href="MyClasses.php"  class="active"><i class="fas fa-chalkboard-teacher"></i>&nbsp; My Classes</a></li>
+=======
+                <li><a href="MyClasses.php" class="active"><i class="fas fa-chalkboard-teacher"></i>&nbsp; My Classes</a></li>
+>>>>>>> 5c353e88065af721f05c144a253b549129691613
                 <li><a href="Schedule.php"><i class="fas fa-calendar-alt"></i>&nbsp; Schedule</a></li>
                 <li><a href="StudyMeterials.php"><i class="fas fa-book"></i>&nbsp; Study Materials</a></li>
                 <li><a href="Attendance.php"><i class="fas fa-check-circle"></i>&nbsp; Attendance</a></li>
