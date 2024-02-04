@@ -97,135 +97,10 @@ nav a {
     border: 1px solid rgb(28, 28, 111);
     border-radius: 10px;
 }
-
-
-
-.panelsD {
-    display: flex;
-    flex-wrap: wrap;
-    width: 60% 40%;
-
-}
-
-.panelsD2 {
-    display: flex;
-    flex-wrap: wrap;
-    width: 60% 40%;
-
-}
-
-.panel1:hover,
-.panel2:hover,
-.panel3:hover,
-.panel4:hover,
-.panel5:hover,
-.panel6:hover{
-    transform: translateY(-5px);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-}
-
-.panel1 {
-    flex: 1;
-    background-color: #f0f0f0;
-    background-image: url('/Student/img/science.png');
-    background-position: right;
-    background-size: 200px 160px;
-    background-repeat: no-repeat;
-    padding: 20px;
-    margin: 10px ;
-    border-radius: 5px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 60%;
-    height: 150px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.panel2 {
-    flex: 1;
-    background-color: #f0f0f0;
-    background-image: url('/Student/img/maths.png');
-    background-position: right;
-    background-size: 210px 180px;
-    background-repeat: no-repeat;
-    padding: 20px;
-    margin: 10px ;
-    border-radius: 5px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 60%;
-    height: 150px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.panel3 {
-    flex: 1;
-    background-color: #f0f0f0;
-    background-image: url('/Student/img/eng.png');
-    background-position: right;
-    background-size: 250px 180px;
-    background-repeat: no-repeat;
-    padding: 20px;
-    margin: 10px ;
-    border-radius: 5px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 60%;
-    height: 150px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.panel4 {
-    flex: 1;
-    background-color: #f0f0f0;
-    background-image: url('/Student/img/his.png');
-    background-position: right;
-    background-size: 230px 180px;
-    background-repeat: no-repeat;
-    padding: 20px;
-    margin: 10px ;
-    border-radius: 5px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 60%;
-    height: 150px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.panel5 {
-    flex: 1;
-    background-color: #f0f0f0;
-    background-image: url('/Student/img/Hindi\ Grammar.png');
-    background-position: right;
-    background-size: 200px 180px;
-    background-repeat: no-repeat;
-    padding: 20px;
-    margin: 10px ;
-    border-radius: 5px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 60%;
-    height: 150px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.panel6 {
-    flex: 1;
-    background-color: #f0f0f0;
-    background-image: url('/Student/img/Geography\ for\ Kids\ _\ What\ is\ Geography_\ _\ Geography\ Facts\ for\ Kids.png');
-    background-position: right;
-    background-size: 200px 180px;
-    background-repeat: no-repeat;
-    padding: 20px;
-    margin: 10px ;
-    border-radius: 5px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 60%;
-    height: 150px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
 .content h1 {
     text-align: center;
 }
 
-.content .panelsD p{
-    font-size:180%;
-}
 
 .content .panelsD2 p{
     font-size:180%;
@@ -290,33 +165,7 @@ nav a {
     margin-right: 10px;
 }
 
-.table {
-    width: 1100px;
-}
-
-.button {
-    width: 150px;
-    padding: 10px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    background-color: rgb(43, 43, 151);
-    color: aliceblue;
-    border-radius: 25px;
-}
-
-.button:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-}
-
-.but {
-    padding: 10px;
-}
-
-.content {
-    padding-top: 30px;
-}
-
-.button{
+button{
     width: 200px;
     padding: 10px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -326,12 +175,66 @@ nav a {
 }
 
 
-.button:hover{
+button:hover{
     transform: translateY(-5px);
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
 .but{
     padding: 20px;
-}  
+}
 
+.panelsD {
+    display: flex;
+    flex-wrap: wrap;
+    width: 60% 40%;
+
+}
+
+.panel {
+    flex: 1;
+    font-size: 95%;
+    background-color: #fbfbfb;
+    background-image: url('/Student/img/Teacher\ Lecturer\ PNG\ -\ Free\ Download.png');
+    background-position: left;
+    background-size: 300px 200px;
+    background-repeat: no-repeat;
+    padding: 20px;
+    margin: 10px ;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 250px;
+    height: 200px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.panel:hover{
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.panel p{
+    font-size: large;
+    text-align: 100px;
+}
+
+
+.panel-content h1,
+.panel-content p {
+    margin: 0;
+}
+
+.panel-content p {
+    margin-top: 5px; /* Add margin to the top for spacing */
+    margin-left: 50px;
+}
+
+.panel-image {
+    background-image: url('/Student/img/Teacher\ Lecturer\ PNG\ -\ Free\ Download.png');
+    background-position: left;
+    background-size: 300px 200px;
+    background-repeat: no-repeat;
+    width: 300px;
+    height: 200px;
+    margin-right: 10px; /* Adjust margin for spacing */
+}
