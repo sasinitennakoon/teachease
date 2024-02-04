@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Student Dashboard</title>
+    <!--<link rel="stylesheet" href="../admin/css/dashboard.css"> -->
     <link rel="stylesheet" href="././css/dashboard.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
@@ -22,29 +23,11 @@
 			  </div>
 			</div> 
     <!-- Sidebar -->
-    <div class="sidebar">
-        <div class="logo">
-            <img src="././img/logo1.png" alt="Logo">
-        </div>
-        <hr color="white">
-        <nav>
-            <ul>
-                <li><a href="dashboard.html" class=""><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
-                <li><a href="MyCourses.html"><i class="fas fa-book"></i> My Courses</a></li>
-                <li><a href="StudyMaterials.html"><i class="fas fa-book-open"></i> Study Materials</a></li>
-                <li><a href="Tasks.html"><i class="fas fa-tasks"></i> Tasks</a></li>
-                <li><a href="Progress.html"><i class="fas fa-chart-line"></i> Progress Report</a></li>
-                <li><a href="ExamR.php"><i class="fas fa-chalkboard"></i> Exam Results</a></li>
-                <li><a href="msg.html"><i class="fas fa-envelope"></i> Messages</a></li>
-                <li><a href="Feedback.php"><i class="fas fa-comment"></i> Feedback Collection</a></li>
-
-            </ul>
-        </nav>
-    </div>
-
+    
    
     <!-- Content -->
     <div class="content">
+        <!-- Your page content goes here -->
         <h1>Welcome to Your Dashboard !</h1>
 
         <!-- Inserting small panels -->
@@ -89,41 +72,6 @@
             </div>
         </div>
     </div>
-
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        var navLinks = document.querySelectorAll('.sidebar nav ul li a');
-
-        navLinks.forEach(function (link) {
-            link.addEventListener('click', function (event) {
-                event.preventDefault();
-
-                navLinks.forEach(function (navLink) {
-                    navLink.parentElement.classList.remove('active');
-                });
-
-                link.parentElement.classList.add('active');
-                loadContent(link.getAttribute('href'));
-            });
-        });
-
-        function loadContent(url) {
-            var xhttp = new XMLHttpRequest();
-            xhttp.onreadystatechange = function () {
-                if (this.readyState == 4 && this.status == 200) {
-                    document.querySelector('.content').innerHTML = this.responseText;
-                }
-            };
-            xhttp.open("GET", url, true);
-            xhttp.send();
-        }
-
-        var defaultLink = document.querySelector('.sidebar nav ul li a[href="dashboard.html"]');
-        defaultLink.parentElement.classList.add('active');
-        loadContent(defaultLink.getAttribute('href'));
-    });
-</script>
-
-
+    
 </body>
 </html>
