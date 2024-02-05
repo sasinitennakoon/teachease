@@ -64,10 +64,14 @@
         
         <!-- Calendar Panel -->
         <div class="panelsD">
+        
             <div class="panel2">
+            <a href="studentdashboard.php" style="text-decoration:none;">
                 <h2>Students Dashboard</h2>
-                <a href="studentdashboard.php"><button>Go to Student Dashboard</button></a>
-            </div>            
+                <!--<button>Go to Student Dashboard</button>-->
+                </a>  
+            </div> 
+               
 
             <div class="panel2">
                 <h2>Parents Dashboard</h2>

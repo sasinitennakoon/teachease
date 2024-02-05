@@ -1,3 +1,11 @@
+<?php include '../database/db_con.php'; ?>
+<?php include '../session.php'; ?>
+
+<?php 
+	$query= mysqli_query($link,"select * from student where student_id = '$session_id'")or die(mysqli_error());
+	$row = mysqli_fetch_array($query);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,6 +13,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Student Dashboard</title>
     <link rel="stylesheet" href="././css/dashboard.css">
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
 
@@ -29,9 +38,9 @@
         <hr color="white">
         <nav>
             <ul>
-                <li><a href="dashboard.html" class=""><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
-                <li><a href="MyCourses.html"><i class="fas fa-book"></i> My Courses</a></li>
-                <li><a href="StudyMaterials.html"><i class="fas fa-book-open"></i> Study Materials</a></li>
+                <li><a href="studash.php" class="active"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                <li><a href="MyCourses.php"><i class="fas fa-book"></i> My Courses</a></li>
+                <li><a href="StudyMaterials.php"><i class="fas fa-book-open"></i> Study Materials</a></li>
                 <li><a href="Tasks.html"><i class="fas fa-tasks"></i> Tasks</a></li>
                 <li><a href="Progress.html"><i class="fas fa-chart-line"></i> Progress Report</a></li>
                 <li><a href="ExamR.php"><i class="fas fa-chalkboard"></i> Exam Results</a></li>
@@ -89,7 +98,7 @@
             </div>
         </div>
     </div>
-
+<!--
 <script>
     document.addEventListener("DOMContentLoaded", function () {
         var navLinks = document.querySelectorAll('.sidebar nav ul li a');
@@ -122,7 +131,7 @@
         defaultLink.parentElement.classList.add('active');
         loadContent(defaultLink.getAttribute('href'));
     });
-</script>
+</script> -->
 
 
 </body>

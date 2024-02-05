@@ -57,7 +57,7 @@
     <div class="content">
       <main class="main-container">
         <div class="main-title">
-          <h2>TEACHER ANALYSIS DASHBOARD</h2>
+          <h1>TEACHER ANALYSIS DASHBOARD</h1>
         </div>
 
         <div class="main-cards">

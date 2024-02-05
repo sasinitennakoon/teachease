@@ -78,7 +78,7 @@
 					"target": "#cometchat",
 					"roundedCorners": "true",
 					"height": "550px",
-					"width": "800px",
+					"width": "1000px",
 					"defaultID": 'anuraj', //default UID (user) or GUID (group) to show,
 					"defaultType": 'user' //user or group
                     

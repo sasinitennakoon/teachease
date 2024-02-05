@@ -328,8 +328,7 @@ button{
 
 .but{
     padding: 20px;
-<<<<<<< HEAD
-=======
+
 }
 
 #button1{
@@ -345,5 +344,9 @@ button{
 .button1:hover{
     transform: translateY(-5px);
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
->>>>>>> 5c353e88065af721f05c144a253b549129691613
+
+}
+
+.content h1 {
+    text-align: center;
 }

@@ -19,7 +19,7 @@
     <nav>
       <div class="nav__logo"><a href="#">TEACH - EASE</a></div>
       <ul class="nav__links">
-        <li class="link"><a href="dashboard.php">Dashboard</a></li>
+        <li class="link"><a href="studash.php">Dashboard</a></li>
         <li class="link"><a href="../logout.php" class="nav__btn">Logout</a></li>
       </ul>
     </nav>

@@ -2,7 +2,7 @@
 
 body {
     margin: 0;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Poppin', sans-serif;
     background-color: #c2d9ff;
 }
 
@@ -47,8 +47,8 @@ nav a {
 }
 
 .content {
-    margin-left: 125px;
-    padding: 15px;
+    margin-left: 255px;
+    padding: 25px;
     position: relative;
 
 }
