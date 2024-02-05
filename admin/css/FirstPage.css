@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 body {
     margin: 0;
     font-family: Arial, sans-serif;
@@ -331,3 +332,338 @@ button{
     border-radius: 50%;
     margin-right: 10px;
 }
+=======
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.sidebar nav ul li.active a {
+    background-color: white;
+    color: black;
+}
+
+.sidebar {
+    height: 100vh;
+    width: 250px;
+    background-color: rgb(28, 28, 111);
+    padding-top: 20px;
+    position: fixed;
+    
+}
+
+.logo img {
+    width: 100%;
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 30px;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+nav a {
+    text-decoration: none;
+    color: white;
+    display: block;
+    padding: 10px;
+    text-align: left;
+    margin-bottom: 10px;
+}
+
+.content {
+    margin-left: 255px;
+    padding: 25px;
+    position: relative;
+
+}
+
+/* dashboard.css */
+
+/* Style the list items */
+/* Remove list item dots and adjust margin */
+.sidebar nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 15px;
+}
+
+/* Style the links to look like buttons */
+.sidebar nav ul li a {
+    display: block;
+    padding: 15px;
+    text-decoration: none;
+    color: #ffffff; /* Set the default text color */
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    width: 80%;
+    align-items: center;
+    background-color:  rgb(28, 28, 111); /* Set the default background color */
+    text-align: left; /* Center the text */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Change the background color and text color when hovered */
+.sidebar nav ul li a:hover {
+    background-color: #ffffff; /* Change this to the desired hover background color */
+    color: #000000; /* Change this to the desired hover text color */
+    transform: scale(1.05); /* Add a slight scale effect on hover */
+}
+
+.sidebar nav ul li .active {
+    background-color: #ffffff; /* Change this to the desired hover background color */
+    color: #000000; /* Change this to the desired hover text color */
+     /* Add a slight scale effect on hover */
+}
+
+/* Add some spacing between navigation items */
+.sidebar nav ul li {
+    margin-bottom: 10px;
+}
+
+/* Style the logo */
+.logo img {
+    width: 80%;
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 20px;
+}
+
+/* Add a border-bottom to separate the logo from navigation */
+.logo {
+    border-bottom: 1px solid #fff;
+    padding-bottom: 20px;
+}
+
+/* Adjust padding for the whole navigation */
+nav {
+    padding-left: 10px;
+}
+
+/* Add some padding and border to the logo for a subtle frame effect */
+.logo {
+    padding: 10px;
+    border: 1px solid  rgb(28, 28, 111);
+    border-radius: 10px;
+}
+
+
+/* dashboard.css */
+
+/* Style for panels */
+.panels {
+    display: flex;
+    flex-wrap: wrap;
+
+}
+.panelsD {
+    display: flex;
+    flex-wrap: wrap;
+    width: 60% 40%;
+
+}
+.panel {
+    flex: 1;
+    background-color: #f0f0f0;
+    padding: 20px;
+    margin: 10px ;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 250px;
+    height: 80px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.panel h2 {
+    color: #333;
+}
+
+.panel p {
+    color: #444242;
+}
+.panel:hover,
+.panel1:hover,
+.panel2:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+/*------------*/
+.panel1 {
+    flex: 1;
+    background-color: #f0f0f0;
+    padding: 20px;
+    margin: 10px ;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 60%;
+    height: 150px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.panel1 h2 {
+    color: #333;
+}
+
+.panel1 p {
+    color: #444242;
+}
+
+/*------------*/
+.panel2 {
+    flex: 1;
+    background-color: #f0f0f0;
+    padding: 20px;
+    margin: 10px ;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 40%;
+    height: 150px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.panel2 h2 {
+    color: #333;
+}
+
+.panel2 p {
+    color: #444242;
+}
+
+/* Style for the <hr> element */
+
+
+/* bar charts */
+.panel1 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.panel1 p {
+    width: 45%; /* Adjust the width of the paragraphs as needed */
+}
+
+#barChart {
+    width: 45%; /* Adjust the width of the canvas as needed */
+    height: auto;
+}
+
+/*Note pad*/
+.panelsD .panel2 textarea {
+    width: 100%;
+    height: 50px;
+    padding: 10px;
+    box-sizing: border-box;
+    margin-top: 10px;
+}
+
+
+/* Login icon and name*/
+.user-info {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    display: flex;
+    align-items: center;
+    color: rgb(0, 0, 0);
+}
+
+.user-info img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+table{
+    width: 1100px;
+}
+
+button{
+    width: 150px;
+    padding: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background-color: rgb(43, 43, 151);
+    color: aliceblue;
+    border-radius: 25px;
+}
+
+.button:hover{
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.but{
+    padding: 10px;
+    
+}
+
+.content{
+    padding-top: 30px;
+}
+
+.content h1{
+    text-align: center;
+}
+
+.dropdown {
+    float: right;
+    overflow: hidden;
+    z-index: 100; 
+    position: fixed;
+     margin-left: 94%;
+  }
+  
+  .dropdown .dropbtn {
+    font-size: 16px;  
+    border: none;
+    outline: none;
+    color: black;
+    padding: 12px 14px;
+    background-color: inherit;
+    font-family: inherit;
+    margin: 0;
+  }
+  
+ .dropdown:hover .dropbtn {
+    background-color:  rgb(28, 28, 111);
+    color: white;
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: fixed;
+    background-color: #ffffff;
+    right: 0;
+    min-width: 80px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+  }
+  
+  .dropdown-content a {
+    float: none;
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+  }
+  
+  .dropdown-content a:hover {
+    background-color:   rgb(28, 28, 111);
+    color: white;
+  }
+  
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+
+  .dropbtn img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+>>>>>>> 5c353e88065af721f05c144a253b549129691613

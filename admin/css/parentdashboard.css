@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .content{
     text-align: center;
     padding-top: 30px;
@@ -129,3 +130,136 @@ tbody tr:hover {
     background-color: rgb(43 43 151);
     color: white;
 }
+=======
+.content{
+    text-align: center;
+    padding-top: 30px;
+   
+}
+body {
+    margin: 20;
+    font-family: Arial, sans-serif;
+}
+
+.panel{
+    height: 420px;
+}
+
+table{
+    width: 1300px;
+}
+
+button{
+    width: 200px;
+    padding: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background-color: rgb(43, 43, 151);
+    color: aliceblue;
+    border-radius: 25px;
+}
+
+
+button:hover{
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.but{
+    padding: 20px;
+}
+.content {
+    text-align: center;
+    padding-top: 30px;
+}
+
+.panels {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.panel {
+    background-color: hsl(0, 4%, 87%);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin: 10px;
+    width: 1300px;
+}
+
+.panel h2 {
+    margin-bottom: 10px;
+}
+
+.panel input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+}
+/* Login icon and name*/
+.user-info {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    display: flex;
+    align-items: center;
+    color: rgb(0, 0, 0);
+}
+
+.user-info img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+/* ... Your existing CSS ... */
+
+button.add-button {
+    width: 200px;
+    padding: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background-color: rgb(43, 43, 151);
+    color: aliceblue;
+    border-radius: 25px;
+    cursor: pointer;
+}
+
+button.add-button:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+table {
+    width: 1300px;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 15px;
+    text-align: left;
+    border: 1px solid #ddd;
+
+}
+
+
+
+thead tr {
+    background: rgb(28, 28, 111);
+    color: white;
+}
+
+tbody tr {
+    background-color: white;
+    color: black;
+    border-collapse: collapse;
+}
+
+tbody tr:hover {
+    background-color: rgb(43 43 151);
+    color: white;
+}
+>>>>>>> 5c353e88065af721f05c144a253b549129691613

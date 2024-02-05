@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .content{
     padding-top: 30px;
 }
@@ -29,4 +30,37 @@ button{
 .but{
     padding: 10px;
     
+=======
+.content{
+    padding-top: 30px;
+}
+.content h1{
+    text-align: center;
+}
+.panel{
+    height: 160px;
+}
+
+table{
+    width: 1100px;
+}
+
+button{
+    width: 150px;
+    padding: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background-color: rgb(43, 43, 151);
+    color: aliceblue;
+    border-radius: 25px;
+}
+
+.button:hover{
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.but{
+    padding: 10px;
+    
+>>>>>>> 5c353e88065af721f05c144a253b549129691613
 }

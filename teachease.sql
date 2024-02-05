@@ -68,7 +68,7 @@ CREATE TABLE `parent` (
 --
 
 INSERT INTO `parent` (`parent_id`, `firstname`, `lastname`, `city`, `childrenname`, `username`, `password`, `status`, `language`) VALUES
-(6, 'aaa', 'bbb', 'ccc', 'anu', 'anurajselvasoth', '234', 'unregistered', '');
+(7, 'aaa', 'bbb', 'ccc', 'anu', 'anurajselvasoth', '234', 'unregistered', '');
 
 -- --------------------------------------------------------
 
@@ -141,7 +141,7 @@ CREATE TABLE `student` (
 --
 
 INSERT INTO `student` (`student_id`, `firstname`, `lastname`, `gender`, `username`, `password`, `language`, `grade`, `status`) VALUES
-(2, 'bbb', 'ccc', 'male', 'eee@gmail.com', '123', 'sinhala', '11', 'unregistered'),
+(2, 'bbb', 'cccddd', 'male', 'eee@gmail.com', '123', 'sinhala', '11', 'unregistered'),
 (4, 'Anu', 'Raj', 'male', 'anurajselvasothy@gmail.com', 'anu', 'Tamil', '11', 'unregistered');
 
 -- --------------------------------------------------------
