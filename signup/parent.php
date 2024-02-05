@@ -8,7 +8,7 @@
         $username = $_POST['username'];
         $password = $_POST['password'];
         $city = $_POST['city'];
-        $noofchildren = $_POST['noofchildren'];
+        //$noofchildren = $_POST['noofchildren'];
         $childrenname = $_POST['childrenname'];
         $role = "teacher";
         $status = "unregistered";
@@ -25,7 +25,7 @@
         else
         {
             $status = 'unregistered';
-            $sql = mysqli_query($link,"insert into parent(firstname,lastname,username,password,city,noofchildren,status,childrenname) values('$firstname','$lastname','$username','$password','$city','$noofchildren','$status','$childrenname')") or die(mysqli_error($link));
+            $sql = mysqli_query($link,"insert into parent(firstname,lastname,username,password,city,status,childrenname) values('$firstname','$lastname','$username','$password','$city','$status','$childrenname')") or die(mysqli_error($link));
             $sql1 = mysqli_query($link,"insert into userlist(firstname,lastname,role,status,username,password) values('$firstname','$lastname','$role','$status','$username','$password')") or die(mysqli_error($link));
             echo "Waitng for the admin permission";
             ?>

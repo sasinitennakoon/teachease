@@ -46,7 +46,7 @@
 							$row = mysqli_fetch_array($result1);
 							$_SESSION['id']=$row['student_id'];
 							echo "Login Successful. Welcome, $fname!";
-							header("refresh:0;url=Student/Student_dashboard.php");
+							header("refresh:0;url=Student/landingPage.php");
 						}
 						else if($role == 'admin')
 						{
