@@ -68,7 +68,7 @@ CREATE TABLE `parent` (
 --
 
 INSERT INTO `parent` (`parent_id`, `firstname`, `lastname`, `city`, `childrenname`, `username`, `password`, `status`, `language`) VALUES
-(6, 'aaa', 'bbb', 'ccc', 'anu', 'anurajselvasoth', '234', 'unregistered', '');
+(7, 'aaa', 'bbb', 'ccc', 'anu', 'anurajselvasoth', '234', 'unregistered', '');
 
 -- --------------------------------------------------------
 

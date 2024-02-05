@@ -1,0 +1,354 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background-color: #c2d9ff;
+}
+
+.sidebar nav ul li.active a {
+    background-color: white;
+    color: black;
+}
+
+.sidebar {
+    height: 97vh;
+    width: 250px;
+    background-color: rgb(28, 28, 111);
+    padding-top: 20px;
+    position: fixed;
+}
+
+/* Style the logo */
+.logo img {
+    width: 80%;
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 20px;
+}
+
+/* Add a border-bottom to separate the logo from navigation */
+.logo {
+    padding: 10px;
+    border: 1px solid  rgb(28, 28, 111);
+    border-radius: 10px;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+nav a {
+    text-decoration: none;
+    color: white;
+    display: block;
+    padding: 10px;
+    text-align: left;
+    margin-bottom: 10px;
+}
+
+.content {
+    margin-left: 120px;
+    padding: 25px;
+    position: relative;
+
+}
+
+.sidebar nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 15px;
+}
+
+.sidebar nav ul li a {
+    display: block;
+    padding: 15px;
+    text-decoration: none;
+    color: #ffffff; /* Set the default text color */
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    width: 80%;
+    align-items:left;
+    background-color:  rgb(28, 28, 111); /* Set the default background color */
+    text-align: left; /* Center the text */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.sidebar nav ul li a:hover {
+    background-color: #ffffff; /* Change this to the desired hover background color */
+    color: #000000; /* Change this to the desired hover text color */
+    transform: scale(1.05); /* Add a slight scale effect on hover */
+}
+
+.sidebar nav ul li .active {
+    background-color: #ffffff; /* Change this to the desired hover background color */
+    color: #000000; /* Change this to the desired hover text color */
+     /* Add a slight scale effect on hover */
+}
+
+.sidebar nav ul li {
+    margin-bottom: 10px;
+}
+
+
+/* Style for panels */
+.panel {
+    display: flex;
+    flex-wrap: wrap;
+
+}
+.panelsD {
+    display: flex;
+    flex-wrap: wrap;
+    width: 60% 40%;
+
+}
+.panel {
+    flex: 1;
+    font-size: 95%;
+    background-color: #fbfbfb;
+    background-image: url('/Student/img/golden-cup-trophy-symbol-team-support-hardwork-leadership-successful-creative-projects_118813-22388.png');
+    background-position: right;
+    background-size: 100px 100px;
+    background-repeat: no-repeat;
+    padding: 20px;
+    margin: 10px ;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 250px;
+    height: 80px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.panel4 {
+    flex: 1;
+    font-size: 95%;
+    background-color: #fbfbfb;
+    background-image: url('/Student/img/Checklist.png');
+    background-position: right;
+    background-size: 130px 100px;
+    background-repeat: no-repeat;
+    padding: 20px;
+    margin: 10px ;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 250px;
+    height: 80px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.panel5 {
+    flex: 1;
+    font-size: 95%;
+    background-color: #fbfbfb;
+    background-image: url('/Student/img/10200_5-09.png');
+    background-position: right;
+    background-size: 120px 110px;
+    background-repeat: no-repeat;
+    padding: 20px;
+    margin: 10px ;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 250px;
+    height: 80px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.panel6 {
+    flex: 1;
+    font-size: 95%;
+    background-color: #fbfbfb;
+    background-image: url('/Student/img/8093649.png');
+    background-position: right;
+    background-size: 120px 130px;
+    background-repeat: no-repeat;
+    padding: 20px;
+    margin: 10px ;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 250px;
+    height: 80px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.panel7 {
+    flex: 1;
+    font-size: 95%;
+    background-color: #f0f0f0;
+    padding: 20px;
+    margin: 10px ;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 60%;
+    height: 150px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.panel8 {
+    flex: 1;
+    font-size: 95%;
+    background-color: #f0f0f0;
+    padding: 20px;
+    margin: 10px ;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 60%;
+    height: 150px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+
+
+.panel h2 {
+    color: #333;
+}
+
+.panel p {
+    color: #444242;
+}
+.panel:hover,
+.panel1:hover,
+.panel2:hover,
+.panel4:hover,
+.panel5:hover,
+.panel6:hover,
+.panel7:hover,
+.panel8:hover{
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.panel1 {
+    flex: 1;
+    background-color: #f0f0f0;
+    background-image: url('/Student/img/Jan-Business_report_1.png');
+    background-position: right;
+    background-size: 200px 180px;
+    background-repeat: no-repeat;
+    padding: 20px;
+    margin: 10px ;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 60%;
+    height: 150px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+
+.panel1 p {
+    color: #444242;
+    font-size: large;
+}
+
+/*------------*/
+.panel2 {
+    flex: 1;
+    background-color: #f0f0f0;
+    padding: 20px;
+    margin: 10px ;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 40%;
+    height: 150px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.panel2 h2 {
+    color: #333;
+}
+
+.panel2 p {
+    color: #444242;
+}*/
+
+.content h1 {
+    text-align: center;
+}
+
+.dropdown {
+    float: right;
+    overflow: hidden;
+    z-index: 100;
+    position: fixed;
+    margin-left: 94%;
+}
+
+.dropdown .dropbtn {
+    font-size: 16px;
+    border: none;
+    outline: none;
+    color: black;
+    padding: 12px 14px;
+    background-color: inherit;
+    font-family: inherit;
+    margin: 0;
+}
+
+.dropdown:hover .dropbtn {
+    background-color: rgb(28, 28, 111);
+    color: white;
+}
+
+.dropdown-content {
+    display: none;
+    position: fixed;
+    background-color: #ffffff;
+    right: 0;
+    min-width: 80px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    float: none;
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.dropdown-content a:hover {
+    background-color: rgb(28, 28, 111);
+    color: white;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropbtn img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+table {
+    width: 1100px;
+}
+
+button {
+    width: 150px;
+    padding: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background-color: rgb(43, 43, 151);
+    color: aliceblue;
+    border-radius: 25px;
+}
+
+.button:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.but {
+    padding: 10px;
+}
+
+.content {
+    padding-top: 30px;
+}
+
+
