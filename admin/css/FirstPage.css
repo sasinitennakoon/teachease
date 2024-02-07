@@ -128,7 +128,7 @@ nav {
     display: flex;
     flex-wrap: wrap;
     width: 60% 40%;
-
+    justify-content: space-between;
 }
 .panel {
     flex: 1;
@@ -154,6 +154,7 @@ nav {
 .panel2:hover {
     transform: translateY(-5px);
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
 }
 /*------------*/
 .panel1 {
@@ -666,4 +667,5 @@ button{
     border-radius: 50%;
     margin-right: 10px;
 }
+
 

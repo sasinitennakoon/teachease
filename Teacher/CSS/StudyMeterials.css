@@ -126,7 +126,7 @@
 }
 
 
-<<<<<<< HEAD
+
 button{
     width: 100px;
     padding: 10px;
@@ -142,10 +142,7 @@ button{
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
-=======
 
-
->>>>>>> 5c353e88065af721f05c144a253b549129691613
 .panel_1:hover,
 .panel_2:hover{
     transform: translateY(-5px);

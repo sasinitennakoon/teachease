@@ -12,7 +12,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard</title>
-    <!--<link rel="stylesheet" href="../admin/css/dashboard.css"> -->
+    
     <link rel="stylesheet" href="././css/FirstPage.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
@@ -75,14 +75,14 @@
 
             <div class="panel2">
                 <h2>Parents Dashboard</h2>
-                <a href="parentdashboard.php"><button>Go to Parents Dashboard</button></a>
+                <a href="parentdashboard.php"><!--<button>Go to Parents Dashboard</button>--></a>
             </div>
         </div>
 
         <div class="panelsD1">
             <div class="panel2">
                 <h2>Teacher Dashboard</h2>
-                <a href="teacherdashboard.php"><button>Go to Teacher Dashboard</button></a>
+                <a href="teacherdashboard.php"><!--<button>Go to Teacher Dashboard</button>--></a>
             </div>
         </div>
     </div>
