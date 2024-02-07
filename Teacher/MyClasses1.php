@@ -55,7 +55,7 @@
     </div>
     <div class="content">
         <h1>My Classes</h1>
-        <!--
+        
             <script>
                 // Function to create meeting ID
                 function createMeeting() {
@@ -69,7 +69,7 @@
                     console.log("http://"+ window.location.host + "/Group_Project/Teacher/?meetingId="+ meetingId)
                     document.getElementById("copyInput").value = "https://"+ window.location.host + "/Group_Project/Teacher/meeting.html?meetingId="+ meetingId;
                    // document.getElementById("meetingLinkText").innerHTML = '<a href="' + meetingLink + '" target="_blank">' + meetingLink + '</a>';
-                    document.getElementById("meetingLinkButton").innerHTML = '<button class="button"><a href="' + meetingLink + '" target="_blank" style="text-decoration:none;color:white;">Join Meeting</a></button>';
+                    document.getElementById("meetingLinkButton").innerHTML = '<a href="' + meetingLink + '" target="_blank" style="text-decoration:none;color:white;"><button class="button1">Join Meeting</button></a>';
                 }
 
                 // Function to copy the link
@@ -94,81 +94,23 @@
                     }
                 });
 
-            </script>-->
-            <!--<div>
-               <button onclick="createMeeting()" class="button">Create Meeting</button>
-                <br/><br/><br/>
-                <div id="meetingLinkButton"></div>-->
-                <!--<div id="meetingLinkText"></div> -->
-                <!--<br/><br/>
-                <input type="text" id="copyInput">
-                <button onclick="copyFunction()" class="button">Copy Link</button>
-            </div>-->
-            <div class="panels">
-            <div class="panel8">
-                <table border="0">
-                    <thead>
-                        <tr>
-                            <th>Class No</th>
-                            <th>Class Name</th>
-                            <th>Subject</th>
-                            <th>Number of Students</th>
-                            <th>More Details</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>C1001</td>
-                            <td>SC01</td>
-                            <td>Science</td>
-                            <td>30</td>
-                            <td><a href="MyClasses1.php" style="text-decoration:none;color:white;"><button class="button1">More</button></a></td>
-                        </tr>
-                        <tr>
-                        <td>C1002</td>
-                            <td>EN01</td>
-                            <td>Englisg</td>
-                            <td>20</td>
-                            <td><a href="MyClasses1.php" style="text-decoration:none;color:white;"><button class="button1">More</button></a></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-
-        <div class="but">
-            <button class="button" onclick="openAddDetailsForm()"><b>Add Details</b></button>
-            <button class="button"><b>Edit Details</b></button>
-        </div>
-
-        <!-- Add Details Form -->
-        <div id="addDetailsForm" style="display: none;">
-            <!-- Your form content goes here -->
-            <form>
-                <!-- Add your form fields here -->
-                <label for="indexNo">Index No:</label>
-                <input type="text" id="indexNo" name="indexNo">
-                
-                <!-- Add more fields as needed -->
-
-                <button type="submit">Submit</button>
-            </form>
-        </div>
-
-    </div>
-
-    <script>
-        function openAddDetailsForm() {
-            var addDetailsForm = document.getElementById('addDetailsForm');
-            addDetailsForm.style.display = 'block';
+                function goBack() {
+            window.history.back();
         }
-    
-        // Optional: Close the form when the page is loaded
-        document.addEventListener('DOMContentLoaded', function () {
-            var addDetailsForm = document.getElementById('addDetailsForm');
-            addDetailsForm.style.display = 'none';
-        });
-    </script>
+
+            </script>
+            <button onclick="goBack()" class="button1">Go Back</button>
+            <br/><br/><br/>
+            <div>
+               <button onclick="createMeeting()" class="button1">Create Meeting</button>
+                <br/><br/><br/>
+                <div id="meetingLinkButton"></div>
+                <!--<div id="meetingLinkText"></div> -->
+                <br/><br/>
+                <input type="text" id="copyInput">
+                <button onclick="copyFunction()" class="button1">Copy Link</button>
+            </div>
+            
     </div> 
 
             </body>
