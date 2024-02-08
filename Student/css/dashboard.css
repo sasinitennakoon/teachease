@@ -96,19 +96,19 @@ nav a {
 .panel {
     display: flex;
     flex-wrap: wrap;
-
+    cursor: pointer;
 }
 .panelsD {
     display: flex;
     flex-wrap: wrap;
     width: 60% 40%;
-
+    cursor: pointer;
 }
 .panel {
     flex: 1;
     font-size: 95%;
     background-color: #fbfbfb;
-    background-image: url('/Student/img/golden-cup-trophy-symbol-team-support-hardwork-leadership-successful-creative-projects_118813-22388.png');
+    background-image: url('../img/golden-cup-trophy-symbol-team-support-hardwork-leadership-successful-creative-projects_118813-22388.png');
     background-position: right;
     background-size: 100px 100px;
     background-repeat: no-repeat;
@@ -125,7 +125,7 @@ nav a {
     flex: 1;
     font-size: 95%;
     background-color: #fbfbfb;
-    background-image: url('/Student/img/Checklist.png');
+    background-image: url('../img/Checklist.png');
     background-position: right;
     background-size: 130px 100px;
     background-repeat: no-repeat;
@@ -142,7 +142,7 @@ nav a {
     flex: 1;
     font-size: 95%;
     background-color: #fbfbfb;
-    background-image: url('/Student/img/10200_5-09.png');
+    background-image: url('../img/10200_5-09.png');
     background-position: right;
     background-size: 120px 110px;
     background-repeat: no-repeat;
@@ -159,7 +159,7 @@ nav a {
     flex: 1;
     font-size: 95%;
     background-color: #fbfbfb;
-    background-image: url('/Student/img/8093649.png');
+    background-image: url('../img/8093649.png');
     background-position: right;
     background-size: 120px 130px;
     background-repeat: no-repeat;
@@ -222,7 +222,7 @@ nav a {
 .panel1 {
     flex: 1;
     background-color: #f0f0f0;
-    background-image: url('/Student/img/Jan-Business_report_1.png');
+    background-image: url('../img/Jan-Business_report_1.png');
     background-position: right;
     background-size: 200px 180px;
     background-repeat: no-repeat;
