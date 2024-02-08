@@ -41,10 +41,10 @@
                         <li><a href="studash.php"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
                         <li><a href="MyCourses.php" class="active"><i class="fas fa-book"></i> My Courses</a></li>
                         <li><a href="StudyMaterials.php"><i class="fas fa-book-open"></i> Study Materials</a></li>
-                        <li><a href="Tasks.html"><i class="fas fa-tasks"></i> Tasks</a></li>
-                        <li><a href="Progress.html"><i class="fas fa-chart-line"></i> Progress Report</a></li>
+                        <li><a href="Tasks.php"><i class="fas fa-tasks"></i> Tasks</a></li>
+                        <li><a href="Progress.php"><i class="fas fa-chart-line"></i> Progress Report</a></li>
                         <li><a href="ExamR.php"><i class="fas fa-chalkboard"></i> Exam Results</a></li>
-                        <li><a href="msg.html"><i class="fas fa-envelope"></i> Messages</a></li>
+                        <li><a href="msg.php"><i class="fas fa-envelope"></i> Messages</a></li>
                         <li><a href="Feedback.php"><i class="fas fa-comment"></i> Feedback Collection</a></li>
         
                     </ul>
@@ -60,29 +60,30 @@
         
         <!-- firstCalendar Panel -->
         <div class="panelsD">
-            <div class="panel1" onclick="window.location.href='science.html';">
+            <div class="panel7" onclick="window.location.href='science.html';">
                 <p><b>Science</b></p>
+                
             </div>
 
-            <div class="panel2" onclick="window.location.href='maths.html';">
+            <div class="panel8" onclick="window.location.href='maths.html';">
                 <p><b>Mathematics</b></p>
             </div>
 
-            <div class="panel3" onclick="window.location.href='english.html';">
+            <div class="panel9" onclick="window.location.href='english.html';">
                 <p><b>English</b></p>
             </div>
         </div>
 
         <div class="panelsD2">
-            <div class="panel1" onclick="window.location.href='history.html';">
+            <div class="panel10" onclick="window.location.href='history.html';">
                 <p><b>History</b></p>
             </div>
 
-            <div class="panel2" onclick="window.location.href='hindi.html';">
+            <div class="panel11" onclick="window.location.href='hindi.html';">
                 <p><b>Hindi</b></p>
             </div>
 
-            <div class="panel3" onclick="window.location.href='geo.html';">
+            <div class="panel12" onclick="window.location.href='geo.html';">
                 <p><b>Geography</b></p>
             </div>
         </div>
