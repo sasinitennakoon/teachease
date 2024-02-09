@@ -14,7 +14,7 @@
     <title>Teacher Dashboard</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="./CSS/FirstPage.css">
-    
+    <link rel="stylesheet" href="./CSS/MyClasses.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
    
     <!-- Include the external JavaScript file -->
@@ -127,7 +127,7 @@
                         <tr>
                         <td>C1002</td>
                             <td>EN01</td>
-                            <td>Englisg</td>
+                            <td>English</td>
                             <td>20</td>
                             <td><a href="MyClasses1.php" style="text-decoration:none;color:white;"><button class="button1">More</button></a></td>
                         </tr>

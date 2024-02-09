@@ -14,10 +14,10 @@
 .panel_1 {
     flex: 1;
     background-color: #f0f0f0;
-    background-image: url(/dashboard/dashboard/IMG/2892186.png);
+    background-image: url('../IMG/2892186.png');
     background-repeat: no-repeat;
     background-size: 200px 150px;
-    background-position: right;
+    background-position: left;
     padding: 20px;
     margin: 10px ;
     border-radius: 5px;
@@ -39,9 +39,9 @@
 .panel_2 {
     flex: 1;
     background-color: #f0f0f0;
-    background-image: url('/dashboard/dashboard/IMG/2089614.png');
+    background-image: url('../IMG/2089614.png');
     background-repeat: no-repeat;
-    background-position: right;
+    background-position: left;
     background-size: 200px 150px;
     padding: 20px;
     margin: 10px ;
@@ -64,7 +64,7 @@
 .panel_3 {
     flex: 1;
     background-color: #f0f0f0;
-    background-image: url('/dashboard/dashboard/IMG/2418675.png');
+    background-image: url('../IMG/2418675.png');
     background-repeat: no-repeat;
     background-position: left;
     background-size: 200px 150px;
@@ -80,7 +80,7 @@
 .panel_4 {
     flex: 1;
     background-color: #f0f0f0;
-    background-image: url('/dashboard/dashboard/IMG/2122017.png');
+    background-image: url('../IMG/2122017.png');
     background-repeat: no-repeat;
     background-position: left;
     background-size: 200px 150px;
@@ -96,9 +96,9 @@
 .panel_5 {
     flex: 1;
     background-color: #f0f0f0;
-    background-image: url('/dashboard/dashboard/IMG/97350-OKYIEE-393.png');
+    background-image: url('../IMG/97350-OKYIEE-393.png');
     background-repeat: no-repeat;
-    background-position: right;
+    background-position: left;
     background-size: 200px 150px;
     padding: 20px;
     margin: 10px ;
@@ -112,9 +112,9 @@
 .panel_6 {
     flex: 1;
     background-color: #f0f0f0;
-    background-image: url('/dashboard/dashboard/IMG/5210980.png');
+    background-image: url('../IMG/5210980.png');
     background-repeat: no-repeat;
-    background-position: right;
+    background-position: left;
     background-size: 200px 150px;
     padding: 20px;
     margin: 10px ;
