@@ -2,21 +2,8 @@
 
 body {
     margin: 0;
-    font-family: 'Poppin', sans-serif;
+    font-family: 'Poppins', sans-serif;
     background-color: #c2d9ff;
-}
-
-.sidebar nav ul li.active a {
-    background-color: white;
-    color: black;
-}
-
-.sidebar {
-    height: 97vh;
-    width: 250px;
-    background-color: rgb(28, 28, 111);
-    padding-top: 20px;
-    position: fixed;
 }
 
 .logo img {
@@ -26,12 +13,6 @@ body {
     margin-bottom: 20px;
 }
 
-/* Add a border-bottom to separate the logo from navigation */
-.logo {
-    padding: 10px;
-    border: 1px solid  rgb(28, 28, 111);
-    border-radius: 10px;
-}
 nav ul {
     list-style: none;
     padding: 0;
@@ -47,8 +28,8 @@ nav a {
 }
 
 .content {
-    margin-left: 255px;
-    padding: 25px;
+    margin-left: 125px;
+    padding: 15px;
     position: relative;
 
 }
@@ -219,18 +200,18 @@ button:hover{
     border-radius: 5px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     width: 250px;
-    height: 200px;
+    height: 350px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
+
 .panel:hover{
     transform: translateY(-5px);
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
-
 .panel p{
     font-size: large;
-    text-align: left;
+    text-align: lrft;
     padding-left: 25%;
 }
 
@@ -244,8 +225,20 @@ button:hover{
     margin-top: 5px; /* Add margin to the top for spacing */
     margin-left: 50px;
 }
- .panelsD2{
-    display:flex;
+
+.panel-image {
+    background-image: url('/Student/img/Teacher\ Lecturer\ PNG\ -\ Free\ Download.png');
+    background-position: left;
+    background-size: 300px 200px;
+    background-repeat: no-repeat;
+    width: 300px;
+    height: 200px;
+    margin-right: 10px; /* Adjust margin for spacing */
+}
+
+.panelsD2 {
+    display: flex;
     flex-wrap: wrap;
     width: 60% 40%;
- }
+
+}
