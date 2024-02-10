@@ -77,7 +77,7 @@
 
             <div class="panel_5">
                <h3>Quizzes</h3>
-               <button class="button1">View</button>
+               <button class="button1"><a href="view_quiz.php" style="text-decoration:none;color:white;">View</a></button>
                 <button class="button1">Edit</button>
             </div>
         </div>
