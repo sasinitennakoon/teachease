@@ -57,7 +57,7 @@
         <!-- Your page content goes here -->
         <h1>MY COURSES</h1>
 
-        
+        <h2>Main Subjects </h2>
         <!-- firstCalendar Panel -->
         <div class="panelsD">
             <div class="panel7" onclick="window.location.href='science.html';">

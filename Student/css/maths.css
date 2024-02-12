@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+
 
 body {
     margin: 0;
@@ -34,43 +34,6 @@ nav a {
 
 }
 
-.sidebar nav ul {
-    list-style: none;
-    padding: 0;
-    margin: 15px;
-}
-
-.sidebar nav ul li a {
-    display: block;
-    padding: 15px;
-    text-decoration: none;
-    color: #ffffff; /* Set the default text color */
-    border-radius: 5px;
-    transition: background-color 0.3s ease, color 0.3s ease;
-    width: 80%;
-    align-items: left;
-    background-color:  rgb(28, 28, 111); /* Set the default background color */
-    text-align: left; /* Center the text */
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.sidebar nav ul li a:hover {
-    background-color: #ffffff; /* Change this to the desired hover background color */
-    color: #000000; /* Change this to the desired hover text color */
-    transform: scale(1.05); /* Add a slight scale effect on hover */
-}
-
-.sidebar nav ul li .active {
-    background-color: #ffffff; /* Change this to the desired hover background color */
-    color: #000000; /* Change this to the desired hover text color */
-     /* Add a slight scale effect on hover */
-}
-
-.sidebar nav ul li {
-    margin-bottom: 10px;
-}
-
-
 .logo {
     border-bottom: 1px solid #fff;
     padding-bottom: 20px;
@@ -83,10 +46,13 @@ nav a {
     padding-left: 25%;
 }
 
-
+/*course content*/
 .content .panelsD2 p{
-    font-size:180%;
+    font-size:large;
+    padding-left: 8%;
+    line-height: 1.8;
 }
+
 
 .dropdown {
     float: right;
@@ -176,11 +142,7 @@ button:hover{
 .panel {
     flex: 1;
     font-size: 95%;
-    background-color: #fbfbfb;
-    background-image: url('/Student/img/Teacher\ Lecturer\ PNG\ -\ Free\ Download.png');
-    background-position: left;
-    background-size: 300px 200px;
-    background-repeat: no-repeat;
+    background-color: #969cef;
     padding: 20px;
     margin: 10px ;
     border-radius: 5px;
@@ -193,14 +155,13 @@ button:hover{
 .panel1 {
     flex: 1;
     font-size: 95%;
-    background-color: #fbfbfb;
-    background-repeat: no-repeat;
+    background-color: #aaaaed;
     padding: 20px;
     margin: 10px ;
     border-radius: 5px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     width: 250px;
-    height: 350px;
+    height: 380px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -211,7 +172,7 @@ button:hover{
 
 .panel p{
     font-size: large;
-    text-align: lrft;
+    text-align: left;
     padding-left: 25%;
 }
 
@@ -221,19 +182,10 @@ button:hover{
     margin: 0;
 }
 
+
 .panel-content p {
     margin-top: 5px; /* Add margin to the top for spacing */
     margin-left: 50px;
-}
-
-.panel-image {
-    background-image: url('/Student/img/Teacher\ Lecturer\ PNG\ -\ Free\ Download.png');
-    background-position: left;
-    background-size: 300px 200px;
-    background-repeat: no-repeat;
-    width: 300px;
-    height: 200px;
-    margin-right: 10px; /* Adjust margin for spacing */
 }
 
 .panelsD2 {
@@ -241,4 +193,28 @@ button:hover{
     flex-wrap: wrap;
     width: 60% 40%;
 
+}
+
+a[href="./docs/Grade 11 Mathematics Teacher Guide.pdf"] {
+    color: #000000; 
+    text-decoration: none; 
+    font-weight: bold;
+    padding-left: 8%;
+}
+
+/*teacher 4to*/
+.panel img{
+    float: left;
+    width: 200px;
+    height: 200px;
+    padding-top:1%;
+    padding-left: 3%;
+}
+
+/*content panel*/
+.panel1 img{
+    float: right;
+    width: 300px;
+    height: 350px;
+    padding-right: 5%;
 }
