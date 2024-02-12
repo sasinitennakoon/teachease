@@ -62,34 +62,34 @@
                 <button class="button1">Edit</button>
             </div>
 
-            <div class="panel_2">
+            <div class="panel_3">
                <h3>Past Papers</h3>
                <button class="button1">View</button>
                 <button class="button1">Edit</button>
             </div>
         </div>
         <div class="panels2">
-            <div class="panel_3">
-                <h3>Ongoing Assignments</h3>
+            <div class="panel_4">
+                <h3>Uploaded Assignments</h3>
                 <button class="button1">View</button>
                 <button class="button1">Edit</button>
             </div>
 
-            <div class="panel_4">
-               <h3>Upcoming Assignments</h3>
-               <button class="button1">View</button>
+            <div class="panel_5">
+               <h3>Quizzes</h3>
+               <button class="button1"><a href="view_quiz.php" style="text-decoration:none;color:white;">View</a></button>
                 <button class="button1">Edit</button>
             </div>
         </div>
         <div class="panels2">
-            <div class="panel_5">
-                <h3>Past Questionnaries</h3>
+            <div class="panel_2">
+                <h3>Questionnaries</h3>
                 <button class="button1">View</button>
                 <button class="button1">Edit</button>
             </div>
 
             <div class="panel_6">
-               <h3>Upcoming Questionnaries</h3>
+               <h3>Flashcards</h3>
                <button class="button1">View</button>
                 <button class="button1">Edit</button>
              </div>
