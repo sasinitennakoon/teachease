@@ -44,7 +44,7 @@
                 <li><a href="studash.php"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
                 <li><a href="MyCourses.php"><i class="fas fa-book"></i> My Courses</a></li>
                 <li><a href="StudyMaterials.php"><i class="fas fa-book-open"></i> Study Materials</a></li>
-                <li><a href="Tasks.php"><i class="fas fa-tasks"></i> Tasks</a></li>
+                <li><a href="Tasks.html"><i class="fas fa-tasks"></i> Tasks</a></li>
                 <li><a href="Progress.php"><i class="fas fa-chart-line"></i> Progress Report</a></li>
                 <li><a href="ExamR.php"><i class="fas fa-chalkboard"></i> Exam Results</a></li>
                 <li><a href="msg.php"  class="active"><i class="fas fa-envelope"></i> Messages</a></li>

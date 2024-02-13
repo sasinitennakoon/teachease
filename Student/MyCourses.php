@@ -54,11 +54,10 @@
     <!--content-->
 
     <div class="content">
-        <!-- Your page content goes here -->
+        
         <h1>MY COURSES</h1>
 
-        <h2>Main Subjects </h2>
-        <!-- firstCalendar Panel -->
+       
         <div class="panelsD">
             <div class="panel7" onclick="window.location.href='science.html';">
                 <p><b>Science</b></p>
@@ -75,18 +74,20 @@
         </div>
 
         <div class="panelsD2">
-            <div class="panel10" onclick="window.location.href='history.html';">
+            <div class="panel10" onclick="window.location.href='sinhala.html';">
+                <p><b>Sinhala</b></p>
+            </div>
+
+            <div class="panel11" onclick="window.location.href='buddhism.html';">
+                <p><b>Buddhism</b></p>
+            </div>
+
+            <div class="panel12" onclick="window.location.href='history.html';">
                 <p><b>History</b></p>
             </div>
-
-            <div class="panel11" onclick="window.location.href='hindi.html';">
-                <p><b>Hindi</b></p>
-            </div>
-
-            <div class="panel12" onclick="window.location.href='geo.html';">
-                <p><b>Geography</b></p>
-            </div>
         </div>
+
+        
 </div>
 
 
