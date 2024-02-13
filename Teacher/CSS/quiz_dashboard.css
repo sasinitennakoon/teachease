@@ -4,6 +4,14 @@
     padding-top: 30px;
    
 }
+
+.content form .user-details {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin: 20px 0 12px 0;
+}
+
 body {
     margin: 20;
     font-family: Arial, sans-serif;
@@ -232,3 +240,92 @@ form .button {
   .but{
     padding: 20px;
 }
+button a {
+    text-decoration: none;
+    color: white;
+}
+
+select {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    width: 100%;
+    margin: 20px 0PX;
+    font-size: 16px;
+    background-color: #fff; /* Add a white background color */
+    color: #191970; /* Text color */
+  }
+
+  form .user-details .input-box {
+    margin-bottom: 10px;
+    width: calc(100% / 2 - 20px);
+  }
+  
+  form .user-details .input-box .details {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 5px;
+    text-align: left;
+  }
+
+  form .user-details .input-box #opt12,
+  form .user-details .input-box #opt11 {
+        text-align: left;
+  }
+  
+  form .user-details .input-box input {
+    height: 45px;
+    width: 100%;
+    outline: none;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    padding-left: 15px;
+    font-size: 16px;
+    border-bottom-width: 2px;
+    transition: all 0.3s ease;
+  }
+
+
+  form .gender-details .gender-title {
+    font-size: 20px;
+    font-weight: 500px;
+  }
+  
+  form .gender-details .category {
+    display: flex;
+    width: 80%;
+    margin: 14px 0;
+    justify-content: space-between;
+  }
+  
+  form .gender-details .category label {
+    display: flex;
+    align-items: center;
+  }
+  
+  .gender-details .category .dot {
+    height: 18px;
+    width: 18px;
+    background: #ffffff;
+    border-radius: 50%;
+    margin-right: 10px;
+    border: 5px solid transparent;
+  }
+
+  #dot-1:checked~.category .one,
+  #dot-2:checked~.category .two {
+    border-color: #ffffff;
+    background: #4256d7;
+  }
+  
+  #dot-3:checked~.category .one,
+  #dot-4:checked~.category .two,
+  #dot-5:checked~.category .three,
+  #dot-6:checked~.category .four {
+    border-color: #ffffff;
+    background: #4256d7;
+  }
+  
+  form input[type="radio"] {
+    display: none;
+  }
