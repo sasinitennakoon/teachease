@@ -51,6 +51,13 @@
             </nav>
         </div>
 
-<div class="content">
-    <!-- Your page content goes here -->
-    <h1></h1>
+        <div class="content">
+            
+            <div class="paanelst">
+                <div class="panelst_1">
+                    <h3>Assignments</h3>
+                </div>
+            </div>
+        </div>
+</body>
+</html>

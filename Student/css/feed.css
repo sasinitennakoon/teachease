@@ -180,3 +180,43 @@ button {
     text-align: center;
 }
 
+.content h3{
+    padding-top: 1.5%;
+    padding-left: 2%;
+    line-height: 1.5;
+}
+
+.content p{
+    padding-left: 2%;
+    line-height: 1.5;
+    
+}
+
+h2 {
+    text-align: center;
+    margin-top: 20px;
+}
+
+#subjectDropdown {
+    display: block;
+    margin: 20px auto;
+    padding: 10px;
+    font-size: 16px;
+}
+
+.panelfeed {
+    flex: 1;
+    font-size: 95%;
+    background-color: #fbfbfb;
+    padding-top: 2%;
+    padding-left: 1%;
+    margin: 10px ;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 1170px;
+    height: 200px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+
+

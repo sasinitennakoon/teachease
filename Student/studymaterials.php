@@ -52,5 +52,63 @@
         </div>
 
 <div class="content">
-    <!-- Your page content goes here -->
+    
     <h1>STUDY MATERIALS</h1>
+     
+            <div class="panelst1" onclick="window.location.href='sciencemate.html';">
+            <img src="./img/science.png">  
+                <p><b>Science</b></p>             
+            </div>
+
+            <div class="panelst2" onclick="window.location.href='mathsmate.html';">
+            <img src="./img/maths.png">  
+                <p><b>Mathematics</b></p>
+            </div>
+
+            <div class="panelst3" onclick="window.location.href='englishmate.html';">
+            <img src="./img/eng.png"> 
+                <p><b>English</b></p>
+            </div>
+        
+            <div class="panelst4" onclick="window.location.href='sinhalamate.html';">
+            <img src="./img/sinhala \ letter.png"> 
+                <p><b>Sinhala</b></p>
+            </div>
+
+            <div class="panelst5" onclick="window.location.href='buddhismmate.html';">
+            <img src="./img/The\ Eight\ Auspicious\ Symbols\ of\ Buddhism\ And\ Their\ Meanings.png"> 
+                <p><b>Buddhism</b></p>
+            </div>
+
+            <div class="panelst6" onclick="window.location.href='historymate.html';">
+            <img src="./img/his.png"> 
+                <p><b>History</b></p>
+            </div>
+
+        
+</div>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Get all course panels
+            var panels = document.querySelectorAll(' .panelst1,.panelst2,.panelst3,.panelst4,.panelst5,  .panelst6');
+
+            // Add event listeners for hover effect on each panel
+            panels.forEach(function (panel) {
+                panel.addEventListener('mouseover', function () {
+                    panel.style.transform = 'translateY(-5px)';
+                    panel.style.boxShadow = '0 8px 16px rgba(0, 0, 0, 0.2)';
+                });
+
+                panel.addEventListener('mouseout', function () {
+                    panel.style.transform = 'translateY(0)';
+                    panel.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.1)';
+                });
+            });
+        });
+    </script>
+
+</div>
+</body>
+</html>

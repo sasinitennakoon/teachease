@@ -54,3 +54,44 @@
         <div class="content">
         
             <h2>Give Your Valueble Feedback Here!</h2>
+
+        <div class="panelfeed">
+            <h3> You can rate your classes and teachers here.</br>
+             You can give us a help to improve this online education platform.</br>
+            Please give us a rate if you are interested.</br></h3>
+           <p> Thank You!</br>
+            Admin Panel</p>
+        </div>
+<h4>Choose a subject to rate</h4>
+        <select id="subject-select">
+        <option value="">Select Subject</option>
+        <option value="math">Math</option>
+        <option value="science">Science</option>
+        <option value="history">History</option>
+        <option value="english">English</option>
+        <option value="art">Art</option>
+        <option value="music">Music</option>
+    </select>
+
+
+
+    <form action="#">
+			<div class="rating">
+				<input type="number" name="rating" hidden>
+				<i class='bx bx-star star' style="--i: 0;"></i>
+				<i class='bx bx-star star' style="--i: 1;"></i>
+				<i class='bx bx-star star' style="--i: 2;"></i>
+				<i class='bx bx-star star' style="--i: 3;"></i>
+				<i class='bx bx-star star' style="--i: 4;"></i>
+			</div>
+			<textarea name="opinion" cols="30" rows="5" placeholder="Your opinion..."></textarea>
+			<div class="btn-group">
+				<button type="submit" class="btn submit">Submit</button>
+				<button class="btn cancel">Cancel</button>
+			</div>
+		</form>
+
+        <script>
+            
+
+</html>
