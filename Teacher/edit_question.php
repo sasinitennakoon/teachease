@@ -1,6 +1,7 @@
 <?php include '../database/db_con.php'; ?>
 <?php include '../session.php'; ?>
 <?php $get_id = $_GET['id']; ?>
+<?php $quiz_question_id = $_GET['quiz_question_id']; ?>
 
 <?php 
 	$query= mysqli_query($link,"select * from teacher where teacher_id = '$session_id'")or die(mysqli_error());
@@ -37,12 +38,17 @@
 			  </div>
 			</div>
     
-    
+            <?php
+				$query = mysqli_query($link,"select * FROM quiz_question
+				LEFT JOIN question_type on quiz_question.question_type_id = question_type.question_type_id
+			    where quiz_id = '$get_id' and quiz_question_id = '$quiz_question_id'  order by date_added DESC ")or die(mysqli_error());
+				$row = mysqli_fetch_array($query);
+			?>
 
 	
 	<button><a href="view_quiz.php">Go to Dashboard</a></button>
 	<div class="content">
-		<h1>Add Quiz</h1>
+		<h1>Edit Quiz</h1>
 
         <div class="panels1">
             <div class="panel10">
@@ -52,7 +58,7 @@
 
                     <div class="input-box">
                         <span class="details">Question</span>
-                        <textarea name="question" id="ckeditor_full" required></textarea>
+                        <textarea name="question" id="ckeditor_full" required><?php echo $row['question_text']; ?></textarea>
                         <script>
                             CKEDITOR.replace( 'ckeditor_full' );
                         </script>
@@ -61,7 +67,7 @@
                     <div class="input-box">
                         <span class="details">Question Type</span>
                         <select id="qtype" name="question_type" required>
-							<option value=""></option>
+							<option value="<?php echo $row['question_type_id']; ?>" ><?php echo $row['question_type']; ?></option>
 								<?php
 									$query_question = mysqli_query($link,"select * from question_type")or die(mysqli_error());
 										while($query_question_row = mysqli_fetch_array($query_question)){
@@ -73,26 +79,41 @@
 
                     <div class="input-box">
                         <div id="opt11">
+                        <?php
+                            $sqlz = mysqli_query($link,"SELECT * FROM answer WHERE quiz_question_id = '$quiz_question_id'");
+                            while($rowz = mysqli_fetch_array($sqlz)){
+                                if($rowz['choices'] == 'A'){
+                                    $a = $rowz['value'];
+                                } else if($rowz['choices'] == 'B'){
+                                    $b = $rowz['value'];
+                                } else if($rowz['choices'] == 'C'){
+                                    $c = $rowz['value'];
+                                } else if($rowz['choices'] == 'D'){
+                                    $d = $rowz['value'];
+                                }
+                            }
+                        ?>
+
                             <div class="gender-details">
-								A: <input type="text" name="ans1" size="60"> <input name="answer" value="A" type="radio" id="dot-3">
+								A: <input type="text" name="ans1" size="60" value="<?php echo $a;?>"> <input name="correctm" value="A"<?php if($rowa['correct'] == 'A'){ echo 'checked'; }?> type="radio" id="dot-3">
                                 <div class="category">
                                     <label for="dot-3">
                                     <span class="dot three"></span>
                                     <span class="gender"></span></label>
                                 </div><br><br>
-								B: <input type="text" name="ans2" size="60"> <input name="answer" value="B" type="radio" id="dot-4">
+								B: <input type="text" name="ans2" size="60" value="<?php echo $b;?>"> <input name="correctm" value="B"<?php if($rowa['correct'] == 'B'){ echo 'checked'; }?> type="radio" id="dot-4">
                                 <div class="category">
                                     <label for="dot-4">
                                     <span class="dot four"></span>
                                     <span class="gender"></span></label>
                                 </div><br><br>
-								C: <input type="text" name="ans3" size="60"> <input name="answer" value="C" type="radio" id="dot-5">
+								C: <input type="text" name="ans3" size="60" value="<?php echo $c;?>"> <input name="correctm" value="C"<?php if($rowa['correct'] == 'C'){ echo 'checked'; }?> type="radio" id="dot-5">
                                 <div class="category">
                                     <label for="dot-5">
                                     <span class="dot five"></span>
                                     <span class="gender"></span></label>
                                 </div><br><br>
-								D: <input type="text" name="ans4" size="60"> <input name="answer" value="D" type="radio" id="dot-6">
+								D: <input type="text" name="ans4" size="60" value="<?php echo $d;?>"> <input name="correctm" value="D" type="radio" id="dot-6">
                                 <div class="category">
                                     <label for="dot-6">
                                     <span class="dot six"></span>
@@ -104,8 +125,8 @@
 								<!--<input name="correctt" value="True" type="radio">True<br /><br />
 								<input name="correctt"  value="False" type="radio">False<br /><br /> -->
                                  <div class="gender-details">
-                                <input type="radio" name="correctt" value="true" id="dot-1">
-                                <input type="radio" name="correctt" value="false" id="dot-2">
+                                <input type="radio" name="correctt" <?php if($row['answer'] == 'True'){ echo 'checked'; }?> value="true" id="dot-1">
+                                <input type="radio" name="correctt"  <?php if($row['answer'] == 'False'){ echo 'checked'; }?>value="false" id="dot-2">
                                 <span class="gender-title">Gender</span>
                                 <div class="category">
                                     <label for="dot-1">
@@ -123,7 +144,7 @@
                 </div>
                     
                             <button name="save" type="submit" value="save" class="btn btn-info">
-                                <i class="fa fa-fw fa-save"></i>&nbsp;Save
+                                <i class="fa fa-fw fa-save"></i>&nbsp;Update
                             </button>
                        
                 
@@ -149,20 +170,18 @@
 		$ans4 = $_POST['ans4'];
 		
 		if ($type  == '2'){
-				mysqli_query($link,"insert into quiz_question (quiz_id,question_text,date_added,answer,question_type_id) 
-			values('$get_id','$question',NOW(),'".$_POST['correctt']."','$type')")or die(mysqli_error());
+				mysqli_query($link,"update quiz_question set `question_text`='$question',`date_added`=NOW(),`answer`='".$_POST['correctt']."',`question_type_id`='$type' where `quiz_id`='$get_id' and quiz_question_id = '$quiz_question_id'")or die(mysqli_error());
 		}else{
 	
-		mysqli_query($link,"insert into quiz_question (quiz_id,question_text,date_added,answer,question_type_id) 
-		values('$get_id','$question',NOW(),'$answer','$type')")or die(mysqli_error());
+            mysqli_query($link,"update quiz_question set `question_text`='$question',`date_added`=NOW(),`answer`='".$_POST['correctt']."',`question_type_id`='$type' where `quiz_id`='$get_id' and quiz_question_id = '$quiz_question_id'")or die(mysqli_error());
 		$query = mysqli_query($link,"select * from quiz_question order by quiz_question_id DESC LIMIT 1")or die(mysqli_error());
 		$row = mysqli_fetch_array($query);
 		$quiz_question_id = $row['quiz_question_id'];
 		
-		mysqli_query($link,"insert into answer (quiz_question_id,answer_text,choices) values('$quiz_question_id','$ans1','A')")or die(mysqli_error());
-		mysqli_query($link,"insert into answer (quiz_question_id,answer_text,choices) values('$quiz_question_id','$ans2','B')")or die(mysqli_error());
-		mysqli_query($link,"insert into answer (quiz_question_id,answer_text,choices) values('$quiz_question_id','$ans3','C')")or die(mysqli_error());
-		mysqli_query($link,"insert into answer (quiz_question_id,answer_text,choices) values('$quiz_question_id','$ans4','D')")or die(mysqli_error());
+		mysqli_query($link,"update answer set answer_text='$ans1',choices=''A'' where Quiz_question_id='$quiz_question_id'")or die(mysqli_error());
+		mysqli_query($link,"update answer set answer_text='$ans2',choices=''B'' where Quiz_question_id='$quiz_question_id'")or die(mysqli_error());
+		mysqli_query($link,"update answer set answer_text='$ans3',choices=''C'' where Quiz_question_id='$quiz_question_id'")or die(mysqli_error());
+		mysqli_query($link,"update answer set answer_text='$ans4',choices=''D'' where Quiz_question_id='$quiz_question_id'")or die(mysqli_error());
 		
 		}
 		

@@ -37,13 +37,17 @@
     
 
 	
-	<button><a href="StudyMeterials.php">Go to Dashboard</a></button>
+	<button><a href="view_quiz.php">Go to Dashboard</a></button>
 	<div class="content">
 		<h1>Quiz Question</h1>
 
 		<form method="post">
 			
-        <?php
+          
+	
+	<!-- Populate this section with class and subject data -->
+
+			<?php
 				$query = mysqli_query($link,"select * FROM quiz_question
 				LEFT JOIN question_type on quiz_question.question_type_id = question_type.question_type_id
 				where quiz_id = '$get_id'  order by date_added DESC ")or die(mysqli_error());
@@ -54,26 +58,25 @@
                     echo "<h3>There is no Quiz Questions Currently Available</h3>";
                 }
                 else
-                {
+                { ?>
+					<div class="panels1">
+						<div class="panel10">
+						<table>
+							<thead>
+								<tr>
+									<th></th>
+									<th>Question Text</th>
+									<th>Question Type</th>
+									<th>Answer</th>
+									<th>Date Added</th>
+									<th>Edit</th>
+								</tr>
+							<thead>
+							<tbody>	
+				<?php
 				while($row = mysqli_fetch_array($query)){
 				$id  = $row['quiz_question_id'];
-			?>  
-	
-	<div class="panels1">
-        <div class="panel10">
-		<table>
-			<thead>
-				<tr>
-					<th></th>
-					<th>Question Text</th>
-					<th>Question Type</th>
-					<th>Answer</th>
-					<th>Date Added</th>
-					<!--<th>Edit</th> -->
-				</tr>
-			<thead>
-			<tbody>	<!-- Populate this section with class and subject data -->
-
+			?>
            
 				<tr>
 					<td><input type="checkbox" name="selector[]" value="<?php echo $id; ?>"></td>
@@ -81,7 +84,7 @@
 					<td><?php echo $row['question_type']; ?></td>
 					<td><?php echo $row['answer']; ?></td>
 					<td><?php echo $row['date_added']; ?></td> 
-					<td><a href="quiz_question.php <?php echo '?id='.$id; ?>" style="text-decoration:none;">Questions</a></td>
+					<!--<td><a href="quiz_question.php <?php //echo '?id='.$id; ?>" style="text-decoration:none;">Questions</a></td>-->
 					<td><a href="edit_question.php <?php echo '?id='.$get_id; ?>&<?php echo 'quiz_question_id='.$id; ?>" class="button"><i class="fa fa-fw fa-pencil">Edit</i></a></td>
 				</tr>
 				<?php
@@ -121,11 +124,11 @@
             
         for($i=0; $i < $N; $i++)
         {
-            $result = mysqli_query($link,"DELETE FROM quiz where quiz_id='$id[$i]'");
+            $result = mysqli_query($link,"DELETE FROM quiz_questions where quiz_id='$id[$i]'");
         }
 ?>
     <script>
-        window.location = "quiz_question.php";
+        window.location = "quiz_question.php<?php echo '?id='.$get_id; ?>";
     </script>
 
 <?php

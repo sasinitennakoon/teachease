@@ -39,7 +39,7 @@
 	
 	<button><a href="StudyMeterials.php">Go to Dashboard</a></button>
 	<div class="content">
-		<h1>Class List</h1>
+		<h1>Quiz</h1>
 
 		<form method="post">
 			

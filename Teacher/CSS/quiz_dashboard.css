@@ -318,10 +318,10 @@ select {
     background: #4256d7;
   }
   
-  #dot-3:checked~.category .one,
-  #dot-4:checked~.category .two,
-  #dot-5:checked~.category .three,
-  #dot-6:checked~.category .four {
+  #dot-3:checked~.category .three,
+  #dot-4:checked~.category .four,
+  #dot-5:checked~.category .five,
+  #dot-6:checked~.category .six {
     border-color: #ffffff;
     background: #4256d7;
   }

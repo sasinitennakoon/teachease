@@ -45,19 +45,8 @@
 			
 				
 	
-	<div class="panels1">
-        <div class="panel10">
-		<table>
-			<thead>
-				<tr>
-					<th></th>
-					<th>Quiz title</th>
-					<th>Description</th>
-					<th>Date Added</th>
-					<th>Questions</th>
-					<!--<th>Edit</th> -->
-				</tr>
-			<thead>
+	
+		
 
 				<?php
 					$sql = "select * from quiz";
@@ -69,7 +58,21 @@
 						echo "<b>There is no Quiz currently Available</b>";
 					}
 					else
-					{
+					{?>
+					<div class="panels1">
+        <div class="panel10">
+						<table>
+			<thead>
+				<tr>
+					<th></th>
+					<th>Quiz title</th>
+					<th>Description</th>
+					<th>Date Added</th>
+					<th>Questions</th>
+					<!--<th>Edit</th> -->
+				</tr>
+			<thead>
+				<?php
 					while($row = mysqli_fetch_array($result))
 					{
 						$id = $row['quiz_id'];
