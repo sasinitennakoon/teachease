@@ -18,11 +18,7 @@
     <link rel="stylesheet" href="./CSS/quiz_dashboard.css">
 </head>
 
-	<script>
-		 function goBack() {
-            window.history.back();
-        }
-	</script>
+	
 
 <body>
 			<div class="dropdown" style="float:right;">
@@ -41,7 +37,7 @@
     
 
 	
-	<button onclick="goBack()">Go to Dashboard</button>
+	<button><a href="view_quiz.php">Go to Dashboard</a></button>
 	<div class="content">
 		<h1>Add Quiz</h1>
 

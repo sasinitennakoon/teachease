@@ -18,11 +18,7 @@
     <link rel="stylesheet" href="./CSS/quiz_dashboard.css">
 </head>
 
-	<script>
-		 function goBack() {
-            window.history.back();
-        }
-	</script>
+	
 
 <body>
 			<div class="dropdown" style="float:right;">
@@ -41,27 +37,16 @@
     
 
 	
-	<button onclick="goBack()">Go to Dashboard</button>
+	<button><a href="StudyMeterials.php">Go to Dashboard</a></button>
 	<div class="content">
-		<h1>Class List</h1>
+		<h1>Quiz</h1>
 
 		<form method="post">
 			
 				
 	
-	<div class="panels1">
-        <div class="panel10">
-		<table>
-			<thead>
-				<tr>
-					<th></th>
-					<th>Quiz title</th>
-					<th>Description</th>
-					<th>Date Added</th>
-					<th>Questions</th>
-					<!--<th></th> -->
-				</tr>
-			<thead>
+	
+		
 
 				<?php
 					$sql = "select * from quiz";
@@ -73,7 +58,21 @@
 						echo "<b>There is no Quiz currently Available</b>";
 					}
 					else
-					{
+					{?>
+					<div class="panels1">
+        <div class="panel10">
+						<table>
+			<thead>
+				<tr>
+					<th></th>
+					<th>Quiz title</th>
+					<th>Description</th>
+					<th>Date Added</th>
+					<th>Questions</th>
+					<!--<th>Edit</th> -->
+				</tr>
+			<thead>
+				<?php
 					while($row = mysqli_fetch_array($result))
 					{
 						$id = $row['quiz_id'];
@@ -86,8 +85,8 @@
 					<td><?php echo $row['quiz_title']; ?></td>
 					<td><?php echo $row['quiz_description']; ?></td>
 					<td><?php echo $row['date_added']; ?></td>
-					<td><a href="quiz_question.php" style="text-decoration:none;">Questions</a></td>
-					<!--<td><a href="edit_quiz.php <?php //echo '?id='.$id; ?>" class="btn btn-info"><i class="fa fa-fw fa-pencil"></i></a></td> -->
+					<td><a href="quiz_question.php <?php echo '?id='.$id; ?>" style="text-decoration:none;">Questions</a></td>
+					<!--<td><a href="edit_quiz.php <?php //echo '?id='.$id; ?>" class="button"><i class="fa fa-fw fa-pencil">Edit</i></a></td>-->
 				</tr>
 				<?php
 					}
@@ -99,9 +98,11 @@
 		</table>
 
 		<div class="but">
+			
 			<button class="btn btn-info">
-				<i class="fa fa-fw fa-plus"></i>&nbsp;Add Quiz
-			</button></a>
+			<a href="add_quiz.php" style='text-decoration:none;color:white;'>
+				<i class="fa fa-fw fa-plus"></i>&nbsp;Add Quiz</a>
+			</button>
 			<button type="submit" name="delete" class="btn btn-info">
 				<i class="fa fa-fw fa-trash"></i> Delete
 			</button>
@@ -127,7 +128,7 @@
         }
 ?>
     <script>
-        window.location = "add_quiz.php";
+        window.location = "view_quiz.php";
     </script>
 
 <?php
