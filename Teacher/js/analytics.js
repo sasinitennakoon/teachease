@@ -1,115 +1,74 @@
 // ---------- CHARTS ----------
 
-// BAR CHART
-const barChartOptions = {
-  series: [
-    {
-      data: [100, 98, 96, 94, 92],
-      name: 'Products',
-    },
-  ],
-  chart: {
-    type: 'bar',
-    background: 'transparent',
-    height: 350,
-    toolbar: {
-      show: false,
-    },
-  },
-  colors: ['#2962ff', '#d50000', '#2e7d32', '#ff6d00', '#583cb3'],
-  plotOptions: {
-    bar: {
-      distributed: true,
-      borderRadius: 4,
-      horizontal: false,
-      columnWidth: '40%',
-    },
-  },
-  dataLabels: {
-    enabled: false,
-  },
-  fill: {
-    opacity: 1,
-  },
-  grid: {
-    borderColor: '#55596e',
-    yaxis: {
-      lines: {
-        show: true,
-      },
-    },
-    xaxis: {
-      lines: {
-        show: true,
-      },
-    },
-  },
-  legend: {
-    labels: {
-      colors: '#f5f7ff',
-    },
-    show: true,
-    position: 'top',
-  },
-  stroke: {
-    colors: ['transparent'],
-    show: true,
-    width: 2,
-  },
-  tooltip: {
-    shared: true,
-    intersect: false,
-    theme: 'light',
-  },
-  xaxis: {
-    categories: ['Amal', 'Nishan', 'Kamal', 'Sewmini', 'Bodhini'],
-    title: {
-      style: {
-        color: '#f5f7ff',
-      },
-    },
-    axisBorder: {
-      show: true,
-      color: '#55596e',
-    },
-    axisTicks: {
-      show: true,
-      color: '#55596e',
-    },
-    labels: {
-      style: {
-        colors: '#f5f7ff',
-      },
-    },
-  },
-  yaxis: {
-    title: {
-      text: 'Count',
-      style: {
-        color: '#f5f7ff',
-      },
-    },
-    axisBorder: {
-      color: '#55596e',
-      show: true,
-    },
-    axisTicks: {
-      color: '#55596e',
-      show: true,
-    },
-    labels: {
-      style: {
-        colors: '#f5f7ff',
-      },
-    },
-  },
-};
+var options = {
+          series: [{
+          name: "Grade 10",
+          data: [
+            [85, 90], [92, 78], [88, 85], [75, 60], [97, 92], [80, 75], [85, 80], [93, 88], [96, 92], [82, 78],
+            [90, 85], [85, 70], [82, 78], [95, 75], [88, 85], [78, 80], [75, 70], [92, 88], [80, 92], [78, 78],
+            [88, 75], [78, 70], [70, 65], [75, 90], [85, 75], [92, 78], [88, 80], [90, 85], [85, 70], [92, 78]]
+        },{
+          name: "Grade 11",
+          data: [
+            [75, 60], [78, 55], [80, 75], [85, 70], [75, 60], [88, 65], [80, 80], [78, 75], [82, 80], [75, 60],
+            [78, 70], [88, 75], [75, 60], [82, 70], [75, 80], [60, 50], [65, 75], [80, 70], [75, 60], [82, 78],
+            [70, 60], [85, 75], [78, 80], [60, 50], [75, 70], [75, 80], [70, 60], [78, 70], [80, 75], [75, 60]]
+        }],
+          chart: {
+          height: 350,
+          type: 'scatter',
+          zoom: {
+            enabled: true,
+            type: 'xy'
+          }
+        },
+        xaxis: {
+          tickAmount: 10,
+          title: {
+            text: 'Student Attendance Percentage',
+            style: { 
+              color: '#FFFFFF' 
+            }
+          },
+          labels: {
+            formatter: function(val) {
+              return parseFloat(val).toFixed(1)
+            },
+            style: {
+              colors: 'rgba(244, 242, 246, 0.95)' 
+            }
+          }
+        },
+        yaxis: {
+          tickAmount: 7,
+          title: {
+            text: 'Student Mark',
+            style: { 
+              color: '#FFFFFF' 
+            }
+          },
+          labels: {
+            style: {
+              colors: 'rgba(244, 242, 246, 0.95)' 
+            }
+          }
+        },
+        
+        legend: {
+          labels: {
+            colors: '#ffffff' // Set the font color of the legend labels to white
+          }
+        },
+        tooltip: {
+          shared: true,
+          intersect: false,
+          theme: 'dark',
+        },
+        };
 
-const barChart = new ApexCharts(
-  document.querySelector('#bar-chart'),
-  barChartOptions
-);
-barChart.render();
+        var chart = new ApexCharts(document.querySelector("#Scatterchart"), options);
+        chart.render();
+      
 
 // AREA CHART
 const areaChartOptions = {
@@ -209,7 +168,7 @@ const areaChartOptions = {
   tooltip: {
     shared: true,
     intersect: false,
-    theme: 'light',
+    theme: 'dark',
   },
 };
 
@@ -318,7 +277,7 @@ const attendanceChartOptions = {
   tooltip: {
     shared: true,
     intersect: false,
-    theme: 'light',
+    theme: 'dark',
   },
 };
 
@@ -383,7 +342,12 @@ const radialBaroptions = {
   stroke: {
     lineCap: "round",
   },
-  labels: ["Grade 10", "Grade 11"]
+  labels: ["Grade 10", "Grade 11"],
+  tooltip: {
+    shared: true,
+    intersect: false,
+    theme: 'dark',
+  },
 };
 
 const radialBarchart = new ApexCharts(document.querySelector("#radialBarchart"), radialBaroptions);

@@ -144,7 +144,16 @@ button{
 
 
 .panel_1:hover,
-.panel_2:hover{
+.panel_2:hover,
+.panel_3:hover,
+.panel_4:hover,
+.panel_5:hover,
+.panel_6:hover{
     transform: translateY(-5px);
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+button a {
+    text-decoration: none;
+    color: white;
 }
