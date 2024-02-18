@@ -88,7 +88,7 @@
 
           <div class="card">
             <div class="card-inner">
-              <h3>STUDENT LEAVE REQUESTS</h3>
+              <h3>STUDENT COURSE REMOVAL REQUESTS</h3>
               <span class="material-icons-outlined">notification_important</span>
             </div>
             <h1>16</h1>
@@ -96,11 +96,34 @@
 
         </div>
 
-        <div class="charts">
+        <!--<div class="charts">
 
           <div class="charts-card">
             <h2 class="chart-title">Top 5 Scoring Students</h2>
             <div id="bar-chart"></div>
+          </div>
+
+          <div class="charts-card">
+            <h2 class="chart-title">Average Marks of Students</h2>
+            <div id="area-chart"></div>
+          </div>
+
+          <div class="charts-card">
+            <h2 class="chart-title">Average attendance of Students</h2>
+            <div id="attendance-chart"></div>
+          </div>
+
+          <div class="charts-card">
+            <h2 class="chart-title">Overall Student Assessment Completion Rate</h2>
+            <div id="radialBarchart"></div>
+          </div>
+
+        </div>-->
+        <div class="charts">
+
+          <div class="charts-card">
+            <h2 class="chart-title">Attendance Mark Correlation</h2>
+            <div id="Scatterchart"></div>
           </div>
 
           <div class="charts-card">
