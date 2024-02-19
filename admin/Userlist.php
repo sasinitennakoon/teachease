@@ -24,7 +24,7 @@
     <button onclick="goBack()">Go to Dashboard</button>
     <div class="content">
         <!-- Your page content goes here -->
-        <h1>Current Course List</h1>
+        <h1>Current User List</h1>
         
         <div class="panels">
             <div class="panel">

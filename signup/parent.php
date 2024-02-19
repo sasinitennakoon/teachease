@@ -134,7 +134,7 @@
                 </div>
                 <div class="input-box">
                   <span class="details">Password</span>
-                  <input type="text" name="password" placeholder="Enter Password" required>
+                  <input type="password" name="password" placeholder="Enter Password" required>
                 </div>
               </div>
               <label><input type="checkbox">I hereby declare that the above information provided is true</label>

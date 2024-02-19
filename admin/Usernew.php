@@ -24,7 +24,7 @@
     <button onclick="goBack()">Go to Dashboard</button>
     <div class="content">
         <!-- Your page content goes here -->
-        <h1>Create Course</h1>
+        <h1>Create User</h1>
         
         <div class="panels">
             <div class="panel">
