@@ -75,7 +75,7 @@
 
 
 
-    <form action="#">
+    <!--form action="#">
 			<div class="rating">
 				<input type="number" name="rating" hidden>
 				<i class='bx bx-star star' style="--i: 0;"></i>
@@ -89,9 +89,83 @@
 				<button type="submit" class="btn submit">Submit</button>
 				<button class="btn cancel">Cancel</button>
 			</div>
-		</form>
+		</form-->
+        <div class="feedback-form">
+    <h2>Feedback Form</h2>
+    <div class="rating">
+        <h3>Rate for the class:</h3>
+        <div class="stars" id="classRating">
+            <span class="star" data-value="1">&#9733;</span>
+            <span class="star" data-value="2">&#9733;</span>
+            <span class="star" data-value="3">&#9733;</span>
+            <span class="star" data-value="4">&#9733;</span>
+            <span class="star" data-value="5">&#9733;</span>
+        </div>
+    </div>
+    <div class="rating">
+        <h3>Rate for your teacher:</h3>
+        <div class="emojis" id="teacherRating">
+            <span class="emoji" data-value="very-bad">😠</span>
+            <span class="emoji" data-value="bad">😞</span>
+            <span class="emoji" data-value="neutral">😐</span>
+            <span class="emoji" data-value="satisfied">😊</span>
+            <span class="emoji" data-value="highly-satisfied">😍</span>
+        </div>
+    </div>
+    <div class="comment">
+        <h3>Add a comment:</h3>
+        <textarea id="commentText" rows="4" cols="50" placeholder="Enter your comment here..."></textarea>
+    </div>
+    <button id="submitBtn">Submit</button>
+</div>
 
+<div class="popup" id="popup">
+    <span class="close" id="close">&times;</span>
+    <div class="popupContent" id="popupContent"></div>
+</div>
         <script>
+
+const stars = document.querySelectorAll('.star');
+const emojis = document.querySelectorAll('.emoji');
+const commentText = document.getElementById('commentText');
+const submitBtn = document.getElementById('submitBtn');
+const popup = document.getElementById('popup');
+const closePopup = document.getElementById('close');
+const popupContent = document.getElementById('popupContent');
+
+stars.forEach(star => {
+    star.addEventListener('click', () => {
+        const rating = parseInt(star.getAttribute('data-value'));
+        showPopup(`You rated ${rating} star(s) for the class.`);
+    });
+});
+
+emojis.forEach(emoji => {
+    emoji.addEventListener('click', () => {
+        const rating = emoji.getAttribute('data-value');
+        showPopup(`You rated ${rating} for your teacher.`);
+    });
+});
+
+submitBtn.addEventListener('click', () => {
+    const comment = commentText.value.trim();
+    if (comment !== '') {
+        showPopup(`Your comment: ${comment}`);
+    } else {
+        showPopup('Please add a comment before submitting.');
+    }
+});
+
+function showPopup(message) {
+    popupContent.textContent = message;
+    popup.style.display = 'flex';
+}
+
+closePopup.addEventListener('click', () => {
+    popup.style.display = 'none';
+});
+
+        </script>
             
 
 </html>
