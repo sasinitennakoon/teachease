@@ -106,7 +106,10 @@
 			<button type="submit" name="delete" class="btn btn-info">
 				<i class="fa fa-fw fa-trash"></i> Delete
 			</button>
-			
+			<button>
+			<a href="add_quiz_to_class.php" style='text-decoration:none;color:white;'>
+				<i class="fa fa-fw fa-plus"></i>&nbsp;Add Quiz to class</a>
+			</button>
 		</div>
 		</form>
 	</div>
