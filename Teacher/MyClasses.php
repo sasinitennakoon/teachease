@@ -104,12 +104,12 @@
                 <input type="text" id="copyInput">
                 <button onclick="copyFunction()" class="button">Copy Link</button>
             </div>-->
-            <div class="panels">
-            <div class="panel8">
+            
+                <!--
                 <table border="0">
                     <thead>
                         <tr>
-                            <th>Class No</th>
+                            
                             <th>Class Name</th>
                             <th>Subject</th>
                             <th>Number of Students</th>
@@ -118,14 +118,14 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td>C1001</td>
+                           
                             <td>SC01</td>
                             <td>Science</td>
                             <td>30</td>
                             <td><a href="MyClasses1.php" style="text-decoration:none;color:white;"><button class="button1">More</button></a></td>
                         </tr>
                         <tr>
-                        <td>C1002</td>
+                        
                             <td>EN01</td>
                             <td>English</td>
                             <td>20</td>
@@ -142,35 +142,90 @@
         </div>
 
         <!-- Add Details Form -->
-        <div id="addDetailsForm" style="display: none;">
-            <!-- Your form content goes here -->
+       <!-- <div id="addDetailsForm" style="display: none;">
+            <!-- Your form content goes here 
             <form>
-                <!-- Add your form fields here -->
+                <!-- Add your form fields here 
                 <label for="indexNo">Index No:</label>
                 <input type="text" id="indexNo" name="indexNo">
                 
-                <!-- Add more fields as needed -->
+                <!-- Add more fields as needed 
 
                 <button type="submit">Submit</button>
             </form>
-        </div>
+        </div>-->
+           
 
-    </div>
-
-    <script>
+    <script>/*
         function openAddDetailsForm() {
             var addDetailsForm = document.getElementById('addDetailsForm');
             addDetailsForm.style.display = 'block';
         }
     
         // Optional: Close the form when the page is loaded
-        document.addEventListener('DOMContentLoaded', function () {
+        /*document.addEventListener('DOMContentLoaded', function () {
             var addDetailsForm = document.getElementById('addDetailsForm');
             addDetailsForm.style.display = 'none';
         });
     </script>
-    </div> 
+        <?php $query = mysqli_query($link,"select * from teacher_class
+			LEFT JOIN class ON class.class_id = teacher_class.class_id
+			LEFT JOIN subject ON subject.subject_id = teacher_class.subject_id
+			where teacher_id = '$session_id' ")or die(mysqli_error());
+			$count = mysqli_num_rows($query);
+										
+				if ($count > 0){?>
+                    <div class="panels">
+                        <div class="panel8">
+                        <form method='post'>
 
+                        <table border="0">
+                    <thead>
+                        <tr>
+                            
+                            <th>Class Name</th>
+                            <th>Subject</th>
+                            <th>Number of Students</th>
+                            <th>More Details</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+        <?php
+				while($row = mysqli_fetch_array($query)){
+				$id = $row['teacher_class_id'];
+				
+		?>
+            
+                        <tr>
+                            <td><?php echo $row['class_name']; ?></td>
+                            <td><?php echo $row['subject_title']; ?></td>
+                            <td><?php echo $row['noofparticipant']; ?></td>
+                            <td><a href="MyClasses1.php" style="text-decoration:none;color:white;"><button class="button1">More</button></a></td>
+                        </tr>
+                    </tbody>
+				
+                </div>
+            </div>
+    </div>
+					<?php //include("delete_class_modal.php"); ?>
+						<?php } }else{ ?>
+                            <h3>No Class Currently Added</h3>
+					<?php  } ?>
+
+                   
+                        <div class="but">
+                
+                            <button class="btn btn-info">
+                            <a href="add_class.php" style='text-decoration:none;color:white;'>
+                                <i class="fa fa-fw fa-plus"></i>&nbsp;Add Class</a>
+                            </button>
+                            <button type="submit" name="delete" class="btn btn-info">
+                                <i class="fa fa-fw fa-trash"></i> Delete
+                            </button>
+                
+                        </div>
+                    </form>
+                
             </body>
 
             </html>
