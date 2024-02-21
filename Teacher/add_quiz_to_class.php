@@ -77,7 +77,7 @@
 					<th>Class</th>
 					<th>Subject</th>
 					
-					<th></th>
+					
 					<!--<th>Edit</th> -->
 				</tr>
 			<thead>
@@ -91,7 +91,7 @@
 
 					while($row = mysqli_fetch_array($query)){
 					$id = $row['teacher_class_id'];
-				
+					
 			?>
 				<tr>
 					<td><input type="checkbox" name="selector[]" value="<?php echo $id; ?>"></td>

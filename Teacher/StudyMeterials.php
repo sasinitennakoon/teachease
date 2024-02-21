@@ -58,8 +58,8 @@
         <div class="panels2">
             <div class="panel_1">
                 <h3>Uploaded Documents</h3>
-                <button class="button1">View</button>
-                <button class="button1">Edit</button>
+                <button class="button1"><a href="view_document.php">View</a></button>
+                <button class="button1"><a href="edit_document.php">Edit</a></button>
             </div>
 
             <div class="panel_3">

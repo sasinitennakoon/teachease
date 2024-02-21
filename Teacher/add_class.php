@@ -40,7 +40,7 @@
     
 
 	
-	<button><a href="view_quiz.php">Go to Dashboard</a></button>
+	<button><a href="MyClasses.php">Go to Dashboard</a></button>
 	<div class="content">
 		<h1>Add Class</h1>
 
