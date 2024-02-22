@@ -41,7 +41,7 @@
                 <li><a href="dashboard.php"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
                 <li><a href="Announcements.php"><i class="fas fa-bullhorn"></i> Announcements</a></li>
                 <li><a href="PaymentDetails.php"><i class="fas fa-dollar-sign"></i> Payment Details</a></li>
-                <li><a href="Users.php" class="active"><i class="fas fa-book"></i> Users</a></li>
+                <li><a href="Users.php" class="active"><i class="fas fa-users"></i> Users</a></li>
                 <li><a href="Subjects.php"><i class="fas fa-flask"></i> Subjects</a></li>
                 <li><a href="Classes.php"><i class="fas fa-chalkboard"></i> Classes</a></li>
                 <li><a href="Certificates.php"><i class="fas fa-certificate"></i> Certificates</a></li>
