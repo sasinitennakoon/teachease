@@ -47,20 +47,10 @@
 	
 	<div class="panels1">
         <div class="panel10">
-		<table>
-			<thead>
-				<tr>
-					<th></th>
-					<th>Quiz title</th>
-					<th>Description</th>
-					<th>Date Added</th>
-					<th>Questions</th>
-					<th>Edit</th>
-				</tr>
-			<thead>
+		
 
 				<?php
-					$sql = "select * from quiz";
+					$sql = "select * from quiz where teacher_id='$session_id'";
 					$result = mysqli_query($link,$sql) or die(mysqli_error($link));
 					$count = mysqli_num_rows($result);
 
@@ -69,7 +59,19 @@
 						echo "<b>There is no Quiz currently Available</b>";
 					}
 					else
-					{
+					{?>
+						<table>
+							<thead>
+								<tr>
+									<th></th>
+									<th>Quiz title</th>
+									<th>Description</th>
+									<th>Date Added</th>
+									<th>Questions</th>
+									<th>Edit</th>
+								</tr>
+							<thead>
+								<?php
 					while($row = mysqli_fetch_array($result))
 					{
 						$id = $row['quiz_id'];

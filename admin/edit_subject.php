@@ -1,5 +1,6 @@
 <?php include '../database/db_con.php'; ?>
 <?php include '../session.php'; ?>
+<?php $get_id = $_GET['id']; ?>
 
 <?php 
 	$query= mysqli_query($link,"select * from users where user_id = '$session_id'")or die(mysqli_error());
@@ -12,20 +13,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard</title>
+	<link rel="stylesheet" href="CSS/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+   
     <link rel="stylesheet" href="./css/subjectslist.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <script src="../ckeditor/ckeditor.js"></script>
-    <!-- Latest FullCalendar CSS -->
-    
 </head>
+
+	
+
 <body>
+			
     
-    <button><a href="subjects.php">Go to Dashboard</a></button>
-    <div class="content">
-        <!-- Your page content goes here -->
-        <h1>Create Subject</h1>
-        
+			<?php
+                $query = mysqli_query($link,"select * from subject where subject_id = '$get_id'")or die(mysqli_error());
+                $row = mysqli_fetch_array($query);
+			?>
+
+	
+	<button><a href="subjectlist.php">Go to Dashboard</a></button>
+	<div class="content">
+		<h1>Edit Subject</h1>
+
         <div class="panels1">
             <div class="panel10">
                 <form method="post">
@@ -34,17 +45,17 @@
 
                     <div class="input-box">
                         <span class="details">Subject Code</span>
-                        <input type="text" name="subject_code" placeholder="Enter Subject Code" required>
+                        <input type="text" name="subject_code" placeholder="Enter Subject Code" value="<?php echo $row['subject_code']; ?>" required>
                     </div>
 
                     <div class="input-box">
-                        <span class="details">Subject Title</span>
-                        <input type="text" name="subject_title" placeholder="Enter Subject title" required>
+                        <span class="details">Subject  Title</span>
+                        <input type="text" name="subject_title" placeholder="Enter Subject Title" value="<?php echo $row['subject_title']; ?>" required>
                     </div>
 
                     <div class="input-box">
                         <span class="details">Description</span>
-                        <textarea name="description" id="ckeditor_full" required></textarea>
+                        <textarea name="description" id="ckeditor_full" required><?php echo $row['description']; ?></textarea>
                         <script>
                             CKEDITOR.replace( 'ckeditor_full' );
                         </script>
@@ -52,32 +63,29 @@
 
                 </div>
                     
-                            <button name="save" type="submit" value="save" class="btn btn-info">
-                                <i class="fa fa-fw fa-save"></i>&nbsp;Create
+                            <button name="update" type="submit" value="update" class="btn btn-info">
+                                <i class="fa fa-fw fa-save"></i>&nbsp;Update
                             </button>
                        
                 
                 </form>
-                
-           
+            </div>
+        </div>
     </div>
-    
-   
+
 </body>
+
 </html>
 
 <?php
-    if(isset($_POST['save']))
-    {
-        $subject_code = $_POST['subject_code'];
-        $subject_title = $_POST['subject_title'];
-        $description = $_POST['description'];
+	if(isset($_POST['update']))
+	{
+        $code = $_POST['subject_code'];
+		$title = $_POST['subject_title'];
+		$description = $_POST['description'];
 
-        
-	
-
-		$sql = mysqli_query($link,"insert into subject(subject_code,subject_title,description) values('$subject_code','$subject_title','$description')") or die(mysqli_error($link));
-	?>
+		$sql = mysqli_query($link,"update subject set subject_code='$code',subject_title='$title',description='$description' where subject_id='$get_id' ") or die(mysqli_error($link));
+		?>
 
 		<script>
 			window.location="subjects.php";
@@ -86,6 +94,3 @@
 		<?php
 	}
 ?>
-        
-    
-
