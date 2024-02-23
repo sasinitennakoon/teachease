@@ -53,7 +53,7 @@
 					else
 					{?>
 					<div class="panels1">
-        <div class="panel10">
+        				<div class="panel10">
 						<table>
 			<thead>
 				<tr>
@@ -66,7 +66,8 @@
                     <th></th>
 					<!--<th>Edit</th> -->
 				</tr>
-			<thead>
+					</thead>
+
 				<?php
 					$query = mysqli_query($link, "SELECT files.*, class.class_name 
                     FROM files 
@@ -88,7 +89,7 @@
                     <td><?php echo $row['uploaded_by']; ?></td>
                     <td><?php echo $row['class_name']; ?></td>
                     <td width="40">
-						 <a  data-placement="bottom" title="Download" id="<?php echo $id; ?>download" href="<?php echo $row['floc']; ?>"><i class="fa fa-fw fa-download"></i></a>
+					<a  data-placement="bottom" title="Download" id="<?php echo $id; ?>download" href="<?php echo $row['floc']; ?>"><i class="fa fa-fw fa-download"></i></a>
 						 
                     </td>
 					
@@ -123,31 +124,7 @@
 		</form>
 	</div>
 
-    <script type="text/javascript">
-	$(document).ready( function() {
-
-		
-		$('.remove').click( function() {
-		
-		var id = $(this).attr("id");
-			$.ajax({
-			type: "POST",
-			url: "delete_file.php",
-			data: ({id: id}),
-			cache: false,
-			success: function(html){
-			$("#del"+id).fadeOut('slow', function(){ $(this).remove();}); 
-			$('#'+id).modal('hide');
-			$.jGrowl("Your Post is Successfully Deleted", { header: 'Data Delete' });
-		
-			}
-			}); 
-			
-			return false;
-		});				
-	});
-
-    </script>
+    
 	
 </body>
 </html>

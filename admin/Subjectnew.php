@@ -12,40 +12,80 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard</title>
-    <link rel="stylesheet" href="./css/Coursenew.css">
-
+    <link rel="stylesheet" href="./css/subjectslist.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <script src="../ckeditor/ckeditor.js"></script>
     <!-- Latest FullCalendar CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.2/main.css" integrity="sha384-LiWsxj4vMfsO8uyNnTVqSfeLqqkKD2pwWqFnSa6UqVqwKn9FlnNy5wKb3bYxs84p" crossorigin="anonymous">
+    
 </head>
 <body>
-    <div class="user-info">
-        
-    </div>
-    <button onclick="goBack()">Go to Dashboard</button>
+    
+    <button><a href="subjects.php">Go to Dashboard</a></button>
     <div class="content">
         <!-- Your page content goes here -->
         <h1>Create Subject</h1>
         
-        <div class="panels">
-            <div class="panel">
+        <div class="panels1">
+            <div class="panel10">
+                <form method="post">
                 
-                <h2>Grades : <input type="text"></input></h2>
-                <h2>Medium : <input type="text"></input></h2>
-                <h2>Teacher : <input type="text"></input></h2>
-                <h2>Description : <input type="text"></input></h2>
-                <div class="but">
-                    <button class="button"><b>Create</b></button>
+                <div class="user-details">
+
+                    <div class="input-box">
+                        <span class="details">Subject Code</span>
+                        <input type="text" name="subject_code" placeholder="Enter Subject Code" required>
+                    </div>
+
+                    <div class="input-box">
+                        <span class="details">Subject Title</span>
+                        <input type="text" name="subject_title" placeholder="Enter Subject title" required>
+                    </div>
+
+                    <div class="input-box">
+                        <span class="details">Description</span>
+                        <textarea name="description" id="ckeditor_full" required></textarea>
+                        <script>
+                            CKEDITOR.replace( 'ckeditor_full' );
+                        </script>
+                    </div>
+
                 </div>
-            </div>
-        </div>
+                    
+                            <button name="save" type="submit" value="save" class="btn btn-info">
+                                <i class="fa fa-fw fa-save"></i>&nbsp;Create
+                            </button>
+                       
+                
+                </form>
                 
            
     </div>
     
-    <script>
-        function goBack() {
-        window.history.back();
-    }
-    </script>
+   
 </body>
 </html>
+
+<?php
+    if(isset($_POST['save']))
+    {
+        $subject_code = $_POST['subject_code'];
+        $subject_title = $_POST['subject_title'];
+        $description = $_POST['description'];
+
+        
+	
+
+		$sql = mysqli_query($link,"insert into subject(subject_code,subject_title,description) values('$subject_code','$subject_title','$description')") or die(mysqli_error($link));
+	?>
+
+		<script>
+			window.location="subjects.php";
+		</script>
+
+		<?php
+	}
+?>
+        
+    
+
