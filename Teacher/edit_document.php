@@ -41,6 +41,8 @@
 	<div class="content">
 		<h1>Documents</h1>
 
+        <div class="panels1">
+        <div class="panel10">
 		<form method="post" action="">
 				<?php
 					$query = mysqli_query($link,"select * FROM files where teacher_id = '$session_id'  order by fdatein DESC ")or die(mysqli_error());
@@ -52,8 +54,7 @@
 					}
 					else
 					{?>
-					<div class="panels1">
-        <div class="panel10">
+					
 						<table>
 			<thead>
 				<tr>
@@ -105,17 +106,7 @@
 			
 		</table>
 
-		<div class="but">
-			
-			<button class="btn btn-info">
-			<a href="add_document.php" style='text-decoration:none;color:white;'>
-				<i class="fa fa-fw fa-plus"></i>&nbsp;Add Document</a>
-			</button>
-			<button type="submit" name="delete" class="btn btn-info">
-				<i class="fa fa-fw fa-trash"></i> Delete
-			</button>
-			
-		</div>
+		
 		</form>
 	</div>
 

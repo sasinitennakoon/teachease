@@ -74,6 +74,14 @@
                   <span class="details">Subject</span>
                   <input type="text" name="subject" placeholder="Enter Your Subject" required>
                 </div>
+                <div>
+                    <label for="language" class="text1">Language:</label>
+                    <select id="language" name="language" class="select">
+                        <option value="english">English</option>
+                        <option value="sinhala">Sinhala</option>
+                        <option value="Tamil">Tamil</option>
+                    </select>
+                </div>
                 <div class="input-box">
                   <span class="details">Usename (Email)</span>
                   <input type="text" name="username" placeholder="Enter Your Username" required>

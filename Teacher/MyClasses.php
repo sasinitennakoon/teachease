@@ -182,7 +182,7 @@
                         <table border="0">
                     <thead>
                         <tr>
-                            
+                            <th></th>
                             <th>Class Name</th>
                             <th>Subject</th>
                             <th>Number of Students</th>
@@ -197,6 +197,7 @@
 		?>
             
                         <tr>
+                            <td><input type="checkbox" name="selector[]" value="<?php echo $id; ?>"></td>
                             <td><?php echo $row['class_name']; ?></td>
                             <td><?php echo $row['subject_title']; ?></td>
                             <td><?php echo $row['noofparticipant']; ?></td>
@@ -229,3 +230,25 @@
             </body>
 
             </html>
+
+
+            <?php
+                 include '../database/db_con.php';
+
+                 if (isset($_POST['delete'])){
+                         $id=$_POST['selector'];
+                         $N = count($id);
+                         
+                     for($i=0; $i < $N; $i++)
+                     {
+                         $result = mysqli_query($link,"DELETE from teacher_class
+                         where teacher_class_id='$id[$i]'");
+                     }
+             ?>
+                 <script>
+                     window.location = "MyClasses.php";
+                 </script>
+             
+             <?php
+                 }
+             ?>

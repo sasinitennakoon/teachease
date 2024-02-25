@@ -49,7 +49,7 @@
 		
 
 				<?php
-					$sql = "select * from quiz";
+					$sql = "select * from quiz where teacher_id='$session_id'";
 					$result = mysqli_query($link,$sql) or die(mysqli_error($link));
 					$count = mysqli_num_rows($result);
 
