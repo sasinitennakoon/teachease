@@ -12,7 +12,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Student Dashboard</title>
-    <link rel="stylesheet" href="././css/studymaterials.css">
+    <link rel="stylesheet" href="././css/ExamR.css">
     <link rel="stylesheet" href="././css/dashboard.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
@@ -50,3 +50,35 @@
                 </ul>
             </nav>
         </div>
+
+        <div class="content">
+        <h2>Term Tests Results</h2>
+
+
+            <div class="panelsD">
+                <div class="panelsub1">
+                    
+                    <button class="but2" onclick="window.location.href='1stterm.html';">1 st Term</button>
+                    <button class="but2" onclick="window.location.href='2ndterm.html';">2 nd Term</button>
+                    <button class="but2" onclick="window.location.href='3rdterm.html';">3 rd Term</button>
+                </div>
+
+                
+            </div>
+
+
+        <h2> Assignments and Quizes</h2>
+        
+            <div class="panelsD2">
+                <div class="panelsub2">
+                <button class="but3" onclick="window.location.href='Sub1.html';">SCIENCE</button>
+                <button class="but3" onclick="window.location.href='Sub2.html';">MATHEMATICS</button>
+                <button class="but3" onclick="window.location.href='Sub3.html';">ENGLISH</button>
+                <button class="but3" onclick="window.location.href='Sub4.html';">SINHALA</button>
+                <button class="but3" onclick="window.location.href='Sub5.html';">BUDDHISM</button>
+                <button class="but3" onclick="window.location.href='Sub6.html';">HISTORY</button>
+                </div>
+            </div>
+
+        
+       </div>

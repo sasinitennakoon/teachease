@@ -273,3 +273,20 @@ h2 {
     cursor: pointer;
 }
 
+/* Existing CSS styles */
+
+.emoji.hovered {
+    transform: scale(1.5);
+    transition: transform 0.2s ease-in-out;
+}
+
+.emoji:hover {
+    font-size: 2em; /* Increase size on hover */
+}
+
+.star {
+    cursor: pointer;
+}
+.star.highlighted {
+    color: gold;
+}

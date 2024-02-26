@@ -12,7 +12,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Student Dashboard</title>
-    <link rel="stylesheet" href="././css/studymaterials.css">
+    <link rel="stylesheet" href="././css/progress.css">
     <link rel="stylesheet" href="././css/dashboard.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
@@ -50,3 +50,52 @@
                 </ul>
             </nav>
         </div>
+        <button onclick="goBack()">Go to Dashboard</button>
+
+<div class="content">
+    <div class="panelsD3">
+        <div class="panel55">
+            <h1>Progress</h1>
+            <div class="chart-container">
+                <canvas id="progressChart"></canvas>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function goBack() {
+        window.history.back();
+    }
+
+    var subjects = ['Math', 'Science', 'History', 'English', 'Geography'];
+    var progress = [80, 70, 90, 85, 75];
+
+    var ctx = document.getElementById('progressChart').getContext('2d');
+
+    var progressChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: subjects,
+            datasets: [{
+                label: 'Progress',
+                data: progress,
+                backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                borderColor: 'rgba(54, 162, 235, 1)',
+                borderWidth: 2
+            }]
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
+        }
+    });
+</script>
+
+</body>
+</html>
