@@ -40,7 +40,7 @@
       </div>
       <div class="image__container">
         <img src="assets/8600_7_2_03.png" alt="header" />
-        <img src="assets/" alt="header" />
+        <img src="assets/4300_8_05.png" alt="header" />
         <div class="image__content">
           <ul>
             <li>Get 30% off on every 1st month</li>

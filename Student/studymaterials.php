@@ -54,24 +54,26 @@
 <div class="content">
     
     <h1>STUDY MATERIALS</h1>
-     
-            <div class="panelst1" onclick="window.location.href='sciencemate.html';">
-            <img src="./img/science.png">  
-                <p><b>Science</b></p>             
+    <div class="panelsD2">
+            <div class="panelst1" onclick="window.location.href='sinhalamate.html';">
+            <img src="./img/science.png"> 
+                <p><b>Scinece</b></p>
             </div>
 
-            <div class="panelst2" onclick="window.location.href='mathsmate.html';">
-            <img src="./img/maths.png">  
+            <div class="panelst2" onclick="window.location.href='buddhismmate.html';">
+            <img src="./img/maths.png"> 
                 <p><b>Mathematics</b></p>
             </div>
 
-            <div class="panelst3" onclick="window.location.href='englishmate.html';">
+            <div class="panelst3" onclick="window.location.href='historymate.html';">
             <img src="./img/eng.png"> 
                 <p><b>English</b></p>
             </div>
-        
+        </div>
+
+        <div class="panelsD2">
             <div class="panelst4" onclick="window.location.href='sinhalamate.html';">
-            <img src="./img/sinhala \ letter.png"> 
+            <img src="./img/sinhala\Sinhala letter.png"> 
                 <p><b>Sinhala</b></p>
             </div>
 
@@ -84,6 +86,7 @@
             <img src="./img/his.png"> 
                 <p><b>History</b></p>
             </div>
+        </div>
 
         
 </div>

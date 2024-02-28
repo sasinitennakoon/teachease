@@ -223,11 +223,90 @@ nav a {
 
 /*subject panels*/
 
-.panelst1,
-.panelst2,
-.panelst3,
-.panelst4,
-.panelst5,
+.panelsD {
+    display: flex;
+    flex-wrap: wrap;
+    width: 60% 40%;
+    cursor: pointer;
+}
+
+.panelsD2 {
+    display: flex;
+    flex-wrap: wrap;
+    width: 60% 40%;
+    cursor: pointer;
+}
+
+.panelst1:hover,
+.panelst2:hover,
+.panelst3:hover,
+.panelst4:hover,
+.panelst5:hover,
+.panelst6:hover{
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.panelst1 {
+    flex: 1;
+    background-color: #f0f0f0;
+    padding: 20px;
+    margin: 10px ;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 30%;
+    height: 150px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.panelst2 {
+    flex: 1;
+    background-color: #f0f0f0;
+    padding: 20px;
+    margin: 10px ;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 30%;
+    height: 150px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.panelst3 {
+    flex: 1;
+    background-color: #f0f0f0;
+    padding: 20px;
+    margin: 10px ;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 30%;
+    height: 150px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.panelst4 {
+    flex: 1;
+    background-color: #f0f0f0;
+    padding: 20px;
+    margin: 10px ;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 30%;
+    height: 150px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.panelst5 {
+    flex: 1;
+    background-color: #f0f0f0;
+    padding: 20px;
+    margin: 10px ;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 30%;
+    height: 150px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
 .panelst6 {
     flex: 1;
     background-color: #f0f0f0;
@@ -235,19 +314,9 @@ nav a {
     margin: 10px ;
     border-radius: 5px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 90%;
-    height: 80px;
+    width: 30%;
+    height: 150px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.panelst1,
-.panelst2,
-.panelst3,
-.panelst4,
-.panelst5,
-.panelst6 p{
-    font-size:x-large;
-    padding-left: 8%;
 }
 
 .panelst1 img{
