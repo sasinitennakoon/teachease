@@ -17,7 +17,7 @@
 
 body {
   font-family: "Poppins", sans-serif;
-  background-color: var(--secondary-color);
+  background-color: #c2d9ff;
 }
 
 nav {
@@ -150,8 +150,8 @@ nav {
 }
 
 .image__container img {
-  width: 100%;
-  max-width: 300px;
+  width: 180%;
+  max-width: 600px;
   margin: auto;
   border-radius: 10px;
 }

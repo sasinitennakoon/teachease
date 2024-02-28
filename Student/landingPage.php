@@ -39,8 +39,8 @@
         </form>
       </div>
       <div class="image__container">
-        <img src="assets/header-1.jpeg" alt="header" />
-        <img src="assets/header-2.jpg" alt="header" />
+        <img src="assets/8600_7_2_03.png" alt="header" />
+        <img src="assets/" alt="header" />
         <div class="image__content">
           <ul>
             <li>Get 30% off on every 1st month</li>
