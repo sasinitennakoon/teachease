@@ -71,12 +71,12 @@
         
             <div class="panelsD2">
                 <div class="panelsub2">
-                <button class="but3" onclick="window.location.href='Sub1.html';">SCIENCE</button>
-                <button class="but3" onclick="window.location.href='Sub2.html';">MATHEMATICS</button>
-                <button class="but3" onclick="window.location.href='Sub3.html';">ENGLISH</button>
-                <button class="but3" onclick="window.location.href='Sub4.html';">SINHALA</button>
-                <button class="but3" onclick="window.location.href='Sub5.html';">BUDDHISM</button>
-                <button class="but3" onclick="window.location.href='Sub6.html';">HISTORY</button>
+                <button class="but3" onclick="window.location.href='scienceassignment.html';">SCIENCE</button>
+                <button class="but3" onclick="window.location.href='mathsassignment.html';">MATHEMATICS</button>
+                <button class="but3" onclick="window.location.href='engassignment.html';">ENGLISH</button>
+                <button class="but3" onclick="window.location.href='sinhalaassignment.html';">SINHALA</button>
+                <button class="but3" onclick="window.location.href='buddhismassignment.html';">BUDDHISM</button>
+                <button class="but3" onclick="window.location.href='hisassignment.html';">HISTORY</button>
                 </div>
             </div>
 

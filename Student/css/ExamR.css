@@ -2,7 +2,7 @@
 
 body {
     margin: 0;
-    font-family: 'Poppin', sans-serif;
+    font-family: 'Poppins', sans-serif;
     background-color: #c2d9ff;
 }
 
@@ -209,61 +209,53 @@ nav a {
     display: flex;
     flex-wrap: wrap;
     width: 60% 40%;
-    cursor: pointer;
+    
 }
 
 .panelsD2 {
     display: flex;
     flex-wrap: wrap;
     width: 60% 40%;
-    cursor: pointer;
+    cursor: pointer; /* Adding cursor style for panels */
 }
 
-.but2{
+.but2 {
     padding: 30px;
     margin-top: 20px;
     margin-left: 50px;
     width: 300px;
-    cursor: pointer;
+    cursor: pointer; /* Adding cursor style for button */
 }
 
-.but3{
+.but3 {
     padding: 20px;
     margin-top: 10px;
     margin-left: 50px;
     width: 300px;
-    cursor: pointer;
+    cursor: pointer; /* Adding cursor style for button */
 }
-.but4{
+
+.but4 {
     margin-left: 42%;
     margin-top: 10px;
-    cursor: pointer;
+    cursor: pointer; /* Adding cursor style for button */
 }
 
-.panelsub1 {
-    flex: 1;
-    font-size: 95%;
-    background-color: #f0f0f0;
-    padding: 20px;
-    margin: 30px ;
-    border-radius: 5px;
-    width: 60%;
-    height: 150px;
-}
-
+.panelsub1,
 .panelsub2 {
     flex: 1;
     font-size: 95%;
     background-color: #f0f0f0;
     padding: 20px;
-    margin: 10px ;
+    margin: 30px;
     border-radius: 5px;
     width: 60%;
     height: 150px;
+    cursor: default; /* Adding default cursor style for panels */
 }
 
-
-.content h2{
+.content h2 {
     text-align: center;
 }
 
+/* Rest of your CSS */

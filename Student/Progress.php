@@ -53,49 +53,66 @@
         <button onclick="goBack()">Go to Dashboard</button>
 
 <div class="content">
-    <div class="panelsD3">
-        <div class="panel55">
-            <h1>Progress</h1>
-            <div class="chart-container">
-                <canvas id="progressChart"></canvas>
-            </div>
-        </div>
+    <div class="panelsD">
+        <h2>Overall Progress</h2>
+
+    <div class="chart-container">
+        <canvas id="progress-chart"></canvas>
+     </div>
     </div>
+
+    <h3>You can analys Your Progress by this section</h3>
+     <button class="but2" onclick="window.location.href='1progress.html';">1 st Term</button>
+     <button class="but2" onclick="window.location.href='2progress.html';">2 nd Term</button>
+     <button class="but2" onclick="window.location.href='3progress.html';">3 rd Term</button>
+
 </div>
 
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
-    function goBack() {
-        window.history.back();
-    }
+    document.addEventListener('DOMContentLoaded', function () {
+  var ctx = document.getElementById('progress-chart').getContext('2d');
 
-    var subjects = ['Math', 'Science', 'History', 'English', 'Geography'];
-    var progress = [80, 70, 90, 85, 75];
+  var data = {
+    labels: ['Science', 'Mathematics', 'English', 'Sinhala', 'Buddhism', 'History'],
+    datasets: [
+      {
+        label: 'Term 1',
+        data: [80, 75, 85, 90, 70, 78],
+        borderColor: 'rgb(255, 99, 132)',
+        backgroundColor: 'rgba(255, 99, 132, 0.2)',
+      },
+      {
+        label: 'Term 2',
+        data: [85, 79, 88, 92, 72, 80],
+        borderColor: 'rgb(54, 162, 235)',
+        backgroundColor: 'rgba(54, 162, 235, 0.2)',
+      },
+      {
+        label: 'Term 3',
+        data: [88, 82, 90, 94, 75, 85],
+        borderColor: 'rgb(75, 192, 192)',
+        backgroundColor: 'rgba(75, 192, 192, 0.2)',
+      }
+    ]
+  };
 
-    var ctx = document.getElementById('progressChart').getContext('2d');
-
-    var progressChart = new Chart(ctx, {
-        type: 'line',
-        data: {
-            labels: subjects,
-            datasets: [{
-                label: 'Progress',
-                data: progress,
-                backgroundColor: 'rgba(54, 162, 235, 0.2)',
-                borderColor: 'rgba(54, 162, 235, 1)',
-                borderWidth: 2
-            }]
-        },
-        options: {
-            scales: {
-                yAxes: [{
-                    ticks: {
-                        beginAtZero: true
-                    }
-                }]
-            }
+  var options = {
+    scales: {
+      yAxes: [{
+        ticks: {
+          beginAtZero: true,
+          stepSize: 10,
+          max: 100
         }
-    });
-</script>
+      }]
+    }
+  };
 
-</body>
-</html>
+  var chart = new Chart(ctx, {
+    type: 'line',
+    data: data,
+    options: options
+  });
+});
+</script>
