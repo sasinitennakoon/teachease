@@ -41,13 +41,13 @@
 					<div class="panels1">
                         <div class="panel10">
 						<table>
-			<thead>
-				<tr>
-					<th></th>
-					<th>Subject Code</th>
-					<th>Subject Title</th>
-					<th>Description</th>
-                    <th></th>
+							<thead>
+								<tr>
+									<th></th>
+									<th>Subject Code</th>
+									<th>Subject Title</th>
+									<th>Description</th>
+									<th></th>
 					<!--<th>Edit</th> -->
 				</tr>
 			<thead>
