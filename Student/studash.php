@@ -78,7 +78,7 @@
 
         <!-- Calendar Panel -->
         <div class="panelsD">
-            <div class="panel1">
+            <div class="panel1"onclick="window.location.href='progress.php';">
                 <p><b>Your Progress</b></p>
             </div>
 

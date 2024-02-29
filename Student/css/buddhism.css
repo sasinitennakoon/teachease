@@ -1,0 +1,220 @@
+
+
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background-color: #c2d9ff;
+}
+
+.logo img {
+    width: 80%;
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 20px;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+nav a {
+    text-decoration: none;
+    color: white;
+    display: block;
+    padding: 10px;
+    text-align: left;
+    margin-bottom: 10px;
+}
+
+.content {
+    margin-left: 125px;
+    padding: 15px;
+    position: relative;
+
+}
+
+.logo {
+    border-bottom: 1px solid #fff;
+    padding-bottom: 20px;
+    padding: 10px;
+    border: 1px solid rgb(28, 28, 111);
+    border-radius: 10px;
+}
+.content h1 {
+    text-align: left;
+    padding-left: 25%;
+}
+
+/*course content*/
+.content .panelsD2 p{
+    font-size:large;
+    padding-left: 8%;
+    line-height: 1.8;
+}
+
+
+.dropdown {
+    float: right;
+    overflow: hidden;
+    z-index: 100;
+    position: fixed;
+    margin-left: 94%;
+}
+
+.dropdown .dropbtn {
+    font-size: 16px;
+    border: none;
+    outline: none;
+    color: black;
+    padding: 12px 14px;
+    background-color: inherit;
+    font-family: inherit;
+    margin: 0;
+}
+
+.dropdown:hover .dropbtn {
+    background-color: rgb(28, 28, 111);
+    color: white;
+}
+
+.dropdown-content {
+    display: none;
+    position: fixed;
+    background-color: #ffffff;
+    right: 0;
+    min-width: 80px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    float: none;
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.dropdown-content a:hover {
+    background-color: rgb(28, 28, 111);
+    color: white;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropbtn img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+button{
+    width: 200px;
+    padding: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background-color: rgb(43, 43, 151);
+    color: aliceblue;
+    border-radius: 25px;
+}
+
+
+button:hover{
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.but{
+    padding: 20px;
+}
+
+.panelsD {
+    display: flex;
+    flex-wrap: wrap;
+    width: 60% 40%;
+
+}
+
+.panel {
+    flex: 1;
+    font-size: 95%;
+    background-color: #969cef;
+    padding: 20px;
+    margin: 10px ;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 150px;
+    height: 200px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.panel1 {
+    flex: 1;
+    font-size: 95%;
+    background-color: #aaaaed;
+    padding: 20px;
+    margin: 10px ;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 250px;
+    height: 380px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.panel:hover{
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.panel p{
+    font-size: large;
+    text-align: left;
+    padding-left: 25%;
+}
+
+
+.panel-content h1,
+.panel-content p {
+    margin: 0;
+}
+
+
+.panel-content p {
+    margin-top: 5px; /* Add margin to the top for spacing */
+    margin-left: 50px;
+}
+
+.panelsD2 {
+    display: flex;
+    flex-wrap: wrap;
+    width: 60% 40%;
+
+}
+
+a[href="./docs/Grade 11 Mathematics Teacher Guide.pdf"] {
+    color: #000000; 
+    text-decoration: none; 
+    font-weight: bold;
+    padding-left: 8%;
+}
+
+/*teacher 4to*/
+.panel img{
+    float: left;
+    width: 200px;
+    height: 200px;
+    padding-top:1%;
+    padding-left: 3%;
+}
+
+/*content panel*/
+.panel1 img{
+    float: right;
+    width: 350px;
+    height: 350px;
+    padding-right: 5%;
+}

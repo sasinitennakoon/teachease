@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard</title>
+    <!--<link rel="stylesheet" href="../admin/css/dashboard.css"> -->
+    <link rel="stylesheet" href="./css/1stterm.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+
+<body>
+<div class="dropdown" style="float:right;">
+<div class="dropbtn">
+              <img src="./img/loginicon.png" alt="User Icon">
+                <?php echo $row['firstname']; ?>
+				<i class="fa fa-caret-down"></i>
+                </div>
+			  <div class="dropdown-content">
+				<a href="MyProfile.php"><i class="fa fa-fw fa-user"></i>Profile</a>
+				<a href="ResetPassword.php"><i class="fa fa-fw fa-unlock-alt"></i>Change Password</a>
+				<a href="../logout.php"><i class="fa fa-fw fa-sign-out-alt"></i>Log out</a>
+			  </div>
+</div>
+
+<button onclick="goBack()">Go to Dashboard</button>
+
+<div class="content">
+    <h1>1st term Result Sheet</h1>
+    
+    <div class="panelsD">
+            <h2>Result Sheet-2021</h2>
+            <h3>Term 01</h3>
+
+            <p>Student Full Name: Rathnayaka Mudiyanselage Chathura Madhuranga Rathnayake</p>
+            <p>Name with Initials: Rathnayake R M C M</p>
+            <p>Registration No:21020957</p>
+            <p>Grade: 10</p>
+            <p>Total Marks: 967</p>
+
+            <table id="marksTable">
+                <thead>
+                    <tr>
+                        <th>Subject</th>
+                        <th>Mark</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Science</td>
+                        <td>56</td>
+                    </tr>
+                    <tr>
+                        <td>Maths</td>
+                        <td>63</td>
+                    </tr>
+                    <tr>
+                        <td>English</td>
+                        <td>95</td>
+                    </tr>
+                    <tr>
+                        <td>Sinhala</td>
+                        <td>100</td>
+                    </tr>
+                    <tr>
+                        <td>Buddhism</td>
+                        <td>65</td>
+                    </tr>
+                    <tr>
+                        <td>History</td>
+                        <td>78</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p>This result sheet was clarifying by teacher</p>
+            <p> mr. udayanga</p>
+
+            <p>If you want to get more information , please be kind to use below excel sheet</p>
+            <a href="./docs/book1.xlsx">Grade 10 marks sheet</a>
+    </div>
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<script>
+    function goBack() {
+            window.history.back();
+        }
+
+
+        function calculateAverage() {
+    var marks = document.querySelectorAll('.markInput');
+    var totalMarks = 0;
+    var validMarksCount = 0;
+
+    marks.forEach(function(mark) {
+        if (mark.value !== '' && !isNaN(mark.value) && parseInt(mark.value) >= 0 && parseInt(mark.value) <= 100) {
+            totalMarks += parseInt(mark.value);
+            validMarksCount++;
+        }
+    });
+
+    if (validMarksCount > 0) {
+        var average = totalMarks / validMarksCount;
+        document.getElementById('averageResult').innerText = 'Average Mark: ' + average.toFixed(2);
+    } else {
+        document.getElementById('averageResult').innerText = 'No valid marks entered.';
+    }
+}
+
+</script>

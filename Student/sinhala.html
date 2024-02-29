@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard</title>
+    <!--<link rel="stylesheet" href="../admin/css/dashboard.css"> -->
+    <link rel="stylesheet" href="./css/english.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+
+<body>
+<div class="dropdown" style="float:right;">
+<div class="dropbtn">
+              <img src="./img/loginicon.png" alt="User Icon">
+                <?php echo $row['firstname']; ?>
+				<i class="fa fa-caret-down"></i>
+                </div>
+			  <div class="dropdown-content">
+				<a href="MyProfile.php"><i class="fa fa-fw fa-user"></i>Profile</a>
+				<a href="ResetPassword.php"><i class="fa fa-fw fa-unlock-alt"></i>Change Password</a>
+				<a href="../logout.php"><i class="fa fa-fw fa-sign-out-alt"></i>Log out</a>
+			  </div>
+</div>
+
+<button onclick="goBack()">Go to Dashboard</button>
+
+<div class="content">
+    <div class="panelsD">
+        <div class="panel">
+        <img src="./img/tea.png" alt="Alex David">
+        <h1>Sinhala</h1>
+        <p> Teacher : Amarawathi Ranweera</p>
+        <p>Class: Grade 11</p>
+        <p>Date & Time: Sunday, 08.00 am - 10.00 am</p>
+        </div>
+    </div>
+    <div class="panelsD2">
+        <div class="panel1">
+            <img src="./img/Sinhala letter (1).png" alt="sinhala">
+            <h1>Course Content</h1>
+            <p>1.Real Numbers</br>
+                2.Indices and Logarithms 1</br>
+                3.Indices and Logarithms 2</br>
+                4.Surface Area of Solids</br>
+                5.Volume of the Solids</br>
+                6.Percentage</br>
+                7.Graphs</br>
+                8.Share Market</br>
+            </p>
+            <a href="./docs/Grade 11 Mathematics Teacher Guide.pdf">View Your Syllabus</a>
+        </div>
+    </div>
+</div>
+
+<script>
+    function goBack() {
+            window.history.back();
+        }
+</script>
+
+
+
+</body>
+</html>

@@ -1,0 +1,156 @@
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background-color: #c2d9ff;
+}
+
+.logo img {
+    width: 80%;
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 20px;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+nav a {
+    text-decoration: none;
+    color: white;
+    display: block;
+    padding: 10px;
+    text-align: left;
+    margin-bottom: 10px;
+}
+
+.content {
+    margin-left: 125px;
+    padding: 15px;
+    position: relative;
+
+}
+
+.logo {
+    border-bottom: 1px solid #fff;
+    padding-bottom: 20px;
+    padding: 10px;
+    border: 1px solid rgb(28, 28, 111);
+    border-radius: 10px;
+}
+.content h1 {
+    text-align: left;
+    padding-left: 25%;
+}
+
+/*course content*/
+.content .panelsD2 p{
+    font-size:large;
+    padding-left: 8%;
+    line-height: 1.8;
+}
+
+
+.dropdown {
+    float: right;
+    overflow: hidden;
+    z-index: 100;
+    position: fixed;
+    margin-left: 94%;
+}
+
+.dropdown .dropbtn {
+    font-size: 16px;
+    border: none;
+    outline: none;
+    color: black;
+    padding: 12px 14px;
+    background-color: inherit;
+    font-family: inherit;
+    margin: 0;
+}
+
+.dropdown:hover .dropbtn {
+    background-color: rgb(28, 28, 111);
+    color: white;
+}
+
+.dropdown-content {
+    display: none;
+    position: fixed;
+    background-color: #ffffff;
+    right: 0;
+    min-width: 80px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    float: none;
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.dropdown-content a:hover {
+    background-color: rgb(28, 28, 111);
+    color: white;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropbtn img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+button{
+    width: 200px;
+    padding: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background-color: rgb(43, 43, 151);
+    color: aliceblue;
+    border-radius: 25px;
+}
+
+
+button:hover{
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.but{
+    padding: 20px;
+}
+
+
+
+.panelst {
+    display: flex;
+    flex-wrap: wrap;
+    width: 60% 40%;
+
+}
+
+.panelst_1 {
+    flex: 1;
+    background-color: #f0f0f0;
+    background-image: url('../IMG/2892186.png');
+    background-repeat: no-repeat;
+    background-size: 200px 150px;
+    background-position: left;
+    padding: 20px;
+    margin: 10px ;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 60%;
+    height: 118px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
