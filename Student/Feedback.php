@@ -85,20 +85,33 @@
         <p> Thank You!<br>
             Admin Panel</p>
     </div>
-    <h4>Choose a subject to rate</h4>
-    <select id="subject-select">
-        <option value="">Select Subject</option>
-        <option value="math">Math</option>
-        <option value="science">Science</option>
-        <option value="history">History</option>
-        <option value="english">English</option>
-        <option value="art">Art</option>
-        <option value="music">Music</option>
-    </select>
-
+    
     <div class="feedback-form">
         <h2>Feedback Form</h2>
+                
+                
         <div class="rating">
+            <h3>Choose Your Subject:</h3>
+            <input type="radio" id="html" name="Subjects" value="Science">
+            <label for="Science">Science</label><br>
+
+            <input type="radio" id="html" name="Subjects" value="Mathematics">
+            <label for="Mathematics">Mathematics</label><br>
+
+            <input type="radio" id="html" name="Subjects" value="English">
+            <label for="English">English</label><br>
+
+            <input type="radio" id="html" name="Subjects" value="Sinahla">
+            <label for="Sinahla">Sinahala</label><br>
+
+            <input type="radio" id="html" name="Subjects" value="Buddhism">
+            <label for="Buddhism">Buddhism</label><br>
+
+            <input type="radio" id="html" name="Subjects" value="History">
+            <label for="History">History</label><br>
+
+
+
             <h3>Rate for the class:</h3>
             <div class="stars" id="classRating">
                 <span class="star" data-value="1">&#9733;</span>
