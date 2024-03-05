@@ -32,6 +32,15 @@ button{
     border-radius: 25px;
 }
 
+.button1{
+  width: 100px;
+  padding: 10px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background-color: rgb(43, 43, 151);
+  color: aliceblue;
+  border-radius: 25px;
+}
+
 
 button:hover{
     transform: translateY(-5px);
