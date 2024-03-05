@@ -169,6 +169,23 @@ nav {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
+/*
+ flex: 1;
+    background-color: #f0f0f0;
+    background-image: url('../IMG/2892186.png');
+    background-repeat: no-repeat;
+    background-size: 200px 150px;
+    background-position: left;
+    padding: 20px;
+    margin: 10px ;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 60%;
+    height: 118px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+*/
+
 .panel1 h2 {
     color: #333;
 }
@@ -281,8 +298,8 @@ nav {
   }
 
 .dropbtn img {
-    width: 30px;
-    height: 30px;
+    width: 45px;
+    height: 45px;
     border-radius: 50%;
     margin-right: 10px;
 }

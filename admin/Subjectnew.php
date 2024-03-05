@@ -20,7 +20,7 @@
     
 </head>
 <body>
-    
+<?php include 'dropdown1.php'; ?> 
     <button><a href="subjects.php">Go to Dashboard</a></button>
     <div class="content">
         <!-- Your page content goes here -->

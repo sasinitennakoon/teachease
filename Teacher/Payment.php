@@ -40,8 +40,8 @@
                 <li><a href="StudyMeterials.php"><i class="fas fa-book"></i>&nbsp; Study Materials</a></li>
                 <li><a href="Attendance.php"><i class="fas fa-check-circle"></i>&nbsp; Attendance</a></li>
                 <li><a href="ExamResults.php"><i class="fas fa-poll"></i>&nbsp; Exam Results</a></li>
-                <li><a href="Messages.php" class="active"><i class="fas fa-envelope"></i>&nbsp;Messages</a></li>
-                <li><a href="Payment.php"><i class="fas fa-credit-card"></i>&nbsp;Payments</a></li>
+                <li><a href="Messages.php"><i class="fas fa-envelope"></i>&nbsp;Messages</a></li>
+                <li><a href="Payment.php" class="active"><i class="fas fa-credit-card"></i>&nbsp;Payments</a></li>
                 <li><a href="Feedback.php"><i class="fas fa-comment"></i>&nbsp;Feedback</a></li>
             </ul>
         </nav>
@@ -49,40 +49,8 @@
 
     <div class="content">
         <!-- Your page content goes here -->
-        <h1>Messages</h1>
-        <div id="cometchat"></div>
-	<script>
-	window.addEventListener('DOMContentLoaded', (event) => {
-		CometChatWidget.init({
-			"appID": "25147122fbfc7b73",
-			"appRegion": "us",
-			"authKey": "c53134f9fefc924b5f0863e1d9494acd8b30d0dc"
-		}).then(response => {
-			console.log("Initialization completed successfully");
-			//You can now call login function.
-			CometChatWidget.login({
-				"uid": "user1"
-			}).then(response => {
-				CometChatWidget.launch({
-					"widgetID": "ba6deb25-85a1-4834-8031-19a93649f004",
-					"target": "#cometchat",
-					"roundedCorners": "true",
-					"height": "550px",
-					"width": "1000px",
-					"defaultID": 'anuraj', //default UID (user) or GUID (group) to show,
-					"defaultType": 'user' //user or group
-                    
-				});
-			}, error => {
-				console.log("User login failed with error:", error);
-				//Check the reason for error and take appropriate action.
-			});
-		}, error => {
-			console.log("Initialization failed with error:", error);
-			//Check the reason for error and take appropriate action.
-		});
-	});
-	</script>
+        <h1>My Payments</h1>
+        
     </div>
 </body>
 </html>

@@ -24,22 +24,8 @@
 	
 
 <body>
-			<div class="dropdown" style="float:right;">
-			  <div class="dropbtn">
-              <img src="./IMG/loginicon.png" alt="User Icon">
-                <?php echo $row['firstname']; ?>
-				<i class="fa fa-caret-down"></i>
-                </div>
-			  <div class="dropdown-content">
-				<a href="MyProfile.php"><i class="fa fa-fw fa-user"></i>Profile</a>
-				<a href="ResetPassword.php"><i class="fa fa-fw fa-unlock-alt"></i>Change Password</a>
-				<a href="../logout.php"><i class="fa fa-fw fa-sign-out-alt"></i>Log out</a>
-			  </div>
-			</div>
-    
-    
-
-	
+		<?php include 'dropdown.php'; ?>
+		
 	<button><a href="view_quiz.php">Go to Dashboard</a></button>
 	<div class="content">
 		<h1>Add Quiz To Class</h1>
@@ -64,13 +50,31 @@
                     </div>
 
                     <div class="input-box">
-                        <span class="details">Test Time (in minutes)</span>
-                        <input type="text" name="time" placeholder="Enter Test Time" required>
+                        <span class="details">Test Start Time</span>
+                        <input type="text" name="starttime" placeholder="Enter Test Start Time->(Format) HH:MM:SS" required>
+                    </div>
+					<div class="input-box">
+                        <span class="details">Test End Time</span>
+                        <input type="text" name="endtime" placeholder="Enter Test End Time->(Format)HH:MM:SS" required>
                     </div>
                    
                 </div>
 
-                <table>
+                	<!-- Populate this section with class and subject data --> 
+            <?php $query = mysqli_query($link,"select * from teacher_class
+					LEFT JOIN class ON class.class_id = teacher_class.class_id
+					LEFT JOIN subject ON subject.subject_id = teacher_class.subject_id
+					where teacher_id = '$session_id'")or die(mysqli_error());
+					$count = mysqli_num_rows($query);
+										
+					if($count < 0)
+					{
+						echo "<b>There is no Quiz Add to the class</b>";
+					}
+					else
+					{?>
+
+			<table>
 			<thead>
 				<tr>
 					<th></th>
@@ -81,14 +85,9 @@
 					<!--<th>Edit</th> -->
 				</tr>
 			<thead>
-			<tbody>	<!-- Populate this section with class and subject data --> 
-            <?php $query = mysqli_query($link,"select * from teacher_class
-					LEFT JOIN class ON class.class_id = teacher_class.class_id
-					LEFT JOIN subject ON subject.subject_id = teacher_class.subject_id
-					where teacher_id = '$session_id'")or die(mysqli_error());
-					$count = mysqli_num_rows($query);
-										
+			<tbody>
 
+			<?php
 					while($row = mysqli_fetch_array($query)){
 					$id = $row['teacher_class_id'];
 					
@@ -107,6 +106,9 @@
 				
 			
 		</table>
+		<?php
+		}
+		?>
                     
                             <button name="save" type="submit" value="save" class="btn btn-info">
                                 <i class="fa fa-fw fa-save"></i>&nbsp;Save
@@ -128,7 +130,8 @@
                     <?php
 						if (isset($_POST['save'])){
 							$quiz_id = $_POST['quiz_id'];
-							$time = $_POST['time'] * 60;
+							$starttime = $_POST['starttime'];
+							$endtime = $_POST['endtime'];
 							$id=$_POST['selector'];
 											
 							$name_notification  = 'Add Practice Quiz file';
@@ -136,7 +139,7 @@
 							$N = count($id);
 							for($i=0; $i < $N; $i++)
 							{
-								mysqli_query($link,"insert into class_quiz (teacher_class_id,quiz_time,quiz_id) values('$id[$i]','$time','$quiz_id')")or die(mysqli_error());
+								mysqli_query($link,"insert into class_quiz (teacher_class_id,quiz_start_time,quiz_end_time,quiz_id) values('$id[$i]','$starttime','$endtime','$quiz_id')")or die(mysqli_error());
 								mysqli_query($link,"insert into notification (teacher_class_id,notification,date_of_notification,link) value('$id[$i]','$name_notification',NOW(),'student_quiz_list.php')")or die(mysqli_error());
 					} ?>
 

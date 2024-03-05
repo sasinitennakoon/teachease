@@ -17,18 +17,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
 <body>
-            <div class="dropdown" style="float:right;">
-			  <div class="dropbtn">
-              <img src="./IMG/loginicon.png" alt="User Icon">
-                <?php echo $row['firstname']; ?>
-				<i class="fa fa-caret-down"></i>
-                </div>
-			  <div class="dropdown-content">
-				<a href="MyProfile.php"><i class="fa fa-fw fa-user"></i>Profile</a>
-				<a href="ResetPassword.php"><i class="fa fa-fw fa-unlock-alt"></i>Change Password</a>
-				<a href="../logout.php"><i class="fa fa-fw fa-sign-out-alt"></i>Log out</a>
-			  </div>
-			</div>
+<?php include 'dropdown.php'; ?>
     <!-- Sidebar -->
     <div class="sidebar">
         <div class="logo">
@@ -38,13 +27,14 @@
         <nav>
             <ul>
                 <li><a href="FirstPage.php"><i class="fas fa-tachometer-alt"></i>&nbsp; Dashboard</a></li>
-                <li><a href="MyStudent.php"><i class="fas fa-users"></i>&nbsp;My Students</a></li>
+                
                 <li><a href="MyClasses.php"><i class="fas fa-chalkboard-teacher"></i>&nbsp; My Classes</a></li>
                 <li><a href="Schedule.php"  class="active"><i class="fas fa-calendar-alt"></i>&nbsp; Schedule</a></li>
                 <li><a href="StudyMeterials.php"><i class="fas fa-book"></i>&nbsp; Study Materials</a></li>
                 <li><a href="Attendance.php"><i class="fas fa-check-circle"></i>&nbsp; Attendance</a></li>
                 <li><a href="ExamResults.php"><i class="fas fa-poll"></i>&nbsp; Exam Results</a></li>
                 <li><a href="Messages.php"><i class="fas fa-envelope"></i>&nbsp;Messages</a></li>
+                <li><a href="Payment.php"><i class="fas fa-credit-card"></i>&nbsp;Payments</a></li>
                 <li><a href="Feedback.php"><i class="fas fa-comment"></i>&nbsp;Feedback</a></li>
             </ul>
         </nav>

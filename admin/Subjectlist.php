@@ -18,9 +18,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.2/main.css" integrity="sha384-LiWsxj4vMfsO8uyNnTVqSfeLqqkKD2pwWqFnSa6UqVqwKn9FlnNy5wKb3bYxs84p" crossorigin="anonymous">
 </head>
 <body>
-    <div class="user-info">
-        
-    </div>
+<?php include 'dropdown1.php'; ?>
     <button><a href="Subjects.php">Go to Dashboard</a></button>
     <div class="content">
         <!-- Your page content goes here -->
