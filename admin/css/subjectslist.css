@@ -258,7 +258,7 @@ select {
 
   form .user-details .input-box {
     margin-bottom: 10px;
-    width: calc(100% / 2 - 20px);
+    width: 100%;
   }
   
   form .user-details .input-box .details {

@@ -3,6 +3,10 @@
 
     if(isset($_POST['signup']))
     {
+      $errmsg_arr = array();
+    // Validation error flag
+      $errflag = false;
+
         $firstname = $_POST['firstname'];
         $lastname = $_POST['lastname'];
         $username = $_POST['username'];
@@ -23,8 +27,36 @@
         }
         else
         {
+          if (isset($_FILES['uploaded_file']) && $_FILES['uploaded_file']['error'] == 0) {
+            // File upload was successful, proceed with validation
+            if ($_FILES['uploaded_file']['size'] >= 1048576 * 5) {
+                $errmsg_arr[] = 'File selected exceeds 5MB size limit';
+                $errflag = true;
+            }
+        } else {
+            // File upload failed or no file was selected
+            $errmsg_arr[] = 'File upload failed or no file selected';
+            $errflag = true;
+        }
+    
+        // Check for any validation errors before proceeding
+        if ($errflag) {
+            foreach ($errmsg_arr as $msg) {
+                echo $msg . '<br>';
+            }
+            exit();
+        } else {
+            // Upload the file
+            $uploaded_file = $_FILES['uploaded_file'];
+            $filename = basename($uploaded_file['name']);
+            $ext = pathinfo($filename, PATHINFO_EXTENSION);
+            $new_filename = mt_rand(1000, 9999) . "_File." . $ext;
+            $target_dir = "uploads/";
+            $target_file = $target_dir . $new_filename;
+    
+            if (move_uploaded_file($uploaded_file['tmp_name'], $target_file)) {
             $status = 'unregistered';
-            $sql = mysqli_query($link,"insert into teacher(firstname,lastname,username,password,subject,language,status) values('$firstname','$lastname','$username','$password','$subject','$language','$status')") or die(mysqli_error($link));
+            $sql = mysqli_query($link,"insert into teacher(firstname,lastname,username,password,subject,language,status,image) values('$firstname','$lastname','$username','$password','$subject','$language','$status','$target_file')") or die(mysqli_error($link));
             $sql1 = mysqli_query($link,"insert into userlist(firstname,lastname,role,status,username,password) values('$firstname','$lastname','$role','$status','$username','$password')") or die(mysqli_error($link));
             echo "Waitng for the admin permission";
             ?>
@@ -34,6 +66,8 @@
             </script>
             <?php
         }
+      }
+    }
 
     }
     
@@ -58,7 +92,7 @@
           <img src="teacher.jpeg" height="400" width="380" alt="signupImage" class="signup-image">
           
         </div>
-            <form action="#" method="post">
+            <form method="post" enctype="multipart/form-data">
               <div class="title"> Teacher Sign Up</div>
 
               <div class="user-details">
@@ -74,6 +108,12 @@
                   <span class="details">Subject</span>
                   <input type="text" name="subject" placeholder="Enter Your Subject" required>
                 </div>
+                <div class="input-box">
+                        <span class="details">File</span>
+                        <input name="uploaded_file" id="fileInput" type="file" required>
+                        <input type="hidden" name="MAX_FILE_SIZE" value="1000000" />
+                        <input type="hidden" name="id" value="<?php echo $session_id ?>"/>
+              </div>
                 <div>
                     <label for="language" class="text1">Language:</label>
                     <select id="language" name="language" class="select">

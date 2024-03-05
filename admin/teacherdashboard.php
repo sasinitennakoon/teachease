@@ -18,10 +18,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.2/main.css" integrity="sha384-LiWsxj4vMfsO8uyNnTVqSfeLqqkKD2pwWqFnSa6UqVqwKn9FlnNy5wKb3bYxs84p" crossorigin="anonymous">
 </head>
 <body>
-    <div class="user-info">
-        <img src="./IMG/loginicon.png" alt="User Icon">
-        <span><?php echo $row['firstname']; ?></span>
-    </div>
+<?php include 'dropdown1.php'; ?>
     <button onclick="goBack()">Go to Dashboard</button>
     <div class="content">
         <!-- Your page content goes here -->

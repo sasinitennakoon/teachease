@@ -20,10 +20,10 @@
 
 </head>
 <body>
-            <div class="dropdown" style="float:right;">
+           <!-- <div class="dropdown" style="float:right;">
 			  <div class="dropbtn">
-              <img src="./IMG/loginicon.png" alt="User Icon">
-                <?php echo $row['firstname']; ?>
+              <img src="./IMG/man1.jpg" alt="User Icon">
+                <?php //echo $row['firstname']; ?>
 				<i class="fa fa-caret-down"></i>
                 </div>
 			  <div class="dropdown-content">
@@ -31,7 +31,8 @@
 				<a href="ResetPassword.php"><i class="fa fa-fw fa-unlock-alt"></i>Change Password</a>
 				<a href="../logout.php"><i class="fa fa-fw fa-sign-out-alt"></i>Log out</a>
 			  </div>
-			</div>
+			</div>-->
+      <?php include 'dropdown.php' ?>
     <!-- Sidebar -->
     <div class="sidebar">
         <div class="logo">
@@ -41,13 +42,14 @@
         <nav>
             <ul>
                 <li><a href="FirstPage.php" class="active"><i class="fas fa-tachometer-alt"></i>&nbsp; Dashboard</a></li>
-                <li><a href="MyStudent.php"><i class="fas fa-users"></i>&nbsp;My Students</a></li>
+                
                 <li><a href="MyClasses.php"><i class="fas fa-chalkboard-teacher"></i>&nbsp; My Classes</a></li>
                 <li><a href="Schedule.php"><i class="fas fa-calendar-alt"></i>&nbsp; Schedule</a></li>
                 <li><a href="StudyMeterials.php"><i class="fas fa-book"></i>&nbsp; Study Materials</a></li>
                 <li><a href="Attendance.php"><i class="fas fa-check-circle"></i>&nbsp; Attendance</a></li>
                 <li><a href="ExamResults.php"><i class="fas fa-poll"></i>&nbsp; Exam Results</a></li>
                 <li><a href="Messages.php"><i class="fas fa-envelope"></i>&nbsp;Messages</a></li>
+                <li><a href="Payment.php"><i class="fas fa-credit-card"></i>&nbsp;Payments</a></li>
                 <li><a href="Feedback.php"><i class="fas fa-comment"></i>&nbsp;Feedback</a></li>
             </ul>
         </nav>
@@ -65,17 +67,25 @@
           <div class="card">
             <div class="card-inner">
               <h3>TOTAL STUDENTS</h3>
+              <?php
+                $query = mysqli_query($link,"select * from student") or die(mysqli_error());
+                $count = mysqli_num_rows($query);
+              ?>
               <span class="material-icons-outlined">inventory_2</span>
             </div>
-            <h1>272</h1>
+            <h1><?php echo $count ?></h1>
           </div>
 
           <div class="card">
             <div class="card-inner">
               <h3>TOTAL CLASSES</h3>
+              <?php
+              $query1 = mysqli_query($link,"select * from teacher_class where teacher_id = '$session_id'") or die(mysqli_error());
+              $count1 = mysqli_num_rows($query1);
+              ?>
               <span class="material-icons-outlined">category</span>
             </div>
-            <h1>5</h1>
+            <h1><?php echo $count1 ?></h1>
           </div>
 
           <div class="card">
@@ -88,7 +98,7 @@
 
           <div class="card">
             <div class="card-inner">
-              <h3>STUDENT COURSE REMOVAL REQUESTS</h3>
+              <h3>STUDENT LEAVE REQUESTS</h3>
               <span class="material-icons-outlined">notification_important</span>
             </div>
             <h1>16</h1>

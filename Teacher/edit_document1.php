@@ -21,18 +21,7 @@
 	
 
 <body>
-			<div class="dropdown" style="float:right;">
-			  <div class="dropbtn">
-              <img src="./IMG/loginicon.png" alt="User Icon">
-                <?php echo $row['firstname']; ?>
-				<i class="fa fa-caret-down"></i>
-                </div>
-			  <div class="dropdown-content">
-				<a href="MyProfile.php"><i class="fa fa-fw fa-user"></i>Profile</a>
-				<a href="ResetPassword.php"><i class="fa fa-fw fa-unlock-alt"></i>Change Password</a>
-				<a href="../logout.php"><i class="fa fa-fw fa-sign-out-alt"></i>Log out</a>
-			  </div>
-			</div>
+<?php include 'dropdown.php'; ?>
     
             <?php
                 $query = mysqli_query($link,"select * from files where file_id = '$get_id'")or die(mysqli_error());

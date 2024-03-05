@@ -197,8 +197,8 @@ tbody tr a:hover {
   }
 
 .dropbtn img {
-    width: 30px;
-    height: 30px;
+    width: 45px;
+    height: 45px;
     border-radius: 50%;
     margin-right: 10px;
 }
@@ -258,7 +258,7 @@ select {
 
   form .user-details .input-box {
     margin-bottom: 10px;
-    width: calc(100% / 2 - 20px);
+    width: 100%;
   }
   
   form .user-details .input-box .details {
@@ -270,7 +270,7 @@ select {
 
   form .user-details .input-box #opt12,
   form .user-details .input-box #opt11 {
-        text-align: left;
+        text-align: center;
   }
   
   form .user-details .input-box input {
