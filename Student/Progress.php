@@ -78,19 +78,19 @@
     datasets: [
       {
         label: 'Term 1',
-        data: [80, 75, 85, 90, 70, 78],
+        data: [88,75,63,96,85,45]
         borderColor: 'rgb(255, 99, 132)',
         backgroundColor: 'rgba(255, 99, 132, 0.2)',
       },
       {
         label: 'Term 2',
-        data: [85, 79, 88, 92, 72, 80],
+        data: [40,55,80,95,85,63],
         borderColor: 'rgb(54, 162, 235)',
         backgroundColor: 'rgba(54, 162, 235, 0.2)',
       },
       {
         label: 'Term 3',
-        data: [88, 82, 90, 94, 75, 85],
+        data: [80,75,85,90,70,78],
         borderColor: 'rgb(75, 192, 192)',
         backgroundColor: 'rgba(75, 192, 192, 0.2)',
       }
@@ -187,19 +187,19 @@
     datasets: [
       {
         label: 'Term 1',
-        data: [80, 75, 85, 90, 70, 78],
+        data: [88,75,63,96,85,45],
         borderColor: 'rgb(255, 99, 132)',
         backgroundColor: 'rgba(255, 99, 132, 0.2)',
       },
       {
         label: 'Term 2',
-        data: [85, 79, 88, 92, 72, 80],
+        data: [40,55,80,95,85,63],
         borderColor: 'rgb(54, 162, 235)',
         backgroundColor: 'rgba(54, 162, 235, 0.2)',
       },
       {
         label: 'Term 3',
-        data: [88, 82, 90, 94, 75, 85],
+        data: [80,75,85,90,70,78],
         borderColor: 'rgb(75, 192, 192)',
         backgroundColor: 'rgba(75, 192, 192, 0.2)',
       }

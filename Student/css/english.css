@@ -161,7 +161,7 @@ button:hover{
     border-radius: 5px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     width: 250px;
-    height: 380px;
+    height: 470px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -195,13 +195,6 @@ button:hover{
 
 }
 
-a[href="./docs/Grade 11 Mathematics Teacher Guide.pdf"] {
-    color: #000000; 
-    text-decoration: none; 
-    font-weight: bold;
-    padding-left: 8%;
-}
-
 /*teacher 4to*/
 .panel img{
     float: left;
@@ -218,3 +211,16 @@ a[href="./docs/Grade 11 Mathematics Teacher Guide.pdf"] {
     height: 350px;
     padding-right: 5%;
 }
+
+.panelsD2 {
+    display: flex;
+    flex-wrap: wrap;
+    width: 60% 40%;
+    cursor: pointer;
+}
+
+/*buttons*/
+.button {
+    margin-right: 25px; /* Adjust the margin as needed */
+}
+

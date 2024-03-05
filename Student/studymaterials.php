@@ -54,38 +54,34 @@
 <div class="content">
     
     <h1>STUDY MATERIALS</h1>
-    <div class="panelsD2">
-            <div class="panelst1" onclick="window.location.href='sinhalamate.html';">
-            <img src="./img/science.png"> 
-                <p><b>Scinece</b></p>
+    <div class="panelsD">
+            <div class="panel7" onclick="window.location.href='sciencemate.html';">
+                <p><b>Science</b></p>
+                
             </div>
 
-            <div class="panelst2" onclick="window.location.href='buddhismmate.html';">
-            <img src="./img/maths.png"> 
+            <div class="panel8" onclick="window.location.href='mathsmate.html';">
                 <p><b>Mathematics</b></p>
             </div>
 
-            <div class="panelst3" onclick="window.location.href='historymate.html';">
-            <img src="./img/eng.png"> 
+            <div class="panel9" onclick="window.location.href='englishmate.html';">
                 <p><b>English</b></p>
             </div>
         </div>
 
         <div class="panelsD2">
-            <div class="panelst4" onclick="window.location.href='sinhalamate.html';">
-            <img src="./img/sinhala\Sinhala letter.png"> 
+            <div class="panel10" onclick="window.location.href='sinhalamate.html';">
                 <p><b>Sinhala</b></p>
             </div>
 
-            <div class="panelst5" onclick="window.location.href='buddhismmate.html';">
-            <img src="./img/The\ Eight\ Auspicious\ Symbols\ of\ Buddhism\ And\ Their\ Meanings.png"> 
+            <div class="panel11" onclick="window.location.href='buddhismmate.html';">
                 <p><b>Buddhism</b></p>
             </div>
 
-            <div class="panelst6" onclick="window.location.href='historymate.html';">
-            <img src="./img/his.png"> 
+            <div class="panel12" onclick="window.location.href='historymate.html';">
                 <p><b>History</b></p>
             </div>
+        </div>
         </div>
 
         

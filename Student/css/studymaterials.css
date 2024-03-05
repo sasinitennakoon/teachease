@@ -237,126 +237,119 @@ nav a {
     cursor: pointer;
 }
 
-.panelst1:hover,
-.panelst2:hover,
-.panelst3:hover,
-.panelst4:hover,
-.panelst5:hover,
-.panelst6:hover{
+.panel7:hover,
+.panel8:hover,
+.panel9:hover,
+.panel10:hover,
+.panel11:hover,
+.panel12:hover{
     transform: translateY(-5px);
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
-.panelst1 {
+.panel7 {
     flex: 1;
     background-color: #f0f0f0;
+    background-image: url('../img/science.png');
+    background-position: right;
+    background-size: 200px 160px;
+    background-repeat: no-repeat;
     padding: 20px;
     margin: 10px ;
     border-radius: 5px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 30%;
+    width: 60%;
     height: 150px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.panelst2 {
+.panel8 {
     flex: 1;
     background-color: #f0f0f0;
+    background-image: url('../img/maths.png');
+    background-position: right;
+    background-size: 210px 180px;
+    background-repeat: no-repeat;
     padding: 20px;
     margin: 10px ;
     border-radius: 5px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 30%;
+    width: 60%;
     height: 150px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.panelst3 {
+.panel9 {
     flex: 1;
     background-color: #f0f0f0;
+    background-image: url('../img/eng.png');
+    background-position: right;
+    background-size: 250px 180px;
+    background-repeat: no-repeat;
     padding: 20px;
     margin: 10px ;
     border-radius: 5px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 30%;
+    width: 60%;
     height: 150px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.panelst4 {
+.panel10 {
     flex: 1;
     background-color: #f0f0f0;
+    background-image: url('../img/Sinhala\ letter.png');
+    background-position: right;
+    background-size: 230px 180px;
+    background-repeat: no-repeat;
     padding: 20px;
     margin: 10px ;
     border-radius: 5px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 30%;
+    width: 60%;
     height: 150px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.panelst5 {
+.panel11 {
     flex: 1;
     background-color: #f0f0f0;
+    background-image: url('../img/The\ Eight\ Auspicious\ Symbols\ of\ Buddhism\ And\ Their\ Meanings.png');
+    background-position: right;
+    background-size: 200px 180px;
+    background-repeat: no-repeat;
     padding: 20px;
     margin: 10px ;
     border-radius: 5px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 30%;
+    width: 60%;
     height: 150px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.panelst6 {
+.panel12 {
     flex: 1;
     background-color: #f0f0f0;
+    background-image: url('../img/his.png');
+    background-position: right;
+    background-size: 200px 180px;
+    background-repeat: no-repeat;
     padding: 20px;
     margin: 10px ;
     border-radius: 5px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 30%;
+    width: 60%;
     height: 150px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-
-.panelst1 img{
-    float: right;
-    width: 300px;
-    height: 100px;
-    padding-left: 3%;
+.content h1 {
+    text-align: center;
 }
 
-.panelst2 img{
-    float: right;
-    width: 300px;
-    height: 100px;
-    padding-left: 3%;
+.content .panelsD p{
+    font-size:180%;
 }
 
-.panelst3 img{
-    float: right;
-    width: 300px;
-    height: 100px;
-    padding-left: 3%;
-}
-
-.panelst4 img{
-    float: right;
-    width: 300px;
-    height: 100px;
-    padding-left: 3%;
-}
-
-.panelst5 img{
-    float: right;
-    width: 300px;
-    height: 100px;
-    padding-left: 3%;
-}
-
-.panelst6 img{
-    float: right;
-    width: 300px;
-    height: 100px;
-    padding-left: 3%;
+.content .panelsD2 p{
+    font-size:180%;
 }
