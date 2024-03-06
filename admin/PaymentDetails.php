@@ -47,15 +47,6 @@
     <div class="content">
         <h1>Payment Details</h1>
 
-        <h3>Today Payments</h3>
-        <div class="panels">
-            <div class="panel">
-                <div class="but">
-                    <a href="Paymentall.php"><button class="button"><b>View All</b></button></a>
-                </div>
-            </div>
-        </div>
-
         <h3>All Payments</h3>
 
         <div class="panels">
@@ -79,10 +70,7 @@
 
                 </table>
                
-                <div class="but">
-                <a href="Paymentall.php"><button class="button">View All</button></a>
                 
-                </div>
             </div>
         </div>
     </div>
