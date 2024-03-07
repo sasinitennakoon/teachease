@@ -132,25 +132,25 @@ button:hover{
 
 
 
-.panelst {
+.panel-1 {
     display: flex;
     flex-wrap: wrap;
     width: 60% 40%;
 
 }
 
-.panelst_1 {
+.panel-1 {
     flex: 1;
     background-color: #f0f0f0;
-    background-image: url('../IMG/2892186.png');
-    background-repeat: no-repeat;
-    background-size: 200px 150px;
-    background-position: left;
     padding: 20px;
     margin: 10px ;
     border-radius: 5px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 60%;
+    width: 45%;
     height: 118px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.panel-1 h1{
+    text-align: center;
 }

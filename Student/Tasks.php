@@ -12,7 +12,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Student Dashboard</title>
-    <link rel="stylesheet" href="././css/studymaterials.css">
+    <link rel="stylesheet" href="././css/tasks.css">
     <link rel="stylesheet" href="././css/dashboard.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
@@ -41,7 +41,7 @@
                     <li><a href="studash.php"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
                     <li><a href="MyCourses.php"><i class="fas fa-book"></i> My Courses</a></li>
                     <li><a href="StudyMaterials.php"><i class="fas fa-book-open"></i> Study Materials</a></li>
-                    <li><a href="Tasks.php"class="active"><i class="fas fa-tasks"></i> Tasks</a></li>
+                    <li><a href="Tasks.php"class="active"><i class="far fa-sticky-note"></i> Flash Cards</a></li>
                     <li><a href="Progress.php"><i class="fas fa-chart-line"></i> Progress Report</a></li>
                     <li><a href="ExamR.php"><i class="fas fa-chalkboard"></i> Exam Results</a></li>
                     <li><a href="msg.php"><i class="fas fa-envelope"></i> Messages</a></li>
@@ -53,11 +53,15 @@
 
         <div class="content">
             
-            <div class="paanelst">
-                <div class="panelst_1">
-                    <h3>Assignments</h3>
-                </div>
-            </div>
+                    <h1>Flash Cards</h1>
+ 
+                    <div class="panel-1">
+                        <div class="panelflash1" >
+                        </div>
+
+                        <div class="panelflash2" >
+                        </div>
+                    </div>
         </div>
 </body>
 </html>
