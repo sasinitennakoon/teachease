@@ -53,15 +53,43 @@
 
         <div class="content">
             
-                    <h1>Flash Cards</h1>
- 
-                    <div class="panel-1">
-                        <div class="panelflash1" >
-                        </div>
+        <div class="panelsD2">
+                <div class="panel9" onclick="window.location.href='scienceflash.html';">
+                    <p style="font-size: 50px;"><b>Science</b></p>
+                </div>
 
-                        <div class="panelflash2" >
-                        </div>
-                    </div>
+                <div class="panel10" onclick="window.location.href='mathflash.html';">
+                    <p style="font-size: 50px;"><b>Mathematics</b></p>
+                </div>
+
+                
+            </div>    
+            
+
+            <div class="panelsD2">
+                <div class="panel9" onclick="window.location.href='engflash.html';">
+                    <p style="font-size: 50px;"><b>English</b></p>
+                </div>
+
+                <div class="panel10" onclick="window.location.href='sinflash.html';">
+                    <p style="font-size: 50px;"><b>Sinahala</b></p>
+                </div>
+
+                
+            </div>
+            <div class="panelsD2">
+                <div class="panel9" onclick="window.location.href='budhismflash.html';">
+                    <p  style="font-size: 50px;"><b>Buddhism</b></p>
+                </div>
+
+                <div class="panel10" onclick="window.location.href='hisflash.html';">
+                    <p style="font-size: 50px;"><b>History</b></p>
+                </div>
+
+                
+            </div>
+ 
+                    
         </div>
 </body>
 </html>
