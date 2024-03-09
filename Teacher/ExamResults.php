@@ -43,25 +43,84 @@
     <div class="content">
         <!-- Your page content goes here -->
         <h1>Exam Results</h1>
+        <?php $query = mysqli_query($link,"select * from exam_results
+			LEFT JOIN class ON class.class_id = exam_results.class_id
+			LEFT JOIN subject ON subject.subject_id = exam_results.subject_id
+			where teacher_id = '$session_id' ")or die(mysqli_error());
+			$count = mysqli_num_rows($query);
+										
+				if ($count > 0){?>
+                    <div class="panels">
+                        <div class="panel8">
+                        <form method='post'>
 
-        <div class="panels">
-            <div class="panel8">
-                <table border="0">
+                        <table border="0">
                     <thead>
                         <tr>
-                            <th>Subject</th>
-                            <th>Class</th>
+                            <th></th>
                             <th>Exam No</th>
-                            <th>Results</th>
+                            <th>Class</th>
+                            <th>Subject</th>
+                            <th>More Details</th>
                         </tr>
                     </thead>
-
-                </table>
+                    <tbody>
+        <?php
+				while($row = mysqli_fetch_array($query)){
+				$id = $row['exam_id'];
+				
+		?>
+            
+                        <tr>
+                            <td><input type="checkbox" name="selector[]" value="<?php echo $id; ?>"></td>
+                            <td><?php echo $row['exam_id']; ?></td>
+                            <td><?php echo $row['class_name']; ?></td>
+                            <td><?php echo $row['subject_title']; ?></td>
+                            <td><a href="ResultAnalysis.php" style="text-decoration:none;color:white;"><button type='button' class="button1">More</button></a></td>
+                        </tr>
+                    </tbody>
+				
+                </div>
             </div>
-        </div>
-        <div class="but">
-            <button class="button"><b>Add Details</b></button>
-            <button class="button"><b>Edit Details</b></button>
-        </div>
+    </div>
+					<?php //include("delete_class_modal.php"); ?>
+						<?php } }else{ ?>
+                            <h3>No Results Currently Added</h3>
+					<?php  } ?>
+
+                   
+                        <div class="but">
+                
+                            <button class="btn btn-info">
+                            <a href="add_result.php" style='text-decoration:none;color:white;'>
+                                <i class="fa fa-fw fa-plus"></i>&nbsp;Add Results</a>
+                            </button>
+                            <button type="submit" name="delete" class="btn btn-info">
+                                <i class="fa fa-fw fa-trash"></i> Delete
+                            </button>
+                
+                        </div>
+                    </form>
 </body>
 </html>
+
+<?php
+                 include '../database/db_con.php';
+
+                 if (isset($_POST['delete'])){
+                         $id=$_POST['selector'];
+                         $N = count($id);
+                         
+                     for($i=0; $i < $N; $i++)
+                     {
+                         $result = mysqli_query($link,"DELETE from exam_results
+                         where exam_id='$id[$i]'");
+                     }
+             ?>
+                 <script>
+                     window.location = "ExamResults.php";
+                 </script>
+             
+             <?php
+                 }
+             ?>
