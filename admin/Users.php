@@ -51,9 +51,7 @@
                 </div>
             </div>
         </div>
-        <div class="but">
-            <a href="Usernew.php"><button><b>Create New Users</b></button></a>
-        </div>
+        
         <h2>Recently Added Users</h2>
 
         <div class="panels1">

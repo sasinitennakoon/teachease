@@ -19,12 +19,11 @@
 </head>
 <body>
 <?php include 'dropdown1.php'; ?>
-    <button><a href="Users.php">Go to Dashboard</a></button>
+<a href="Users.php"><button>Go to Dashboard</button></a>
     <div class="content">
         <!-- Your page content goes here -->
         <h1>Current User List</h1>
-        
-        
+
                     <?php
                         $query = mysqli_query($link,"select * from userlist ") or die(mysqli_error($link));
                         $count = mysqli_fetch_array($query);
@@ -41,12 +40,14 @@
                         <form method="post">
                             <table>
                                     <thead>
-                                        <th></th>
-                                        <th>First Name</th>
-                                        <th>Last Name</th>
-                                        <th>Role</th>
-                                        <th>Status</th>
-                                        <th></th>
+                                        <tr>
+                                           
+                                            <th>First Name</th>
+                                            <th>Last Name</th>
+                                            <th>Role</th>
+                                            <th>Status</th>
+                                            <th>Email</th>
+                                        </tr>
                                     </thead>
                     <?php
                         $query = mysqli_query($link,'select * FROM userlist') or die(mysqli_error($link));
@@ -58,27 +59,12 @@
                     
                     <tbody>
                         <tr>
-                            <td><input type="checkbox" name="selector[]" value="<?php echo $id; ?>"></td>
+                            
                             <td><?php echo $row['firstname']; ?></td>
                             <td><?php echo $row['lastname']; ?></td>
                             <td><?php echo $row['role']; ?></td>
                             <td><?php echo $row['status']; ?></td>
-                            <?php
-                                if($row['status'] == 'registered')
-                                {?>
-                                    
-                                    
-                                <td><button type='submit' name="remove" class="button1">Remove</button></a></td>
-                                <?php
-
-                                }
-                                else if($row['status'] == 'unregistered')
-                                {?>
-                                
-                                <td><button type='submit' name="approve" class="button1">Approved</button></a></td>
-                                <?php
-                                }
-                            ?>
+                            <td><?php echo $row['username']; ?></td>
                             
                             <!--<td width="40">
                                 <a  data-placement="bottom" title="Download" id="<?php// echo $id; ?>download" href="<?php //echo $row['floc']; ?>"><i class="fa fa-fw fa-download"></i></a>
@@ -104,39 +90,6 @@
 </body>
 </html>
 
-<?php
 
-
-    if (isset($_POST['remove'])) {
-        $id = $_POST['selector'];
-        $N = count($id);
-            
-        for($i=0; $i < $N; $i++)
-        {
-            $result = mysqli_query($link,"UPDATE `userlist` SET status = 'unregistered' WHERE userlistid ='$id[$i]'");
-        }
-
-        ?>
-        <script>
-        window.location = 'Userlist.pshp';
-        </script>
-    <?php
-    }
-    
-    else if (isset($_POST['approve'])) {
-        $id = $_POST['selector'];
-        $N = count($id);
-            
-        for($i=0; $i < $N; $i++)
-        {
-            $result = mysqli_query($link,"UPDATE `userlist` SET status = 'registered' WHERE userlistid ='$id[$i]'");
-        }
-    ?>
-        <script>
-        window.location = 'Userlist.php';
-    </script>
-    <?php
-    }
-    ?>
        
     
