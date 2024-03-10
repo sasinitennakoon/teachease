@@ -18,7 +18,9 @@
 
     <!-- Latest FullCalendar CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.2/main.css" integrity="sha384-LiWsxj4vMfsO8uyNnTVqSfeLqqkKD2pwWqFnSa6UqVqwKn9FlnNy5wKb3bYxs84p" crossorigin="anonymous">
-    
+    <!--<script>
+        window.alert('When you will try to make changes for in table use checkbox("✅") Symbol');
+    </script>-->
 </head>
 <body>
 <?php include 'dropdown1.php'; ?>
@@ -53,26 +55,32 @@
         
         <!-- Calendar Panel -->
         <div class="panelsD">
-        
+        <a href="studentdashboard.php" style="text-decoration:none;">
             <div class="panel2">
-            <a href="studentdashboard.php" style="text-decoration:none;">
+            
                 <h2>Students Dashboard</h2>
                 <!--<button>Go to Student Dashboard</button>-->
-                </a>  
+                 
             </div> 
+            </a> 
                
-
+            <a href="parentdashboard.php" style="text-decoration:none;">
             <div class="panel2">
+            
                 <h2>Parents Dashboard</h2>
-                <a href="parentdashboard.php"><!--<button>Go to Parents Dashboard</button>--></a>
+                <!--<button>Go to Parents Dashboard</button>-->
             </div>
+            </a>
         </div>
 
         <div class="panelsD1">
+        <a href="teacherdashboard.php" style="text-decoration:none;">
             <div class="panel21">
+            
                 <h2>Teacher Dashboard</h2>
-                <a href="teacherdashboard.php"><!--<button>Go to Teacher Dashboard</button>--></a>
+                <!--<button>Go to Teacher Dashboard</button>-->
             </div>
+            </a>
         </div>
     </div>
 

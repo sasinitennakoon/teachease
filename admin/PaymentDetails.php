@@ -13,6 +13,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard</title>
     <link rel="stylesheet" href="././css/FirstPage.css">
+   
     <link integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <!-- Latest FullCalendar CSS -->
@@ -49,27 +50,85 @@
 
         <h3>All Payments</h3>
 
-        <div class="panels">
-            <div class="panel">
+        <div class="panels1">
+            <div class="panel10">
+            <form>
+        <table>
+            <thead>
+                <tr>
+                    <th>Amount</th>
+                    <th>Status</th>
+                    <th>Payment ID</th>
+                    <th>Customer Email</th>
+                    <th>Date</th>
+                    <th></th>
+                </tr>
+            </thead>
             
-                <table border="0">
-                    <thead>
-                        <tr>
-                            <th>Subject</th>
-                            <th>Amount</th>
-                            <th></th>  
-                        </tr>
-                    </thead>
-                    <thead>
-                        <tr>
-                            <td>Maths</td>
-                            <td>1000</td>
-                            <td><a href="public/checkout.html"><button class="button">Make Payment</button></a></td>
-                        </tr>
-                    </thead>
+            <?php
+            require_once('vendor/autoload.php'); 
 
-                </table>
+            \Stripe\Stripe::setApiKey('sk_test_51OdQVALgktCwXblBDMMsiT1ZFPOEu9VP5ShYhrwZGf90y0ZpBLCP1sF8NaiBIseQeuWltQhqHMFjwH2WhyKi1vJP004P6JJgkf'); 
+            ?>
+            <tbody>
+
+            <?php
+
+            try {
+                $payments = \Stripe\Charge::all(['limit' => 20]); 
+                $payment_intents = \Stripe\PaymentIntent::all();
                
+                foreach ($payments->data as $payment) { 
+                    $customer_name = "Unknown";
+                    $customer_email = "Unknown";
+
+                    // Check if customer details are available
+                    if ($payment->customer_details && $payment->customer_details->email) {
+                        $customer_name = $payment->customer_details->name;
+                        $customer_email = $payment->customer_details->email;
+                    }
+
+                    if ($payment->payment_intent) {
+                        $intent = \Stripe\PaymentIntent::retrieve($payment->payment_intent);
+                        if ($intent) {
+                            $payment_intent = $intent->id;
+                        }
+                    }
+
+                    $timestamp = $payment->created;
+                    $date = date("F j, Y, g:i a", $timestamp);
+                    ?>
+                 <tr>   
+                  <td><?php echo  $payment->amount . " " . strtoupper($payment->currency) ;?></td>
+                  <td><?php 
+                   if($payment->status == 'succeeded')
+                   {
+                        echo "<b style='color:green;'>".$payment->status."</b>";
+                   }
+                   else if($payment->status == 'failed')
+                   {
+                        echo "<b style='color:red;'>".$payment->status."</b>";
+                   }
+                   ?></td>
+
+                  <td><?php echo  $payment->id ; ?></td>
+                 
+                  <td><?php echo  $customer_email ;?></td>
+                  
+                  <td><?php echo  $date ;?></td>
+
+                  <td><a href=""><button>More Details</button></a></td>
+                </tr>
+                <?php
+                }
+            } catch (\Stripe\Exception\ApiErrorException $e) {
+                echo "Error: " . $e->getMessage();
+            }
+            ?>
+           
+        </table>
+
+        </form>   
                 
             </div>
         </div>
@@ -78,3 +137,6 @@
     
 </body>
 </html>
+
+
+

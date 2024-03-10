@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.2/main.css" integrity="sha384-LiWsxj4vMfsO8uyNnTVqSfeLqqkKD2pwWqFnSa6UqVqwKn9FlnNy5wKb3bYxs84p" crossorigin="anonymous">
 </head>
 <body>
-    <?php include 'dropdown1.php'; ?>
+<?php include 'dropdown1.php'; ?>
     <!-- Sidebar -->
     <div class="sidebar">
         <div class="logo">
