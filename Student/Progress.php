@@ -78,7 +78,7 @@
     datasets: [
       {
         label: 'Term 1',
-        data: [88,75,63,96,85,45]
+        data: [88,75,63,96,85,45],
         borderColor: 'rgb(255, 99, 132)',
         backgroundColor: 'rgba(255, 99, 132, 0.2)',
       },
@@ -116,3 +116,7 @@
   });
 });
 </script>
+
+</body>
+
+</html>
