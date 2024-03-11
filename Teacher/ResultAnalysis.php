@@ -118,7 +118,7 @@
 		<div class="but">
 			
 			<button class="btn btn-info">
-			<a href="add_resultsanalysis.php" style='text-decoration:none;color:white;'>
+			<a href="add_resultanalysis.php" style='text-decoration:none;color:white;'>
 				<i class="fa fa-fw fa-plus"></i>&nbsp;Add Document</a>
 			</button>
 			<button type="submit" name="delete" class="btn btn-info">
