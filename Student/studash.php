@@ -20,7 +20,7 @@
 <body>
 <div class="dropdown" style="float:right;">
 <div class="dropbtn">
-              <img src="./img/loginicon.png" alt="User Icon">
+              <img src="./img/icons8-user-50.png" alt="User Icon">
                 <?php echo $row['firstname']; ?>
 				<i class="fa fa-caret-down"></i>
                 </div>

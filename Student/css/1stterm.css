@@ -45,7 +45,7 @@ nav a {
     padding-left: 35%;
 }
 
-dropdown {
+.dropdown {
     float: right;
     overflow: hidden;
     z-index: 100;
@@ -132,7 +132,7 @@ button:hover{
     border-radius: 5px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     width: 1220px;
-    height: 700px;
+    height: 750px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 

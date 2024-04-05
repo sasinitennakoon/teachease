@@ -45,11 +45,7 @@ nav a {
 }
 
 
-.content .panelsD2 p{
-    font-size:large;
-    padding-left: 8%;
-    line-height: 1.8;
-}
+
 
 
 .dropdown {
@@ -136,18 +132,18 @@ button:hover{
     background-color: #f3f3f7;
     margin-left: 10px ;
     border-radius: 5px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     width: 1150px;
     height: 580px;
     padding-left: 5%;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
+
+
 .chart-container{
     width: 600px;
     height: 400px;
     padding-top: 80px;
 }
-/* styles.css */
+
 table {
     width: 40%;
     border-collapse: collapse;

@@ -20,7 +20,7 @@
 <body>
   <div class="dropdown" style="float:right;">
     <div class="dropbtn">
-                <img src="./img/loginicon.png" alt="User Icon">
+                <img src="./img/icons8-user-50.png" alt="User Icon">
                     <?php echo $row['firstname']; ?>
             <i class="fa fa-caret-down"></i>
                     </div>
@@ -41,7 +41,7 @@
                     <li><a href="studash.php"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
                     <li><a href="MyCourses.php"><i class="fas fa-book"></i> My Courses</a></li>
                     <li><a href="StudyMaterials.php"><i class="fas fa-book-open"></i> Study Materials</a></li>
-                    <li><a href="Tasks.php"><<i class="far fa-sticky-note"></i> Flash Cards</a></li>
+                    <li><a href="Tasks.php"><i class="far fa-sticky-note"></i> Flash Cards</a></li>
                     <li><a href="Progress.php"><i class="fas fa-chart-line"></i> Progress Report</a></li>
                     <li><a href="ExamR.php" class="active"><i class="fas fa-chalkboard"></i> Exam Results</a></li>
                     <li><a href="msg.php"><i class="fas fa-envelope"></i> Messages</a></li>
