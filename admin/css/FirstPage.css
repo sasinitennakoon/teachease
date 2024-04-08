@@ -1,6 +1,7 @@
 body {
     margin: 0;
     font-family: Arial, sans-serif;
+    background-color: #c2d9ff;
 }
 
 .sidebar nav ul li.active a {
@@ -126,14 +127,72 @@ nav {
 .panelsD {
     display: flex;
     flex-wrap: wrap;
-    
-    justify-content: space-evenly;
+    width: 60% 40%;
+    cursor: pointer;
 }
 .panelsD1 {
     display: inline-grid;
     flex-wrap: wrap;
     width: 100%;
     justify-content: center;
+}
+
+.panel7:hover,
+.panel8:hover,
+.panel9:hover,
+.panel10:hover,
+.panel11:hover,
+.panel12:hover{
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.panel7 {
+    flex: 1;
+    background-color: #ffffff;
+    background-image: url('../../signup/studentimage.jpeg');
+    background-position: right;
+    background-size: 200px 160px;
+    background-repeat: no-repeat;
+    padding: 20px;
+    margin: 10px ;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 60%;
+    height: 150px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.panel8 {
+    flex: 1;
+    background-color: #ffffff;
+    background-image: url('../../signup/50632.png');
+    background-position: right;
+    background-size: 210px 180px;
+    background-repeat: no-repeat;
+    padding: 20px;
+    margin: 10px ;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 60%;
+    height: 150px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.panel9 {
+    flex: 1;
+    background-color: #ffffff;
+    background-image: url('../../signup/teacher.jpeg');
+    background-position: right;
+    background-size: 250px 180px;
+    background-repeat: no-repeat;
+    padding: 20px;
+    margin: 10px ;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 60%;
+    height: 150px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .panel {
@@ -613,7 +672,7 @@ form button a {
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     margin: 10px;
-    width: 1300px;
+    width: 1000px;
 }
 
 .panel10 h2 {
