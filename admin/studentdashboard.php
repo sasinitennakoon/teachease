@@ -79,7 +79,7 @@
                                 else if($row['status'] == 'unregistered')
                                 {?>
                                 
-                                <td><button type='submit' name="approve" class="button" style="background-color:#055305;">Approved</button></a></td>
+                                <td><button type='submit' name="approve" class="button" style="background-color:#055305;">Approve</button></a></td>
                                 <?php
                                 }
                             ?>

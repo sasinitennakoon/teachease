@@ -48,7 +48,7 @@
     <div class="content">
         <h1>Payment Details</h1>
 
-        <h3>All Payments</h3>
+        
 
         <div class="panels1">
             <div class="panel10">
