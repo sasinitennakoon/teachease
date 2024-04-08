@@ -78,7 +78,7 @@
                                 else if($row['status'] == 'unregistered')
                                 {?>
                                 
-                                <td><button type='submit' name="approve" class="button" style="background-color:#055305;">Approved</button></a></td>
+                                <td><button type='submit' name="approve" class="button" style="background-color:#055305;">Approve</button></a></td>
                                 <?php
                                 }
                             ?>
@@ -109,7 +109,7 @@
         for($i=0; $i < $N; $i++)
         {
             $result = mysqli_query($link,"UPDATE `userlist` SET status = 'unregistered' WHERE userlistid ='$id[$i]'");
-            $result1 = mysqli_query($link,"UPDATE `parent` SET status = 'unregistered' WHERE _id = '$id[$i]' ");
+            $result1 = mysqli_query($link,"UPDATE `parent` SET status = 'unregistered' WHERE parent_id = '$id[$i]' ");
         }
 
         ?>
