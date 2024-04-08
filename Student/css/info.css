@@ -1,0 +1,17 @@
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background-color: #c2d9ff;
+}
+
+.content {
+  
+    padding: 15px;
+    position: relative;
+
+}
+
+.content h1{
+    text-align: center;
+}
+

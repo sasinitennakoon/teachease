@@ -302,7 +302,7 @@ nav a {
 
 .dropdown-content a {
     float: none;
-    color: black;
+    color: rgb(0, 0, 0);
     padding: 12px 16px;
     text-decoration: none;
     display: block;
@@ -319,8 +319,8 @@ nav a {
 }
 
 .dropbtn img {
-    width: 30px;
-    height: 30px;
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
     margin-right: 10px;
 }

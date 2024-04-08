@@ -22,6 +22,7 @@
 
 <body>
 <?php include 'dropdown2.php'; ?>
+
     <!-- Sidebar -->
     <div class="sidebar">
         <div class="logo">
