@@ -47,8 +47,10 @@
         <div class="panels">
             <div class="panel">
                 <table>
+                    <thead>
                     <th>Course Name</th>
                     <th>Completed Student</th>
+                    </thead>
                 </table>
                 <div class="but">
                     <button class="button"><b>Generate<br>Certificate</b></button>

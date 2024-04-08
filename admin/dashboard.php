@@ -50,39 +50,39 @@
     <!-- Content -->
     <div class="content">
         <!-- Your page content goes here -->
-        <h1>Welcome to Your Dashboard</h1>
+        <h1>Welcome to the Dashboard</h1>
 
         
         <!-- Calendar Panel -->
         <div class="panelsD">
-        <a href="studentdashboard.php" style="text-decoration:none;">
-            <div class="panel2">
+        
+            <div class="panel7" onclick="window.location.href='studentdashboard.php';">
             
                 <h2>Students Dashboard</h2>
                 <!--<button>Go to Student Dashboard</button>-->
                  
             </div> 
-            </a> 
+             
                
-            <a href="parentdashboard.php" style="text-decoration:none;">
-            <div class="panel2">
+           
+            <div class="panel8" onclick="window.location.href='parentdashboard.php';">
             
                 <h2>Parents Dashboard</h2>
                 <!--<button>Go to Parents Dashboard</button>-->
             </div>
-            </a>
-        </div>
-
-        <div class="panelsD1">
-        <a href="teacherdashboard.php" style="text-decoration:none;">
-            <div class="panel21">
+            
+            
+            <div class="panel9" onclick="window.location.href='teacherdashboard.php';">
             
                 <h2>Teacher Dashboard</h2>
                 <!--<button>Go to Teacher Dashboard</button>-->
+           
             </div>
-            </a>
+            
         </div>
-    </div>
+
+        
+       
 
     <!-- Your custom JavaScript for the chart -->
     
