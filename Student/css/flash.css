@@ -97,10 +97,16 @@ nav a {
     margin-left: 20px;
     margin-top: 10px;
     margin-bottom: 10px;
-    align-items: center; /* Provide some spacing between the image and the content */
+    position: relative;
+    float: left;
+    
 }
 
-
+.card3 p{
+    font-size: larger;
+    float:middle;
+    margin-top: 160px;
+}
 
 
 
