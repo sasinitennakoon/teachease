@@ -47,7 +47,7 @@
                     <p style="font-size: 50px;"><b>Science</b></p>
                 </div>
 
-                <div class="panel10" onclick="window.location.href='mathflash.html';">
+                <div class="panel9" onclick="window.location.href='mathematicsflash.html';">
                     <p style="font-size: 50px;"><b>Mathematics</b></p>
                 </div>
 
@@ -56,7 +56,7 @@
             
 
             <div class="panelsD2">
-                <div class="panel9" onclick="window.location.href='engflash.html';">
+                <div class="panel9" onclick="window.location.href='englishflash.html';">
                     <p style="font-size: 50px;"><b>English</b></p>
                 </div>
 
@@ -67,7 +67,7 @@
                 
             </div>
             <div class="panelsD2">
-                <div class="panel9" onclick="window.location.href='budhismflash.html';">
+                <div class="panel9" onclick="window.location.href='buddhismflash.html';">
                     <p  style="font-size: 50px;"><b>Buddhism</b></p>
                 </div>
 
