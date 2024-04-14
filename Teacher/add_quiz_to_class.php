@@ -62,7 +62,7 @@
 
                 	<!-- Populate this section with class and subject data --> 
             <?php $query = mysqli_query($link,"select * from teacher_class
-					LEFT JOIN class ON class.class_id = teacher_class.class_id
+					LEFT JOIN class ON class.grade_id = teacher_class.grade_id
 					LEFT JOIN subject ON subject.subject_id = teacher_class.subject_id
 					where teacher_id = '$session_id'")or die(mysqli_error());
 					$count = mysqli_num_rows($query);

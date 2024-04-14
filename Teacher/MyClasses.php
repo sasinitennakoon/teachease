@@ -45,121 +45,9 @@
     </div>
     <div class="content">
         <h1>My Classes</h1>
-        <!--
-            <script>
-                // Function to create meeting ID
-                function createMeeting() {
-                    let meetingId =  'xxxxyxxx'.replace(/[xy]/g, function(c) {
-                        var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
-                        return v.toString(16);
-                    });
-
-                    let meetingLink = "https://" + window.location.host + "/Group_Project/Teacher/meeting.html?meetingId=" + meetingId;
-                    localStorage.setItem('meetingLink', "https://" + window.location.host + "/Group_Project/Teacher/meeting.html?meetingId=" + meetingId);
-                    console.log("http://"+ window.location.host + "/Group_Project/Teacher/?meetingId="+ meetingId)
-                    document.getElementById("copyInput").value = "https://"+ window.location.host + "/Group_Project/Teacher/meeting.html?meetingId="+ meetingId;
-                   // document.getElementById("meetingLinkText").innerHTML = '<a href="' + meetingLink + '" target="_blank">' + meetingLink + '</a>';
-                    document.getElementById("meetingLinkButton").innerHTML = '<button class="button"><a href="' + meetingLink + '" target="_blank" style="text-decoration:none;color:white;">Join Meeting</a></button>';
-                }
-
-                // Function to copy the link
-                function copyFunction() {
-                /* Get the text field */
-                var copyText = document.getElementById("copyInput");
-
-                /* Select the text field */
-                copyText.select();
-                copyText.setSelectionRange(0, 99999); /* For mobile devices */
-
-                /* Copy the text inside the text field */
-                navigator.clipboard.writeText(copyText.value);
-                }
-
-                // When loading the page
-                document.addEventListener("DOMContentLoaded", function () {
-                    var storedMeetingLink = localStorage.getItem('meetingLink');
-                    if (storedMeetingLink) {
-                        document.getElementById("copyInput").value = storedMeetingLink;
-                        document.getElementById("meetingLinkButton").innerHTML = '<button class="button"><a href="' + storedMeetingLink + '" target="_blank" style="text-decoration:none;color:white;">Join Meeting</a></button>';
-                    }
-                });
-
-            </script>-->
-            <!--<div>
-               <button onclick="createMeeting()" class="button">Create Meeting</button>
-                <br/><br/><br/>
-                <div id="meetingLinkButton"></div>-->
-                <!--<div id="meetingLinkText"></div> -->
-                <!--<br/><br/>
-                <input type="text" id="copyInput">
-                <button onclick="copyFunction()" class="button">Copy Link</button>
-            </div>-->
-            
-                <!--
-                <table border="0">
-                    <thead>
-                        <tr>
-                            
-                            <th>Class Name</th>
-                            <th>Subject</th>
-                            <th>Number of Students</th>
-                            <th>More Details</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                           
-                            <td>SC01</td>
-                            <td>Science</td>
-                            <td>30</td>
-                            <td><a href="MyClasses1.php" style="text-decoration:none;color:white;"><button class="button1">More</button></a></td>
-                        </tr>
-                        <tr>
-                        
-                            <td>EN01</td>
-                            <td>English</td>
-                            <td>20</td>
-                            <td><a href="MyClasses1.php" style="text-decoration:none;color:white;"><button class="button1">More</button></a></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-
-        <div class="but">
-            <button class="button" onclick="openAddDetailsForm()"><b>Add Details</b></button>
-            <button class="button"><b>Edit Details</b></button>
-        </div>
-
-        <!-- Add Details Form -->
-       <!-- <div id="addDetailsForm" style="display: none;">
-            <!-- Your form content goes here 
-            <form>
-                <!-- Add your form fields here 
-                <label for="indexNo">Index No:</label>
-                <input type="text" id="indexNo" name="indexNo">
-                
-                <!-- Add more fields as needed 
-
-                <button type="submit">Submit</button>
-            </form>
-        </div>-->
-           
-
-    <script>/*
-        function openAddDetailsForm() {
-            var addDetailsForm = document.getElementById('addDetailsForm');
-            addDetailsForm.style.display = 'block';
-        }
-    
-        // Optional: Close the form when the page is loaded
-        /*document.addEventListener('DOMContentLoaded', function () {
-            var addDetailsForm = document.getElementById('addDetailsForm');
-            addDetailsForm.style.display = 'none';
-        });
     </script>
         <?php $query = mysqli_query($link,"select * from teacher_class
-			LEFT JOIN class ON class.class_id = teacher_class.class_id
+			LEFT JOIN class ON class.grade_id = teacher_class.grade_id
 			LEFT JOIN subject ON subject.subject_id = teacher_class.subject_id
 			where teacher_id = '$session_id' ")or die(mysqli_error());
 			$count = mysqli_num_rows($query);
@@ -174,6 +62,7 @@
                         <tr>
                             <th></th>
                             <th>Class Name</th>
+                            <th>Grade</th>
                             <th>Subject</th>
                             <th>Number of Students</th>
                             <th>More Details</th>
@@ -189,6 +78,7 @@
                         <tr>
                             <td><input type="checkbox" name="selector[]" value="<?php echo $id; ?>"></td>
                             <td><?php echo $row['class_name']; ?></td>
+                            <td><?php echo $row['grade_name']; ?></td>
                             <td><?php echo $row['subject_title']; ?></td>
                             <td><?php echo $row['noofparticipant']; ?></td>
                             <td><a href="MyClasses1.php" style="text-decoration:none;color:white;"><button type='button' class="button1">More</button></a></td>

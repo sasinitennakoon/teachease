@@ -44,9 +44,9 @@
         <!-- Your page content goes here -->
         <h1>Exam Results</h1>
         <?php $query = mysqli_query($link,"select * from exam_results
-			LEFT JOIN class ON class.class_id = exam_results.class_id
+			LEFT JOIN teacher_class ON teacher_class.teacher_class_id = exam_results.class_id
 			LEFT JOIN subject ON subject.subject_id = exam_results.subject_id
-			where teacher_id = '$session_id' ")or die(mysqli_error());
+			where exam_results.teacher_id = '$session_id' ")or die(mysqli_error($link));
 			$count = mysqli_num_rows($query);
 										
 				if ($count > 0){?>
