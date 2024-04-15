@@ -1,0 +1,223 @@
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background-color: #c2d9ff;
+}
+
+.logo img {
+    width: 80%;
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 20px;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+nav a {
+    text-decoration: none;
+    color: white;
+    display: block;
+    padding: 10px;
+    text-align: left;
+    margin-bottom: 10px;
+}
+
+.content {
+    margin-left: 50px;
+    padding: 15px;
+    position: relative;
+
+}
+
+.logo {
+    border-bottom: 1px solid #fff;
+    padding-bottom: 20px;
+    padding: 10px;
+    border: 1px solid rgb(28, 28, 111);
+    border-radius: 10px;
+}
+.container {
+    text-align: center;
+    padding: 50px 0;
+}
+h1 {
+    color: navy;
+}
+.top-left-button {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+}
+.panel {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    margin: 200px auto;
+}
+.create-flashcards-button {
+    background-color: dodgerblue;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 18px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+.create-flashcards-button:hover {
+    background-color: deepskyblue;
+}
+/* Popup modal styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+.modal-content {
+    background-color: white;
+    margin: 20% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 600px;
+    border-radius: 10px;
+}
+.modal-buttons {
+    margin-top: 20px;
+    text-align: center;
+}
+.modal-buttons button {
+    padding: 10px 20px;
+    margin: 0 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+th {
+    background-color: dodgerblue;
+    color: white;
+}
+td input,
+td textarea {
+    width: 100%;
+    border: none;
+    padding: 0;
+    margin: 0;
+}
+.flashcard-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+}
+.flashcard {
+    width: calc(25% - 20px); /* 25% width for 4 cards in a row */
+    height: 200px;
+    background-color: #ffffff;
+    border: 1px solid #000000;
+    border-radius: 10px;
+    perspective: 1000px;
+    position: relative;
+}
+.front, .back {
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    backface-visibility: hidden;
+    transition: transform 0.5s;
+}
+.back {
+    transform: rotateY(180deg);
+    visibility: hidden;
+}
+.flashcard.flipped .front {
+    transform: rotateY(-180deg);
+}
+.flashcard.flipped .back {
+    transform: rotateY(0deg);
+    visibility: visible;
+}
+.flashcard p {
+    font-family: Arial, sans-serif;
+    font-size: 20px;
+    text-align: center;
+}
+.hidden {
+    display: none;
+}
+.plus-mark {
+    width: calc(25% - 20px); /* Same width as flashcard */
+    height: 200px;
+    background-color: #ffffff;
+    border: 1px solid #000000;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 48px;
+    cursor: pointer;
+}
+.share-button {
+    background-color: green;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 18px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 20px;
+}
+.share-button:hover {
+    background-color: darkgreen;
+}
+
+
+
+button{
+    width: 200px;
+    padding: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background-color: rgb(43, 43, 151);
+    color: aliceblue;
+    border-radius: 25px;
+}
+
+
+button:hover{
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.but{
+    padding: 20px;
+}
+
+
+

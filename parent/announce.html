@@ -12,7 +12,7 @@
 <body>
   <div class="dropdown" style="float:right;">
     <div class="dropbtn">
-                <img src="./img/loginicon.png" alt="User Icon">
+                <img src="./img/download (3).png"" alt="User Icon">
                     <?php echo $row['firstname']; ?>
             <i class="fa fa-caret-down"></i>
                     </div>
@@ -44,19 +44,89 @@
 
         <div class="content">
             <h1>Announcements</h1>
-            <div class="panel">
-                <h2>New Announcements</h2>
-                <hr>
-                <p>Date: 2024/01/25</br>
-                Time: 11.02 am</br>
-                subject: About Term Test Marks</br>
-                Dear Sir/Madam,</br>
-                Marks of 3rd term test has been published in the progress section. Please refer it and if you have any trouble please be 
-                kind to contact your teacher via messenger.</br>
-                </br>
-                Thank you,</br>
+            <div class="panel1">
+                <div class="filter">
+                    <label for="announcement-count">Show:</label>
+                    <select id="announcement-count" onchange="filterAnnouncements()">
+                        <option value="3">3 Announcements</option>
+                        <option value="5">5 Announcements</option>
+                        <option value="10">10 Announcements</option>
+                    </select>
+                </div>
+                <table id="announcement-table">
+                    <thead>
+                        <tr>
+                            <th>Announcement No</th>
+                            <th>Announcement</th>
+                            <th>Published Date</th>
+                            <th>Published Person</th>
+                            <th>Mark as Read</th>
+                        </tr>
+                    </thead>
+                    <tbody id="announcement-list">
+                        <!-- Announcement items will be added dynamically here -->
+                    </tbody>
+                </table>
+                
 
             </div>
-            <button id="previous">Old Announcements</button>
+            
 
         </div>
+
+
+        <script>
+            // Sample announcement data
+            const announcements = [
+                { id: 1, text: "Result sheets are now on LMS.", date: "2022-04-01", publishedBy: "Admin" },
+                { id: 2, text: "Children's results will releasing soon.", date: "2022-04-01", publishedBy: "Teacher" },
+                { id: 3, text: "Your payement is received. Thank You.", date: "2022-03-25", publishedBy: "Admin" },
+                { id: 4, text: "YYou have to make the payment for histpory class", date: "2022-03-17", publishedBy: "Admin" },
+                { id: 5, text: "We send wormly wishes for new  month.", date: "2022-03-01", publishedBy: "Admin" },
+            ];
+        
+            // Function to filter announcements based on selection
+            function filterAnnouncements() {
+                const select = document.getElementById("announcement-count");
+                const count = parseInt(select.value);
+        
+                // Clear previous announcements
+                const tableBody = document.getElementById("announcement-list");
+                tableBody.innerHTML = '';
+        
+                // Add new announcements
+                for (let i = 0; i < count && i < announcements.length; i++) {
+                    const tr = document.createElement('tr');
+        
+                    const tdNo = document.createElement('td');
+                    tdNo.textContent = announcements[i].id;
+                    tr.appendChild(tdNo);
+        
+                    const tdText = document.createElement('td');
+                    tdText.textContent = announcements[i].text;
+                    tr.appendChild(tdText);
+        
+                    const tdDate = document.createElement('td');
+                    tdDate.textContent = announcements[i].date;
+                    tr.appendChild(tdDate);
+        
+                    const tdPublishedBy = document.createElement('td');
+                    tdPublishedBy.textContent = announcements[i].publishedBy;
+                    tr.appendChild(tdPublishedBy);
+        
+                    const tdMarkAsRead = document.createElement('td');
+                    const checkbox = document.createElement('input');
+                    checkbox.type = 'checkbox';
+                    tdMarkAsRead.appendChild(checkbox);
+                    tr.appendChild(tdMarkAsRead);
+        
+                    tableBody.appendChild(tr);
+                }
+            }
+        
+            // Initial call to populate announcements
+            filterAnnouncements();
+        </script>
+
+    </body>
+    </html>

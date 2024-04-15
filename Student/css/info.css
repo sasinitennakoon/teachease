@@ -15,3 +15,52 @@ body {
     text-align: center;
 }
 
+
+.card-container {
+    display: flex;
+    flex-direction: row;
+}
+.card {
+    flex: 1;
+    min-width: 300px;
+    height: 420px;
+    margin: 10px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    background-color: #ffff;
+    border-radius: 25px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 40px;
+}
+th {
+    border: 1px solid #131212;
+    padding: 8px;
+    text-align: left;
+    background-color: lightgreen;
+}
+
+td {
+    border: 1px solid #131212;
+    padding: 8px;
+    text-align: left;
+    
+}
+
+.average-btn {
+    display: block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.average-btn:hover {
+    background-color: #0056b3;
+}
