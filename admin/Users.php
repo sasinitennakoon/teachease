@@ -44,8 +44,8 @@
         <!-- Your page content goes here -->
         <h1>Users</h1>
 
-        <div class="panels1">
-            <div class="panel10">
+        <div class="panels">
+            <div class="panel">
                 <div class="but">
                     <a href="Userlist.php"><button class="button"><b>Go to<br>Users List</b></button></a>
                 </div>
@@ -54,8 +54,8 @@
         
         <h2>Recently Added Users</h2>
 
-        <div class="panels1">
-            <div class="panel10">
+        <div class="panels">
+            <div class="panel">
                 
             </div>
         </div>
