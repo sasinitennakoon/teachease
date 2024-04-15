@@ -41,16 +41,11 @@ nav a {
     border-radius: 10px;
 }
 .content h1 {
-    text-align: left;
-    padding-left: 25%;
+    text-align: center;
+    padding-left: 2%;
 }
 
-/*course content*/
-.content .panelsD2 p{
-    font-size:large;
-    padding-left: 8%;
-    line-height: 1.8;
-}
+
 
 
 .dropdown {
@@ -106,8 +101,8 @@ nav a {
 }
 
 .dropbtn img {
-    width: 30px;
-    height: 30px;
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
     margin-right: 10px;
 }
@@ -132,25 +127,37 @@ button:hover{
     
 }
 
-.content h1{
-    text-align: left;
-}
-.panel {
+
+.panel1 {
     flex: 1;
     /*font-size: 95%;*/
-    background-color: #943535;
+    background-color: #f8f8f8;
     padding: 20px;
     margin: 10px ;
     border-radius: 5px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 10px;
-    height: 230px;
+    width: 1150px;
+    height: 500px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
+.announcement-section {
+    max-width: 800px;
+    margin: 0 auto;
+}
 
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
 
-
-.panel p{
+th, td {
+    padding: 10px;
+    border: 1px solid #ccc;
     text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
 }
