@@ -61,7 +61,7 @@
                 </div>
 
                 <div class="panel10" onclick="window.location.href='sinflash.html';">
-                    <p style="font-size: 50px;"><b>Sinahala</b></p>
+                    <p style="font-size: 50px;"><b>Sinhala</b></p>
                 </div>
 
                 
