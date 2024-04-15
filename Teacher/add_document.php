@@ -57,11 +57,11 @@
 							<option></option>
 								<?php
 									 $query = mysqli_query($link,"select * from teacher_class
-                                     LEFT JOIN class ON class.class_id = teacher_class.class_id
+                                     LEFT JOIN class ON class.grade_id = teacher_class.grade_id
                                      LEFT JOIN subject ON subject.subject_id = teacher_class.subject_id
                                      where teacher_id = '$session_id'")or die(mysqli_error());
                                     while ($row = mysqli_fetch_array($query)){ $id = $row['teacher_class_id'];
-                                        $class_id = $row['class_id'];
+                                        $class_id = $row['teacher_class_id'];
 								?>
 									<option value="<?php echo $class_id; ?>"><?php echo $row['class_name']; ?></option>
 								<?php } ?>

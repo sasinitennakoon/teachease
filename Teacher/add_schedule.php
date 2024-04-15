@@ -26,34 +26,33 @@
 <body>
 			<?php include 'dropdown.php'; ?>
 
-	<button><a href="MyClasses.php">Go to Dashboard</a></button>
+	<button><a href="Schedule.php">Go to Dashboard</a></button>
 	<div class="content">
-		<h1>Add Class</h1>
+		<h1>Add Class Schedule</h1>
 
         <div class="panels1">
             <div class="panel10">
                 <form method="post">
-                
+
                 <div class="user-details">
                 <input type="hidden" name="session_id" value="<?php echo $session_id; ?>">
+                
                 <div class="input-box">
-                        <span class="details">Class Name</span>
-                        <input type="text" name="class_name" placeholder="Enter Class Name" required>
-                </div>
-                <div class="input-box">
-                        <span class="details">Grade</span>
-                        <select name="grade_id"  class="" required>
-                            <option></option>
+                        <span class="details">Class</span>
+                        <select name="class_id" required>
+							<option></option>
 								<?php
-									$query = mysqli_query($link,"select * from class order by grade_name");
-									while($row = mysqli_fetch_array($query)){
-											
+									 $query = mysqli_query($link,"select * from teacher_class
+                                     LEFT JOIN class ON class.grade_id = teacher_class.grade_id
+                                     LEFT JOIN subject ON subject.subject_id = teacher_class.subject_id
+                                     where teacher_id = '$session_id'")or die(mysqli_error());
+                                    while ($row = mysqli_fetch_array($query)){ $id = $row['teacher_class_id'];
+                                        $class_id = $row['teacher_class_id'];
 								?>
-									<option value="<?php echo $row['grade_id']; ?>"><?php echo $row['grade_name']; ?></option>
-									<?php } ?>
-                        </select>
-                </div>
-
+									<option value="<?php echo $class_id; ?>"><?php echo $row['class_name']; ?></option>
+								<?php } ?>
+						</select>
+                    </div>
                     <div class="input-box">
                         <span class="details">Subject</span>
                         <select name="subject_id" required>
@@ -68,12 +67,25 @@
 						</select>
                     </div>
 
-                
                     <div class="input-box">
-                        <span class="details">No of Students</span>
-                        <input type="text" name="noofparticipant" placeholder="Enter No.of students" required>
-                </div>
-                </div>
+                        <span class="details">Date</span>
+                            <select name="date" required>
+                            <option value=""></option>
+                                <option value="Monday">Monday</option>
+                                <option value="Tuesday">Tuesday</option>
+                                <option value="Wednesday">Wednesday</option>
+                                <option value="Thursday">Thursday</option>
+                                <option value="Friday">Friday</option>
+                                <option value="Saturday">Saturday</option>
+                                <option value="Sunday">Sunday</option>
+                        </select>
+                    </div>
+
+
+                    <div class="input-box">
+                        <span class="details"> Time</span>
+                        <input type="text" name="time" placeholder="Enter Class Start Time->(Format) HH:MM:SS" required>
+                    </div>
 
                
                     
@@ -98,22 +110,22 @@
 						if (isset($_POST['save'])){
                             $session_id = $_POST['session_id'];
                             $subject_id = $_POST['subject_id'];
-                            $grade_id = $_POST['grade_id'];
-                            $class_name= $_POST['class_name'];
-                            $noofparticipant = $_POST['noofparticipant'];
+                            $class_id = $_POST['class_id'];
+                            $date= $_POST['date'];
+                            $time = $_POST['time'];
                             
-                            $query = mysqli_query($link,"select * from teacher_class where class_name='$class_name' and subject_id = '$subject_id' and grade_id = '$grade_id' and teacher_id = '$session_id' ")or die(mysqli_error());
+                            $query = mysqli_query($link,"select * from schedule where subject_id = '$subject_id' and class_id = '$class_id' and teacher_id = '$session_id' and date = '$date' and time = '$time'")or die(mysqli_error());
                             $count = mysqli_num_rows($query);
                             if ($count > 0){ 
                             echo "true";
                         }else{
                             
-                            mysqli_query($link, "INSERT INTO teacher_class (class_name, teacher_id, subject_id, grade_id) VALUES ('$class_name', '$session_id', '$subject_id', '$grade_id')") or die(mysqli_error($link));
+                            mysqli_query($link, "INSERT INTO schedule (teacher_id, subject_id, class_id,date, time) VALUES ('$session_id', '$subject_id', '$class_id','$date','$time' )") or die(mysqli_error($link));
 
 
-                            $teacher_class = mysqli_query($link,"select * from teacher_class order by teacher_class_id DESC")or die(mysqli_error());
-                            $teacher_row = mysqli_fetch_array($teacher_class);
-                            $teacher_id = $teacher_row['teacher_class_id'];
+                            $schedule = mysqli_query($link,"select * from schedule order by schedule_id DESC")or die(mysqli_error($link));
+                            $schedule_row = mysqli_fetch_array($schedule);
+                            $schedule_id = $teacher_row['schedule_id'];
 
 
                             /*$insert_query = mysqli_query($link,"select * from student where class_id = '$class_id'")or die(mysqli_error());
@@ -124,7 +136,7 @@
                             }
                             ?>
                             <script>
-                                window.location = 'MyClasses.php';
+                                window.location = 'Schedule.php';
                             </script>
                             
                     <?php

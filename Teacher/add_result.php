@@ -41,12 +41,15 @@
                         <select name="class_id"  class="" required>
                             <option></option>
 								<?php
-									$query = mysqli_query($link,"select * from class order by class_name");
-									while($row = mysqli_fetch_array($query)){
-											
+									 $query = mysqli_query($link,"select * from teacher_class
+                                     LEFT JOIN class ON class.grade_id = teacher_class.grade_id
+                                     LEFT JOIN subject ON subject.subject_id = teacher_class.subject_id
+                                     where teacher_id = '$session_id'")or die(mysqli_error());
+                                    while ($row = mysqli_fetch_array($query)){ $id = $row['teacher_class_id'];
+                                        $class_id = $row['teacher_class_id'];
 								?>
-									<option value="<?php echo $row['class_id']; ?>"><?php echo $row['class_name']; ?></option>
-									<?php } ?>
+									<option value="<?php echo $class_id; ?>"><?php echo $row['class_name']; ?></option>
+								<?php } ?>
                         </select>
                 </div>
 
@@ -98,7 +101,7 @@
                             
                             mysqli_query($link,"insert into exam_results (teacher_id,subject_id,class_id) values('$session_id','$subject_id','$class_id')")or die(mysqli_error());
 
-                            $exam_results = mysqli_query($link,"select * from exam_results order by exam_results_id DESC")or die(mysqli_error());
+                            $exam_results = mysqli_query($link,"select * from exam_results order by exam_id DESC")or die(mysqli_error($link));
                             $teacher_row = mysqli_fetch_array($exam_results);
                             $teacher_id = $teacher_row['exam_id'];
 
@@ -111,7 +114,7 @@
                             }
                             ?>
                             <script>
-                                window.location = 'ExamResult.php';
+                                window.location = 'ExamResults.php';
                             </script>
                             
                     <?php
