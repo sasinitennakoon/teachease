@@ -73,70 +73,58 @@
         }
 
         
-    function calculateAverage() {
-        var marks = document.querySelectorAll('.card:nth-child(1) td:nth-child(2)');
-        var total = 0;
-        for (var i = 0; i < marks.length; i++) {
-            total += parseInt(marks[i].textContent);
-        }
-        var average = total / marks.length;
-        document.getElementById('average').textContent = "Average Mark: " + average.toFixed(2);
-    }
+   // Data for scatter plot
+var totalMarks = [380, 250, 536, 493, 452, 225, 452, 360, 430, 410];
+var numberOfStudents = [];
+for (var i = 1; i <= totalMarks.length; i++) {
+    numberOfStudents.push(i);
+}
 
+// Find the index of the highlighted mark
+var highlightedIndex = totalMarks.indexOf(452);
 
-    // Data for scatter plot
-    var totalMarks = [380, 250, 536, 493, 452, 225, 452, 360, 430, 410];
-    var numberOfStudents = [];
-    for (var i = 1; i <= totalMarks.length; i++) {
-        numberOfStudents.push(i);
-    }
+// Set up data for scatter plot
+var scatterChartData = {
+    datasets: [{
+        label: 'Total Marks',
+        data: totalMarks.map((mark, index) => ({
+            x: numberOfStudents[index],
+            y: mark,
+            // Highlight the mark with value 452
+            pointStyle: index === highlightedIndex ? 'triangle' : 'circle',
+            backgroundColor: index === highlightedIndex ? 'red' : 'blue',
+            radius: index === highlightedIndex ? 10 : 5 // Bigger radius for the highlighted point
+        })),
+    }]
+};
 
-    // Find the index of the highlighted mark
-    var highlightedIndex = totalMarks.indexOf(452);
-
-    // Set up data for scatter plot
-    var scatterChartData = {
-        datasets: [{
-            label: 'Total Marks',
-            data: totalMarks.map((mark, index) => ({
-                x: numberOfStudents[index],
-                y: mark,
-                // Highlight the mark with value 452
-                pointStyle: index === highlightedIndex ? 'triangle' : 'circle',
-                backgroundColor: index === highlightedIndex ? 'red' : 'blue',
-                radius: 5
-            })),
-        }]
-    };
-
-    // Set up options for scatter plot
-    var scatterChartOptions = {
-        scales: {
-            x: {
-                title: {
-                    display: true,
-                    text: 'Number of Students'
-                }
-            },
-            y: {
-                title: {
-                    display: true,
-                    text: 'Total Marks'
-                }
+// Set up options for scatter plot
+var scatterChartOptions = {
+    scales: {
+        x: {
+            title: {
+                display: true,
+                text: 'Number of Students'
+            }
+        },
+        y: {
+            title: {
+                display: true,
+                text: 'Total Marks'
             }
         }
-    };
+    }
+};
 
-    // Get canvas element
-    var scatterCanvas = document.getElementById('scatterPlot');
+// Get canvas element
+var scatterCanvas = document.getElementById('scatterPlot');
 
-    // Create scatter plot
-    var scatterChart = new Chart(scatterCanvas, {
-        type: 'scatter',
-        data: scatterChartData,
-        options: scatterChartOptions
-    });
-
+// Create scatter plot
+var scatterChart = new Chart(scatterCanvas, {
+    type: 'scatter',
+    data: scatterChartData,
+    options: scatterChartOptions
+});
 
 </script>
 
