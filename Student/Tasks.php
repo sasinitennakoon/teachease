@@ -1,10 +1,5 @@
 <?php include '../database/db_con.php'; ?>
-<?php include '../session.php'; ?>
 
-<?php 
-	$query= mysqli_query($link,"select * from student where student_id = '$session_id'")or die(mysqli_error());
-	$row = mysqli_fetch_array($query);
-?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -43,11 +38,11 @@
         <div class="content">
             
         <div class="panelsD2">
-                <div class="panel9" onclick="window.location.href='scienceflash.html';">
+                <div class="panel9" onclick="window.location.href='scienceflash.php';">
                     <p style="font-size: 50px;"><b>Science</b></p>
                 </div>
 
-                <div class="panel9" onclick="window.location.href='mathematicsflash.html';">
+                <div class="panel9" onclick="window.location.href='mathematicsflash.php';">
                     <p style="font-size: 50px;"><b>Mathematics</b></p>
                 </div>
 
@@ -56,22 +51,22 @@
             
 
             <div class="panelsD2">
-                <div class="panel9" onclick="window.location.href='englishflash.html';">
+                <div class="panel9" onclick="window.location.href='englishflash.php';">
                     <p style="font-size: 50px;"><b>English</b></p>
                 </div>
 
-                <div class="panel10" onclick="window.location.href='sinflash.html';">
+                <div class="panel10" onclick="window.location.href='sinflash.php';">
                     <p style="font-size: 50px;"><b>Sinhala</b></p>
                 </div>
 
                 
             </div>
             <div class="panelsD2">
-                <div class="panel9" onclick="window.location.href='buddhismflash.html';">
+                <div class="panel9" onclick="window.location.href='buddhismflash.php';">
                     <p  style="font-size: 50px;"><b>Buddhism</b></p>
                 </div>
 
-                <div class="panel10" onclick="window.location.href='hisflash.html';">
+                <div class="panel10" onclick="window.location.href='hisflash.php';">
                     <p style="font-size: 50px;"><b>History</b></p>
                 </div>
 
