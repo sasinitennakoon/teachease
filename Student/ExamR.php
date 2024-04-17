@@ -1,10 +1,5 @@
 <?php include '../database/db_con.php'; ?>
-<?php include '../session.php'; ?>
 
-<?php 
-	$query= mysqli_query($link,"select * from student where student_id = '$session_id'")or die(mysqli_error());
-	$row = mysqli_fetch_array($query);
-?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -49,9 +44,9 @@
             <div class="panelsD">
                 <div class="panelsub1">
                     
-                    <button class="but2" onclick="window.location.href='1stterm.html';">1 st Term</button>
-                    <button class="but2" onclick="window.location.href='2ndterm.html';">2 nd Term</button>
-                    <button class="but2" onclick="window.location.href='3rdterm.html';">3 rd Term</button>
+                    <button class="but2" onclick="window.location.href='1stterm.php';">1 st Term</button>
+                    <button class="but2" onclick="window.location.href='2ndterm.php';">2 nd Term</button>
+                    <button class="but2" onclick="window.location.href='3rdterm.php';">3 rd Term</button>
                 </div>
 
                 

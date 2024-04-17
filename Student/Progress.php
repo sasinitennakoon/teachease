@@ -1,10 +1,5 @@
 <?php include '../database/db_con.php'; ?>
-<?php include '../session.php'; ?>
 
-<?php 
-	$query= mysqli_query($link,"select * from student where student_id = '$session_id'")or die(mysqli_error());
-	$row = mysqli_fetch_array($query);
-?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -54,8 +49,8 @@
 
     <h3>You can analys Your Progress by this section</h3>
      <button class="but2" onclick="window.location.href='1progress.html';">1 st Term</button>
-     <button class="but2" onclick="window.location.href='2progress.html';">2 nd Term</button>
-     <button class="but2" onclick="window.location.href='3progress.html';">3 rd Term</button>
+     <button class="but2" onclick="window.location.href='2progress.php';">2 nd Term</button>
+     <button class="but2" onclick="window.location.href='3progress.php';">3 rd Term</button>
 
 </div>
 

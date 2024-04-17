@@ -723,7 +723,7 @@ tbody tr {
 }
 
 tbody tr:hover {
-    background-color: rgb(43 43 151);
+    background-color: rgb(197 197 255);
     color: white;
 }
 

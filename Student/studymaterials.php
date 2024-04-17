@@ -1,10 +1,5 @@
 <?php include '../database/db_con.php'; ?>
-<?php include '../session.php'; ?>
 
-<?php 
-	$query= mysqli_query($link,"select * from student where student_id = '$session_id'")or die(mysqli_error());
-	$row = mysqli_fetch_array($query);
-?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -46,30 +41,30 @@
     
     <h1>STUDY MATERIALS</h1>
     <div class="panelsD">
-            <div class="panel7" onclick="window.location.href='sciencemate.html';">
+            <div class="panel7" onclick="window.location.href='sciencemate.php';">
                 <p><b>Science</b></p>
                 
             </div>
 
-            <div class="panel8" onclick="window.location.href='mathsmate.html';">
+            <div class="panel8" onclick="window.location.href='mathsmate.php';">
                 <p><b>Mathematics</b></p>
             </div>
 
-            <div class="panel9" onclick="window.location.href='englishmate.html';">
+            <div class="panel9" onclick="window.location.href='englishmate.php';">
                 <p><b>English</b></p>
             </div>
         </div>
 
         <div class="panelsD2">
-            <div class="panel10" onclick="window.location.href='sinhalamate.html';">
+            <div class="panel10" onclick="window.location.href='sinhalamate.php';">
                 <p><b>Sinhala</b></p>
             </div>
 
-            <div class="panel11" onclick="window.location.href='buddhismmate.html';">
+            <div class="panel11" onclick="window.location.href='buddhismmate.php';">
                 <p><b>Buddhism</b></p>
             </div>
 
-            <div class="panel12" onclick="window.location.href='historymate.html';">
+            <div class="panel12" onclick="window.location.href='historymate.php';">
                 <p><b>History</b></p>
             </div>
         </div>
