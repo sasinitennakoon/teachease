@@ -5,6 +5,12 @@
 	$query= mysqli_query($link,"select * from teacher where teacher_id = '$session_id'")or die(mysqli_error());
 	$row = mysqli_fetch_array($query);
 ?>
+<?php
+if(isset($_GET['exam_id'])) {
+    $exam_id = $_GET['exam_id'];
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -49,7 +55,11 @@
 
 		<form method="post" action="">
 				<?php
-					$query = mysqli_query($link,"select * FROM result_files where teacher_id = '$session_id'  order by fdatein DESC ")or die(mysqli_error());
+					$query = mysqli_query($link, "SELECT * FROM result_files 
+                    WHERE teacher_id = '$session_id' 
+                    AND exam_id = '$exam_id' 
+                    ORDER BY fdatein DESC") 
+                    or die(mysqli_error());
                     $count = mysqli_fetch_array($query);
 
 					if($count <= 0)
@@ -80,6 +90,7 @@
                     INNER JOIN teacher_class ON result_files.class_id = teacher_class.teacher_class_id 
                     INNER JOIN class ON class.grade_id = teacher_class.grade_id 
                     WHERE teacher_class.teacher_id = '$session_id' 
+                    AND result_files.exam_id = '$exam_id'
                     ORDER BY result_files.fdatein DESC") or die(mysqli_error($link));
                     while($row = mysqli_fetch_array($query)){
                     $id  = $row['file_id'];
@@ -119,8 +130,8 @@
 		<div class="but">
 			
 			<button class="btn btn-info">
-			<a href="add_resultanalysis.php" style='text-decoration:none;color:white;'>
-				<i class="fa fa-fw fa-plus"></i>&nbsp;Add Document</a>
+			<a href="add_resultanalysis.php?exam_id=<?php echo $exam_id; ?>" style='text-decoration:none;color:white;'>
+				<i class="fa fa-fw fa-plus"></i>&nbsp;Add Result</a>
 			</button>
 			<button type="submit" name="delete" class="btn btn-info">
 				<i class="fa fa-fw fa-trash"></i> Delete
@@ -152,17 +163,17 @@
 <?php
     include '../database/db_con.php';
 
-    if (isset($_POST['delete'])){
-            $id=$_POST['selector'];
-            $N = count($id);
-            
-        for($i=0; $i < $N; $i++)
-        {
-            $result = mysqli_query($link,"DELETE FROM result_files where file_id='$id[$i]'");
+    if(isset($_POST['delete'])){
+        $exam_id = $_POST['exam_id'];
+        $id = $_POST['selector'];
+        $N = count($id);
+        
+        for($i = 0; $i < $N; $i++) {
+            $result = mysqli_query($link, "DELETE FROM result_files WHERE file_id='$id[$i]' AND exam_id='$exam_id'");
         }
 ?>
     <script>
-        window.location = "ResultsAnalysis.php";
+        window.location = "ResultsAnalysis.php?exam_id=<?php echo $exam_id; ?>";
     </script>
 
 <?php
