@@ -104,7 +104,7 @@ nav a {
 .card {
     flex: 1;
     min-width: 300px;
-    height: 420px;
+    height: 500px;
     margin: 10px;
     padding: 20px;
     border: 1px solid #ccc;
@@ -112,6 +112,19 @@ nav a {
     background-color: #ffff;
     border-radius: 25px;
 }
+
+.sciencecard {
+    flex: 1;
+    min-width: 300px;
+    height: 450px;
+    margin: 10px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    background-color: #ffff;
+    border-radius: 25px;
+}
+
 
 table {
     width: 100%;
@@ -144,4 +157,82 @@ td {
 }
 .average-btn:hover {
     background-color: #0056b3;
+}
+
+.card h2,
+.card1 h2{
+    text-align: center;
+}
+
+button{
+    width: 200px;
+    padding: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background-color: rgb(43, 43, 151);
+    color: aliceblue;
+    border-radius: 25px;
+}
+
+
+button:hover{
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.but{
+    padding: 20px;
+}
+
+
+
+.positioncrd{
+    display: flex;
+    flex-direction: row;
+}
+.card1 {
+    flex: 1;
+    min-width: 800px;
+    height: 600px;
+    margin: 10px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    background-color: #ffff;
+    border-radius: 25px;
+}
+
+
+
+ /* Styles for scatter plots */
+ .scatter-plot-container {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.scatter-plot {
+    width: 200%;
+    height: 400px;
+}
+
+.dot {
+    fill: steelblue;
+    stroke: #fff;
+}
+
+.highlighted {
+    fill: red;
+    stroke: #fff;
+}
+
+.axis text {
+    font-size: 12px;
+}
+
+.axis path,
+.axis line {
+    fill: none;
+    stroke: #000;
+    shape-rendering: crispEdges;
 }
