@@ -55,10 +55,10 @@
 				</tr>
 			<thead>
 				<?php
-					$query = mysqli_query($link, "SELECT files.*, class.class_name 
+					$query = mysqli_query($link, "SELECT files.*, class.grade_name 
                     FROM files 
-                    INNER JOIN teacher_class ON files.class_id = teacher_class.class_id 
-                    INNER JOIN class ON class.class_id = teacher_class.class_id 
+                    INNER JOIN teacher_class ON files.class_id = teacher_class.grade_id 
+                    INNER JOIN class ON class.grade_id = teacher_class.grade_id 
                     WHERE teacher_class.teacher_id = '$session_id' 
                     ORDER BY files.fdatein DESC") or die(mysqli_error($link));
                     while($row = mysqli_fetch_array($query)){

@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 .content{
     padding-top: 30px;
 }
@@ -57,7 +57,8 @@ button{
 .content h2,h3{
     text-align: left;
     padding-left: 8%;
-=======
+}
+
 .content{
     padding-top: 30px;
 }
@@ -116,5 +117,5 @@ button{
 .content h2,h3{
     text-align: left;
     padding-left: 8%;
->>>>>>> 5c353e88065af721f05c144a253b549129691613
+
 }

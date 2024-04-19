@@ -58,15 +58,28 @@ $session_id=$_SESSION['id'];?>
                     WHERE student_class.student_id = '$session_id'
                     AND subject.subject_title = 'History'  
                     ORDER BY schedule.schedule_id DESC") or die(mysqli_error($link));
+
     $count = mysqli_num_rows($query);
 
     if ($count <= 0) {
         echo "<b>Currently you have not registered for any history classes</b>";
     } else {
     ?>
-        <div class="panels">
-            <div class="panel8">
+        <div class="panels1">
+            <div class="panel10">
                 <form method='post'>
+
+                <div class="but">
+
+                    <button class="btn btn-info">
+                        <a href="addhistoryclass.php" style='text-decoration:none;color:white;'>
+                            <i class="fa fa-fw fa-plus"></i>&nbsp;Add history Class</a>
+                    </button>
+                    <button type="submit" name="delete" class="btn btn-info">
+                        <i class="fa fa-fw fa-trash"></i> Send Leave Request
+                    </button>
+
+                </div>
 
                     <table border="0">
                         <thead>
@@ -95,25 +108,17 @@ $session_id=$_SESSION['id'];?>
                             ?>
                         </tbody>
                     </table>
+
+                    </form>
         </div>
         </div>
-        </div>
+        
 <?php
     }
 ?>
 
-<div class="but">
 
-    <button class="btn btn-info">
-        <a href="addhistoryclass.php" style='text-decoration:none;color:white;'>
-            <i class="fa fa-fw fa-plus"></i>&nbsp;Add history Class</a>
-    </button>
-    <button type="submit" name="delete" class="btn btn-info">
-        <i class="fa fa-fw fa-trash"></i> Send Leave Request
-    </button>
 
-</div>
-</form>
 
 </body>
 

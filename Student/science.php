@@ -55,8 +55,8 @@
 					}
 					else
 					{?>
-                    <div class="panels">
-                        <div class="panel8">
+                    <div class="panels1">
+                        <div class="panel10">
                         <form method='post'>
 
                         <table border="0">
@@ -71,10 +71,11 @@
                     </thead>
                     <tbody>
        <?php
-					$query = mysqli_query($link, "SELECT student_class.*, schedule.class_name, subject.subject_title
+					$query = mysqli_query($link, "SELECT student_class.*, teacher_class.class_name, subject.subject_title
                     FROM student_class 
                     INNER JOIN schedule ON schedule.schedule_id = student_class.schedule_id 
-                    INNER JOIN subject ON subject.subject_id = schedule.subject_id  
+                    INNER JOIN subject ON subject.subject_id = schedule.subject_id 
+                    INNER JOIN teacher_class ON teacher_class.subject_id = subject.subject_id  
                     WHERE student_class.student_id = '$session_id'
                     AND subject.subject_title = 'Science'  
                     ORDER BY schedule.schedule_id DESC") or die(mysqli_error($link));
