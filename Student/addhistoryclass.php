@@ -57,22 +57,25 @@ $session_id=$_SESSION['id'];?>
                             LEFT JOIN teacher ON teacher.teacher_id = schedule.teacher_id
                             LEFT JOIN subject ON subject.subject_id = schedule.subject_id
                             ") or die(mysqli_error($link));
-                            while($row = mysqli_fetch_array($query))
-                            {
-                                $id = $row['subject_id'];
-                    ?>
-                    <tbody>
-                        <tr>
-                            <td><input type="checkbox" name="selector[]" value="<?php echo $session_id; ?>"></td>
-                            <td><?php echo $row['firstname']; ?></td>
-                            <td><?php echo $row['lastname']; ?></td>
-                            <td><?php echo $row['date']; ?></td>
-                            <td><?php echo $row['time']; ?></td>
-                            <td>
-                                <?php 
-                                 // Check if the user has already joined this class
-                                $isJoined = mysqli_query($link, "SELECT * FROM student_class WHERE student_id = '$session_id' AND schedule_id = '{$row['schedule_id']}'")->num_rows > 0;
-        
+                           while($row = mysqli_fetch_array($query))
+                           {
+                               $id = $row['subject_id'];
+
+                   ?>
+                   <tbody>
+                       <tr>
+                           <td><input type="checkbox" name="selector[]" value="<?php echo $session_id; ?>"></td>
+                           <td><?php echo $row['firstname']; ?></td>
+                           <td><?php echo $row['lastname']; ?></td>
+                           <td><?php echo $row['date']; ?></td>
+                           <td><?php echo $row['time']; ?></td>
+                           <input type='hidden' name='schedule_id' value="<?php $row['schedule_id']; ?>">
+                           <td>
+                               <?php 
+                                // Check if the user has already joined this class
+                               $isJoined = mysqli_query($link, "SELECT * FROM student_class WHERE student_id = '$session_id' AND schedule_id = '{$row['schedule_id']}'")->num_rows > 0;
+       
+                                         
                                  if ($isJoined) {
                                  // User has joined, display the leave button
                                  echo '<button type="submit" name="leave" class="button" style="background-color:#850404;">Leave</button>';
@@ -80,6 +83,7 @@ $session_id=$_SESSION['id'];?>
                                  // User has not joined, display the join button
                                  echo '<button type="submit" name="join" class="button" style="background-color:#055305;">Join</button>';
                                     }
+                                
                                     ?>
                                 </td>
 
@@ -93,7 +97,7 @@ $session_id=$_SESSION['id'];?>
             
         </div>
 
-        <!-- Add Details Form -->
+      
        
 </body>
 </html>
@@ -104,31 +108,33 @@ $session_id=$_SESSION['id'];?>
 if (isset($_POST['leave'])) {
     $id = $_POST['selector'];
     $N = count($id);
+    $schedule_id = $_POST['schedule_id'];
         
     for($i=0; $i < $N; $i++)
     {
-        $result = mysqli_query($link, "DELETE FROM student_class WHERE schedule_id ='$schedule_id' AND student_id ='$session_id[$i]'");
+        $result = mysqli_query($link, "update student_class set status='leave' WHERE schedule_id ='$schedule_id' AND student_id ='$session_id'");
     }
 
     ?>
     <script>
     window.location = 'addhistoryclass.php';
-    </script>
+    </script> 
 <?php
 }
 
-else if (isset($_POST['approve'])) {
+else if (isset($_POST['join'])) {
     $id = $_POST['selector'];
     $N = count($id);
-        
+    $schedule_id = $_POST['schedule_id'];
+
     for($i=0; $i < $N; $i++)
     {
         $result = mysqli_query($link, "INSERT INTO student_class (student_id, schedule_id, status) VALUES ('$session_id', '$schedule_id', 'joined')");
     }
 ?>
-    <script>
-    window.location = 'studentdashboard.php';
-</script>
+   <script>
+    window.location = 'addhistoryclass.php';
+</script> 
 <?php
 }
 ?>
