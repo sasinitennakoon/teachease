@@ -8,10 +8,13 @@
     <link rel="stylesheet" href="./css/info.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
 </head>
 
 <body>
 <?php include 'dropdown2.php'; ?>
+
+<button onclick="goBack()">Go to Dashboard</button>
 
 <div class="content">
     <h1> Overall Result Analysis</h1>
@@ -57,11 +60,53 @@
             
         </div>
         <div class="card">
-            <h2>Total Marks of the Class</h2>
+            <h2> Total Marks Distribution of the Class</h2>
             <canvas id="scatterPlot"></canvas>
         </div>
     </div>
 
+    <div class="positioncrd">
+        <div class="card1">
+            <h2>See Your Position Here!</h2>
+        </div>
+       
+    </div>
+
+    <div class="card-container">
+        <div class="card">
+            <h2> Science Mark Distribution of the Class</h2>
+            <svg id="scatterPlot"></svg>
+        </div>
+
+        <div class="card">
+            <h2> Mathematics Mark Distribution of the Class</h2>
+            <canvas id="scatterPlot"></canvas>
+        </div>
+    </div>
+    
+    <div class="card-container">
+        <div class="card">
+            <h2> English Mark Distribution of the Class</h2>
+            <canvas id="scatterPlot"></canvas>
+        </div>
+
+        <div class="card">
+            <h2> Sinhala Mark Distribution of the Class</h2>
+            <canvas id="scatterPlot"></canvas>
+        </div>
+    </div>
+
+    <div class="card-container">
+        <div class="card">
+            <h2> Buddhism Mark Distribution of the Class</h2>
+            <canvas id="scatterPlot"></canvas>
+        </div>
+
+        <div class="card">
+            <h2> History Mark Distribution of the Class</h2>
+            <canvas id="scatterPlot"></canvas>
+        </div>
+    </div>
 
 </div>
 
@@ -73,8 +118,8 @@
         }
 
         
-   // Data for scatter plot
-var totalMarks = [380, 250, 536, 493, 452, 225, 452, 360, 430, 410];
+// Data for scatter plot total marks
+var totalMarks = [380, 250, 536, 493, 452, 225, 456, 360, 430, 410];
 var numberOfStudents = [];
 for (var i = 1; i <= totalMarks.length; i++) {
     numberOfStudents.push(i);
@@ -126,6 +171,39 @@ var scatterChart = new Chart(scatterCanvas, {
     options: scatterChartOptions
 });
 
+
+
+//science scatterplot
+
+const marks = [89, 56, 23, 100, 88, 56, 86, 51, 96, 12];
+        const students = marks.length;
+        const maxMark = Math.max(...marks);
+
+        const svg = d3.select("#scatterPlot");
+
+        const xScale = d3.scaleLinear()
+            .domain([0, students + 1])
+            .range([50, 550]);
+
+        const yScale = d3.scaleLinear()
+            .domain([0, maxMark + 10])
+            .range([350, 50]);
+
+        svg.selectAll(".dot")
+            .data(marks)
+            .enter().append("circle")
+            .attr("class", (d) => d === 88 ? "dot highlighted" : "dot")
+            .attr("cx", (d, i) => xScale(i + 1))
+            .attr("cy", (d) => yScale(d))
+            .attr("r", (d) => d === 88 ? 8 : 5);
+
+        svg.append("g")
+            .attr("transform", "translate(0, 350)")
+            .call(d3.axisBottom(xScale));
+
+        svg.append("g")
+            .attr("transform", "translate(50, 0)")
+            .call(d3.axisLeft(yScale));
 </script>
 
 </body>
