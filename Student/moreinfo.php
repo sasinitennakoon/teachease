@@ -75,50 +75,47 @@
     <div class="card-container">
         <div class="card">
             <h2> Science Mark Distribution of the Class</h2>
-            <svg id="scatterPlot"></svg>
+            <svg id="scienceScatterPlot" width="600" height="400"></svg>
         </div>
 
         <div class="card">
             <h2> Mathematics Mark Distribution of the Class</h2>
-            <canvas id="scatterPlot"></canvas>
+            <svg id="mathematicsScatterPlot" width="600" height="400"></svg>
         </div>
     </div>
     
     <div class="card-container">
         <div class="card">
             <h2> English Mark Distribution of the Class</h2>
-            <canvas id="scatterPlot"></canvas>
+            <svg id="englishScatterPlot" width="600" height="400"></svg>
         </div>
 
         <div class="card">
             <h2> Sinhala Mark Distribution of the Class</h2>
-            <canvas id="scatterPlot"></canvas>
+            <svg id="sinhalaScatterPlot" width="600" height="400"></svg>
         </div>
     </div>
 
     <div class="card-container">
         <div class="card">
             <h2> Buddhism Mark Distribution of the Class</h2>
-            <canvas id="scatterPlot"></canvas>
+            <svg id="buddhismScatterPlot" width="600" height="400"></svg>
         </div>
 
         <div class="card">
             <h2> History Mark Distribution of the Class</h2>
-            <canvas id="scatterPlot"></canvas>
+            <svg id="historyScatterPlot" width="600" height="400"></svg>
         </div>
     </div>
 
 </div>
-
-
 
 <script>
     function goBack() {
             window.history.back();
         }
 
-        
-// Data for scatter plot total marks
+        // Data for scatter plot total marks
 var totalMarks = [380, 250, 536, 493, 452, 225, 456, 360, 430, 410];
 var numberOfStudents = [];
 for (var i = 1; i <= totalMarks.length; i++) {
@@ -173,37 +170,66 @@ var scatterChart = new Chart(scatterCanvas, {
 
 
 
-//science scatterplot
 
-const marks = [89, 56, 23, 100, 88, 56, 86, 51, 96, 12];
-        const students = marks.length;
-        const maxMark = Math.max(...marks);
 
-        const svg = d3.select("#scatterPlot");
 
-        const xScale = d3.scaleLinear()
-            .domain([0, students + 1])
-            .range([50, 550]);
 
-        const yScale = d3.scaleLinear()
-            .domain([0, maxMark + 10])
-            .range([350, 50]);
+// Function to create scatter plot
+function createScatterPlot(svgId, marksData) {
+    const marks = marksData;
+    const students = marks.length;
+    const maxMark = Math.max(...marks);
 
-        svg.selectAll(".dot")
-            .data(marks)
-            .enter().append("circle")
-            .attr("class", (d) => d === 88 ? "dot highlighted" : "dot")
-            .attr("cx", (d, i) => xScale(i + 1))
-            .attr("cy", (d) => yScale(d))
-            .attr("r", (d) => d === 88 ? 8 : 5);
+    const svg = d3.select("#" + svgId);
 
-        svg.append("g")
-            .attr("transform", "translate(0, 350)")
-            .call(d3.axisBottom(xScale));
+    const xScale = d3.scaleLinear()
+        .domain([0, students + 1])
+        .range([50, 550]);
 
-        svg.append("g")
-            .attr("transform", "translate(50, 0)")
-            .call(d3.axisLeft(yScale));
+    const yScale = d3.scaleLinear()
+        .domain([0, maxMark + 10])
+        .range([350, 50]);
+
+    svg.selectAll(".dot")
+        .data(marks)
+        .enter().append("circle")
+        .attr("class", (d) => d === 88 ? "dot highlighted" : "dot")
+        .attr("cx", (d, i) => xScale(i + 1))
+        .attr("cy", (d) => yScale(d))
+        .attr("r", (d) => d === 88 ? 8 : 5);
+
+    svg.append("g")
+        .attr("transform", "translate(0, 350)")
+        .call(d3.axisBottom(xScale));
+
+    svg.append("g")
+        .attr("transform", "translate(50, 0)")
+        .call(d3.axisLeft(yScale));
+}
+
+// Data for scatter plot total marks
+var totalMarks = [380, 250, 536, 493, 452, 225, 456, 360, 430, 410];
+createScatterPlot('totalMarksScatterPlot', totalMarks);
+
+// Data for scatter plot for each subject
+const scienceMarks = [89, 56, 23, 100, 88, 56, 86, 51, 96, 12];
+createScatterPlot('scienceScatterPlot', scienceMarks);
+
+const mathematicsMarks = [70, 65, 80, 72, 90, 68, 75, 85, 78, 60];
+createScatterPlot('mathematicsScatterPlot', mathematicsMarks);
+
+const englishMarks = [60, 72, 78, 65, 85, 55, 70, 63, 80, 58];
+createScatterPlot('englishScatterPlot', englishMarks);
+
+const sinhalaMarks = [92, 86, 78, 95, 88, 90, 85, 96, 91, 80];
+createScatterPlot('sinhalaScatterPlot', sinhalaMarks);
+
+const buddhismMarks = [80, 85, 90, 75, 88, 82, 86, 91, 83, 78];
+createScatterPlot('buddhismScatterPlot', buddhismMarks);
+
+const historyMarks = [40, 55, 35, 50, 65, 30, 45, 48, 52, 38];
+createScatterPlot('historyScatterPlot', historyMarks);
+
 </script>
 
 </body>
