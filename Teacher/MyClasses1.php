@@ -91,16 +91,32 @@
             </script>
             <button onclick="goBack()" class="button1">Go Back</button>
             <br/><br/><br/>
-            <div>
-               <button onclick="createMeeting()" class="button1">Create Meeting</button>
-                <br/><br/><br/>
+
+            <table border="0">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+            <td><div>
+               <button onclick="createMeeting()" class="button1">Create Meeting</button></td>
+               <td>
                 <div id="meetingLinkButton"></div>
-                <!--<div id="meetingLinkText"></div> -->
-                <br/><br/>
-                <input type="text" id="copyInput">
+                </td>>
+                <td>
+                <input type="text" id="copyInput"
+                </td>
+                <td>
                 <button onclick="copyFunction()" class="button1">Copy Link</button>
+                </td>
             </div>
-            
+            </tr>
+            </tbody>
     </div> 
 
             </body>

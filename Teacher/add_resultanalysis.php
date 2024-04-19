@@ -2,8 +2,8 @@
 <?php include '../session.php'; ?>
 
 <?php 
-	$query= mysqli_query($link,"select * from teacher where teacher_id = '$session_id'")or die(mysqli_error());
-	$row = mysqli_fetch_array($query);
+    $query= mysqli_query($link,"select * from teacher where teacher_id = '$session_id'")or die(mysqli_error());
+    $row = mysqli_fetch_array($query);
 ?>
 
 <?php
@@ -22,20 +22,18 @@ if(isset($_GET['exam_id'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-	<link rel="stylesheet" href="CSS/styles.css">
+    <link rel="stylesheet" href="CSS/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
    
     <link rel="stylesheet" href="./CSS/quiz_dashboard.css">
 </head>
 
-	
-
 <body>
     <?php include 'dropdown.php'; ?>
     
-	<button><a href="ResultAnalysis.php?exam_id=<?php echo $exam_id; ?>">Go to Dashboard</a></button>
-	<div class="content">
-		<h1>Add Document</h1>
+    <button><a href="ResultAnalysis.php?exam_id=<?php echo $exam_id; ?>">Go to Dashboard</a></button>
+    <div class="content">
+        <h1>Add Document</h1>
 
         <div class="panels1">
             <div class="panel10">
@@ -45,7 +43,7 @@ if(isset($_GET['exam_id'])) {
 
                     <div class="input-box">
                         <span class="details">File :</span>
-                        <input name="uploaded_file" id="fileInput" type="file" required>
+                        <input name="uploaded_file" id="fileInput" type="file" accept=".xls,.xlsx" required>
                          
                         <input type="hidden" name="MAX_FILE_SIZE" value="1000000" />
                         <input type="hidden" name="id" value="<?php echo $session_id ?>"/>
@@ -64,27 +62,26 @@ if(isset($_GET['exam_id'])) {
                     <div class="input-box">
                         <span class="details">Class</span>
                         <select name="class_id" required>
-							<option></option>
+                            <option></option>
                             <?php
-									 $query = mysqli_query($link,"select * from teacher_class
+                                 $query = mysqli_query($link,"select * from teacher_class
                                      LEFT JOIN class ON class.grade_id = teacher_class.grade_id
                                      LEFT JOIN subject ON subject.subject_id = teacher_class.subject_id
                                      where teacher_id = '$session_id'")or die(mysqli_error());
                                     while ($row = mysqli_fetch_array($query)){ $id = $row['teacher_class_id'];
                                         $class_id = $row['teacher_class_id'];
-								?>
-									<option value="<?php echo $class_id; ?>"><?php echo $row['class_name']; ?></option>
-								<?php } ?>
-						</select>
+                                ?>
+                                    <option value="<?php echo $class_id; ?>"><?php echo $row['class_name']; ?></option>
+                                <?php } ?>
+                        </select>
                     </div>
 
                 </div>
                     
-                            <button name="save" type="submit" value="save" class="btn btn-info">
-                                <i class="fa fa-fw fa-save"></i>&nbsp;Save
-                            </button>
-                       
-                
+                <button name="save" type="submit" value="save" class="btn btn-info">
+                    <i class="fa fa-fw fa-save"></i>&nbsp;Save
+                </button>
+               
                 </form>
             </div>
         </div>
@@ -93,8 +90,6 @@ if(isset($_GET['exam_id'])) {
 </body>
 
 </html>
-
-
 
 <?php
 include '../database/db_con.php';
@@ -132,6 +127,14 @@ if(isset($_POST['save'])) {
             $errmsg_arr[] = 'File selected exceeds 5MB size limit';
             $errflag = true;
         }
+
+        // Check file extension
+        $allowed_extensions = array('xls', 'xlsx');
+        $file_extension = pathinfo($_FILES['uploaded_file']['name'], PATHINFO_EXTENSION);
+        if (!in_array(strtolower($file_extension), $allowed_extensions)) {
+            $errmsg_arr[] = 'Only Excel files are allowed';
+            $errflag = true;
+        }
     } else {
         // File upload failed or no file was selected
         $errmsg_arr[] = 'File upload failed or no file selected';
@@ -161,22 +164,11 @@ if(isset($_POST['save'])) {
                                 or die(mysqli_error($link));
 
             // Redirect to a success page or perform any other actions
-            header("Location: ResultAnalysis.php?exam_id=<?php echo $exam_id; ?>");
+            header("Location: ResultAnalysis.php?exam_id=$exam_id");
             exit();
         } else {
             echo "Sorry, there was an error uploading your file.";
         }
     }
-    ?>
-
-
-<script>
-    window.location = 'add_resultanalysis.php';
-</script>
-<?php
 }
-
-
-
-/* mysqli_close($conn); */
 ?>

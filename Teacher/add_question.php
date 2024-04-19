@@ -84,15 +84,17 @@
                                     <span class="dot six"></span>
                                     <span class="gender"></span></label>
                                 </div><br><br>
-                                        </div>
+                            
+							</div>
+						</div>
 							</div>
 							<div id="opt12">
 								<!--<input name="correctt" value="True" type="radio">True<br /><br />
 								<input name="correctt"  value="False" type="radio">False<br /><br /> -->
                                  <div class="gender-details">
-                                <input type="radio" name="correctt" value="true" id="dot-1">
-                                <input type="radio" name="correctt" value="false" id="dot-2">
-                                <span class="gender-title">Gender</span>
+                                <input type="radio" name="True" value="true" id="dot-1">
+                                <input type="radio" name="False" value="false" id="dot-2">
+                                <span class="gender-title">Select the Correct Answer</span>
                                 <div class="category">
                                     <label for="dot-1">
                                     <span class="dot one"></span>
@@ -105,6 +107,36 @@
                                 </div>
                                 </div> 
 							</div>
+
+							<div id="opt13">
+                            <div class="gender-details">
+								A: <input type="text" name="ans1" size="60"> <input name="answer" value="A" type="checkbox" id="dot-3">
+                                <div class="category">
+                                    <label for="dot-3">
+                                    <span class="dot three"></span>
+                                    <span class="gender"></span></label>
+                                </div><br><br>
+								B: <input type="text" name="ans2" size="60"> <input name="answer" value="B" type="checkbox" id="dot-4">
+                                <div class="category">
+                                    <label for="dot-4">
+                                    <span class="dot four"></span>
+                                    <span class="gender"></span></label>
+                                </div><br><br>
+								C: <input type="text" name="ans3" size="60"> <input name="answer" value="C" type="checkbox" id="dot-5">
+                                <div class="category">
+                                    <label for="dot-5">
+                                    <span class="dot five"></span>
+                                    <span class="gender"></span></label>
+                                </div><br><br>
+								D: <input type="text" name="ans4" size="60"> <input name="answer" value="D" type="checkbox" id="dot-6">
+                                <div class="category">
+                                    <label for="dot-6">
+                                    <span class="dot six"></span>
+                                    <span class="gender"></span></label>
+                                </div><br><br>
+                                        </div>
+							</div>
+										</div>
                         </div>
                 </div>
                     
