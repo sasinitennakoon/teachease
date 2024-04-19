@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 15, 2024 at 01:07 AM
+-- Generation Time: Apr 18, 2024 at 11:24 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -115,8 +115,8 @@ CREATE TABLE `exam_results` (
 --
 
 INSERT INTO `exam_results` (`exam_id`, `teacher_id`, `class_id`, `subject_id`) VALUES
-(8, 5, 8, 9),
-(9, 5, 9, 9);
+(10, 5, 10, 11),
+(11, 5, 11, 11);
 
 -- --------------------------------------------------------
 
@@ -293,6 +293,7 @@ INSERT INTO `quiz_question` (`quiz_question_id`, `quiz_id`, `question_text`, `qu
 --
 
 CREATE TABLE `result_files` (
+  `exam_id` int(11) NOT NULL,
   `file_id` int(11) NOT NULL,
   `floc` varchar(500) NOT NULL,
   `fdatein` varchar(200) NOT NULL,
@@ -307,8 +308,9 @@ CREATE TABLE `result_files` (
 -- Dumping data for table `result_files`
 --
 
-INSERT INTO `result_files` (`file_id`, `floc`, `fdatein`, `fdesc`, `teacher_id`, `class_id`, `fname`, `uploaded_by`) VALUES
-(2, 'teacher/uploads/8955_File.xlsx', '2024-04-15 01:26:18', 'Lesson 1', 5, 8, 'Grade 10', 'aaa bbb');
+INSERT INTO `result_files` (`exam_id`, `file_id`, `floc`, `fdatein`, `fdesc`, `teacher_id`, `class_id`, `fname`, `uploaded_by`) VALUES
+(10, 5, 'teacher/uploads/1130_File.xlsx', '2024-04-17 23:29:53', 'Lesson 1', 5, 10, 'Grade 10', 'aaa bbb'),
+(11, 6, 'teacher/uploads/3828_File.xlsx', '2024-04-17 23:31:36', 'Lesson 1', 5, 11, 'Grade 11 B', 'aaa bbb');
 
 -- --------------------------------------------------------
 
@@ -319,8 +321,8 @@ INSERT INTO `result_files` (`file_id`, `floc`, `fdatein`, `fdesc`, `teacher_id`,
 CREATE TABLE `schedule` (
   `schedule_id` int(11) NOT NULL,
   `teacher_id` int(11) NOT NULL,
-  `class_id` int(11) NOT NULL,
   `subject_id` int(11) NOT NULL,
+  `class_id` int(11) NOT NULL,
   `date` varchar(8) NOT NULL,
   `time` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -329,8 +331,9 @@ CREATE TABLE `schedule` (
 -- Dumping data for table `schedule`
 --
 
-INSERT INTO `schedule` (`schedule_id`, `teacher_id`, `class_id`, `subject_id`, `date`, `time`) VALUES
-(3, 5, 9, 9, 'Tuesday', '14:00:00');
+INSERT INTO `schedule` (`schedule_id`, `teacher_id`, `subject_id`, `class_id`, `date`, `time`) VALUES
+(4, 5, 9, 8, 'Monday', '14:00:00'),
+(5, 5, 11, 10, 'Tuesday', '14:00:00');
 
 -- --------------------------------------------------------
 
@@ -356,10 +359,37 @@ CREATE TABLE `student` (
 --
 
 INSERT INTO `student` (`student_id`, `firstname`, `lastname`, `gender`, `username`, `password`, `language`, `grade`, `status`, `image`) VALUES
-(2, 'bbb', 'ccc', 'male', 'eee@gmail.com', '123', 'sinhala', '11', 'unregistered', ''),
+(2, 'bbb', 'ccc', 'male', 'eee@gmail.com', '123', 'sinhala', '11', 'registered', ''),
 (4, 'Anu', 'Raj', 'male', 'anurajselvasothy@gmail.com', 'anu', 'Tamil', '11', 'unregistered', ''),
 (7, 'abc', 'def', 'male', 'anu@gmail.com', '111', 'Tamil', '10', 'unregistered', ''),
 (11, 'Anuraj', 'Selvasothy', 'male', 'anuraj@gmail.com', '2601', 'Tamil', '11', 'unregistered', 'uploads/1999_File.jpg');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `student_attendance`
+--
+
+CREATE TABLE `student_attendance` (
+  `student_id` int(11) NOT NULL,
+  `teacher_id` int(11) NOT NULL,
+  `subject_id` int(11) NOT NULL,
+  `date` varchar(30) NOT NULL,
+  `student_status` varchar(30) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `student_class`
+--
+
+CREATE TABLE `student_class` (
+  `student_schedule_id` int(11) NOT NULL,
+  `student_id` int(11) NOT NULL,
+  `schedule_id` int(11) NOT NULL,
+  `status` varchar(15) NOT NULL DEFAULT 'unregistered'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -393,7 +423,8 @@ CREATE TABLE `subject` (
 --
 
 INSERT INTO `subject` (`subject_id`, `subject_code`, `subject_title`, `description`) VALUES
-(9, '1001', 'Mathematics', '<p>This subject for Ordinary Level Maths</p>\r\n');
+(9, '1001', 'Mathematics', '<p>This subject for Ordinary Level Maths</p>\r\n'),
+(11, '1002', 'History', '<p>O/Level History</p>\r\n');
 
 -- --------------------------------------------------------
 
@@ -441,8 +472,8 @@ CREATE TABLE `teacher_class` (
 --
 
 INSERT INTO `teacher_class` (`teacher_class_id`, `class_name`, `teacher_id`, `grade_id`, `subject_id`) VALUES
-(8, 'Mathematics', 5, 102, 9),
-(9, 'New Class', 5, 101, 9);
+(10, '11A', 5, 102, 11),
+(11, '11B', 5, 102, 11);
 
 -- --------------------------------------------------------
 
@@ -479,7 +510,7 @@ CREATE TABLE `userlist` (
 
 INSERT INTO `userlist` (`firstname`, `lastname`, `role`, `status`, `userlistid`, `username`, `password`) VALUES
 ('bbb', 'ccc', 'student', 'unregistered', 1, 'eee@gmail.com', '123'),
-('aaa', 'bbb', 'teacher', 'unregistered', 2, 'aaa@gmail.com', '111'),
+('aaa', 'bbb', 'teacher', 'registered', 2, 'aaa@gmail.com', '111'),
 ('Anuraj', 'yyy', 'parent', 'unregistered', 3, 'anurajselvasothy@gmail.com', '234'),
 ('admin', 'admin', 'admin', 'registered', 4, 'admin@gmail.com', '1111'),
 ('aaa', 'bbbb', 'teacher', 'unregistered', 5, 'aaa', '1233'),
@@ -617,6 +648,12 @@ ALTER TABLE `student`
   ADD PRIMARY KEY (`student_id`);
 
 --
+-- Indexes for table `student_class`
+--
+ALTER TABLE `student_class`
+  ADD PRIMARY KEY (`student_schedule_id`);
+
+--
 -- Indexes for table `student_class_quiz`
 --
 ALTER TABLE `student_class_quiz`
@@ -684,7 +721,7 @@ ALTER TABLE `class_subject_overview`
 -- AUTO_INCREMENT for table `exam_results`
 --
 ALTER TABLE `exam_results`
-  MODIFY `exam_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `exam_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `files`
@@ -732,19 +769,25 @@ ALTER TABLE `quiz_question`
 -- AUTO_INCREMENT for table `result_files`
 --
 ALTER TABLE `result_files`
-  MODIFY `file_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `file_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `schedule`
 --
 ALTER TABLE `schedule`
-  MODIFY `schedule_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `schedule_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `student`
 --
 ALTER TABLE `student`
   MODIFY `student_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
+-- AUTO_INCREMENT for table `student_class`
+--
+ALTER TABLE `student_class`
+  MODIFY `student_schedule_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `student_class_quiz`
@@ -756,7 +799,7 @@ ALTER TABLE `student_class_quiz`
 -- AUTO_INCREMENT for table `subject`
 --
 ALTER TABLE `subject`
-  MODIFY `subject_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `subject_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `teacher`
@@ -768,7 +811,7 @@ ALTER TABLE `teacher`
 -- AUTO_INCREMENT for table `teacher_class`
 --
 ALTER TABLE `teacher_class`
-  MODIFY `teacher_class_id` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `teacher_class_id` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `teacher_class_student`

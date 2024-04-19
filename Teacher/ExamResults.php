@@ -76,7 +76,7 @@
                             <td><?php echo $row['exam_id']; ?></td>
                             <td><?php echo $row['class_name']; ?></td>
                             <td><?php echo $row['subject_title']; ?></td>
-                            <td><a href="ResultAnalysis.php" style="text-decoration:none;color:white;"><button type='button' class="button1">More</button></a></td>
+                            <td><a href="ResultAnalysis.php?exam_id=<?php echo $id; ?>" style="text-decoration:none;color:white;"><button type='button' class="button1">More</button></a></td>
                         </tr>
                     </tbody>
 				

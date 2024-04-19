@@ -6,6 +6,16 @@
 	$row = mysqli_fetch_array($query);
 ?>
 
+<?php
+if(isset($_GET['exam_id'])) {
+    $exam_id = $_GET['exam_id'];
+    
+    // Fetch exam result details based on the exam_id
+    $query = mysqli_query($link, "SELECT * FROM result_files WHERE exam_id = '$exam_id'");
+    $result = mysqli_fetch_array($query);
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,7 +33,7 @@
 <body>
     <?php include 'dropdown.php'; ?>
     
-	<button><a href="ResultAnalysis.php">Go to Dashboard</a></button>
+	<button><a href="ResultAnalysis.php?exam_id=<?php echo $exam_id; ?>">Go to Dashboard</a></button>
 	<div class="content">
 		<h1>Add Document</h1>
 
@@ -146,12 +156,12 @@ if(isset($_POST['save'])) {
         if (move_uploaded_file($uploaded_file['tmp_name'], $target_file)) {
             // File uploaded successfully, insert file details into the database
             $name = clean($_POST['name']);
-            mysqli_query($link, "INSERT INTO result_files (fdesc, floc, fdatein, teacher_id, class_id, fname, uploaded_by)
-                                VALUES ('$filedesc', '$target_file', NOW(), '$session_id', '$class_id', '$name', '$uploaded_by')") 
+            mysqli_query($link, "INSERT INTO result_files (exam_id,fdesc, floc, fdatein, teacher_id, class_id, fname, uploaded_by)
+                                VALUES ('$exam_id','$filedesc', '$target_file', NOW(), '$session_id', '$class_id', '$name', '$uploaded_by')") 
                                 or die(mysqli_error($link));
 
             // Redirect to a success page or perform any other actions
-            header("Location: ResultAnalysis.php");
+            header("Location: ResultAnalysis.php?exam_id=<?php echo $exam_id; ?>");
             exit();
         } else {
             echo "Sorry, there was an error uploading your file.";
@@ -161,7 +171,7 @@ if(isset($_POST['save'])) {
 
 
 <script>
-    window.location = 'view_document.php';
+    window.location = 'add_resultanalysis.php';
 </script>
 <?php
 }
