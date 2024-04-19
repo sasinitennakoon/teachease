@@ -173,7 +173,7 @@ if(isset($_GET['exam_id'])) {
         }
 ?>
     <script>
-        window.location = "ResultsAnalysis.php?exam_id=<?php echo $exam_id; ?>";
+        window.location = "ResultsAnalysis.php";
     </script>
 
 <?php
