@@ -80,7 +80,7 @@
                     var storedMeetingLink = localStorage.getItem('meetingLink');
                     if (storedMeetingLink) {
                         document.getElementById("copyInput").value = storedMeetingLink;
-                        document.getElementById("meetingLinkButton").innerHTML = '<button class="button"><a href="' + storedMeetingLink + '" target="_blank" style="text-decoration:none;color:white;">Join Meeting</a></button>';
+                        document.getElementById("meetingLinkButton").innerHTML = '<button class="button1"><a href="' + storedMeetingLink + '" target="_blank" style="text-decoration:none;color:white;">Join Meeting</a></button>';
                     }
                 });
 
@@ -107,9 +107,9 @@
                <button onclick="createMeeting()" class="button1">Create Meeting</button></td>
                <td>
                 <div id="meetingLinkButton"></div>
-                </td>>
+                </td>
                 <td>
-                <input type="text" id="copyInput"
+                <input type="text" id="copyInput">
                 </td>
                 <td>
                 <button onclick="copyFunction()" class="button1">Copy Link</button>

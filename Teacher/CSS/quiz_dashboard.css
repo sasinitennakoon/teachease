@@ -270,7 +270,7 @@ select {
 
   form .user-details .input-box #opt12,
   form .user-details .input-box #opt11 {
-        text-align: center;
+        text-align: left;
   }
   
   form .user-details .input-box input {

@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 18, 2024 at 11:24 AM
+-- Generation Time: Apr 19, 2024 at 03:18 PM
 -- Server version: 10.4.32-MariaDB
--- PHP Version: 8.0.30
+-- PHP Version: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -20,6 +20,19 @@ SET time_zone = "+00:00";
 --
 -- Database: `teachease`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `announcement`
+--
+
+CREATE TABLE `announcement` (
+  `announcement_id` int(11) NOT NULL,
+  `content` varchar(500) NOT NULL,
+  `type` varchar(50) NOT NULL,
+  `date` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -189,9 +202,9 @@ CREATE TABLE `parent` (
 --
 
 INSERT INTO `parent` (`parent_id`, `firstname`, `lastname`, `city`, `childrenname`, `username`, `password`, `status`, `language`, `image`) VALUES
-(6, 'aaa', 'bbb', 'ccc', 'anu', 'anurajselvasoth', '234', 'unregistered', '', ''),
-(18, 'Selvasothy', 'Selva', 'Jaffna', 'anu', 'anuraj', '234', 'unregistered', '', ''),
-(19, 'www', 'abc', 'colombo', 'anu', 'www@gmail.com', '123', 'unregistered', '', ''),
+(6, 'aaa', 'bbb', 'ccc', 'anu', 'anurajselvasoth', '234', 'unregistered', 'English', ''),
+(18, 'Selvasothy', 'Selva', 'Jaffna', 'anu', 'anuraj', '234', 'unregistered', 'Tamil', ''),
+(19, 'www', 'abc', 'colombo', 'anu', 'www@gmail.com', '123', 'unregistered', 'Sinhala', ''),
 (22, 'Selvasothy', 'Thangarajah', 'Jaffna', 'Anuraj', 'selva@gmail.com', '123', 'unregistered', 'Tamil', 'uploads/4783_File.png');
 
 -- --------------------------------------------------------
@@ -391,6 +404,18 @@ CREATE TABLE `student_class` (
   `status` varchar(15) NOT NULL DEFAULT 'unregistered'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `student_class`
+--
+
+INSERT INTO `student_class` (`student_schedule_id`, `student_id`, `schedule_id`, `status`) VALUES
+(18, 2, 5, 'joined'),
+(32, 2, 0, 'joined'),
+(33, 2, 0, 'joined'),
+(34, 2, 0, 'joined'),
+(35, 2, 0, 'joined'),
+(36, 2, 0, 'joined');
+
 -- --------------------------------------------------------
 
 --
@@ -449,7 +474,7 @@ CREATE TABLE `teacher` (
 --
 
 INSERT INTO `teacher` (`teacher_id`, `firstname`, `lastname`, `username`, `password`, `subject`, `status`, `language`, `image`) VALUES
-(3, 'aaaa', 'bbb', 'aaaa@gmail.com', '123', 'Maths', 'unregistered', '', ''),
+(3, 'aaaa', 'bbb', 'aaaa@gmail.com', '123', 'Maths', 'unregistered', 'English', ''),
 (4, 'Anuraj', 'Selvasothy', 'anuraj@gmail.com', '2601', 'History', 'unregistered', 'Tamil', ''),
 (5, 'aaa', 'bbb', 'aaa@gmail.com', '111', 'History', 'unregistered', 'Tamil', 'uploads/1629_File.png');
 
@@ -525,7 +550,7 @@ INSERT INTO `userlist` (`firstname`, `lastname`, `role`, `status`, `userlistid`,
 ('Anuraj', 'Selvasothy', 'teacher', 'unregistered', 14, 'anuraj@gmail.com', '2601'),
 ('Selvasothy', 'Thangarajah', 'teacher', 'unregistered', 15, 'selva@gmail.com', '123'),
 ('Anuraj', 'Selvasothy', 'teacher', 'unregistered', 16, 'anuraj@gmail.com', '2601'),
-('Selvasothy', 'Thangarajah', '', 'unregistered', 17, 'selva@gmail.com', '123'),
+('Selvasothy', 'Thangarajah', 'parent', 'unregistered', 17, 'selva@gmail.com', '123'),
 ('aaa', 'bbb', 'teacher', 'unregistered', 18, 'aaa@gmail.com', '111');
 
 -- --------------------------------------------------------
@@ -555,6 +580,12 @@ INSERT INTO `users` (`user_id`, `username`, `password`, `firstname`, `lastname`,
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `announcement`
+--
+ALTER TABLE `announcement`
+  ADD PRIMARY KEY (`announcement_id`);
 
 --
 -- Indexes for table `answer`
@@ -700,6 +731,12 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT for table `announcement`
+--
+ALTER TABLE `announcement`
+  MODIFY `announcement_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `answer`
 --
 ALTER TABLE `answer`
@@ -787,7 +824,7 @@ ALTER TABLE `student`
 -- AUTO_INCREMENT for table `student_class`
 --
 ALTER TABLE `student_class`
-  MODIFY `student_schedule_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `student_schedule_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- AUTO_INCREMENT for table `student_class_quiz`
