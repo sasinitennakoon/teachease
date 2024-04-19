@@ -54,17 +54,20 @@
 						</select>
                     </div>
                     <div class="input-box">
-                        <span class="details">Subject</span>
-                        <select name="subject_id" required>
-							<option></option>
-                            <?php
-											$query = mysqli_query($link,"select * from subject order by subject_code");
-											while($row = mysqli_fetch_array($query)){
-											
-											?>
-											<option value="<?php echo $row['subject_id']; ?>"><?php echo $row['subject_title']; ?></option>
-											<?php } ?>
-						</select>
+                    <span class="details">Subject</span>
+                    <select name="subject_id" required>
+                    <option></option>
+                    <?php
+                    $query = mysqli_query($link, "SELECT subject.*
+                                       FROM subject 
+                                       INNER JOIN teacher ON teacher.subject= subject.subject_title
+                                       WHERE teacher.teacher_id = '$session_id'
+                                       ORDER BY subject.subject_id");
+                    while ($row = mysqli_fetch_array($query)) {
+                     ?>
+                    <option value="<?php echo $row['subject_id']; ?>"><?php echo $row['subject_title']; ?></option>
+                    <?php } ?>
+                    </select>
                     </div>
 
                     <div class="input-box">
