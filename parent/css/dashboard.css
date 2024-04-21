@@ -251,3 +251,110 @@ nav a {
 .panel2 h3{
     text-align: left;
 }
+
+
+.panel7:hover,
+.panel8:hover,
+.panel9:hover,
+.panel10:hover,
+.panel11:hover,
+.panel12:hover{
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.panel7 {
+    flex: 1;
+    background-color: #f0f0f0;
+    background-image: url('../img/science.png');
+    background-position: right;
+    background-size: 200px 160px;
+    background-repeat: no-repeat;
+    padding: 20px;
+    margin: 10px ;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 60%;
+    height: 150px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.panel8 {
+    flex: 1;
+    background-color: #f0f0f0;
+    background-image: url('../img/maths.png');
+    background-position: right;
+    background-size: 210px 180px;
+    background-repeat: no-repeat;
+    padding: 20px;
+    margin: 10px ;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 60%;
+    height: 150px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.panel9 {
+    flex: 1;
+    background-color: #f0f0f0;
+    background-image: url('../img/eng.png');
+    background-position: right;
+    background-size: 250px 180px;
+    background-repeat: no-repeat;
+    padding: 20px;
+    margin: 10px ;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 60%;
+    height: 150px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.panel10 {
+    flex: 1;
+    background-color: #f0f0f0;
+    background-image: url('../img/Sinhala.png');
+    background-position: right;
+    background-size: 230px 180px;
+    background-repeat: no-repeat;
+    padding: 20px;
+    margin: 10px ;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 60%;
+    height: 150px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.panel11 {
+    flex: 1;
+    background-color: #f0f0f0;
+    background-image: url('../img/The\ Eight\ Auspicious\ Symbols\ of\ Buddhism\ And\ Their\ Meanings.png');
+    background-position: right;
+    background-size: 200px 180px;
+    background-repeat: no-repeat;
+    padding: 20px;
+    margin: 10px ;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 60%;
+    height: 150px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.panel12 {
+    flex: 1;
+    background-color: #f0f0f0;
+    background-image: url('../img/history.png');
+    background-position: right;
+    background-size: 200px 180px;
+    background-repeat: no-repeat;
+    padding: 20px;
+    margin: 10px ;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 60%;
+    height: 150px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
