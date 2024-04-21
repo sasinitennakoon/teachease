@@ -1,3 +1,11 @@
+<?php include '../database/db_con.php'; ?>
+<?php include '../session.php'; ?>
+
+<?php 
+	$query= mysqli_query($link,"select * from parent where parent_id = '$session_id'")or die(mysqli_error());
+	$row = mysqli_fetch_array($query);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,13 +18,24 @@
 </head>
 
 <body>
-
+<div class="dropdown" style="float:right;">
+  <div class="dropbtn">
+    <img src="./img/download (3).png"" alt="User Icon">
+    <?php echo $row['firstname']; ?>
+    <i class="fa fa-caret-down"></i>
+  </div>
+  <div class="dropdown-content">
+    <a href="MyProfile.php"><i class="fa fa-fw fa-user"></i>Profile</a>
+    <a href="ResetPassword.php"><i class="fa fa-fw fa-unlock-alt"></i>Change Password</a>
+    <a href="../logout.php"><i class="fa fa-fw fa-sign-out-alt"></i>Log out</a>
+  </div>
+</div>
 
 <button onclick="goBack()">Go to Dashboard</button>
 
 <div class="content">
   <div class="panelsD">
-    <h2>1st Term Marks</h2>
+    <h2>3rd Term Marks</h2>
     <div class="chart-container">
       <canvas id="term1-chart"></canvas>
     </div>
@@ -29,7 +48,7 @@
       </tr>
       <tr>
         <td>Science</td>
-        <td>88</td>
+        <td>80</td>
       </tr>
       <tr>
         <td>Mathematics</td>
@@ -37,21 +56,21 @@
       </tr>
       <tr>
         <td>English</td>
-        <td>63</td>
-      </tr>
-      <tr>
-        <td>Sinhala</td>
-        <td>96</td>
-      </tr>
-      <tr>
-        <td>Buddhism</td>
         <td>85</td>
       </tr>
       <tr>
-        <td>History</td>
-        <td>45</td>
+        <td>Sinhala</td>
+        <td>90</td>
       </tr>
-      
+      <tr>
+        <td>Buddhism</td>
+        <td>70</td>
+      </tr>
+      <tr>
+        <td>History</td>
+        <td>78</td>
+      </tr>
+      <!-- Add more rows for other subjects -->
     </table>
   </div>
 </div>
@@ -70,8 +89,8 @@
       labels: ['Science', 'Mathematics', 'English', 'Sinhala', 'Buddhism', 'History'],
       datasets: [
         {
-          label: '1st Term Marks',
-          data: [88,75,63,96,85,45],
+          label: '3rd Term Marks',
+          data: [80, 75, 85, 90, 70, 78],
           backgroundColor: [
             'rgba(29, 93, 11, 0.8)', 
             'rgba(273, 26, 26, 0.8)',  

@@ -28,7 +28,7 @@
 							$row = mysqli_fetch_array($result1);
 							$_SESSION['id']=$row['parent_id'];
 							echo "Login Successful. Welcome, $fname!";
-							header("refresh:0;url=parent/dashboard.html");
+							header("refresh:0;url=parent/dashboard.php");
 						}
 						else if($role == 'teacher')
 						{
