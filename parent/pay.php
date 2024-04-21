@@ -52,4 +52,58 @@
 
         <div class="content">
             <h1>Your Payments</h1>
+            <div class="panelsD">
+            <div class="panel7" onclick="window.location.href='//buy.stripe.com/test_28o4hl64VaMv2WYfZ2';">
+                <p><b>Science</b></p>
+                
+            </div>
+
+            <div class="panel8" onclick="window.location.href='//buy.stripe.com/test_bIY5lpdxn8En0OQcMN';">
+                <p><b>Mathematics</b></p>
+            </div>
+
+            <div class="panel9" onclick="window.location.href='//buy.stripe.com/test_dR68xBctj1bV0OQ6or';">
+                <p><b>English</b></p>
+            </div>
         </div>
+
+        <div class="panelsD2">
+            <div class="panel10" onclick="window.location.href='//buy.stripe.com/test_9AQ6pt3WN9Ir8hi3ch';">
+                <p><b>Sinhala</b></p>
+            </div>
+
+            <div class="panel11" onclick="window.location.href='//buy.stripe.com/test_fZeaFJ2SJg6PapqcMS';">
+                <p><b>Buddhism</b></p>
+            </div>
+
+            <div class="panel12" onclick="window.location.href='//buy.stripe.com/test_aEU6pt2SJ7AjdBC7su';">
+                <p><b>History</b></p>
+            </div>
+        </div>
+
+        
+</div>
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Get all course panels
+        var panels = document.querySelectorAll('.panelsD .panel1, .panelsD .panel2, .panelsD .panel3, .panelsD2 .panel4, .panelsD2 .panel5, .panelsD2 .panel6');
+
+        // Add event listeners for hover effect on each panel
+        panels.forEach(function (panel) {
+            panel.addEventListener('mouseover', function () {
+                panel.style.transform = 'translateY(-5px)';
+                panel.style.boxShadow = '0 8px 16px rgba(0, 0, 0, 0.2)';
+            });
+
+            panel.addEventListener('mouseout', function () {
+                panel.style.transform = 'translateY(0)';
+                panel.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.1)';
+            });
+        });
+    });
+</script>
+
+</body>
+</html>
