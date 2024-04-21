@@ -54,10 +54,11 @@
                         <select id="qtype" name="type" required>
 							<option value="<?php echo $row['type']; ?>"></option>
 								
-									<option value="For Teachers">For Teachers</option>
-                                    <option value="For Students">For Students</option>
-                                    <option value="For Parents">For Parents</option>
-                                    <option value="For Teachers">For All</option>
+                            <option value="For Teachers" <?php if ($row['type'] == "For Teachers") echo "selected"; ?>>For Teachers</option>
+                            <option value="For Students" <?php if ($row['type'] == "For Students") echo "selected"; ?>>For Students</option>
+                            <option value="For Parents" <?php if ($row['type'] == "For Parents") echo "selected"; ?>>For Parents</option>
+                            <option value="For All" <?php if ($row['type'] == "For All") echo "selected"; ?>>For All</option>
+
 						</select>
                     </div>
 

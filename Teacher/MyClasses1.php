@@ -30,15 +30,15 @@
         <hr color="white">
         <nav>
             <ul>
-                <li><a href="FirstPage.php"><i class="fas fa-tachometer-alt"></i>&nbsp; Dashboard</a></li>
-               
-                <li><a href="MyClasses.php"  class="active"><i class="fas fa-chalkboard-teacher"></i>&nbsp; My Classes</a></li>
+            <li><a href="FirstPage.php"><i class="fas fa-tachometer-alt"></i>&nbsp; Dashboard</a></li>
+                <li><a href="announcements.php"><i class="fas fa-tachometer-alt"></i>&nbsp; Announcements</a></li>
+                <li><a href="MyStudent.php"><i class="fas fa-users"></i>&nbsp;My Students</a></li>
+                <li><a href="MyClasses.php"><i class="fas fa-chalkboard-teacher"></i>&nbsp; My Classes</a></li>
                 <li><a href="Schedule.php"><i class="fas fa-calendar-alt"></i>&nbsp; Schedule</a></li>
                 <li><a href="StudyMeterials.php"><i class="fas fa-book"></i>&nbsp; Study Materials</a></li>
                 <li><a href="Attendance.php"><i class="fas fa-check-circle"></i>&nbsp; Attendance</a></li>
                 <li><a href="ExamResults.php"><i class="fas fa-poll"></i>&nbsp; Exam Results</a></li>
                 <li><a href="Messages.php"><i class="fas fa-envelope"></i>&nbsp;Messages</a></li>
-                <li><a href="Payment.php"><i class="fas fa-credit-card"></i>&nbsp;Payments</a></li>
                 <li><a href="Feedback.php"><i class="fas fa-comment"></i>&nbsp;Feedback</a></li>
             </ul>
         </nav>
@@ -118,6 +118,69 @@
             </tr>
             </tbody>
     </div> 
+
+    <div class="panels1">
+            <div class="panel10">
+            <form method='post'>
+            
+        <?php
+            $query = mysqli_query($link,"select * from class_announcements") or die(mysqli_error());
+            $count  = mysqli_num_rows($query);
+
+            if($count > 0)
+            {?>
+
+        
+            
+                    <table border="0">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>Content</th>
+                                <th>Type</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                    <tbody>
+                    <?php
+                    while($row = mysqli_fetch_array($query)){
+                    $id = $row['class_announcement_id'];
+
+                    ?>
+                    
+                    <tr>
+                            <td><input type="checkbox" name="selector[]" value="<?php echo $id; ?>"></td>
+                            <td><?php echo $row['content']; ?></td>
+                            <td><?php echo $row['type']; ?></td>
+                            <td><a href="class_announcementsedit.php teacher_class_id=<?php echo $id; ?>" class="button" style="color:black;"><i class="fa fa-fw fa-pencil">Edit</i></a></td>
+                            
+                        </tr>
+                    </tbody>
+
+                   
+
+                    <?php } }else{ ?>
+                        <h3>There is no announcements currently available</h3>
+					<?php  } ?>
+
+                    <div class="but">
+                    <button class="btn btn-info">
+                            <a href="class_announcementadd.phpteacher_class_id=<?php echo $id; ?>" style='text-decoration:none;color:white;'>
+                                <i class="fa fa-fw fa-plus"></i>&nbsp;Add</a>
+                            </button>
+                            <button type="submit" name="delete" class="btn btn-info">
+                                <i class="fa fa-fw fa-trash"></i> Delete
+                            </button>
+                    </div>
+
+                    </table>
+
+                    </form>  
+            </div>
+        </div>
+
+                    </div>
+
 
             </body>
 

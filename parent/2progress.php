@@ -1,3 +1,11 @@
+<?php include '../database/db_con.php'; ?>
+<?php include '../session.php'; ?>
+
+<?php 
+	$query= mysqli_query($link,"select * from parent where parent_id = '$session_id'")or die(mysqli_error());
+	$row = mysqli_fetch_array($query);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,23 +19,23 @@
 
 <body>
 <div class="dropdown" style="float:right;">
-  <div class="dropbtn">
-    <img src="./img/download (3).png"" alt="User Icon">
-    <?php echo $row['firstname']; ?>
-    <i class="fa fa-caret-down"></i>
-  </div>
-  <div class="dropdown-content">
-    <a href="MyProfile.php"><i class="fa fa-fw fa-user"></i>Profile</a>
-    <a href="ResetPassword.php"><i class="fa fa-fw fa-unlock-alt"></i>Change Password</a>
-    <a href="../logout.php"><i class="fa fa-fw fa-sign-out-alt"></i>Log out</a>
-  </div>
+<div class="dropbtn">
+              <img src="./img/download (3).png"" alt="User Icon">
+                <?php echo $row['firstname']; ?>
+				<i class="fa fa-caret-down"></i>
+                </div>
+			  <div class="dropdown-content">
+				<a href="MyProfile.php"><i class="fa fa-fw fa-user"></i>Profile</a>
+				<a href="ResetPassword.php"><i class="fa fa-fw fa-unlock-alt"></i>Change Password</a>
+				<a href="../logout.php"><i class="fa fa-fw fa-sign-out-alt"></i>Log out</a>
+			  </div>
 </div>
 
 <button onclick="goBack()">Go to Dashboard</button>
 
 <div class="content">
   <div class="panelsD">
-    <h2>3rd Term Marks</h2>
+    <h2>2nd Term Marks</h2>
     <div class="chart-container">
       <canvas id="term1-chart"></canvas>
     </div>
@@ -40,27 +48,27 @@
       </tr>
       <tr>
         <td>Science</td>
-        <td>80</td>
+        <td>40</td>
       </tr>
       <tr>
         <td>Mathematics</td>
-        <td>75</td>
+        <td>55</td>
       </tr>
       <tr>
         <td>English</td>
-        <td>85</td>
+        <td>80</td>
       </tr>
       <tr>
         <td>Sinhala</td>
-        <td>90</td>
+        <td>95</td>
       </tr>
       <tr>
         <td>Buddhism</td>
-        <td>70</td>
+        <td>85</td>
       </tr>
       <tr>
         <td>History</td>
-        <td>78</td>
+        <td>63</td>
       </tr>
       <!-- Add more rows for other subjects -->
     </table>
@@ -81,8 +89,8 @@
       labels: ['Science', 'Mathematics', 'English', 'Sinhala', 'Buddhism', 'History'],
       datasets: [
         {
-          label: '3rd Term Marks',
-          data: [80, 75, 85, 90, 70, 78],
+          label: '2nd Term Marks',
+          data: [40,55,80,95,85,63],
           backgroundColor: [
             'rgba(29, 93, 11, 0.8)', 
             'rgba(273, 26, 26, 0.8)',  
