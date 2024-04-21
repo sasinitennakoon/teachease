@@ -1,3 +1,11 @@
+<?php include '../database/db_con.php'; ?>
+<?php include '../session.php'; ?>
+
+<?php 
+	$query= mysqli_query($link,"select * from parent where parent_id = '$session_id'")or die(mysqli_error());
+	$row = mysqli_fetch_array($query);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,7 +20,7 @@
 <body>
   <div class="dropdown" style="float:right;">
     <div class="dropbtn">
-                <img src="./img/download (3).png"" alt="User Icon">
+                <img src="./img/download (3).png" alt="User Icon">
                     <?php echo $row['firstname']; ?>
             <i class="fa fa-caret-down"></i>
                     </div>
@@ -30,13 +38,13 @@
             <hr color="white">
             <nav>
                 <ul>
-                    <li><a href="dashboard.html" ><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
-                <li><a href="childCourses.html"><i class="fas fa-book-open"></i> My Child Courses</a></li>
-                <li><a href="childProgress.html"><i class="fas fa-chart-line"></i> My Child Progress</a></li>
-                <li><a href="Inbox.html"><i class="fas fa-inbox"></i> My Inbox</a></li>
-                <li><a href="meet.html"  class="active"><i class="fas fa-calendar-check"></i>Meeting </a></li>
-                <li><a href="pay.html"><i class="fas fa-money-bill"></i> Payements</a></li>
-                <li><a href="announce.html" ><i class="fas fa-bullhorn"></i> Announcements</a></li>
+                    <li><a href="dashboard.php" ><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                <li><a href="childCourses.php"><i class="fas fa-book-open"></i> My Child Courses</a></li>
+                <li><a href="childProgress.php"><i class="fas fa-chart-line"></i> My Child Progress</a></li>
+                <li><a href="Inbox.php"><i class="fas fa-inbox"></i> My Inbox</a></li>
+                <li><a href="meet.php"  class="active"><i class="fas fa-calendar-check"></i>Meeting </a></li>
+                <li><a href="pay.php"><i class="fas fa-money-bill"></i> Payements</a></li>
+                <li><a href="announce.php" ><i class="fas fa-bullhorn"></i> Announcements</a></li>
     
                 </ul>
             </nav>
