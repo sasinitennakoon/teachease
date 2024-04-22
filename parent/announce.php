@@ -1,3 +1,14 @@
+<?php include '../database/db_con.php'; ?>
+<<<<<<< HEAD
+=======
+<?php include '../session.php'; ?>
+
+<?php 
+	$query= mysqli_query($link,"select * from parent where parent_id = '$session_id'")or die(mysqli_error());
+	$row = mysqli_fetch_array($query);
+?>
+>>>>>>> aef93f765a8fa70b62b65f4edd4c5e11e676d7c1
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,18 +21,7 @@
 </head>
 
 <body>
-  <div class="dropdown" style="float:right;">
-    <div class="dropbtn">
-                <img src="./img/download (3).png"" alt="User Icon">
-                    <?php echo $row['firstname']; ?>
-            <i class="fa fa-caret-down"></i>
-                    </div>
-            <div class="dropdown-content">
-            <a href="MyProfile.php"><i class="fa fa-fw fa-user"></i>Profile</a>
-            <a href="ResetPassword.php"><i class="fa fa-fw fa-unlock-alt"></i>Change Password</a>
-            <a href="../logout.php"><i class="fa fa-fw fa-sign-out-alt"></i>Log out</a>
-            </div>
-          </div> 
+<?php include 'dropdown3.php'; ?>
         <!-- Sidebar -->
         <div class="sidebar">
             <div class="logo">
@@ -36,7 +36,7 @@
                 <li><a href="Inbox.html"><i class="fas fa-inbox"></i> My Inbox</a></li>
                 <li><a href="meet.html"><i class="fas fa-calendar-check"></i>Meeting </a></li>
                 <li><a href="pay.html"><i class="fas fa-money-bill"></i> Payements</a></li>
-                <li><a href="announce.html"  class="active"><i class="fas fa-bullhorn"></i> Announcements</a></li>
+                <li><a href="announce.php"><i class="fas fa-bullhorn"></i> Announcements</a></li>
     
                 </ul>
             </nav>
@@ -44,29 +44,62 @@
 
         <div class="content">
             <h1>Announcements</h1>
-            <div class="panel1">
-                <div class="filter">
-                    <label for="announcement-count">Show:</label>
-                    <select id="announcement-count" onchange="filterAnnouncements()">
-                        <option value="3">3 Announcements</option>
-                        <option value="5">5 Announcements</option>
-                        <option value="10">10 Announcements</option>
-                    </select>
-                </div>
-                <table id="announcement-table">
-                    <thead>
+
+            <h3>Recent Announcements</h3>
+            
+        
+             
+               
+            <div class="panels1">
+                <div class="panel10">
+                <form method='post'>
+                
+            <?php
+                $query = mysqli_query($link, "SELECT * FROM announcement WHERE type = 'For Students' OR type = 'for all'") or die(mysqli_error($link));
+            
+                $count  = mysqli_num_rows($query);
+            
+                if($count > 0)
+                {?>
+            
+            
+                
+                        <table border="0">
+                            <thead>
+                                <tr>
+                                    <th>Content</th>
+                                    <th>Type</th>
+                                </tr>
+                            </thead>
+                        <tbody>
+                        <?php
+                        while($row = mysqli_fetch_array($query)){
+                        $id = $row['announcement_id'];
+            
+                        ?>
+                        
                         <tr>
-                            <th>Announcement No</th>
-                            <th>Announcement</th>
-                            <th>Published Date</th>
-                            <th>Published Person</th>
-                            <th>Mark as Read</th>
-                        </tr>
-                    </thead>
-                    <tbody id="announcement-list">
-                        <!-- Announcement items will be added dynamically here -->
-                    </tbody>
-                </table>
+                                <td><?php echo $row['content']; ?></td>
+                                <td><?php echo $row['type']; ?></td>
+                                
+                            </tr>
+                        </tbody>
+            
+                       
+            
+                        <?php } }else{ ?>
+                            <h3>There is no announcements currently available</h3>
+                        <?php  } ?>
+            
+                        </table>
+            
+                        </form>  
+                </div>
+            </div>
+            
+            
+            
+            
                 
 
             </div>

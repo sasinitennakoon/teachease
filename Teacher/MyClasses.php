@@ -30,15 +30,15 @@
         <hr color="white">
         <nav>
             <ul>
-                <li><a href="FirstPage.php"><i class="fas fa-tachometer-alt"></i>&nbsp; Dashboard</a></li>
-               
-                <li><a href="MyClasses.php"  class="active"><i class="fas fa-chalkboard-teacher"></i>&nbsp; My Classes</a></li>
+            <li><a href="FirstPage.php"><i class="fas fa-tachometer-alt"></i>&nbsp; Dashboard</a></li>
+                <li><a href="announcements.php"><i class="fas fa-tachometer-alt"></i>&nbsp; Announcements</a></li>
+                <li><a href="MyStudent.php"><i class="fas fa-users"></i>&nbsp;My Students</a></li>
+                <li><a href="MyClasses.php"><i class="fas fa-chalkboard-teacher"></i>&nbsp; My Classes</a></li>
                 <li><a href="Schedule.php"><i class="fas fa-calendar-alt"></i>&nbsp; Schedule</a></li>
                 <li><a href="StudyMeterials.php"><i class="fas fa-book"></i>&nbsp; Study Materials</a></li>
                 <li><a href="Attendance.php"><i class="fas fa-check-circle"></i>&nbsp; Attendance</a></li>
                 <li><a href="ExamResults.php"><i class="fas fa-poll"></i>&nbsp; Exam Results</a></li>
                 <li><a href="Messages.php"><i class="fas fa-envelope"></i>&nbsp;Messages</a></li>
-                <li><a href="Payment.php"><i class="fas fa-credit-card"></i>&nbsp;Payments</a></li>
                 <li><a href="Feedback.php"><i class="fas fa-comment"></i>&nbsp;Feedback</a></li>
             </ul>
         </nav>
@@ -81,7 +81,7 @@
                             <td><?php echo $row['grade_name']; ?></td>
                             <td><?php echo $row['subject_title']; ?></td>
                             <td><?php echo $row['noofparticipant']; ?></td>
-                            <td><a href="MyClasses1.php" style="text-decoration:none;color:white;"><button type='button' class="button1">More</button></a></td>
+                            <td><a href="MyClasses1.php?teacher_class_id=<?php echo $id; ?>" style="text-decoration:none;color:white;"><button type='button' class="button1">More</button></a></td>
                         </tr>
                     </tbody>
 				

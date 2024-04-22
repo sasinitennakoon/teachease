@@ -2,7 +2,7 @@
 <?php include '../session.php'; ?>
 
 <?php 
-	$query= mysqli_query($link,"select * from student where student_id = '$session_id'")or die(mysqli_error());
+	$query= mysqli_query($link,"select * from parent where parent_id = '$session_id'")or die(mysqli_error());
 	$row = mysqli_fetch_array($query);
 ?>
 
@@ -38,13 +38,13 @@
         <hr color="white">
         <nav>
             <ul>
-                <li><a href="dashboard.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
-                <li><a href="childCourses.html"  class="active"><i class="fas fa-book-open"></i> My Child Courses</a></li>
-                <li><a href="childProgress.html"><i class="fas fa-chart-line"></i> My Child Progress</a></li>
-                <li><a href="Inbox.html"><i class="fas fa-inbox"></i> My Inbox</a></li>
-                <li><a href="meet.html"><i class="fas fa-calendar-check"></i>Meeting </a></li>
-                <li><a href="pay.html"><i class="fas fa-money-bill"></i> Payements</a></li>
-                <li><a href="announce.html"><i class="fas fa-bullhorn"></i> Announcements</a></li>
+                <li><a href="dashboard.php"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                <li><a href="childCourses.php"  class="active"><i class="fas fa-book-open"></i> My Child Courses</a></li>
+                <li><a href="childProgress.php"><i class="fas fa-chart-line"></i> My Child Progress</a></li>
+                <li><a href="Inbox.php"><i class="fas fa-inbox"></i> My Inbox</a></li>
+                <li><a href="meet.php"><i class="fas fa-calendar-check"></i>Meeting </a></li>
+                <li><a href="pay.php"><i class="fas fa-money-bill"></i> Payements</a></li>
+                <li><a href="announce.php"><i class="fas fa-bullhorn"></i> Announcements</a></li>
 
             </ul>
         </nav>
@@ -61,7 +61,7 @@
                 going to cover whole syllabus . Notonly that we are conducting assignmnets and quizes for each and every
             part of this course. </p>
             <p>Grade: 10</p>
-            <p>Teacher:<a href="profile1.html"> M.M.S Samarasekara</a></p>
+            <p>Teacher:<a href="profile1.php"> M.M.S Samarasekara</a></p>
             <p>Course fee: Rs.5000(pay it on or before the 25th of every month)</p>
            
         </div>
@@ -71,7 +71,7 @@
             <h2>Mathematics</h2>
             <p>Our mathematics course covers the full syllabus as per educational standards. With engaging classes and interactive sessions, we ensure a deep understanding of every topic. Students benefit from a mix of theory, practical applications, and problem-solving strategies, guided by experienced teachers.</p>
             <p>Grade: 10</p>
-            <p>Teacher:<a href="profile1.html"> S.A Gallage</a></p>
+            <p>Teacher:<a href="profile1.php"> S.A Gallage</a></p>
             <p>Course fee: Rs.5000(pay it on or before the 25th of every month)</p>
            
         </div>
@@ -84,7 +84,7 @@
                 syllabus as well as other practical things
             </p>
             <p>Grade: 10</p>
-            <p>Teacher:<a href="profile1.html"> J. A Rodrigo</a></p>
+            <p>Teacher:<a href="profile1.php"> J. A Rodrigo</a></p>
             <p>Course fee: Rs.5000(pay it on or before the 25th of each month)</p>
            
         </div>
@@ -96,7 +96,7 @@
                 going to cover whole syllabus . Notonly that we are conducting assignmnets and quizes for each and every
             part of this course. </p>
             <p>Grade: 10</p>
-            <p>Teacher:<a href="profile1.html"> Padmawathee Somapala</a></p>
+            <p>Teacher:<a href="profile1.php"> Padmawathee Somapala</a></p>
             <p>Course fee: Rs.5000(pay it on or before the 25th of each month)</p>
            
         </div>
@@ -108,7 +108,7 @@
                 going to cover whole syllabus . Notonly that we are conducting assignmnets and quizes for each and every
             part of this course. </p>
             <p>Grade: 10</p>
-            <p>Teacher:<a href="profile1.html"> S.S Karunanayake</a></p>
+            <p>Teacher:<a href="profile1.php"> S.S Karunanayake</a></p>
             <p>Course fee: Rs.5000(pay it on or before the 25th of each month)</p>
            
         </div>
@@ -119,7 +119,7 @@
             <p>This course is based on the science syllabus that was recommended by the Ministry of education. Here, we are
                 going to provide knowledge to students by interactive and attractive activities and simulations </p>
             <p>Grade: 10</p>
-            <p>Teacher:<a href="profile1.html"> Namal Silva</a></p>
+            <p>Teacher:<a href="profile1.php"> Namal Silva</a></p>
             <p>Course fee: Rs.5000(pay it on or before the 25th of each month)</p>
            
         </div>
