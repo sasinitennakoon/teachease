@@ -1,0 +1,2 @@
+# Ignore vendor folder (e.g., for package managers like Composer or npm)
+vendor/
