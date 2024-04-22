@@ -142,6 +142,7 @@ if(isset($_GET['exam_id'])) {
 
         <div class="charts">
 
+        
         <div class="charts-card">
             <h2 class="chart-title" style="color: white;">Analysis of Overall Grades</h2>
             <div id="bar-chart"></div>
@@ -178,6 +179,50 @@ if(isset($_GET['exam_id'])) {
 
 <?php
     }
+?>
+
+<?php
+include '../database/db_con.php';
+if (isset($_GET['exam_id'])) {
+    $exam_id = $_GET['exam_id'];
+
+    // Overall grade distribution
+    $query_grades = mysqli_query($link, "
+        SELECT grade, COUNT(*) AS count
+        FROM result_file_marks
+        WHERE exam_id = '$exam_id'
+        GROUP BY grade
+    ") or die(mysqli_error($link));
+
+    $grades_data = [];
+    while ($row = mysqli_fetch_assoc($query_grades)) {
+        $grades_data[] = $row;
+    }
+
+    // Pass/fail rates
+    $query_pass_fail = mysqli_query($link, "
+        SELECT 
+            CASE 
+                WHEN grade IN ('A', 'B', 'C','S') THEN 'Pass'
+                ELSE 'Fail'
+            END AS result, 
+            COUNT(*) AS count
+        FROM result_file_marks
+        WHERE exam_id = '$exam_id'
+        GROUP BY result
+    ") or die(mysqli_error($link));
+
+    $pass_fail_data = [];
+    while ($row = mysqli_fetch_assoc($query_pass_fail)) {
+        $pass_fail_data[] = $row;
+    }
+
+    // Return data as JSON
+    echo json_encode([
+        'grades' => $grades_data,
+        'pass_fail' => $pass_fail_data,
+    ]);
+}
 ?>
 
 

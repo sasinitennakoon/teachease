@@ -172,3 +172,72 @@ if(isset($_POST['save'])) {
     }
 }
 ?>
+
+<?php
+// Include necessary files and PhpSpreadsheet
+require './vendor/autoload.php'; // Path to PhpSpreadsheet autoload file
+include '../database/db_con.php'; // Database connection file
+
+use PhpOffice\PhpSpreadsheet\IOFactory; // Importing PhpSpreadsheet
+
+// Verify database connection
+if (!$link) {
+    die("Database connection failed: " . mysqli_connect_error());
+}
+
+// Check if the form is submitted and validate the uploaded Excel file
+if (isset($_POST['upload_excel'])) {
+    if (isset($_FILES['excel_file']) && $_FILES['excel_file']['error'] == 0) {
+        $file_tmp = $_FILES['excel_file']['tmp_name'];
+
+        try {
+            $spreadsheet = IOFactory::load($file_tmp);
+        } catch (Exception $e) {
+            echo "Error loading Excel file: " . $e->getMessage();
+            exit();
+        }
+
+        // Access the first sheet in the Excel file
+        $sheet = $spreadsheet->getSheet(0);
+        $row_count = $sheet->getHighestRow(); // Get the total number of rows
+
+        if ($row_count < 2) {
+            echo "Excel file is empty or missing expected data.";
+            exit();
+        }
+
+        // Prepare the SQL statement for insertion
+        $stmt = $link->prepare("INSERT INTO result_file_marks (student_id, teacher_class_id, marks) VALUES (?, ?, ?)");
+        if (!$stmt) {
+            echo "Failed to prepare SQL statement: " . $link->error;
+            exit();
+        }
+
+        // Loop through the rows to insert data
+        for ($row = 2; $row <= $row_count; $row++) {
+            $student_id = $sheet->getCell("A$row")->getValue(); // Student ID in column A
+            $teacher_class_id = $sheet->getCell("B$row")->getValue(); // Teacher class ID in column B
+            $marks = $sheet->getCell("C$row")->getValue(); // Marks in column C
+
+            // Validate data types to ensure correct insertion
+            if (is_numeric($student_id) && is_numeric($teacher_class_id) && is_numeric($marks)) {
+                $stmt->bind_param("iii", $student_id, $teacher_class_id, $marks);
+                $stmt->execute();
+            } else {
+                echo "Invalid data format in row $row.";
+                exit();
+            }
+        }
+
+        // Close the statement and connection
+        $stmt->close();
+        $link->close();
+
+        echo "Data uploaded successfully.";
+    } else {
+        echo "Error: No file uploaded or file upload failed.";
+    }
+} else {
+    echo "Form not submitted.";
+}
+?>
