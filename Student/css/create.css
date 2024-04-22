@@ -278,6 +278,113 @@ button:hover{
 .but{
     padding: 20px;
 }
-
-
-
+.flashcard {
+    width: 300px;
+    height: 200px;
+    perspective: 1000px;
+    position: relative;
+    margin-bottom: 20px;
+}
+.flashcard .front, .flashcard .back {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    backface-visibility: hidden;
+    transition: transform 0.5s;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.flashcard .front {
+    background-color: #FFD700; /* Golden */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+}
+.flashcard .back {
+    background-color: #90EE90; /* Light Green */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    transform: rotateY(180deg);
+}
+.flashcard.flipped .front {
+    transform: rotateY(180deg);
+}
+.flashcard.flipped .back {
+    transform: rotateY(0deg);
+}
+.flashcard {
+    width: 300px;
+    height: 200px;
+    position: relative;
+    margin-bottom: 20px;
+    perspective: 1000px;
+}
+.flashcard .card-inner {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    transition: transform 0.8s ease;
+    transform-style: preserve-3d;
+    border-radius: 10px;
+}
+.flashcard .front, .flashcard .back {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    backface-visibility: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    overflow: hidden;
+}
+.flashcard .front {
+    background-color: #3498db; /* Blue */
+}
+.flashcard .back {
+    background-color: #2ecc71; /* Green */
+    transform: rotateY(180deg);
+}
+.flashcard.flipped .card-inner {
+    transform: rotateY(180deg);
+}
+.flashcard {
+    width: 300px;
+    height: 200px;
+    position: relative;
+    margin-bottom: 20px;
+    perspective: 1000px;
+}
+.flashcard .card-inner {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    transition: transform 0.8s ease;
+    transform-style: preserve-3d;
+    border-radius: 10px;
+}
+.flashcard .front, .flashcard .back {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    backface-visibility: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    overflow: hidden;
+    font-size: 24px;
+    word-wrap: break-word;
+}
