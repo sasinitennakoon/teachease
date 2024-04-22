@@ -23,7 +23,7 @@
 
         if($count > 0)
         {
-            echo "username already exist";
+            echo "<script>alert(username already exist);</script>";
         }
         else
         {
@@ -58,7 +58,7 @@
             $status = 'unregistered';
             $sql = mysqli_query($link,"insert into teacher(firstname,lastname,username,password,subject,language,status,image) values('$firstname','$lastname','$username','$password','$subject','$language','$status','$target_file')") or die(mysqli_error($link));
             $sql1 = mysqli_query($link,"insert into userlist(firstname,lastname,role,status,username,password) values('$firstname','$lastname','$role','$status','$username','$password')") or die(mysqli_error($link));
-            echo "Waitng for the admin permission";
+            echo "<script>alert(Waiting for the Admin permission);</script>";
             ?>
 
             <script>
@@ -98,15 +98,15 @@
               <div class="user-details">
                 <div class="input-box">
                   <span class="details">First Name</span>
-                  <input type="text" name="firstname" placeholder="Enter Your First Name" required>
+                  <input type="text" name="firstname" placeholder="Enter Your First Name">
                 </div>
                 <div class="input-box">
                   <span class="details">Last Name</span>
-                  <input type="text" name="lastname" placeholder="Enter Your Last Name" required>
+                  <input type="text" name="lastname" placeholder="Enter Your Last Name">
                 </div>
                 <div class="input-box">
                   <span class="details">Subject</span>
-                  <input type="text" name="subject" placeholder="Enter Your Subject" required>
+                  <input type="text" name="subject" placeholder="Enter Your Subject">
                 </div>
                 <div class="input-box">
                         <span class="details">File</span>
@@ -124,11 +124,11 @@
                 </div>
                 <div class="input-box">
                   <span class="details">Usename (Email)</span>
-                  <input type="text" name="username" placeholder="Enter Your Username" required>
+                  <input type="text" name="username" placeholder="Enter Your Username">
                 </div>
                 <div class="input-box">
                   <span class="details">Password</span>
-                  <input type="text" name="password" placeholder="Enter Password" required>
+                  <input type="password" name="password" placeholder="Enter Password">
                 </div>
               </div>
               <label><input type="checkbox">I hereby declare that the above information provided is true</label>
@@ -139,6 +139,42 @@
       
     </div>
   </div>
+
+  <script>
+    function validateForm() {
+      var firstname = document.getElementById('firstname').value.trim();
+      var lastname = document.getElementById('lastname').value.trim();
+      var subject = document.getElementById('subject').value.trim();
+      var username = document.getElementById('username').value.trim();
+      var password = document.getElementById('password').value.trim();
+      var fileInput = document.getElementById('fileInput').value.trim();
+      var language = document.getElementById('language').value.trim();
+      
+      var gender = document.querySelector('input[name="gender"]:checked');
+
+      // Check if any field is empty
+      if (firstname === '' || lastname === '' || subject === '' || username === '' || password === '' || fileInput === '' || language === '' || gender === null) {
+        alert('Please fill in all fields');
+        return false;
+      }
+
+      // Validate email format
+      var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(username)) {
+        alert('Invalid email format');
+        return false;
+      }
+
+      // Validate password length
+      if (password.length < 6) {
+        alert('Password must be at least 6 characters long');
+        return false;
+      }
+
+      // Add additional checks as needed
+      return true;
+    }
+  </script>
 </body>
 </html>
 

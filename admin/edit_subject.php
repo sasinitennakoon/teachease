@@ -88,7 +88,7 @@
 		?>
 
 		<script>
-			window.location="subjects.php";
+			window.location="subjectlist.php";
 		</script>
 
 		<?php
