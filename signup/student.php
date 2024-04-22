@@ -14,7 +14,7 @@
         $grade = $_POST['grade'];
         $language = $_POST['language'];
         $gender = $_POST['gender'];
-        $role = "teacher";
+        $role = "student";
         $status = "unregistered";
 
         /*
@@ -28,7 +28,7 @@
 
         if($count > 0)
         {
-            echo "username already exist";
+            echo "<script>alert(username already exist);</script>";
         }
         else
         {
@@ -63,7 +63,7 @@
             $status = 'unregistered';
             $sql = mysqli_query($link,"insert into student(firstname,lastname,username,password,grade,language,status,gender,image) values('$firstname','$lastname','$username','$password','$grade','$language','$status','$gender','$target_file')") or die(mysqli_error($link));
             $sql1 = mysqli_query($link,"insert into userlist(firstname,lastname,role,status,username,password) values('$firstname','$lastname','$role','$status','$username','$password')") or die(mysqli_error($link));
-            echo "Waiting for the admin permission";
+            echo "<script>alert(Waiting for the Admin permission);</script>";
             ?>
 
             <script>
@@ -109,36 +109,35 @@
           <!-- Add an image here -->
           <img src="studentimage.jpeg" height="400" width="380" alt="signupImage" class="signup-image">
         </div>
-        <form id="studentForm" method="post" enctype="multipart/form-data">
+        <form id="studentForm" method="post" enctype="multipart/form-data" onsubmit="return validateForm()">
           <div class="title"> Student Sign Up</div>
           <div class="user-details">
             <div class="input-box">
               <span class="details">First Name</span>
-              <input type="text" name="firstname" placeholder="Enter Your First Name" required>
+              <input type="text" name="firstname" id="firstname" placeholder="Enter Your First Name">
             </div>
             <div class="input-box">
               <span class="details">Last Name</span>
-              <input type="text" name="lastname" placeholder="Enter Your Last Name" required>
+              <input type="text" name="lastname" id="lastname" placeholder="Enter Your Last Name">
             </div>
             <div class="input-box">
               <span class="details">City</span>
-              <input type="text" name="city" placeholder="Enter Your City" required>
+              <input type="text" name="city" id="city" placeholder="Enter Your City">
             </div>
             <div class="input-box">
-                        <span class="details">File :</span>
-                        <input name="uploaded_file" id="fileInput" type="file" required>
-                         
-                        <input type="hidden" name="MAX_FILE_SIZE" value="1000000" />
-                        <input type="hidden" name="id" value="<?php echo $session_id ?>"/>
-              </div>
+                <span class="details">File :</span>
+                <input name="uploaded_file" id="fileInput" type="file">
+                <input type="hidden" name="MAX_FILE_SIZE" value="1000000" />
+                <input type="hidden" name="id" value="<?php echo $session_id ?>"/>
+            </div>
             <div class="input-box">
-              <span class="details">Usename (Email)</span>
-              <input type="text" name="username" placeholder="Enter Your Username" required>
+              <span class="details">Username (Email)</span>
+              <input type="text" name="username" id="username" placeholder="Enter Your Username">
             </div>
             
             <div class="input-box">
               <span class="details">Password</span>
-              <input type="password" name="password" placeholder="Enter Password" required>
+              <input type="password" name="password" id="password" placeholder="Enter Password">
             </div>
             <div class="gender-details">
               <input type="radio" name="gender" value="male" id="dot-1">
@@ -156,31 +155,63 @@
               </div>
             </div>
             <div>
-                    <label for="language" class="text1">Language:</label>
-                    <select id="language" name="language" class="select">
-                        <option value="english">English</option>
-                        <option value="sinhala">Sinhala</option>
-                        <option value="Tamil">Tamil</option>
-                    </select>
-                </div>
-                <div  >
-                    <label for="grade" class="text1">Grade:</label>
-                    <select id="grade" name="grade" class="select">
-                        <option value="10">Grade 10</option>
-                        <option value="11">Grade 11</option>
-                    </select>
-                </div>
+                <label for="language" class="text1">Language:</label>
+                <select id="language" name="language" class="select">
+                    <option value="english">English</option>
+                    <option value="sinhala">Sinhala</option>
+                    <option value="Tamil">Tamil</option>
+                </select>
+            </div>
+            <div>
+                <label for="grade" class="text1">Grade:</label>
+                <select id="grade" name="grade" class="select">
+                    <option value="10">Grade 10</option>
+                    <option value="11">Grade 11</option>
+                </select>
+            </div>
           </div>
           <div class="button">
             <input type="submit" name="signup" value="Next" class="btn">
           </div>
         </form>
-
-        
       </div>
     </div>
   </div>
 
-  
+  <script>
+    function validateForm() {
+      var firstname = document.getElementById('firstname').value.trim();
+      var lastname = document.getElementById('lastname').value.trim();
+      var city = document.getElementById('city').value.trim();
+      var username = document.getElementById('username').value.trim();
+      var password = document.getElementById('password').value.trim();
+      var fileInput = document.getElementById('fileInput').value.trim();
+      var language = document.getElementById('language').value.trim();
+      var grade = document.getElementById('grade').value.trim();
+      var gender = document.querySelector('input[name="gender"]:checked');
+
+      // Check if any field is empty
+      if (firstname === '' || lastname === '' || city === '' || username === '' || password === '' || fileInput === '' || language === '' || grade === '' || gender === null) {
+        alert('Please fill in all fields');
+        return false;
+      }
+
+      // Validate email format
+      var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(username)) {
+        alert('Invalid email format');
+        return false;
+      }
+
+      // Validate password length
+      if (password.length < 6) {
+        alert('Password must be at least 6 characters long');
+        return false;
+      }
+
+      // Add additional checks as needed
+      return true;
+    }
+  </script>
 </body>
 </html>

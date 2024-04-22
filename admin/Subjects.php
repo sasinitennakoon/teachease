@@ -54,12 +54,7 @@
         <div class="but">
             <a href="Subjectnew.php"><button class="button"><b>Create New Subject</b></button></a>
         </div>
-        <h2>Recently Added Subjects</h2>
-
-        <div class="panels">
-            <div class="panel">
-            </div>
-        </div>
+        
         
     </div>
     

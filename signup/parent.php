@@ -22,7 +22,7 @@
 
         if($count > 0)
         {
-            echo "username already exist";
+            echo "<script>alert(username already exist);</script>";
         }
         else
         {
@@ -58,7 +58,7 @@
               if (move_uploaded_file($uploaded_file['tmp_name'], $target_file)) {
             $sql = mysqli_query($link,"insert into parent(firstname,lastname,username,password,city,status,childrenname,language,image) values('$firstname','$lastname','$username','$password','$city','$status','$childrenname','$language','$target_file')") or die(mysqli_error($link));
             $sql1 = mysqli_query($link,"insert into userlist(firstname,lastname,role,status,username,password) values('$firstname','$lastname','$role','$status','$username','$password')") or die(mysqli_error($link));
-            echo "Waiting for the admin permission";
+            echo "<script>alert(Waiting for the admin permission);</script>";
             ?>
 
             <script>
@@ -92,17 +92,17 @@
           <img src="50632.png" height="400" width="380" alt="signupImage" class="signup-image">
           
         </div>
-            <form method="post" enctype="multipart/form-data">
+            <form method="post" enctype="multipart/form-data" onsubmit="return validateForm()">
               <div class="title"> Parent Sign Up</div>
 
               <div class="user-details">
                 <div class="input-box">
                   <span class="details">First Name</span>
-                  <input type="text" name="firstname" placeholder="Enter Your First Name" required>
+                  <input type="text" id='firstname' name="firstname" placeholder="Enter Your First Name">
                 </div>
                 <div class="input-box">
                   <span class="details">Last Name</span>
-                  <input type="text" name="lastname" placeholder="Enter Your Last Name" required>
+                  <input type="text" id='lastname' name="lastname" placeholder="Enter Your Last Name">
                 </div>
                 <div>
                     <label for="language" class="text1">Language:</label>
@@ -114,25 +114,25 @@
                 </div>
                 <div class="input-box">
                   <span class="details">City</span>
-                  <input type="text" name="city" placeholder="Enter Your City" required>
+                  <input type="text" id='city' name="city" placeholder="Enter Your City">
                 </div>
                 <div class="input-box">
-                        <span class="details">File</span>
-                        <input name="uploaded_file" id="fileInput" type="file" required>
+                        <span class="details">Image</span>
+                        <input name="uploaded_file" id="fileInput" type="file">
                         <input type="hidden" name="MAX_FILE_SIZE" value="1000000" />
                         <input type="hidden" name="id" value="<?php echo $session_id ?>"/>
               </div>
                 <div class="input-box">
                   <span class="details">Children Name</span>
-                  <input type="text" name="childrenname" placeholder="Enter Children Name" required>
+                  <input type="text" id='childrenname' name="childrenname" placeholder="Enter Children Name">
                 </div>
                 <div class="input-box">
-                  <span class="details">Usename (Email)</span>
-                  <input type="text" name="username" placeholder="Enter Your Username" required>
+                  <span class="details">Username (Email)</span>
+                  <input type="text" id='username' name="username" placeholder="Enter Your Username">
                 </div>
                 <div class="input-box">
                   <span class="details">Password</span>
-                  <input type="password" name="password" placeholder="Enter Password" required>
+                  <input type="password" id='password' name="password" placeholder="Enter Password">
                 </div>
               </div>
               <label><input type="checkbox">I hereby declare that the above information provided is true</label>
@@ -143,6 +143,42 @@
       
     </div>
   </div>
+
+  <script>
+    function validateForm() {
+      var firstname = document.getElementById('firstname').value.trim();
+      var lastname = document.getElementById('lastname').value.trim();
+      var city = document.getElementById('city').value.trim();
+      var username = document.getElementById('username').value.trim();
+      var password = document.getElementById('password').value.trim();
+      var fileInput = document.getElementById('fileInput').value.trim();
+      var language = document.getElementById('language').value.trim();
+      var childrenname = document.getElementById('childrenname').value.trim();
+      var gender = document.querySelector('input[name="gender"]:checked');
+
+      // Check if any field is empty
+      if (firstname === '' || lastname === '' || city === '' || username === '' || password === '' || fileInput === '' || language === '' || childrenname === '' || gender === null) {
+        alert('Please fill in all fields');
+        return false;
+      }
+
+      // Validate email format
+      var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(username)) {
+        alert('Invalid email format');
+        return false;
+      }
+
+      // Validate password length
+      if (password.length < 6) {
+        alert('Password must be at least 6 characters long');
+        return false;
+      }
+
+      // Add additional checks as needed
+      return true;
+    }
+  </script>
 </body>
 </html>
 

@@ -52,7 +52,7 @@
            
         <div class="panels1">
             <div class="panel10">
-            <form method='post'>
+            <form method='post' onsubmit="return confirmDelete()">
             
         <?php
             $query = mysqli_query($link,"select * from announcement") or die(mysqli_error());
@@ -115,7 +115,11 @@
        
         
     </div>
-    
+    <script>
+         function confirmDelete() {
+            return confirm("Do you want to delete this Announcement?");
+        }
+    </script>
     
 </body>
 </html>
