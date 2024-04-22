@@ -15,13 +15,7 @@
 </head>
 
 <body>
-<?php include 'dropdown2.php'; 
-if (!isset($_SESSION['id']) || ($_SESSION['id'] == '')) {
-    header("location: index.php");
-    exit();
-}
-
-$session_id=$_SESSION['id'];?>
+<?php include 'dropdown2.php'; ?>
 
             <!-- Sidebar -->
             <div class="sidebar">
@@ -32,7 +26,6 @@ $session_id=$_SESSION['id'];?>
                 <nav>
                     <ul>
                         <li><a href="studash.php"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
-                        <li><a href="MyCourses.php" class="active"><i class="fas fa-book"></i> My Courses</a></li>
                         <li><a href="MyCourses.php" class="active"><i class="fas fa-book"></i> My Courses</a></li>
                         <li><a href="StudyMaterials.php"><i class="fas fa-book-open"></i> Study Materials</a></li>
                         <li><a href="Tasks.php"><i class="far fa-sticky-note"></i></i> Flash Cards</a></li>
@@ -48,97 +41,104 @@ $session_id=$_SESSION['id'];?>
 <button onclick="goBack()">Go to Dashboard</button>
 
 <div class="content">
-    <h1>History Class</h1>
+        <h1>History Class</h1>
+    </script>
 
+										
     <?php
-    $query = mysqli_query($link, "SELECT student_class.*,teacher_class.class_name, subject.subject_title, schedule.time, schedule.date
+					$query = mysqli_query($link,"select * FROM student_class where student_id = '$session_id'  order by student_schedule_id DESC ")or die(mysqli_error());
+                    $count = mysqli_fetch_array($query);
+
+					if($count <= 0)
+					{
+						echo "<b>Currently you have not registered for any History classes</b>";
+					}
+					else
+					{?>
+                    <div class="panels1">
+                        <div class="panel10">
+                        <form method='post'>
+
+                        <table border="0">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>Class</th>
+                            <th>Subject</th>
+                            <th>Teacher Namer</th>
+                            <th>Date</th>
+                            <th>Time</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+       <?php
+					$query = mysqli_query($link, "SELECT student_class.*, teacher_class.class_name, subject.subject_title, schedule.date, schedule.time, teacher.firstname
                     FROM student_class 
-                   INNER JOIN schedule ON schedule.schedule_id = student_class.schedule_id
-                  INNER JOIN subject ON subject.subject_id = schedule.subject_id  
-                  INNER JOIN teacher_class ON teacher_class.subject_id = subject.subject_id 
+                    INNER JOIN schedule ON schedule.schedule_id = student_class.schedule_id 
+                    INNER JOIN subject ON subject.subject_id = schedule.subject_id 
+                    INNER JOIN teacher_class ON teacher_class.teacher_class_id = student_class.class_id 
+                    INNER JOIN teacher ON teacher.teacher_id = schedule.teacher_id  
                     WHERE student_class.student_id = '$session_id'
                     AND subject.subject_title = 'History'  
                     ORDER BY schedule.schedule_id DESC") or die(mysqli_error($link));
-
-    $count = mysqli_num_rows($query);
-
-    if ($count <= 0) {
-        echo "<b>Currently you have not registered for any history classes</b>";
-    } else {
-    ?>
-        <div class="panels1">
-            <div class="panel10">
-                <form method='post'>
-
-                <div class="but">
-
-                    <button class="btn btn-info">
-                        <a href="addhistoryclass.php" style='text-decoration:none;color:white;'>
-                            <i class="fa fa-fw fa-plus"></i>&nbsp;Add history Class</a>
-                    </button>
-                    <button type="submit" name="delete" class="btn btn-info">
-                        <i class="fa fa-fw fa-trash"></i> Send Leave Request
-                    </button>
-
+                    while($row = mysqli_fetch_array($query)){
+                    $id  = $row['schedule_id'];
+				?>
+            
+                        <tr>
+                            <td><input type="checkbox" name="selector[]" value="<?php echo $id; ?>"></td>
+                            <td><?php echo $row['class_name']; ?></td>
+                            <td><?php echo $row['subject_title']; ?></td>
+                            <td><?php echo $row['firstname']; ?></td>
+                            <td><?php echo $row['date']; ?></td>
+                            <td><?php echo $row['time']; ?></td>
+                        </tr>
+                    </tbody>
+				
                 </div>
+            </div>
+    </div>
+    <?php
+					}
+				}
+				?>
 
-                    <table border="0">
-                        <thead>
-                            <tr>
-                                <th></th>
-                                <th>Class</th>
-                                <th>Subject</th>
-                                <th>Date</th>
-                                <th>Time</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php
-                            while ($row = mysqli_fetch_array($query)) {
-                                $id  = $row['schedule_id'];
-                            ?>
-                                <tr>
-                                    <td><input type="checkbox" name="selector[]" value="<?php echo $id; ?>"></td>
-                                    <td><?php echo $row['class_name']; ?></td>
-                                    <td><?php echo $row['subject_title']; ?></td>
-                                    <td><?php echo $row['date']; ?></td>
-                                    <td><?php echo $row['time']; ?></td>
-                                </tr>
-                            <?php
-                            }
-                            ?>
-                        </tbody>
-                    </table>
-
+                   
+                        <div class="but">
+                
+                            <button class="btn btn-info">
+                            <a href="addhistoryclass.php" style='text-decoration:none;color:white;'>
+                                <i class="fa fa-fw fa-plus"></i>&nbsp;Add History Class</a>
+                            </button>
+                            <button type="submit" name="leave" class="btn btn-info">
+                                <i class="fa fa-fw fa-trash"></i> Send Leave Request
+                            </button>
+                
+                        </div>
                     </form>
-        </div>
-        </div>
-        
-<?php
-    }
-?>
+                
+            </body>
+
+            </html>
 
 
+            <?php
+                 include '../database/db_con.php';
 
-
-</body>
-
-</html>
-
-<?php
-include '../database/db_con.php';
-
-if (isset($_POST['delete'])) {
-    $ids = $_POST['selector'];
-    $N = count($ids);
-    
-    for ($i = 0; $i < $N; $i++) {
-        $result = mysqli_query($link, "DELETE FROM schedule WHERE schedule_id='$ids[$i]'");
-    }
-?>
-    <script>
-        window.location = "history.php";
-    </script>
-<?php
-}
-?>
+                 if (isset($_POST['delete'])){
+                         $id=$_POST['selector'];
+                         $N = count($id);
+                         
+                     for($i=0; $i < $N; $i++)
+                     {
+                         $result = mysqli_query($link,"DELETE from student_class
+                         where student_class_id='$id[$i]'");
+                     }
+             ?>
+                 <script>
+                     window.location = "History.php";
+                 </script>
+             
+             <?php
+                 }
+             ?>
