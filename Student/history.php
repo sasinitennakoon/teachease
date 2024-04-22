@@ -80,9 +80,9 @@
                     INNER JOIN teacher ON teacher.teacher_id = schedule.teacher_id  
                     WHERE student_class.student_id = '$session_id'
                     AND subject.subject_title = 'History'  
-                    ORDER BY schedule.schedule_id DESC") or die(mysqli_error($link));
+                    ORDER BY student_class.student_schedule_id DESC") or die(mysqli_error($link));
                     while($row = mysqli_fetch_array($query)){
-                    $id  = $row['schedule_id'];
+                    $id  = $row['student_schedule_id'];
 				?>
             
                         <tr>
@@ -125,15 +125,21 @@
             <?php
                  include '../database/db_con.php';
 
-                 if (isset($_POST['delete'])){
-                         $id=$_POST['selector'];
-                         $N = count($id);
-                         
-                     for($i=0; $i < $N; $i++)
-                     {
-                         $result = mysqli_query($link,"DELETE from student_class
-                         where student_class_id='$id[$i]'");
-                     }
+                 if (isset($_POST['leave']) && isset($_POST['selector'])) {
+                    $selector = $_POST['selector']; // Get the selected checkboxes
+                    foreach ($selector as $student_schedule_id) {
+                        $query = mysqli_query($link, "SELECT schedule.teacher_id 
+                                                      FROM student_class 
+                                                      INNER JOIN schedule ON schedule.schedule_id = student_class.schedule_id 
+                                                      WHERE student_class.student_schedule_id = '$student_schedule_id'") 
+                                                      or die(mysqli_error($link));
+                        
+                        $schedule_info = mysqli_fetch_array($query);
+                        $teacher_id = $schedule_info['teacher_id'];
+                
+                        $result = mysqli_query($link, "INSERT INTO leaverequests (student_schedule_id, student_id, teacher_id, request_date, status) 
+                                                      VALUES ('$student_schedule_id', '$session_id', '$teacher_id', NOW(), 'Pending')");
+                    }
              ?>
                  <script>
                      window.location = "History.php";
