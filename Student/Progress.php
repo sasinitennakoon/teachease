@@ -29,7 +29,7 @@
             <li><a href="MyCourses.php"><i class="fas fa-book"></i> My Courses</a></li>
             <li><a href="StudyMaterials.php"><i class="fas fa-book-open"></i> Study Materials</a></li>
             <li><a href="Tasks.php"><i class="far fa-sticky-note"></i></i> Flash Cards</a></li>
-            <li><a href="Progress.php"><i class="fas fa-chart-line"></i> Progress Report</a></li>
+            <li><a href="Progress.php" class="active"><i class="fas fa-chart-line"></i> Progress Report</a></li>
             <li><a href="ExamR.php"><i class="fas fa-chalkboard"></i> Exam Results</a></li>
             <li><a href="msg.php"><i class="fas fa-envelope"></i> Messages</a></li>
             <li><a href="Feedback.php" class="active"><i class="fas fa-comment"></i> Feedback Collection</a></li>

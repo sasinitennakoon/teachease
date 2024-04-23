@@ -1,13 +1,7 @@
 <?php include '../database/db_con.php'; ?>
-<<<<<<< HEAD
-=======
-<?php include '../session.php'; ?>
 
-<?php 
-	$query= mysqli_query($link,"select * from parent where parent_id = '$session_id'")or die(mysqli_error());
-	$row = mysqli_fetch_array($query);
-?>
->>>>>>> aef93f765a8fa70b62b65f4edd4c5e11e676d7c1
+
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -22,6 +16,11 @@
 
 <body>
 <?php include 'dropdown3.php'; ?>
+
+<?php 
+	$query= mysqli_query($link,"select * from parent where parent_id = '$session_id'")or die(mysqli_error());
+	$row = mysqli_fetch_array($query);
+?>
         <!-- Sidebar -->
         <div class="sidebar">
             <div class="logo">
