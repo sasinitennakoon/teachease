@@ -46,7 +46,7 @@
             part of this course. </p>
             <p>Grade: 10</p>
             <p>Teacher:<a href="profile1.php"> M.M.S Samarasekara</a></p>
-            <p>Course fee: Rs.5000(pay it on or before the 25th of every month)</p>
+            <p>Course fee: Rs.1000(pay it on or before the 25th of every month)</p>
            
         </div>
 
@@ -56,7 +56,7 @@
             <p>Our mathematics course covers the full syllabus as per educational standards. With engaging classes and interactive sessions, we ensure a deep understanding of every topic. Students benefit from a mix of theory, practical applications, and problem-solving strategies, guided by experienced teachers.</p>
             <p>Grade: 10</p>
             <p>Teacher:<a href="profile1.php"> S.A Gallage</a></p>
-            <p>Course fee: Rs.5000(pay it on or before the 25th of every month)</p>
+            <p>Course fee: Rs.1000(pay it on or before the 25th of every month)</p>
            
         </div>
 
@@ -69,7 +69,7 @@
             </p>
             <p>Grade: 10</p>
             <p>Teacher:<a href="profile1.php"> J. A Rodrigo</a></p>
-            <p>Course fee: Rs.5000(pay it on or before the 25th of each month)</p>
+            <p>Course fee: Rs.1000(pay it on or before the 25th of each month)</p>
            
         </div>
 
@@ -81,7 +81,7 @@
             part of this course. </p>
             <p>Grade: 10</p>
             <p>Teacher:<a href="profile1.php"> Padmawathee Somapala</a></p>
-            <p>Course fee: Rs.5000(pay it on or before the 25th of each month)</p>
+            <p>Course fee: Rs.1000(pay it on or before the 25th of each month)</p>
            
         </div>
 
@@ -93,7 +93,7 @@
             part of this course. </p>
             <p>Grade: 10</p>
             <p>Teacher:<a href="profile1.php"> S.S Karunanayake</a></p>
-            <p>Course fee: Rs.5000(pay it on or before the 25th of each month)</p>
+            <p>Course fee: Rs.1000(pay it on or before the 25th of each month)</p>
            
         </div>
 
@@ -104,7 +104,7 @@
                 going to provide knowledge to students by interactive and attractive activities and simulations </p>
             <p>Grade: 10</p>
             <p>Teacher:<a href="profile1.php"> Namal Silva</a></p>
-            <p>Course fee: Rs.5000(pay it on or before the 25th of each month)</p>
+            <p>Course fee: Rs.1000(pay it on or before the 25th of each month)</p>
            
         </div>
 

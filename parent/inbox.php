@@ -52,7 +52,7 @@
 			console.log("Initialization completed successfully");
 			//You can now call login function.
 			CometChatWidget.login({
-				"uid": "anuraj"
+				"uid": "u002"
 			}).then(response => {
 				CometChatWidget.launch({
 					"widgetID": "ba6deb25-85a1-4834-8031-19a93649f004",
@@ -60,7 +60,7 @@
 					"roundedCorners": "true",
 					"height": "550px",
 					"width": "1000px",
-					"defaultID": 'user1', //default UID (user) or GUID (group) to show,
+					"defaultID": 'anuraj', //default UID (user) or GUID (group) to show,
 					"defaultType": 'user' //user or group
                     
 				});

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 23, 2024 at 03:12 AM
+-- Generation Time: Apr 23, 2024 at 12:17 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -154,7 +154,8 @@ CREATE TABLE `exam_results` (
 
 INSERT INTO `exam_results` (`exam_id`, `teacher_id`, `class_id`, `subject_id`) VALUES
 (10, 5, 10, 11),
-(11, 5, 11, 11);
+(11, 5, 11, 11),
+(12, 4, 14, 11);
 
 -- --------------------------------------------------------
 
@@ -264,10 +265,10 @@ CREATE TABLE `parent` (
 --
 
 INSERT INTO `parent` (`parent_id`, `firstname`, `lastname`, `city`, `childrenname`, `username`, `password`, `status`, `language`, `image`) VALUES
-(6, 'aaa', 'bbb', 'ccc', 'anu', 'anurajselvasoth', '234', 'unregistered', 'English', ''),
+(6, 'aaa', 'bbb', 'ccc', 'anu', 'anurajselvasothy@gmail.com', '234', 'registered', 'English', ''),
 (18, 'Selvasothy', 'Selva', 'Jaffna', 'anu', 'anuraj', '234', 'unregistered', 'Tamil', ''),
 (19, 'www', 'abc', 'colombo', 'anu', 'www@gmail.com', '123', 'unregistered', 'Sinhala', ''),
-(22, 'Selvasothy', 'Thangarajah', 'Jaffna', 'Anuraj', 'selva@gmail.com', '123', 'unregistered', 'Tamil', 'uploads/4783_File.png');
+(22, 'Selvasothy', 'Thangarajah', 'Jaffna', 'Anuraj', 'selva@gmail.com', '123', 'registered', 'Tamil', 'uploads/4783_File.png');
 
 -- --------------------------------------------------------
 
@@ -414,7 +415,7 @@ CREATE TABLE `schedule` (
   `teacher_id` int(11) NOT NULL,
   `subject_id` int(11) NOT NULL,
   `class_id` int(11) NOT NULL,
-  `date` varchar(8) NOT NULL,
+  `date` varchar(15) NOT NULL,
   `time` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -424,7 +425,10 @@ CREATE TABLE `schedule` (
 
 INSERT INTO `schedule` (`schedule_id`, `teacher_id`, `subject_id`, `class_id`, `date`, `time`) VALUES
 (9, 5, 11, 10, 'Monday', '15:00'),
-(10, 5, 11, 12, 'Tuesday', '18:00');
+(10, 5, 11, 12, 'Tuesday', '18:00'),
+(11, 4, 11, 14, 'Wednesday', '12:00:00'),
+(12, 4, 11, 13, 'Saturday', '08:30:00'),
+(13, 9, 12, 16, 'Tuesday', '09:00:00');
 
 -- --------------------------------------------------------
 
@@ -489,7 +493,9 @@ CREATE TABLE `student_class` (
 
 INSERT INTO `student_class` (`student_schedule_id`, `student_id`, `schedule_id`, `class_id`, `status`) VALUES
 (46, 2, 7, 8, 'joined'),
-(48, 2, 10, 12, 'joined');
+(48, 2, 10, 12, 'joined'),
+(49, 2, 12, 13, 'joined'),
+(50, 2, 12, 13, 'joined');
 
 -- --------------------------------------------------------
 
@@ -523,8 +529,12 @@ CREATE TABLE `subject` (
 --
 
 INSERT INTO `subject` (`subject_id`, `subject_code`, `subject_title`, `description`) VALUES
-(9, '1001', 'Mathematics', '<p>This subject for Ordinary Level Maths</p>\r\n'),
-(11, '1002', 'History', '<p>O/Level History</p>\r\n');
+(9, '1001', 'Maths', '<p>This subject for Ordinary Level Maths</p>\r\n'),
+(11, '1002', 'History', '<p>O/Level History</p>\r\n'),
+(12, '1003', 'English', '<p>This is English subject</p>\r\n'),
+(14, '1005', 'Science', '<p>This is for Science Subject</p>\r\n'),
+(15, '1004', 'Buddhism', '<p>This is for Buddhism Subject</p>\r\n'),
+(16, '1006', 'Sinhala', '<p>This is Sinhala Subject</p>\r\n');
 
 -- --------------------------------------------------------
 
@@ -549,9 +559,13 @@ CREATE TABLE `teacher` (
 --
 
 INSERT INTO `teacher` (`teacher_id`, `firstname`, `lastname`, `username`, `password`, `subject`, `status`, `language`, `image`) VALUES
-(3, 'aaaa', 'bbb', 'aaaa@gmail.com', '123', 'Maths', 'unregistered', 'English', ''),
+(3, 'aaaa', 'bbb', 'aaaa@gmail.com', '123', 'Maths', 'registered', 'English', ''),
 (4, 'Anuraj', 'Selvasothy', 'anuraj@gmail.com', '2601', 'History', 'unregistered', 'Tamil', ''),
-(5, 'aaa', 'bbb', 'aaa@gmail.com', '111', 'History', 'unregistered', 'Tamil', 'uploads/1629_File.png');
+(5, 'aaa', 'bbb', 'aaa@gmail.com', '111', 'History', 'unregistered', 'Tamil', 'uploads/1629_File.png'),
+(6, 'rrr', 'qqq', 'rrr@gmail.com', '000000', 'Science', 'registered', 'english', 'uploads/3443_File.png'),
+(7, 'bbb', 'ccc', 'bbb@gmail.com', '111111', 'Buddhism', 'unregistered', 'sinhala', 'uploads/1053_File.png'),
+(8, 'ccc', 'ddd', 'ccc@gmail.com', '222222', 'Sinhala', 'unregistered', 'sinhala', 'uploads/1476_File.jpeg'),
+(9, 'ddd', 'eee', 'ddd@gmail.com', '333333', 'English', 'registered', 'english', 'uploads/6806_File.png');
 
 -- --------------------------------------------------------
 
@@ -574,7 +588,12 @@ CREATE TABLE `teacher_class` (
 INSERT INTO `teacher_class` (`teacher_class_id`, `class_name`, `teacher_id`, `grade_id`, `subject_id`) VALUES
 (10, '11A', 5, 102, 11),
 (11, '11B', 5, 102, 11),
-(12, 'History', 5, 101, 11);
+(12, 'History', 5, 101, 11),
+(13, 'History1', 4, 101, 11),
+(14, 'History 10A', 4, 101, 11),
+(15, 'Maths 101', 3, 101, 9),
+(16, 'English 01', 9, 102, 12),
+(17, 'English 02', 9, 101, 12);
 
 -- --------------------------------------------------------
 
@@ -612,14 +631,17 @@ CREATE TABLE `userlist` (
 INSERT INTO `userlist` (`firstname`, `lastname`, `role`, `status`, `userlistid`, `username`, `password`) VALUES
 ('bbb', 'ccc', 'student', 'unregistered', 1, 'eee@gmail.com', '123'),
 ('aaa', 'bbb', 'teacher', 'registered', 2, 'aaa@gmail.com', '111'),
-('Anuraj', 'yyy', 'parent', 'unregistered', 3, 'anurajselvasothy@gmail.com', '234'),
+('Anuraj', 'yyy', 'parent', 'registered', 3, 'anurajselvasothy@gmail.com', '234'),
 ('admin', 'admin', 'admin', 'registered', 4, 'admin@gmail.com', '1111'),
 ('abc', 'def', 'teacher', 'unregistered', 8, 'anu@gmail.com', '111'),
 ('www', 'abc', 'teacher', 'unregistered', 9, 'www@gmail.com', '123'),
-('aaaa', 'bbb', 'teacher', 'unregistered', 10, 'aaaa@gmail.com', '123'),
+('aaaa', 'bbb', 'teacher', 'registered', 10, 'aaaa@gmail.com', '123'),
 ('Anuraj', 'Selvasothy', 'teacher', 'unregistered', 16, 'anuraj@gmail.com', '2601'),
 ('Selvasothy', 'Thangarajah', 'parent', 'unregistered', 17, 'selva@gmail.com', '123'),
-('aaa', 'bbb', 'teacher', 'unregistered', 18, 'aaa@gmail.com', '111');
+('rrr', 'qqq', 'teacher', 'registered', 19, 'rrr@gmail.com', '000000'),
+('bbb', 'ccc', 'teacher', 'unregistered', 20, 'bbb@gmail.com', '111111'),
+('ccc', 'ddd', 'teacher', 'unregistered', 21, 'ccc@gmail.com', '222222'),
+('ddd', 'eee', 'teacher', 'registered', 22, 'ddd@gmail.com', '333333');
 
 -- --------------------------------------------------------
 
@@ -850,7 +872,7 @@ ALTER TABLE `class_subject_overview`
 -- AUTO_INCREMENT for table `exam_results`
 --
 ALTER TABLE `exam_results`
-  MODIFY `exam_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `exam_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `feedback`
@@ -916,7 +938,7 @@ ALTER TABLE `result_files`
 -- AUTO_INCREMENT for table `schedule`
 --
 ALTER TABLE `schedule`
-  MODIFY `schedule_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `schedule_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `student`
@@ -928,7 +950,7 @@ ALTER TABLE `student`
 -- AUTO_INCREMENT for table `student_class`
 --
 ALTER TABLE `student_class`
-  MODIFY `student_schedule_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
+  MODIFY `student_schedule_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 
 --
 -- AUTO_INCREMENT for table `student_class_quiz`
@@ -940,19 +962,19 @@ ALTER TABLE `student_class_quiz`
 -- AUTO_INCREMENT for table `subject`
 --
 ALTER TABLE `subject`
-  MODIFY `subject_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `subject_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `teacher`
 --
 ALTER TABLE `teacher`
-  MODIFY `teacher_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `teacher_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `teacher_class`
 --
 ALTER TABLE `teacher_class`
-  MODIFY `teacher_class_id` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `teacher_class_id` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `teacher_class_student`
@@ -964,7 +986,7 @@ ALTER TABLE `teacher_class_student`
 -- AUTO_INCREMENT for table `userlist`
 --
 ALTER TABLE `userlist`
-  MODIFY `userlistid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `userlistid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `users`

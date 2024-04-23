@@ -65,6 +65,7 @@
                             <td><?php echo $row['lastname']; ?></td>
                             <td><?php echo $row['language']; ?></td>
                             <td><?php echo $row['username']; ?></td>
+                            <input type="hidden" name="username" value='<?php $row['username']; ?>'>
                             <td><?php echo $row['grade']; ?></td>
                             <td><?php echo $row['status']; ?>
                             <?php
@@ -106,7 +107,7 @@
             
         for($i=0; $i < $N; $i++)
         {
-            $result = mysqli_query($link,"UPDATE `userlist` SET status = 'unregistered' WHERE userlistid ='$id[$i]'");
+            $result = mysqli_query($link,"UPDATE `userlist` SET status = 'unregistered' WHERE username ='$username'");
             $result1 = mysqli_query($link,"UPDATE `student` SET status = 'unregistered' WHERE student_id = '$id[$i]' ");
         }
 
@@ -123,7 +124,7 @@
             
         for($i=0; $i < $N; $i++)
         {
-            $result = mysqli_query($link,"UPDATE `userlist` SET status = 'registered' WHERE userlistid ='$id[$i]'");
+            $result = mysqli_query($link,"UPDATE `userlist` SET status = 'registered' WHERE username ='$username'");
             $result1 = mysqli_query($link,"UPDATE `student` SET status = 'registered' WHERE student_id = '$id[$i]' ");
         }
     ?>

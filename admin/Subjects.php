@@ -33,7 +33,7 @@
                 <li><a href="Users.php"><i class="fas fa-users"></i> Users</a></li>
                 <li><a href="Subjects.php" class="active"><i class="fas fa-flask"></i> Subjects</a></li>
                 <li><a href="Classes.php"><i class="fas fa-chalkboard"></i> Classes</a></li>
-                <li><a href="Certificates.php"><i class="fas fa-certificate"></i> Certificates</a></li>
+                
                 <li><a href="RankingSystem.php"><i class="fas fa-trophy"></i> Ranking System</a></li>
                 <li><a href="Feedback.php"><i class="fas fa-comment"></i> Feedback Collection</a></li>
 
