@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 22, 2024 at 10:07 PM
+-- Generation Time: Apr 23, 2024 at 02:35 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -194,6 +194,28 @@ CREATE TABLE `files` (
 
 INSERT INTO `files` (`file_id`, `floc`, `fdatein`, `fdesc`, `teacher_id`, `class_id`, `fname`, `uploaded_by`) VALUES
 (11, 'teacher/uploads/5042_File.pdf', '2024-04-15 00:39:36', 'Term 1 Results', 5, 9, 'Grade 10', 'aaa bbb');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `leaverequests`
+--
+
+CREATE TABLE `leaverequests` (
+  `leaverequest_id` int(11) NOT NULL,
+  `student_schedule_id` int(11) NOT NULL,
+  `student_id` int(11) NOT NULL,
+  `teacher_id` int(11) NOT NULL,
+  `request_date` date NOT NULL,
+  `status` varchar(50) NOT NULL DEFAULT 'PENDING'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `leaverequests`
+--
+
+INSERT INTO `leaverequests` (`leaverequest_id`, `student_schedule_id`, `student_id`, `teacher_id`, `request_date`, `status`) VALUES
+(3, 47, 2, 5, '2024-04-23', 'approved');
 
 -- --------------------------------------------------------
 
@@ -467,7 +489,7 @@ CREATE TABLE `student_class` (
 
 INSERT INTO `student_class` (`student_schedule_id`, `student_id`, `schedule_id`, `class_id`, `status`) VALUES
 (46, 2, 7, 8, 'joined'),
-(47, 2, 9, 10, 'joined');
+(48, 2, 10, 12, 'joined');
 
 -- --------------------------------------------------------
 
@@ -691,6 +713,12 @@ ALTER TABLE `files`
   ADD PRIMARY KEY (`file_id`);
 
 --
+-- Indexes for table `leaverequests`
+--
+ALTER TABLE `leaverequests`
+  ADD PRIMARY KEY (`leaverequest_id`);
+
+--
 -- Indexes for table `notification`
 --
 ALTER TABLE `notification`
@@ -845,6 +873,12 @@ ALTER TABLE `files`
   MODIFY `file_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
+-- AUTO_INCREMENT for table `leaverequests`
+--
+ALTER TABLE `leaverequests`
+  MODIFY `leaverequest_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT for table `notification`
 --
 ALTER TABLE `notification`
@@ -902,7 +936,7 @@ ALTER TABLE `student`
 -- AUTO_INCREMENT for table `student_class`
 --
 ALTER TABLE `student_class`
-  MODIFY `student_schedule_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+  MODIFY `student_schedule_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 
 --
 -- AUTO_INCREMENT for table `student_class_quiz`

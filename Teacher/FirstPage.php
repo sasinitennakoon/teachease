@@ -65,18 +65,24 @@
         <div class="main-cards">
 
           <div class="card">
+          <a href="studentdetails.php" style="text-decoration: none; color: inherit;">
             <div class="card-inner">
               <h3>TOTAL STUDENTS</h3>
               <?php
-                $query = mysqli_query($link,"select * from student") or die(mysqli_error());
+                $query = mysqli_query($link,"SELECT student_class.*, teacher_class.teacher_id
+                FROM student_class 
+                INNER JOIN teacher_class ON teacher_class.teacher_class_id = student_class.class_id
+                WHERE teacher_class.teacher_id = $session_id") or die(mysqli_error());
                 $count = mysqli_num_rows($query);
               ?>
               <span class="material-icons-outlined">inventory_2</span>
             </div>
             <h1><?php echo $count ?></h1>
+            </a>
           </div>
 
           <div class="card">
+          <a href="myclasses.php" style="text-decoration: none; color: inherit;">
             <div class="card-inner">
               <h3>TOTAL CLASSES</h3>
               <?php
@@ -86,6 +92,7 @@
               <span class="material-icons-outlined">category</span>
             </div>
             <h1><?php echo $count1 ?></h1>
+            </a>
           </div>
 
           <div class="card">
@@ -97,12 +104,19 @@
           </div>
 
           <div class="card">
-            <div class="card-inner">
-              <h3>STUDENT LEAVE REQUESTS</h3>
-              <span class="material-icons-outlined">notification_important</span>
-            </div>
-            <h1>16</h1>
+          <a href="studentleaverequests.php" style="text-decoration: none; color: inherit;">
+          <div class="card-inner">
+          <h3>STUDENT LEAVE REQUESTS</h3>
+          <?php
+          $query2 = mysqli_query($link, "SELECT * FROM leaverequests WHERE teacher_id = '$session_id'") or die(mysqli_error($link));
+          $count2 = mysqli_num_rows($query2);
+          ?>
+          <span class="material-icons-outlined">notification_important</span>
           </div>
+          <h1><?php echo $count2 ?></h1>
+          </a>
+          </div>
+
 
         </div>
 
