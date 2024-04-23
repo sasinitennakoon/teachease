@@ -64,6 +64,7 @@
                             <td><?php echo $row['lastname']; ?></td>
                             <td><?php echo $row['language']; ?></td>
                             <td><?php echo $row['username']; ?></td>
+                            <input type='hidden' name='username' value='<?php echo $row['username'];?>' >
                             <td><?php echo $row['subject']; ?></td>
                             <td><?php echo $row['status']; ?>
                             <?php
@@ -107,14 +108,16 @@
     if (isset($_POST['remove'])) {
         $id = $_POST['selector'];
         $N = count($id);
-            
+        $username = $_POST['username'];
+
         for($i=0; $i < $N; $i++)
         {
-            $result = mysqli_query($link,"UPDATE `userlist` SET status = 'unregistered' WHERE userlistid ='$id[$i]'");
+            $result = mysqli_query($link,"UPDATE `userlist` SET status = 'unregistered' WHERE username ='$username'");
             $result1 = mysqli_query($link,"UPDATE `teacher` SET status = 'unregistered' WHERE teacher_id = '$id[$i]' ");
         }
 
         ?>
+        <!--
         <script>
         window.location = 'teacherdashboard.php';
         </script>
@@ -124,10 +127,10 @@
     else if (isset($_POST['approve'])) {
         $id = $_POST['selector'];
         $N = count($id);
-            
+        $username = $_POST['username'];
         for($i=0; $i < $N; $i++)
         {
-            $result = mysqli_query($link,"UPDATE `userlist` SET status = 'registered' WHERE userlistid ='$id[$i]'");
+            $result = mysqli_query($link,"UPDATE `userlist` SET status = 'registered' WHERE username ='$username'");
             $result1 = mysqli_query($link,"UPDATE `teacher` SET status = 'registered' WHERE teacher_id = '$id[$i]' ");
         }
     ?>

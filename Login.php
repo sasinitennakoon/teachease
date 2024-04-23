@@ -17,8 +17,9 @@
 				$hashpassword = $row['password'];
 				$fname = $row['firstname'];
 				$role = $row['role'];
+				$status = $row['status'];
 
-				if($password == $hashpassword)
+				if($password == $hashpassword && $status == 'registered')
 				{
 					session_start();
 
@@ -55,12 +56,17 @@
 						echo "<script>alert('Login Successful. Welcome, $fname!'); window.location='Admin/dashboard.php';</script>";
 					}
 				}
+				else if($password == $hashpassword && $status == 'unregistered')
+				{
+					echo "<script>alert('Waiting for Admin permission.'); window.location='index.php';</script>";
+				}
+				
 				else
-					echo "<script>alert('Login failed. Please check your username and password.');</script>";
+					echo "<script>alert('Login failed. Please check your password.'); window.location='index.php';</script>";
 			}
 			else
 			{
-				echo "<script>alert('Login failed. User not found');</script>";
+				echo "<script>alert('Login failed. User not found'); window.location='index.php';</script>";
 			}
 		}
 		else

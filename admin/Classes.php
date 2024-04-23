@@ -33,7 +33,7 @@
                 <li><a href="Users.php"><i class="fas fa-users"></i> Users</a></li>
                 <li><a href="Subjects.php"><i class="fas fa-flask"></i> Subjects</a></li>
                 <li><a href="Classes.php" class="active"><i class="fas fa-chalkboard"></i> Classes</a></li>
-                <li><a href="Certificates.php"><i class="fas fa-certificate"></i> Certificates</a></li>
+                
                 <li><a href="RankingSystem.php"><i class="fas fa-trophy"></i> Ranking System</a></li>
                 <li><a href="Feedback.php"><i class="fas fa-comment"></i> Feedback Collection</a></li>
 
@@ -44,48 +44,69 @@
         <!-- Your page content goes here -->
         <h1>Classes</h1>
 
-        <div class="panels">
-            <div class="panel">
+        <?php
+            $sql = mysqli_query($link,"SELECT teacher_class.*,  teacher.firstname, teacher.lastname,
+                                        MAX(class.grade_name) AS grade_name,
+                                        MAX(teacher_class.class_name) AS class_name,
+                                        MAX(subject.subject_title) AS subject
+                                        FROM teacher_class 
+                                        INNER JOIN teacher ON teacher.teacher_id = teacher_class.teacher_id
+                                        INNER JOIN class ON class.grade_id = teacher_class.grade_id
+                                        INNER JOIN subject ON subject.subject_id = teacher_class.subject_id 
+                                        GROUP BY teacher_class.teacher_class_id, teacher.firstname, teacher.lastname")
+                                        or die(mysqli_error($link));
+
+          
+                if(mysqli_num_rows($sql) == 0)
+                {
+                    echo "<b>There is No Classes available.</b>";
+                }
+                else
+                {
+                   
+                    ?>
+                
+
+        <div class="panels1">
+            <div class="panel10">
                 <table border="0">
                     <thead>
                         <tr>
                             <th>Class Name</th>
-                            <th>No Of Students</th>
-                            <th>Teachers</th>
+                            <th>Teacher Name</th>
+                            <th>Grade</th>
+                            <th>Subject</th>
                         </tr>
                     </thead>
+                    <tbody>
+                        <?php
+                    while($row = mysqli_fetch_array($sql))
+                    {
+                        $id = $row['teacher_class_id'];
+        ?>
+                        <tr>
+                        <td><?php echo $row['class_name']; ?></td>
+                        <td><?php echo $row['firstname']; ?></td>
+                        <td><?php echo $row['grade_name']; ?></td>
+                        <td><?php echo $row['subject']; ?></td>
+                        </tr>  
+                    </tbody>
+                    <?php
+    }
+            }
+        ?>
                 </table>
+                
             </div>
         </div>
 
-        <!-- Add Details Form -->
-        <div id="addDetailsForm" style="display: none;">
-            <!-- Your form content goes here -->
-            <form>
-                <!-- Add your form fields here -->
-                <label for="indexNo">Index No:</label>
-                <input type="text" id="indexNo" name="indexNo">
-                
-                <!-- Add more fields as needed -->
-
-                <button type="submit">Submit</button>
-            </form>
-        </div>
+        
+      
+            
+        
 
     </div>
 
-    <script>
-        function openAddDetailsForm() {
-            var addDetailsForm = document.getElementById('addDetailsForm');
-            addDetailsForm.style.display = 'block';
-        }
-    
-        // Optional: Close the form when the page is loaded
-        document.addEventListener('DOMContentLoaded', function () {
-            var addDetailsForm = document.getElementById('addDetailsForm');
-            addDetailsForm.style.display = 'none';
-        });
-    </script>
     
 </body>
 </html>
