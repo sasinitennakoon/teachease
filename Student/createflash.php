@@ -1,10 +1,5 @@
 <?php include '../database/db_con.php'; ?>
-<?php include '../session.php'; ?>
 
-<?php 
-	$query= mysqli_query($link,"select * from users where user_id = '$session_id'")or die(mysqli_error());
-	$row = mysqli_fetch_array($query);
-?>
 
 
 
