@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 23, 2024 at 02:35 AM
+-- Generation Time: Apr 23, 2024 at 03:12 AM
 -- Server version: 10.4.32-MariaDB
--- PHP Version: 8.0.30
+-- PHP Version: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -614,17 +614,9 @@ INSERT INTO `userlist` (`firstname`, `lastname`, `role`, `status`, `userlistid`,
 ('aaa', 'bbb', 'teacher', 'registered', 2, 'aaa@gmail.com', '111'),
 ('Anuraj', 'yyy', 'parent', 'unregistered', 3, 'anurajselvasothy@gmail.com', '234'),
 ('admin', 'admin', 'admin', 'registered', 4, 'admin@gmail.com', '1111'),
-('aaa', 'bbbb', 'teacher', 'unregistered', 5, 'aaa', '1233'),
-('SELVACHOTHY', 'ANURAJ', 'teacher', 'unregistered', 6, 'anu', '123'),
-('Selvasothy', 'Selva', 'teacher', 'unregistered', 7, 'anuraj', '234'),
 ('abc', 'def', 'teacher', 'unregistered', 8, 'anu@gmail.com', '111'),
 ('www', 'abc', 'teacher', 'unregistered', 9, 'www@gmail.com', '123'),
 ('aaaa', 'bbb', 'teacher', 'unregistered', 10, 'aaaa@gmail.com', '123'),
-('Anuraj', 'Selvasothy', 'teacher', 'unregistered', 11, 'anuraj@gmail.com', '2601'),
-('Anuraj', 'Selvasothy', 'teacher', 'unregistered', 12, 'anuraj@gmail.com', '2601'),
-('Selvasothy', 'Thangarajah', 'teacher', 'unregistered', 13, 'anuraj@gmail.com', '2601'),
-('Anuraj', 'Selvasothy', 'teacher', 'unregistered', 14, 'anuraj@gmail.com', '2601'),
-('Selvasothy', 'Thangarajah', 'teacher', 'unregistered', 15, 'selva@gmail.com', '123'),
 ('Anuraj', 'Selvasothy', 'teacher', 'unregistered', 16, 'anuraj@gmail.com', '2601'),
 ('Selvasothy', 'Thangarajah', 'parent', 'unregistered', 17, 'selva@gmail.com', '123'),
 ('aaa', 'bbb', 'teacher', 'unregistered', 18, 'aaa@gmail.com', '111');
