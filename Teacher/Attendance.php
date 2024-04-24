@@ -6,7 +6,25 @@ include '../session.php';
 $query = mysqli_query($link, "SELECT * FROM teacher WHERE teacher_id = '$session_id'") or die(mysqli_error($link));
 $row = mysqli_fetch_array($query);
 
+$selected_class = '';
+$selected_date = '';
+
+// Check if form is submitted
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Store selected class and date in session variables
+    $_SESSION['selected_class'] = $_POST['class'];
+    $_SESSION['selected_date'] = $_POST['date'];
+    
+    // Retrieve submitted values to populate form fields
+    $selected_class = $_POST['class'];
+    $selected_date = $_POST['date'];
+}
+
+// Retrieve selected class and date from session variables if they exist
+$selected_class = isset($_SESSION['selected_class']) ? $_SESSION['selected_class'] : '';
+$selected_date = isset($_SESSION['selected_date']) ? $_SESSION['selected_date'] : '';
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,7 +48,7 @@ $row = mysqli_fetch_array($query);
             <li><a href="announcements.php"><i class="fas fa-bullhorn"></i> Announcements</a></li>
             <li><a href="MyClasses.php"><i class="fas fa-chalkboard-teacher"></i> My Classes</a></li>
             <li><a href="Schedule.php"><i class="fas fa-calendar-alt"></i> Schedule</a></li>
-            <li><a href="StudyMaterials.php"><i class="fas fa-book"></i> Study Materials</a></li>
+            <li><a href="StudyMeterials.php"><i class="fas fa-book"></i> Study Materials</a></li>
             <li><a href="Attendance.php" class="active"><i class="fas fa-check-circle"></i> Attendance</a></li>
             <li><a href="ExamResults.php"><i class="fas fa-poll"></i> Exam Results</a></li>
             <li><a href="Messages.php"><i class="fas fa-envelope"></i> Messages</a></li>
@@ -69,14 +87,15 @@ $row = mysqli_fetch_array($query);
                         ) or die("Query failed: " . mysqli_error($link));
 
                         while ($class_row = mysqli_fetch_array($class_query)) {
-                            echo "<option value='{$class_row['teacher_class_id']}'> {$class_row['class_name']} </option>";
+                            $selected = ($class_row['teacher_class_id'] == $selected_class) ? "selected" : "";
+                            echo "<option value='{$class_row['teacher_class_id']}' $selected> {$class_row['class_name']} </option>";
                         }
                         ?>
                     </select>
                 </td>
                 <td>
                     <label for="date">Date:</label>
-                    <input type="date" id="date" name="date" required>
+                    <input type="date" id="date" name="date" value="<?php echo $selected_date; ?>" required>
                 </td>
                 <td>
                     <button type="submit" name="search">Search</button>
@@ -86,12 +105,16 @@ $row = mysqli_fetch_array($query);
     </form>
     <br>
 
+    
     <?php
     // Check if the search button was clicked
     if (isset($_POST['search'])) {
         $selected_class = $_POST['class'];
         $selected_date = $_POST['date'];
 
+        
+        
+    
         $day_query = mysqli_query(
             $link,
             "SELECT DAYNAME('$selected_date') as day_name"
@@ -121,6 +144,11 @@ $row = mysqli_fetch_array($query);
                 <!-- Retain the class and date in hidden fields -->
                 <input type="hidden" name="class" value="<?php echo $selected_class; ?>">
                 <input type="hidden" name="date" value="<?php echo $selected_date; ?>">
+
+                <?php
+   
+    if (!empty($selected_class) && !empty($selected_date)) {
+        ?>
                 <table>
                     <thead>
                         <tr>
@@ -179,7 +207,11 @@ $row = mysqli_fetch_array($query);
                         ?>
                     </tbody>
                 </table>
+                <?php
+    }
+    ?>
             </form>
+          
             <?php
         } else {
             echo "<p>No students found for the selected class and date.</p>";
@@ -223,11 +255,21 @@ $row = mysqli_fetch_array($query);
         }
 
         // Redirect to refresh the page
-        header("Location: Attendance.php?class=$class_id&date=$date");
-        exit;
+        // Replace the header redirect with JavaScript
+            // Redirect to refresh the page
+                ob_clean(); // Clean the output buffer
+                header("Location: Attendance.php?class=$class_id&date=$date");
+                exit;
+
     }
     ?>
 </div>
+
+<?php
+// Clear session variables after form submission or when page is initially loaded
+unset($_SESSION['selected_class']);
+unset($_SESSION['selected_date']);
+?>
 
 <!-- JavaScript to change button color when clicked -->
 <script>

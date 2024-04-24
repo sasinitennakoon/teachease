@@ -47,14 +47,17 @@
     <div class="content">
         <!-- Your page content goes here -->
         <h1>Feedback Collection</h1>
-        
+        <?php
+            $query = mysqli_query($link,"SELECT * FROM feedback") or die(mysqli_error($link));
+            $count = mysqli_num_rows($query) or die(mysqli_error($query));
+        ?>
         <!-- Inserting small panels -->
         <div class="panels">
             <div class="panel">
                 <h2>No Of Feedback Forms</h2>
-                <p><count>0</count></p>
+                <p><count><?php echo $count; ?></count></p>
                 <div class="but">
-                    <button class="button"><b>View</b></button>
+                    <a href="viewfeedback.php"><button class="button"><b>View</b></button></a>
                 </div>
             </div>
 

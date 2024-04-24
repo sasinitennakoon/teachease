@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 24, 2024 at 02:22 AM
+-- Generation Time: Apr 24, 2024 at 11:33 AM
 -- Server version: 10.4.32-MariaDB
--- PHP Version: 8.0.30
+-- PHP Version: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -66,6 +66,29 @@ INSERT INTO `answer` (`answer_id`, `quiz_question_id`, `answer_text`, `choices`)
 (2, 4, '1', 'B'),
 (3, 4, '2', 'C'),
 (4, 4, '4', 'D');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `average`
+--
+
+CREATE TABLE `average` (
+  `average_id` int(11) NOT NULL,
+  `student_id` int(11) NOT NULL,
+  `average_marks` int(11) NOT NULL,
+  `term_id` int(11) NOT NULL,
+  `rank` int(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `average`
+--
+
+INSERT INTO `average` (`average_id`, `student_id`, `average_marks`, `term_id`, `rank`) VALUES
+(8, 11, 65, 1, 1),
+(9, 4, 41, 1, 3),
+(11, 7, 50, 1, 2);
 
 -- --------------------------------------------------------
 
@@ -164,13 +187,22 @@ INSERT INTO `exam_results` (`exam_id`, `teacher_id`, `class_id`, `subject_id`) V
 --
 
 CREATE TABLE `feedback` (
-  `feedback_id` int(11) NOT NULL,
-  `teacher_id` int(11) NOT NULL,
-  `teacher_class_id` int(11) NOT NULL,
-  `teacher_rating` int(11) NOT NULL,
-  `subject_rating` int(11) NOT NULL,
-  `comment` varchar(255) NOT NULL
+  `id` int(11) NOT NULL,
+  `subject` varchar(255) NOT NULL,
+  `class_rating` int(11) NOT NULL,
+  `teacher_rating` varchar(255) NOT NULL,
+  `comment` text DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `feedback`
+--
+
+INSERT INTO `feedback` (`id`, `subject`, `class_rating`, `teacher_rating`, `comment`, `created_at`) VALUES
+(1, 'Mathematics', 4, 'neutral', 'jh', '2024-04-23 17:50:30'),
+(2, 'Science', 4, 'neutral', 'cvcv', '2024-04-23 17:55:52'),
+(3, 'Science', 4, 'neutral', 'cvcv', '2024-04-23 18:09:15');
 
 -- --------------------------------------------------------
 
@@ -221,6 +253,44 @@ INSERT INTO `leaverequests` (`leaverequest_id`, `student_schedule_id`, `student_
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `marks`
+--
+
+CREATE TABLE `marks` (
+  `marks_id` int(11) NOT NULL,
+  `student_id` int(11) NOT NULL,
+  `subject_id` int(11) NOT NULL,
+  `term_id` int(11) NOT NULL,
+  `marks` int(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `marks`
+--
+
+INSERT INTO `marks` (`marks_id`, `student_id`, `subject_id`, `term_id`, `marks`) VALUES
+(85, 11, 14, 1, 45),
+(86, 11, 9, 1, 90),
+(87, 11, 12, 1, 60),
+(88, 11, 11, 1, 67),
+(89, 11, 16, 1, 50),
+(90, 11, 15, 1, 79),
+(91, 4, 14, 1, 45),
+(92, 4, 9, 1, 34),
+(93, 4, 12, 1, 10),
+(94, 4, 11, 1, 67),
+(95, 4, 16, 1, 39),
+(96, 4, 15, 1, 51),
+(103, 7, 14, 1, 33),
+(104, 7, 9, 1, 66),
+(105, 7, 12, 1, 77),
+(106, 7, 11, 1, 88),
+(107, 7, 16, 1, 22),
+(108, 7, 15, 1, 11);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `notification`
 --
 
@@ -257,18 +327,19 @@ CREATE TABLE `parent` (
   `password` varchar(10) NOT NULL,
   `status` varchar(15) NOT NULL,
   `language` varchar(10) NOT NULL,
-  `image` varchar(500) NOT NULL
+  `image` varchar(500) NOT NULL,
+  `reset_token` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `parent`
 --
 
-INSERT INTO `parent` (`parent_id`, `firstname`, `lastname`, `city`, `childrenname`, `username`, `password`, `status`, `language`, `image`) VALUES
-(6, 'aaa', 'bbb', 'ccc', 'anu', 'anurajselvasothy@gmail.com', '234', 'registered', 'English', ''),
-(18, 'Selvasothy', 'Selva', 'Jaffna', 'anu', 'anuraj', '234', 'unregistered', 'Tamil', ''),
-(19, 'www', 'abc', 'colombo', 'anu', 'www@gmail.com', '123', 'unregistered', 'Sinhala', ''),
-(22, 'Selvasothy', 'Thangarajah', 'Jaffna', 'Anuraj', 'selva@gmail.com', '123', 'registered', 'Tamil', 'uploads/4783_File.png');
+INSERT INTO `parent` (`parent_id`, `firstname`, `lastname`, `city`, `childrenname`, `username`, `password`, `status`, `language`, `image`, `reset_token`) VALUES
+(6, 'aaa', 'bbb', 'ccc', 'anu', 'anurajselvasothy@gmail.com', '$2y$10$EEQ', 'registered', 'English', '', NULL),
+(18, 'Selvasothy', 'Selva', 'Jaffna', 'anu', 'anuraj', '234', 'unregistered', 'Tamil', '', NULL),
+(19, 'www', 'abc', 'colombo', 'anu', 'www@gmail.com', '123', 'registered', 'Sinhala', '', NULL),
+(22, 'Selvasothy', 'Thangarajah', 'Jaffna', 'Anuraj', 'selva@gmail.com', '123', 'registered', 'Tamil', 'uploads/4783_File.png', NULL);
 
 -- --------------------------------------------------------
 
@@ -455,9 +526,9 @@ CREATE TABLE `student` (
 
 INSERT INTO `student` (`student_id`, `firstname`, `lastname`, `gender`, `username`, `password`, `language`, `grade`, `status`, `image`) VALUES
 (2, 'bbb', 'ccc', 'male', 'eee@gmail.com', '123', 'sinhala', '11', 'registered', ''),
-(4, 'Anu', 'Raj', 'male', 'anurajselvasothy@gmail.com', 'anu', 'Tamil', '11', 'unregistered', ''),
-(7, 'abc', 'def', 'male', 'anu@gmail.com', '111', 'Tamil', '10', 'unregistered', ''),
-(11, 'Anuraj', 'Selvasothy', 'male', 'anuraj@gmail.com', '2601', 'Tamil', '11', 'unregistered', 'uploads/1999_File.jpg');
+(4, 'Anu', 'Raj', 'male', 'anurajselvasothy@gmail.com', 'anu', 'Tamil', '11', 'registered', ''),
+(7, 'abc', 'def', 'male', 'anu@gmail.com', '111', 'Tamil', '10', 'registered', ''),
+(11, 'Anuraj', 'Selvasothy', 'male', 'anuraj@gmail.com', '2601', 'Tamil', '11', 'registered', 'uploads/1999_File.jpg');
 
 -- --------------------------------------------------------
 
@@ -479,7 +550,8 @@ CREATE TABLE `student_attendance` (
 --
 
 INSERT INTO `student_attendance` (`attendance_id`, `student_id`, `teacher_id`, `class_id`, `date`, `status`) VALUES
-(1, 2, 5, 12, '2024-04-30', 'present');
+(1, 2, 5, 12, '2024-04-30', 'present'),
+(2, 2, 5, 12, '2024-04-23', 'present');
 
 -- --------------------------------------------------------
 
@@ -569,10 +641,10 @@ CREATE TABLE `teacher` (
 INSERT INTO `teacher` (`teacher_id`, `firstname`, `lastname`, `username`, `password`, `subject`, `status`, `language`, `image`) VALUES
 (3, 'aaaa', 'bbb', 'aaaa@gmail.com', '123', 'Maths', 'registered', 'English', ''),
 (4, 'Anuraj', 'Selvasothy', 'anuraj@gmail.com', '2601', 'History', 'unregistered', 'Tamil', ''),
-(5, 'aaa', 'bbb', 'aaa@gmail.com', '111', 'History', 'unregistered', 'Tamil', 'uploads/1629_File.png'),
+(5, 'aaa', 'bbb', 'aaa@gmail.com', '111', 'History', 'registered', 'Tamil', 'uploads/1629_File.png'),
 (6, 'rrr', 'qqq', 'rrr@gmail.com', '000000', 'Science', 'registered', 'english', 'uploads/3443_File.png'),
 (7, 'bbb', 'ccc', 'bbb@gmail.com', '111111', 'Buddhism', 'unregistered', 'sinhala', 'uploads/1053_File.png'),
-(8, 'ccc', 'ddd', 'ccc@gmail.com', '222222', 'Sinhala', 'unregistered', 'sinhala', 'uploads/1476_File.jpeg'),
+(8, 'ccc', 'ddd', 'ccc@gmail.com', '222222', 'Sinhala', 'registered', 'sinhala', 'uploads/1476_File.jpeg'),
 (9, 'ddd', 'eee', 'ddd@gmail.com', '333333', 'English', 'registered', 'english', 'uploads/6806_File.png');
 
 -- --------------------------------------------------------
@@ -619,6 +691,26 @@ CREATE TABLE `teacher_class_student` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `term`
+--
+
+CREATE TABLE `term` (
+  `term_id` int(11) NOT NULL,
+  `term_name` varchar(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `term`
+--
+
+INSERT INTO `term` (`term_id`, `term_name`) VALUES
+(1, 'Term 1'),
+(2, 'Term 2'),
+(3, 'Term 3');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `userlist`
 --
 
@@ -629,27 +721,28 @@ CREATE TABLE `userlist` (
   `status` varchar(15) NOT NULL,
   `userlistid` int(11) NOT NULL,
   `username` varchar(40) NOT NULL,
-  `password` varchar(30) NOT NULL
+  `password` varchar(30) NOT NULL,
+  `reset_token` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `userlist`
 --
 
-INSERT INTO `userlist` (`firstname`, `lastname`, `role`, `status`, `userlistid`, `username`, `password`) VALUES
-('bbb', 'ccc', 'student', 'unregistered', 1, 'eee@gmail.com', '123'),
-('aaa', 'bbb', 'teacher', 'registered', 2, 'aaa@gmail.com', '111'),
-('Anuraj', 'yyy', 'parent', 'registered', 3, 'anurajselvasothy@gmail.com', '234'),
-('admin', 'admin', 'admin', 'registered', 4, 'admin@gmail.com', '1111'),
-('abc', 'def', 'teacher', 'unregistered', 8, 'anu@gmail.com', '111'),
-('www', 'abc', 'teacher', 'unregistered', 9, 'www@gmail.com', '123'),
-('aaaa', 'bbb', 'teacher', 'registered', 10, 'aaaa@gmail.com', '123'),
-('Anuraj', 'Selvasothy', 'teacher', 'unregistered', 16, 'anuraj@gmail.com', '2601'),
-('Selvasothy', 'Thangarajah', 'parent', 'unregistered', 17, 'selva@gmail.com', '123'),
-('rrr', 'qqq', 'teacher', 'registered', 19, 'rrr@gmail.com', '000000'),
-('bbb', 'ccc', 'teacher', 'unregistered', 20, 'bbb@gmail.com', '111111'),
-('ccc', 'ddd', 'teacher', 'unregistered', 21, 'ccc@gmail.com', '222222'),
-('ddd', 'eee', 'teacher', 'registered', 22, 'ddd@gmail.com', '333333');
+INSERT INTO `userlist` (`firstname`, `lastname`, `role`, `status`, `userlistid`, `username`, `password`, `reset_token`) VALUES
+('bbb', 'ccc', 'student', 'registered', 1, 'eee@gmail.com', '123', NULL),
+('aaa', 'bbb', 'teacher', 'registered', 2, 'aaa@gmail.com', '111', NULL),
+('Anuraj', 'yyy', 'parent', 'registered', 3, 'anurajselvasothy@gmail.com', '234', NULL),
+('admin', 'admin', 'admin', 'registered', 4, 'admin@gmail.com', '1111', NULL),
+('abc', 'def', 'student', 'unregistered', 8, 'anu@gmail.com', '111', NULL),
+('www', 'abc', 'teacher', 'unregistered', 9, 'www@gmail.com', '123', NULL),
+('aaaa', 'bbb', 'teacher', 'registered', 10, 'aaaa@gmail.com', '123', NULL),
+('Anuraj', 'Selvasothy', 'teacher', 'registered', 16, 'anuraj@gmail.com', '2601', NULL),
+('Selvasothy', 'Thangarajah', 'parent', 'unregistered', 17, 'selva@gmail.com', '123', NULL),
+('rrr', 'qqq', 'teacher', 'registered', 19, 'rrr@gmail.com', '000000', NULL),
+('bbb', 'ccc', 'teacher', 'unregistered', 20, 'bbb@gmail.com', '111111', NULL),
+('ccc', 'ddd', 'teacher', 'unregistered', 21, 'ccc@gmail.com', '222222', NULL),
+('ddd', 'eee', 'teacher', 'registered', 22, 'ddd@gmail.com', '333333', NULL);
 
 -- --------------------------------------------------------
 
@@ -692,6 +785,12 @@ ALTER TABLE `answer`
   ADD PRIMARY KEY (`answer_id`);
 
 --
+-- Indexes for table `average`
+--
+ALTER TABLE `average`
+  ADD PRIMARY KEY (`average_id`);
+
+--
 -- Indexes for table `class`
 --
 ALTER TABLE `class`
@@ -726,7 +825,7 @@ ALTER TABLE `exam_results`
 -- Indexes for table `feedback`
 --
 ALTER TABLE `feedback`
-  ADD PRIMARY KEY (`feedback_id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `files`
@@ -739,6 +838,12 @@ ALTER TABLE `files`
 --
 ALTER TABLE `leaverequests`
   ADD PRIMARY KEY (`leaverequest_id`);
+
+--
+-- Indexes for table `marks`
+--
+ALTER TABLE `marks`
+  ADD PRIMARY KEY (`marks_id`);
 
 --
 -- Indexes for table `notification`
@@ -837,6 +942,12 @@ ALTER TABLE `teacher_class_student`
   ADD PRIMARY KEY (`teacher_class_student_id`);
 
 --
+-- Indexes for table `term`
+--
+ALTER TABLE `term`
+  ADD PRIMARY KEY (`term_id`);
+
+--
 -- Indexes for table `userlist`
 --
 ALTER TABLE `userlist`
@@ -863,6 +974,12 @@ ALTER TABLE `announcement`
 --
 ALTER TABLE `answer`
   MODIFY `answer_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `average`
+--
+ALTER TABLE `average`
+  MODIFY `average_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `class_announcements`
@@ -892,7 +1009,7 @@ ALTER TABLE `exam_results`
 -- AUTO_INCREMENT for table `feedback`
 --
 ALTER TABLE `feedback`
-  MODIFY `feedback_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `files`
@@ -905,6 +1022,12 @@ ALTER TABLE `files`
 --
 ALTER TABLE `leaverequests`
   MODIFY `leaverequest_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `marks`
+--
+ALTER TABLE `marks`
+  MODIFY `marks_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=109;
 
 --
 -- AUTO_INCREMENT for table `notification`
@@ -964,7 +1087,7 @@ ALTER TABLE `student`
 -- AUTO_INCREMENT for table `student_attendance`
 --
 ALTER TABLE `student_attendance`
-  MODIFY `attendance_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `attendance_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `student_class`
@@ -1001,6 +1124,12 @@ ALTER TABLE `teacher_class`
 --
 ALTER TABLE `teacher_class_student`
   MODIFY `teacher_class_student_id` int(7) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `term`
+--
+ALTER TABLE `term`
+  MODIFY `term_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `userlist`

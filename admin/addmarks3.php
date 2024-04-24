@@ -103,9 +103,9 @@
 </html>
 
 <?php
-		if (isset($_POST['save'])){
-		$student_id = $_POST['student_id'];
-        $science = $_POST['science'];
+if (isset($_POST['save'])) {
+    $student_id = $_POST['student_id'];
+    $science = $_POST['science'];
     $maths = $_POST['maths'];
     $english = $_POST['english'];
     $history = $_POST['history'];
@@ -114,22 +114,32 @@
 
     $average = ($science + $maths + $english + $history + $sinhala + $buddhism) / 6;
 
-    $query = mysqli_query($link,"INSERT INTO marks (student_id, subject_id, term_id, marks) VALUES ('$student_id', '14', '3', '$science')") or die(mysqli_error($link));
-    mysqli_query($link,"INSERT INTO marks (student_id, subject_id, term_id, marks) VALUES ('$student_id', '9', '3', '$maths')") or die(mysqli_error($link));
-    mysqli_query($link,"INSERT INTO marks (student_id, subject_id, term_id, marks) VALUES ('$student_id', '12', '3', '$english')") or die(mysqli_error($link));
-    mysqli_query($link,"INSERT INTO marks (student_id, subject_id, term_id, marks) VALUES ('$student_id', '11', '3', '$history')") or die(mysqli_error($link));
-    mysqli_query($link,"INSERT INTO marks (student_id, subject_id, term_id, marks) VALUES ('$student_id', '16', '3', '$sinhala')") or die(mysqli_error($link));
-    mysqli_query($link,"INSERT INTO marks (student_id, subject_id, term_id, marks) VALUES ('$student_id', '15', '3', '$buddhism')") or die(mysqli_error($link));
-		
-	mysqli_query($link,"INSERT INTO average (student_id,average_marks,term_id) VALUES ('$student_id','$average','3')") or die(mysqli_error($link));
-		
-	?>
-    
-		<script>
- 		window.location = 'term3.php';
-		</script>
+    // Insert marks for each subject
+    mysqli_query($link, "INSERT INTO marks (student_id, subject_id, term_id, marks) VALUES ('$student_id', '14', '3', '$science')") or die(mysqli_error($link));
+    mysqli_query($link, "INSERT INTO marks (student_id, subject_id, term_id, marks) VALUES ('$student_id', '9', '3', '$maths')") or die(mysqli_error($link));
+    mysqli_query($link, "INSERT INTO marks (student_id, subject_id, term_id, marks) VALUES ('$student_id', '12', '3', '$english')") or die(mysqli_error($link));
+    mysqli_query($link, "INSERT INTO marks (student_id, subject_id, term_id, marks) VALUES ('$student_id', '11', '3', '$history')") or die(mysqli_error($link));
+    mysqli_query($link, "INSERT INTO marks (student_id, subject_id, term_id, marks) VALUES ('$student_id', '16', '3', '$sinhala')") or die(mysqli_error($link));
+    mysqli_query($link, "INSERT INTO marks (student_id, subject_id, term_id, marks) VALUES ('$student_id', '15', '3', '$buddhism')") or die(mysqli_error($link));
 
-		<?php
-		    }
-		?>
+    // Calculate rank
+    $query1 = mysqli_query($link, "SELECT * FROM average WHERE term_id = '3' ORDER BY average_marks DESC") or die(mysqli_error($link));
+    $rank = 1;
+    while ($row = mysqli_fetch_array($query1)) {
+        $student_avg = $row['average_marks'];
+        $prev_student_id = $row['student_id'];
+        if ($average > $student_avg) {
+            mysqli_query($link, "UPDATE average SET rank = rank + 1 WHERE term_id = '3' AND rank >= '$rank'") or die(mysqli_error($link));
+            mysqli_query($link, "INSERT INTO average (student_id, average_marks, term_id, rank) VALUES ('$student_id', '$average', '3', '$rank')") or die(mysqli_error($link));
+            break;
+        }
+        $rank++;
+    }
+    if ($rank > mysqli_num_rows($query1)) {
+        mysqli_query($link, "INSERT INTO average (student_id, average_marks, term_id, rank) VALUES ('$student_id', '$average', '3', '$rank')") or die(mysqli_error($link));
+    }
 
+    // Redirect to term1.php after insertion
+    echo "<script>window.location = 'term3.php';</script>";
+}
+?>
