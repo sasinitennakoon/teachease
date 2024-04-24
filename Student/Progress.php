@@ -32,7 +32,7 @@
             <li><a href="Progress.php" class="active"><i class="fas fa-chart-line"></i> Progress Report</a></li>
             <li><a href="ExamR.php"><i class="fas fa-chalkboard"></i> Exam Results</a></li>
             <li><a href="msg.php"><i class="fas fa-envelope"></i> Messages</a></li>
-            <li><a href="Feedback.php" class="active"><i class="fas fa-comment"></i> Feedback Collection</a></li>
+            <li><a href="Feedback.php" ><i class="fas fa-comment"></i> Feedback Collection</a></li>
     
                 </ul>
             </nav>

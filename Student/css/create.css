@@ -387,6 +387,7 @@ button:hover{
     overflow: hidden;
     font-size: 24px;
     word-wrap: break-word;
+
 }
 
 
@@ -489,4 +490,5 @@ button[type="submit"]:hover {
 
 .delete-button:after {
     transform: rotate(-45deg);
+
 }

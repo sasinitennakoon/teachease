@@ -23,6 +23,7 @@
 	<li><a href="#services">Services</a></li>
 	<li><a href="#home">Home</a></li>
 	</ul>
+	<div id='home'>
 	<br/><br/><br/><br/>
 	<br/><br/><br/><br/>
 	
@@ -66,6 +67,8 @@
 		</div>
 
 	</div>
+
+</div>
 
 	<div id="services">
         <h2 style="text-align: center;">Services</h2>

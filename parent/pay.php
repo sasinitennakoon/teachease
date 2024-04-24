@@ -1,10 +1,5 @@
 <?php include '../database/db_con.php'; ?>
-<?php include '../session.php'; ?>
 
-<?php 
-	$query= mysqli_query($link,"select * from parent where parent_id = '$session_id'")or die(mysqli_error());
-	$row = mysqli_fetch_array($query);
-?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -18,18 +13,7 @@
 </head>
 
 <body>
-  <div class="dropdown" style="float:right;">
-    <div class="dropbtn">
-                <img src="./img/download (3).png" alt="User Icon">
-                    <?php echo $row['firstname']; ?>
-            <i class="fa fa-caret-down"></i>
-                    </div>
-            <div class="dropdown-content">
-            <a href="MyProfile.php"><i class="fa fa-fw fa-user"></i>Profile</a>
-            <a href="ResetPassword.php"><i class="fa fa-fw fa-unlock-alt"></i>Change Password</a>
-            <a href="../logout.php"><i class="fa fa-fw fa-sign-out-alt"></i>Log out</a>
-            </div>
-          </div> 
+  <?php include 'dropdown3.php'; ?>
         <!-- Sidebar -->
         <div class="sidebar">
             <div class="logo">
@@ -53,30 +37,30 @@
         <div class="content">
             <h1>Your Payments</h1>
             <div class="panelsD">
-            <div class="panel7" onclick="window.location.href='//buy.stripe.com/test_28o4hl64VaMv2WYfZ2';">
+            <div class="panel7" onclick="window.location.href='//buy.stripe.com/test_cN2g03alb6wf0OQ7sC';">
                 <p><b>Science</b></p>
                 
             </div>
 
-            <div class="panel8" onclick="window.location.href='//buy.stripe.com/test_bIY5lpdxn8En0OQcMN';">
+            <div class="panel8" onclick="window.location.href='//buy.stripe.com/test_cN229dfFv2fZ4127sB';">
                 <p><b>Mathematics</b></p>
             </div>
 
-            <div class="panel9" onclick="window.location.href='//buy.stripe.com/test_dR68xBctj1bV0OQ6or';">
+            <div class="panel9" onclick="window.location.href='//buy.stripe.com/test_aEUcNR3WN3k37de7sA';">
                 <p><b>English</b></p>
             </div>
         </div>
 
         <div class="panelsD2">
-            <div class="panel10" onclick="window.location.href='//buy.stripe.com/test_9AQ6pt3WN9Ir8hi3ch';">
+            <div class="panel10" onclick="window.location.href='//buy.stripe.com/test_5kAcNRbpf9Ir69aeV6';">
                 <p><b>Sinhala</b></p>
             </div>
 
-            <div class="panel11" onclick="window.location.href='//buy.stripe.com/test_fZeaFJ2SJg6PapqcMS';">
+            <div class="panel11" onclick="window.location.href='//buy.stripe.com/test_00g9BFgJzaMveFGeV5';">
                 <p><b>Buddhism</b></p>
             </div>
 
-            <div class="panel12" onclick="window.location.href='//buy.stripe.com/test_aEU6pt2SJ7AjdBC7su';">
+            <div class="panel12" onclick="window.location.href='//buy.stripe.com/test_dR6g038d33k3eFGcMT';">
                 <p><b>History</b></p>
             </div>
         </div>
