@@ -2,6 +2,7 @@
 
 
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,6 +16,11 @@
 
 <body>
 <?php include 'dropdown3.php'; ?>
+
+<?php 
+	$query= mysqli_query($link,"select * from parent where parent_id = '$session_id'")or die(mysqli_error());
+	$row = mysqli_fetch_array($query);
+?>
         <!-- Sidebar -->
         <div class="sidebar">
             <div class="logo">

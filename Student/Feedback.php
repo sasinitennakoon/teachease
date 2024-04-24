@@ -1,4 +1,35 @@
-<?php include '../database/db_con.php'; ?>
+<?php
+include '../database/db_con.php';
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Check if all fields are filled
+    if(isset($_POST['Subjects']) && isset($_POST['classRating']) && isset($_POST['teacherRating']) && isset($_POST['comment'])) {
+        // Prepare and bind the SQL statement
+        $stmt = mysqli_prepare($link, "INSERT INTO feedback (subject, class_rating, teacher_rating, comment) VALUES (?, ?, ?, ?)");
+        mysqli_stmt_bind_param($stmt, "siss", $subject, $classRating, $teacherRating, $comment);
+        
+        // Set parameters
+        $subject = $_POST['Subjects'];
+        $classRating = $_POST['classRating'];
+        $teacherRating = $_POST['teacherRating'];
+        $comment = $_POST['comment'];
+        
+        // Execute the statement
+        if (mysqli_stmt_execute($stmt)) {
+            echo "Feedback submitted successfully!";
+        } else {
+            echo "Error: " . mysqli_stmt_error($stmt);
+        }
+        
+        // Close statement and connection
+        mysqli_stmt_close($stmt);
+        mysqli_close($link);
+    } else {
+        echo "All fields are required!";
+    }
+}
+
+?>
 
 
 <!DOCTYPE html>
@@ -11,7 +42,6 @@
     <link rel="stylesheet" href="././css/dashboard.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <style>
-        /* Add this CSS to your stylesheet */
         .emoji {
             cursor: pointer;
             font-size: 24px;
@@ -30,17 +60,12 @@
             transform: scale(1.5); /* Adjust the scale factor as needed */
         }
         .star {
-        color: #ccc; /* Default star color */
-    }
+            color: #ccc; /* Default star color */
+        }
     </style>
 </head>
-
 <body>
-
-
 <?php include 'dropdown2.php'; ?>
-
-<!-- Sidebar -->
 <div class="sidebar">
     <div class="logo">
         <img src="././img/logo1.png" alt="Logo">
@@ -60,11 +85,8 @@
         </ul>
     </nav>
 </div>
-
 <div class="content">
-
     <h2>Give Your Valuable Feedback Here!</h2>
-
     <div class="panelfeed">
         <h3> You can rate your classes and teachers here.<br>
             You can help us improve this online education platform.<br>
@@ -72,11 +94,9 @@
         <p> Thank You!<br>
             Admin Panel</p>
     </div>
-    
     <div class="feedback-form">
         <h2>Feedback Form</h2>
-                
-                
+        <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
         <div class="rating">
             <h3>Choose Your Subject:</h3>
             <input type="radio" id="html" name="Subjects" value="Science">
@@ -96,9 +116,11 @@
 
             <input type="radio" id="html" name="Subjects" value="History">
             <label for="History">History</label><br>
-
-
-
+            <!-- Add hidden input fields for ratings -->
+            <input type="hidden" name="classRating" id="classRatingInput">
+            <input type="hidden" name="teacherRating" id="teacherRatingInput">
+        </div>
+        <div class="rating">
             <h3>Rate for the class:</h3>
             <div class="stars" id="classRating">
                 <span class="star" data-value="1">&#9733;</span>
@@ -111,85 +133,121 @@
         <div class="rating">
             <h3>Rate for your teacher:</h3>
             <div class="emojis" id="teacherRating">
-                <span class="emoji" data-value="very-bad">😠</span>
-                <span class="emoji" data-value="bad">😞</span>
-                <span class="emoji" data-value="neutral">😐</span>
-                <span class="emoji" data-value="satisfied">😊</span>
-                <span class="emoji" data-value="highly-satisfied">😍</span>
+                <span class="emoji" data-value="very-bad">&#128545;</span>
+                <span class="emoji" data-value="bad">&#128542;</span>
+                <span class="emoji" data-value="neutral">&#128528;</span>
+                <span class="emoji" data-value="satisfied">&#128522;</span>
+                <span class="emoji" data-value="highly-satisfied">&#128525;</span>
             </div>
         </div>
         <div class="comment">
             <h3>Add a comment:</h3>
-            <textarea id="commentText" rows="4" cols="50" placeholder="Enter your comment here..."></textarea>
+            <textarea id="commentText" name="comment" rows="4" cols="50" placeholder="Enter your comment here..."></textarea>
         </div>
-        <button id="submitBtn">Submit</button>
+        <button id="submitBtn" type="submit">Submit</button>
+        </form>
     </div>
-
     <div class="popup" id="popup">
         <span class="close" id="close">&times;</span>
         <div class="popupContent" id="popupContent"></div>
     </div>
+</div>
+<script>
+    // Add JavaScript to set hidden input values before submitting the form
+    const submitBtn = document.getElementById('submitBtn');
+    const classRatingInput = document.getElementById('classRatingInput');
+    const teacherRatingInput = document.getElementById('teacherRatingInput');
 
-    <script>
+    // Function to get selected class rating
+    function getSelectedClassRating() {
         const stars = document.querySelectorAll('.star');
-        const emojis = document.querySelectorAll('.emoji');
-        const commentText = document.getElementById('commentText');
-        const submitBtn = document.getElementById('submitBtn');
-        const popup = document.getElementById('popup');
-        const closePopup = document.getElementById('close');
-        const popupContent = document.getElementById('popupContent');
-
+        let count = 0;
         stars.forEach(star => {
-            star.addEventListener('click', () => {
-                const rating = parseInt(star.getAttribute('data-value'));
-                highlightStars(rating);
-                showPopup(`You rated ${rating} star(s) for the class.`);
-            });
-        });
-
-        function highlightStars(count) {
-            stars.forEach((star, index) => {
-                if (index < count) {
-                    star.classList.add('highlighted');
-                } else {
-                    star.classList.remove('highlighted');
-                }
-            });
-        }
-
-        emojis.forEach(emoji => {
-            emoji.addEventListener('click', () => {
-                const rating = emoji.getAttribute('data-value');
-                highlightEmojis(emoji);
-                showPopup(`You rated the teacher as: ${rating}`);
-            });
-        });
-
-        function highlightEmojis(selectedEmoji) {
-            emojis.forEach(emoji => {
-                if (emoji === selectedEmoji) {
-                    emoji.classList.toggle('enlarged');
-                } else {
-                    emoji.classList.remove('enlarged');
-                }
-            });
-        }
-
-        submitBtn.addEventListener('click', () => {
-            const comment = commentText.value.trim();
-            if (comment !== '') {
-                showPopup(`Your comment: ${comment}`);
-            } else {
-                showPopup('Please add a comment before submitting.');
+            if (star.classList.contains('highlighted')) {
+                count++;
             }
         });
+        return count;
+    }
 
-        closePopup.addEventListener('click', () => {
-            popup.style.display = 'none';
+    // Function to get selected teacher rating
+    function getSelectedTeacherRating() {
+        const emojis = document.querySelectorAll('.emoji');
+        let rating = '';
+        emojis.forEach(emoji => {
+            if (emoji.classList.contains('enlarged')) {
+                rating = emoji.getAttribute('data-value');
+            }
         });
+        return rating;
+    }
 
-        
-    </script>
+    submitBtn.addEventListener('click', () => {
+        const classRating = getSelectedClassRating();
+        const teacherRating = getSelectedTeacherRating();
+        const comment = document.getElementById('commentText').value.trim();
 
+        // Set hidden input values
+        classRatingInput.value = classRating;
+        teacherRatingInput.value = teacherRating;
+    });
+    
+    const stars = document.querySelectorAll('.star');
+    const emojis = document.querySelectorAll('.emoji');
+    const commentText = document.getElementById('commentText');
+    const popup = document.getElementById('popup');
+    const closePopup = document.getElementById('close');
+    const popupContent = document.getElementById('popupContent');
+
+    stars.forEach(star => {
+        star.addEventListener('click', () => {
+            const rating = parseInt(star.getAttribute('data-value'));
+            highlightStars(rating);
+            showPopup(`You rated ${rating} star(s) for the class.`);
+        });
+    });
+
+    function highlightStars(count) {
+        stars.forEach((star, index) => {
+            if (index < count) {
+                star.classList.add('highlighted');
+            } else {
+                star.classList.remove('highlighted');
+            }
+        });
+    }
+
+    emojis.forEach(emoji => {
+        emoji.addEventListener('click', () => {
+            const rating = emoji.getAttribute('data-value');
+            highlightEmojis(emoji);
+            showPopup(`You rated the teacher as: ${rating}`);
+        });
+    });
+
+    function highlightEmojis(selectedEmoji) {
+        emojis.forEach(emoji => {
+            if (emoji === selectedEmoji) {
+                emoji.classList.toggle('enlarged');
+            } else {
+                emoji.classList.remove('enlarged');
+            }
+        });
+    }
+
+    submitBtn.addEventListener('click', () => {
+        const comment = commentText.value.trim();
+        if (comment !== '') {
+            showPopup(`Your comment: ${comment}`);
+        } else {
+            showPopup('Please add a comment before submitting.');
+        }
+    });
+
+    closePopup.addEventListener('click', () => {
+        popup.style.display = 'none';
+    });
+
+</script>
 </body>
 </html>

@@ -9,14 +9,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Student Dashboard</title>
-    <!--<link rel="stylesheet" href="../admin/css/dashboard.css"> -->
     <link rel="stylesheet" href="./css/create.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        
+    </style>
 </head>
-
 <body>
    
-<?php include 'dropdown2.php'; ?>
+    <?php include 'dropdown2.php'; ?>
     <button onclick="goBack()">Go to Dashboard</button>
     <div class="container">
         <h1>Create Your Flash Cards Here!</h1>
@@ -31,7 +32,13 @@
     <!-- Popup modal for confirmation -->
     <div id="confirmationModal" class="modal">
         <div class="modal-content">
-            <p>How many flash cards do you want to create?</p>
+            <p>Select the subject and enter the number of flash cards you want to create:</p>
+            <select id="flashCardSubject">
+                <option value="Math">Math</option>
+                <option value="Science">Science</option>
+                <option value="History">History</option>
+                <!-- Add more subjects as needed -->
+            </select>
             <input type="number" id="flashCardCount" min="1" value="1">
             <div class="modal-buttons">
                 <button onclick="confirmCreation()">Confirm</button>
@@ -64,6 +71,7 @@
 
     <script>
         let flashCardCount = 1;
+        let flashCardSubject = "";
 
         function openConfirmationModal() {
             document.getElementById("confirmationModal").style.display = "block";
@@ -74,6 +82,7 @@
         }
 
         function confirmCreation() {
+            flashCardSubject = document.getElementById("flashCardSubject").value;
             flashCardCount = parseInt(document.getElementById("flashCardCount").value);
             closeConfirmationModal();
             openTableModal();
@@ -97,8 +106,8 @@
                 const answerCell = document.createElement("td");
                 const questionInput = document.createElement("input");
                 const answerTextarea = document.createElement("textarea");
-                questionInput.setAttribute("placeholder", `Question ${i}`);
-                answerTextarea.setAttribute("placeholder", `Answer ${i}`);
+                questionInput.setAttribute("placeholder", Question ${i});
+                answerTextarea.setAttribute("placeholder", Answer ${i});
                 questionCell.appendChild(questionInput);
                 answerCell.appendChild(answerTextarea);
                 row.appendChild(questionCell);
@@ -129,11 +138,13 @@
                     <div class="back">
                         <p>${data.answer}</p>
                     </div>
+                    <button class="delete-button" onclick="deleteFlashCard(this)"></button>
                 `;
                 flashcard.addEventListener("click", function() {
                     this.classList.toggle("flipped");
                 });
-                flashcardContainer.insertBefore(flashcard, flashcardContainer.lastElementChild); // Insert before the plus mark
+                flashcardContainer.insertBefore(flashcard, flashcardContainer.lastElementChild);
+                resizeTextToFit(flashcard); // Insert before the plus mark
             });
 
             // Remove existing plus mark
@@ -158,16 +169,29 @@
             document.getElementById("panel1").style.display = "none";
         }
 
+        function deleteFlashCard(button) {
+            // Get the parent flashcard element and remove it
+            const flashcard = button.parentNode;
+            flashcard.remove();
+        }
+
         function shareFlashCards() {
             // Implement the sharing functionality here
             alert("Share with others feature will be implemented soon!");
         }
 
-
-
         function goBack() {
-                window.history.back();
-            }
+            window.history.back();
+        }
+        function resizeTextToFit(element) {
+            const fontSize = 24; // Initial font size
+            const maxHeight = 160; // Max height of the flashcard content area
+            let textElement = element.querySelector(".front p");
+            let contentHeight = textElement.offsetHeight;
+            let scaleFactor = maxHeight / contentHeight;
+            let newFontSize = Math.min(fontSize * scaleFactor, fontSize);
+            textElement.style.fontSize = ${newFontSize}px;
+        }
     </script>
 </body>
 </html>
