@@ -22,6 +22,7 @@ if(isset($_GET['exam_id'])) {
     <link rel="stylesheet" href="./CSS/ResultAnalysis.css">
     <link rel="stylesheet" href="./CSS/resultanalysischarts.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
     <!-- Latest FullCalendar CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.2/main.css" integrity="sha384-LiWsxj4vMfsO8uyNnTVqSfeLqqkKD2pwWqFnSa6UqVqwKn9FlnNy5wKb3bYxs84p" crossorigin="anonymous">
 </head>
@@ -150,7 +151,7 @@ if(isset($_GET['exam_id'])) {
 
           <div class="charts-card">
             <h2 class="chart-title" style="color: white;">Pass and Fail Rates</h2>
-            <div id="chart"></div>
+            <div id="pie-chart"></div>
           </div>
 
         </div>
@@ -165,7 +166,7 @@ if(isset($_GET['exam_id'])) {
     include '../database/db_con.php';
 
     if(isset($_POST['delete'])){
-        $exam_id = $_POST['exam_id'];
+        $exam_id = $_GET['exam_id'];
         $id = $_POST['selector'];
         $N = count($id);
         
@@ -174,55 +175,11 @@ if(isset($_GET['exam_id'])) {
         }
 ?>
     <script>
-        window.location = "ResultsAnalysis.php";
+        window.location = "ResultAnalysis.php?exam_id=<?php echo $id; ?>";
     </script>
 
 <?php
     }
-?>
-
-<?php
-include '../database/db_con.php';
-if (isset($_GET['exam_id'])) {
-    $exam_id = $_GET['exam_id'];
-
-    // Overall grade distribution
-    $query_grades = mysqli_query($link, "
-        SELECT grade, COUNT(*) AS count
-        FROM result_file_marks
-        WHERE exam_id = '$exam_id'
-        GROUP BY grade
-    ") or die(mysqli_error($link));
-
-    $grades_data = [];
-    while ($row = mysqli_fetch_assoc($query_grades)) {
-        $grades_data[] = $row;
-    }
-
-    // Pass/fail rates
-    $query_pass_fail = mysqli_query($link, "
-        SELECT 
-            CASE 
-                WHEN grade IN ('A', 'B', 'C','S') THEN 'Pass'
-                ELSE 'Fail'
-            END AS result, 
-            COUNT(*) AS count
-        FROM result_file_marks
-        WHERE exam_id = '$exam_id'
-        GROUP BY result
-    ") or die(mysqli_error($link));
-
-    $pass_fail_data = [];
-    while ($row = mysqli_fetch_assoc($query_pass_fail)) {
-        $pass_fail_data[] = $row;
-    }
-
-    // Return data as JSON
-    echo json_encode([
-        'grades' => $grades_data,
-        'pass_fail' => $pass_fail_data,
-    ]);
-}
 ?>
 
 
