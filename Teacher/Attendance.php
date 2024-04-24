@@ -40,9 +40,16 @@ $row = mysqli_fetch_array($query);
 </div>
 
 <div class="content">
-    <h1>Student Attendance</h1>
-    
-    <!-- Search form with a table layout -->
+    <h1>Mark Student Attendance</h1>
+
+    <div class="but">
+                
+                            <button class="btn btn-info">
+                            <a href="view_attendance.php" style='text-decoration:none;color:white;'>
+                                <i class></i>&nbsp;View Attendance records</a>
+                            </button>
+</div>
+    <!-- Search form for selecting class and date -->
     <form method="POST" action="">
         <table>
             <tr>
@@ -51,9 +58,18 @@ $row = mysqli_fetch_array($query);
                     <select id="class" name="class" required>
                         <option value=""></option>
                         <?php
-                        $class_query = mysqli_query($link, "SELECT * FROM teacher_class WHERE teacher_id = '$session_id'") or die(mysqli_error($link));
+                        // Fetch the list of classes taught by the teacher that have a schedule
+                        $class_query = mysqli_query(
+                            $link,
+                            "SELECT teacher_class_id, class_name
+                             FROM teacher_class
+                             WHERE teacher_id = '$session_id' 
+                               AND teacher_class_id IN 
+                               (SELECT class_id FROM schedule)"
+                        ) or die("Query failed: " . mysqli_error($link));
+
                         while ($class_row = mysqli_fetch_array($class_query)) {
-                            echo "<option value='{$class_row['teacher_class_id']}'>{$class_row['class_name']}</option>";
+                            echo "<option value='{$class_row['teacher_class_id']}'> {$class_row['class_name']} </option>";
                         }
                         ?>
                     </select>
@@ -68,23 +84,46 @@ $row = mysqli_fetch_array($query);
             </tr>
         </table>
     </form>
-    
+    <br>
+
     <?php
+    // Check if the search button was clicked
     if (isset($_POST['search'])) {
         $selected_class = $_POST['class'];
         $selected_date = $_POST['date'];
-        
-        $attendance_query = mysqli_query($link, "SELECT * FROM student_attendance WHERE teacher_id = '$session_id' AND class_id = '$selected_class' AND date = '$selected_date'") or die(mysqli_error($link));
-        
-        if (mysqli_num_rows($attendance_query) == 0) {
-            echo "<p>No students found for the selected class and date.</p>";
-        } else {
+
+        $day_query = mysqli_query(
+            $link,
+            "SELECT DAYNAME('$selected_date') as day_name"
+        ) or die(mysqli_error($link));
+
+        $day_result = mysqli_fetch_assoc($day_query);
+        $day_name = $day_result['day_name'];
+
+        $attendance_query = mysqli_query(
+            $link,
+            "SELECT student_class.*, 
+                   schedule.date, 
+                   student.student_id, 
+                   student.firstname, 
+                   student.lastname, 
+                   student.grade
+            FROM student_class 
+            INNER JOIN schedule ON schedule.schedule_id = student_class.schedule_id
+            INNER JOIN student ON student.student_id = student_class.student_id
+            WHERE student_class.class_id = '$selected_class' 
+              AND schedule.date = '$day_name'"
+        ) or die(mysqli_error($link));
+
+        if (mysqli_num_rows($attendance_query) > 0) {
             ?>
-            <form method="POST">
+            <form method="POST" action="">
+                <!-- Retain the class and date in hidden fields -->
+                <input type="hidden" name="class" value="<?php echo $selected_class; ?>">
+                <input type="hidden" name="date" value="<?php echo $selected_date; ?>">
                 <table>
                     <thead>
                         <tr>
-                            <th></th>
                             <th>Student ID</th>
                             <th>First Name</th>
                             <th>Last Name</th>
@@ -93,46 +132,115 @@ $row = mysqli_fetch_array($query);
                         </tr>
                     </thead>
                     <tbody>
-                    <?php
-                    while ($row = mysqli_fetch_array($attendance_query)) {
-                        ?>
-                        <tr>
-                            <td><input type="checkbox" name="selector[]" value="<?php echo $row['student_id']; ?>"></td>
-                            <td><?php echo $row['student_id']; ?></td>
-                            <td><?php echo $row['firstname']; ?></td>
-                            <td><?php echo $row['lastname']; ?></td>
-                            <td><?php echo $row['grade']; ?></td>
-                            <td><?php echo $row['status']; ?></td>
-                        </tr>
                         <?php
-                    }
-                    ?>
+                        // Display the students and attendance options
+                        while ($row = mysqli_fetch_array($attendance_query)) {
+                            $student_id = $row['student_id'];
+                            $current_attendance_query = mysqli_query(
+                                $link,
+                                "SELECT * 
+                                 FROM student_attendance 
+                                 WHERE student_id = '$student_id' 
+                                   AND class_id = '$selected_class' 
+                                   AND date = '$selected_date'"
+                            ) or die(mysqli_error($link));
+
+                            $existing_attendance = mysqli_fetch_assoc($current_attendance_query);
+                            ?>
+                            <tr>
+                                <td><?php echo $student_id; ?></td>
+                                <td><?php echo $row['firstname']; ?></td>
+                                <td><?php echo $row['lastname']; ?></td>
+                                <td><?php echo $row['grade']; ?></td>
+                                <td>
+                                    <!-- Mark Present or Absent -->
+                                    <button 
+                                      type="submit" 
+                                      name="mark_present" 
+                                      value="<?php echo $student_id; ?>" 
+                                      class="mark-button" 
+                                      style="background-color: <?php echo ($existing_attendance['status'] === 'present') ? '#055305' : ''; ?>"
+                                    >
+                                      Present
+                                    </button>
+                                    <button 
+                                      type="submit" 
+                                      name="mark_absent" 
+                                      value="<?php echo $student_id; ?>" 
+                                      class="mark-button" 
+                                      style="background-color: <?php echo ($existing_attendance['status'] === 'absent') ? '#850404' : ''; ?>"
+                                    >
+                                      Absent
+                                    </button>
+                                </td>
+                            </tr>
+                            <?php
+                        }
+                        ?>
                     </tbody>
                 </table>
-                <button type="submit" name="mark_present">Mark Present</button>
-                <button type="submit" name="mark_absent">Mark Absent</button>
             </form>
             <?php
+        } else {
+            echo "<p>No students found for the selected class and date.</p>";
         }
     }
 
-    if (isset($_POST['mark_present'])) {
-        $selected_students = $_POST['selector'];
-        foreach ($selected_students as $student_id) {
-            mysqli_query($link, "UPDATE student_attendance SET status = 'present' WHERE student_id = '$student_id'") or die(mysqli_error($link));
-        }
-        echo "<script>window.location = 'Attendance.php';</script>";
-    }
+    // Handle marking a student as present or absent
+    if (isset($_POST['mark_present']) || isset($_POST['mark_absent'])) {
+        $student_id = $_POST['mark_present'] ?? $_POST['mark_absent'];
+        $class_id = $_POST['class'];
+        $date = $_POST['date'];
+        $status = isset($_POST['mark_present']) ? 'present' : 'absent';
 
-    if (isset($_POST['mark_absent'])) {
-        $selected_students = $_POST['selector'];
-        foreach ($selected_students as $student_id) {
-            mysqli_query($link, "UPDATE student_attendance SET status = 'absent' WHERE student_id = '$student_id'") or die(mysqli_error($link));
+        // Check if attendance record exists
+        $attendance_check_query = mysqli_query(
+            $link,
+            "SELECT * 
+             FROM student_attendance 
+             WHERE student_id = '$student_id' 
+               AND class_id = '$class_id' 
+               AND date = '$date'"
+        ) or die(mysqli_error($link));
+
+        if (mysqli_num_rows($attendance_check_query) > 0) {
+            // Update existing record
+            mysqli_query(
+                $link,
+                "UPDATE student_attendance 
+                 SET status = '$status' 
+                 WHERE student_id = '$student_id' 
+                   AND class_id = '$class_id' 
+                   AND date = '$date'"
+            ) or die(mysqli_error($link));
+        } else {
+            // Insert new record
+            mysqli_query(
+                $link,
+                "INSERT INTO student_attendance (student_id, teacher_id, class_id, date, status)
+                 VALUES ('$student_id', '$session_id', '$class_id', '$date', '$status')"
+            ) or die(mysqli_error($link));
         }
-        echo "<script>window.location = 'Attendance.php';</script>";
+
+        // Redirect to refresh the page
+        header("Location: Attendance.php?class=$class_id&date=$date");
+        exit;
     }
     ?>
 </div>
+
+<!-- JavaScript to change button color when clicked -->
+<script>
+document.querySelectorAll('.mark-button').forEach(button => {
+    button.addEventListener('click', function() {
+        if (this.name === 'mark_present') {
+            this.style.backgroundColor = '#055305'; // Green for present
+        } else {
+            this.style.backgroundColor = '#850404'; // Red for absent
+        }
+    });
+});
+</script>
 
 </body>
 </html>

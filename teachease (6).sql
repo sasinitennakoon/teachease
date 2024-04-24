@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 23, 2024 at 12:17 PM
+-- Generation Time: Apr 24, 2024 at 02:22 AM
 -- Server version: 10.4.32-MariaDB
--- PHP Version: 8.2.12
+-- PHP Version: 8.0.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -466,12 +466,20 @@ INSERT INTO `student` (`student_id`, `firstname`, `lastname`, `gender`, `usernam
 --
 
 CREATE TABLE `student_attendance` (
+  `attendance_id` int(11) NOT NULL,
   `student_id` int(11) NOT NULL,
   `teacher_id` int(11) NOT NULL,
-  `subject_id` int(11) NOT NULL,
+  `class_id` int(11) NOT NULL,
   `date` varchar(30) NOT NULL,
-  `student_status` varchar(30) NOT NULL
+  `status` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `student_attendance`
+--
+
+INSERT INTO `student_attendance` (`attendance_id`, `student_id`, `teacher_id`, `class_id`, `date`, `status`) VALUES
+(1, 2, 5, 12, '2024-04-30', 'present');
 
 -- --------------------------------------------------------
 
@@ -787,6 +795,12 @@ ALTER TABLE `student`
   ADD PRIMARY KEY (`student_id`);
 
 --
+-- Indexes for table `student_attendance`
+--
+ALTER TABLE `student_attendance`
+  ADD PRIMARY KEY (`attendance_id`);
+
+--
 -- Indexes for table `student_class`
 --
 ALTER TABLE `student_class`
@@ -945,6 +959,12 @@ ALTER TABLE `schedule`
 --
 ALTER TABLE `student`
   MODIFY `student_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
+-- AUTO_INCREMENT for table `student_attendance`
+--
+ALTER TABLE `student_attendance`
+  MODIFY `attendance_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `student_class`
