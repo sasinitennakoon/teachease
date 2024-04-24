@@ -142,7 +142,10 @@ nav {
 .panel9:hover,
 .panel10:hover,
 .panel11:hover,
-.panel12:hover{
+.panel12:hover,
+.panel20:hover,
+.panel23:hover,
+.panel22:hover{
     transform: translateY(-5px);
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
@@ -183,6 +186,54 @@ nav {
     flex: 1;
     background-color: #ffffff;
     background-image: url('../../signup/teacher.jpeg');
+    background-position: right;
+    background-size: 180px 180px;
+    background-repeat: no-repeat;
+    padding: 20px;
+    margin: 10px ;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 60%;
+    height: 150px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.panel20 {
+    flex: 1;
+    background-color: #ffffff;
+    background-image: url('../../signup/term1.jpeg');
+    background-position: right;
+    background-size: 180px 180px;
+    background-repeat: no-repeat;
+    padding: 20px;
+    margin: 10px ;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 60%;
+    height: 150px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.panel23 {
+    flex: 1;
+    background-color: #ffffff;
+    background-image: url('../../signup/term2.jpeg');
+    background-position: right;
+    background-size: 180px 180px;
+    background-repeat: no-repeat;
+    padding: 20px;
+    margin: 10px ;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 60%;
+    height: 150px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.panel22 {
+    flex: 1;
+    background-color: #ffffff;
+    background-image: url('../../signup/term3.jpeg');
     background-position: right;
     background-size: 180px 180px;
     background-repeat: no-repeat;
@@ -301,6 +352,73 @@ nav {
 #barChart {
     width: 45%; /* Adjust the width of the canvas as needed */
     height: auto;
+}
+
+.content .panelsD2 p{
+    font-size:180%;
+}
+
+.panel30 {
+    flex: 1;
+    background-color: #ffffff;
+    background-image: url('../../signup/term1.jpeg');
+    background-position: right;
+    background-size: 180px 180px;
+    background-repeat: no-repeat;
+    padding: 20px;
+    margin: 10px ;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 60%;
+    height: 150px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.panel31 {
+    flex: 1;
+    background-color: #ffffff;
+    background-image: url('../../signup/term2.jpeg');
+    background-position: right;
+    background-size: 180px 180px;
+    background-repeat: no-repeat;
+    padding: 20px;
+    margin: 10px ;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 60%;
+    height: 150px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.panel32 {
+    flex: 1;
+    background-color: #ffffff;
+    background-image: url('../../signup/term3.jpeg');
+    background-position: right;
+    background-size: 180px 180px;
+    background-repeat: no-repeat;
+    padding: 20px;
+    margin: 10px ;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 60%;
+    height: 150px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.panel30:hover,
+.panel31:hover,
+.panel32:hover{
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+
+.panelsD2 {
+    display: flex;
+    flex-wrap: wrap;
+    width: 60% 40%;
+    cursor: pointer;
 }
 
 /*Note pad*/
