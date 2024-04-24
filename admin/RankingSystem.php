@@ -44,47 +44,48 @@
         <!-- Your page content goes here -->
         <h1>Ranking System</h1>
 
-        <div class="panels">
-            <div class="panel">
-                <h2>Select Course :<input type="text"></input></h2>
-                <h2>Select Class :<input type="text"></input></h2>
-                <h2>Select Subject :<input type="text"></input></h2>
-                <h2>Select Questionnaire :<input type="text"></input></h2>
-                <div class="but">
-                    <button class="button"><b>Apply Ranking</b></button>
-                </div>
+        <div class="panelsD">
+        
+            <div class="panel20" onclick="window.location.href='term1.php';">
+            
+                <h2>Term 1</h2>
+              
+                 
+            </div> 
+             
+               
+           
+            <div class="panel23" onclick="window.location.href='term2.php';">
+            
+                <h2>Term 2</h2>
+               
+            </div>
+            
+            
+            <div class="panel22" onclick="window.location.href='term3.php';">
+            
+                <h2>Term 3</h2>
+              
+           
             </div>
             
         </div>
+        <div class="panelsD2">
+            <div class="panel30" onclick="window.location.href='term1rank.php';">
+            <h2>Term 1 - Rank</h2>
+            </div>
 
-        <!-- Add Details Form -->
-        <div id="addDetailsForm" style="display: none;">
-            <!-- Your form content goes here -->
-            <form>
-                <!-- Add your form fields here -->
-                <label for="indexNo">Index No:</label>
-                <input type="text" id="indexNo" name="indexNo">
-                
-                <!-- Add more fields as needed -->
+            <div class="panel31" onclick="window.location.href='term2rank.php';">
+            <h2>Term 2 - Rank</h2>
+            </div>
 
-                <button type="submit">Submit</button>
-            </form>
+            <div class="panel32" onclick="window.location.href='term3rank.php';">
+            <h2>Term 3 - Rank</h2>
+            </div>
         </div>
-
     </div>
 
-    <script>
-        function openAddDetailsForm() {
-            var addDetailsForm = document.getElementById('addDetailsForm');
-            addDetailsForm.style.display = 'block';
-        }
-    
-        // Optional: Close the form when the page is loaded
-        document.addEventListener('DOMContentLoaded', function () {
-            var addDetailsForm = document.getElementById('addDetailsForm');
-            addDetailsForm.style.display = 'none';
-        });
-    </script>
+   
     
 </body>
 </html>
