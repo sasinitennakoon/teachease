@@ -44,6 +44,117 @@
     <div class="content">
         <!-- Your page content goes here -->
         <h1>Feedback</h1>
+        <form method="POST" action="">
+        <table>
+            <tr>
+                <td>
+                    <label for="class">Class:</label>
+                    <select id="class" name="class" required>
+                        <option value=""></option>
+                        <?php
+                        // Fetch the list of classes taught by the teacher that have a schedule
+                        $class_query = mysqli_query(
+                            $link,
+                            "SELECT teacher_class_id, class_name
+                             FROM teacher_class
+                             WHERE teacher_id = '$session_id' 
+                               AND teacher_class_id IN 
+                               (SELECT class_id FROM schedule)"
+                        ) or die("Query failed: " . mysqli_error($link));
+
+                        while ($class_row = mysqli_fetch_array($class_query)) {
+                            echo "<option value='{$class_row['teacher_class_id']}'> {$class_row['class_name']} </option>";
+                        }
+                        ?>
+                    </select>
+                <td>
+                    <button type="submit" name="search">Search</button>
+                </td>
+            </tr>
+        </table>
+    </form>
+    <br>
+
+    <?php
+    // Check if the search button was clicked
+    if (isset($_POST['search'])) {
+        $selected_class = $_POST['class'];
+
+
+        $attendance_query = mysqli_query(
+            $link,
+            "SELECT 
+            feedback.*, 
+            student.firstname, 
+            student.lastname,
+            student.grade
+        FROM 
+            feedback
+        INNER JOIN 
+            student ON student.student_id = feedback.student_id
+        INNER JOIN 
+            student_class ON student_class.student_id = feedback.student_id
+        INNER JOIN 
+            teacher_class ON teacher_class.teacher_class_id = student_class.class_id
+        INNER JOIN
+        subject ON subject.subject_id = teacher_class.subject_id
+        WHERE 
+            teacher_class.teacher_id = '$session_id'
+            AND teacher_class.teacher_class_id = '$selected_class'
+            AND feedback.subject = subject.subject_title
+        "
+        ) or die(mysqli_error($link));
+        
+
+        if (mysqli_num_rows($attendance_query) > 0) {
+            ?>
+            <form method="POST" action=""></form>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Student ID</th>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Date Submittied</th>
+                            <th>CLass Rating</th>
+                            <th>Teacher Rating</th>
+                            <th>Comment</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                       
+                    <?php
+                        // Display the students and attendance options
+                        while ($row = mysqli_fetch_array($attendance_query)) {
+                            $student_id = $row['student_id'];
+                            ?>
+                            <tr>
+                                <td><?php echo $student_id; ?></td>
+                                <td><?php echo $row['firstname']; ?></td>
+                                <td><?php echo $row['lastname']; ?></td>
+                                <td><?php echo $row['created_at']; ?></td>
+                                <td><?php echo $row['class_rating']; ?></td>
+                                <td><?php echo $row['teacher_rating']; ?></td>
+                                <td><?php echo $row['comment']; ?></td>
+                            </tr>
+                            <?php
+                        }
+                        ?>
+                            
+                    </tbody>
+                </table>
+            </form>
+            <?php
+        } else {
+            echo "<p>No students feedback records found for the selected class </p>";
+        }
+    }?>
+</div>
+
+
+</body>
+</html>
+
 
 </body>
 </html>
