@@ -53,7 +53,7 @@
                         <table border="0">
                             <thead>
                                 <tr>
-                                    <th></th>
+                                    <th><th>Check All <input type="checkbox"  name="selectAll" id="checkAll" /></th></th>
                                     <th>Student</th>
                                     <th>Subject</th>
                                     <th>Marks</th>
@@ -102,6 +102,12 @@
 </body>
 
 </html>
+
+<script>
+								$("#checkAll").click(function () {
+									$('input:checkbox').not(this).prop('checked', this.checked);
+								});
+								</script>
 
 
 <?php

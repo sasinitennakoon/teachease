@@ -28,7 +28,7 @@
 		
 	<button><a href="RankingSystem.php"><i class='fa fa-fw fa arrow-left'></i>Go to Dashboard</a></button>
 	<div class="content">
-		<h1>Student Marks For Term 1</h1>
+		<h1>Student Marks For Term 3</h1>
 
         <div class="panels1">
             <div class="panel10">
@@ -41,7 +41,7 @@
                                              FROM marks
                                              INNER JOIN student ON student.student_id = marks.student_id
                                              INNER JOIN subject ON subject.subject_id = marks.subject_id
-                                             WHERE term_id = '1'
+                                             WHERE term_id = '3'
                                              GROUP BY marks.marks_id; ") or die(mysqli_error());
                 $count  = mysqli_num_rows($query);
     
@@ -53,7 +53,7 @@
                         <table border="0">
                             <thead>
                                 <tr>
-                                    <th></th>
+                                    <th><th>Check All <input type="checkbox"  name="selectAll" id="checkAll" /></th></th>
                                     <th>Student</th>
                                     <th>Subject</th>
                                     <th>Marks</th>
@@ -102,6 +102,12 @@
 </body>
 
 </html>
+
+<script>
+								$("#checkAll").click(function () {
+									$('input:checkbox').not(this).prop('checked', this.checked);
+								});
+								</script>
 
 
 <?php

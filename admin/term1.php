@@ -1,12 +1,6 @@
 <?php include '../database/db_con.php'; ?>
+
 <?php include '../session.php'; ?>
-
-
-<?php 
-	$query= mysqli_query($link,"select * from users where user_id = '$session_id'")or die(mysqli_error());
-	$row = mysqli_fetch_array($query);
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -53,7 +47,7 @@
                         <table border="0">
                             <thead>
                                 <tr>
-                                    <th></th>
+                                    <th>Check All <input type="checkbox"  name="selectAll" id="checkAll" /></th>
                                     <th>Student</th>
                                     <th>Subject</th>
                                     <th>Marks</th>
@@ -103,6 +97,11 @@
 
 </html>
 
+<script>
+								$("#checkAll").click(function () {
+									$('input:checkbox').not(this).prop('checked', this.checked);
+								});
+								</script>	
 
 <?php
 include '../database/db_con.php';

@@ -41,7 +41,8 @@
                                              INNER JOIN student ON student.student_id = average.student_id
                                             
                                              WHERE term_id = '1'
-                                             GROUP BY average.average_id; ") or die(mysqli_error());
+                                             GROUP BY average.average_id
+                                             ORDER BY average.rank ASC; ") or die(mysqli_error());
                 $count  = mysqli_num_rows($query);
     
                 if($count > 0)
@@ -56,7 +57,7 @@
                                     <th>Student</th>
                                     
                                     <th>Average Marks</th>
-                                    
+                                    <th>Rank</th>
                                     <!--<th></th> -->
                                 </tr>
                             </thead>
@@ -72,6 +73,7 @@
                                 <td><?php echo $row['firstname']; ?></td>
                                 
                                 <td><?php echo $row['average_marks']; ?></td>
+                                <td><?php echo $row['rank']; ?></td>
                                 <!--<td><a href="marksedit1.php?id=<?php //echo $id; ?>" class="button" style="color:black;"><i class="fa fa-fw fa-pencil">Edit</i></a></td> -->
                                 
                             </tr>
