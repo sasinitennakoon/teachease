@@ -25,7 +25,7 @@
         <h1>Subject List</h1>
         
         
-            <form method="post">
+            <form method="post" onsubmit="return confirmDelete()">
 				<?php
 					$query = mysqli_query($link,"select * FROM subject")or die(mysqli_error());
                     $count = mysqli_fetch_array($query);
@@ -92,7 +92,11 @@
                 
            
     </div>
-    
+    <script>
+		 function confirmDelete() {
+            return confirm("Do you want to delete this Subject?");
+        }
+	</script>
     
 </body>
 </html>

@@ -35,13 +35,13 @@
             <ul>
             <li><a href="FirstPage.php"><i class="fas fa-tachometer-alt"></i>&nbsp; Dashboard</a></li>
                 <li><a href="announcements.php"><i class="fas fa-tachometer-alt"></i>&nbsp; Announcements</a></li>
-                <li><a href="MyStudent.php"><i class="fas fa-users"></i>&nbsp;My Students</a></li>
+                
                 <li><a href="MyClasses.php"><i class="fas fa-chalkboard-teacher"></i>&nbsp; My Classes</a></li>
                 <li><a href="Schedule.php"><i class="fas fa-calendar-alt"></i>&nbsp; Schedule</a></li>
                 <li><a href="StudyMeterials.php"><i class="fas fa-book"></i>&nbsp; Study Materials</a></li>
                 <li><a href="Attendance.php"><i class="fas fa-check-circle"></i>&nbsp; Attendance</a></li>
                 <li><a href="ExamResults.php"><i class="fas fa-poll"></i>&nbsp; Exam Results</a></li>
-                <li><a href="Messages.php"><i class="fas fa-envelope"></i>&nbsp;Messages</a></li>
+                <li><a href="Messages.php" class="active"><i class="fas fa-envelope"></i>&nbsp;Messages</a></li>
                 <li><a href="Feedback.php"><i class="fas fa-comment"></i>&nbsp;Feedback</a></li>
             </ul>
         </nav>
@@ -61,7 +61,7 @@
 			console.log("Initialization completed successfully");
 			//You can now call login function.
 			CometChatWidget.login({
-				"uid": "user1"
+				"uid": "u001"
 			}).then(response => {
 				CometChatWidget.launch({
 					"widgetID": "ba6deb25-85a1-4834-8031-19a93649f004",

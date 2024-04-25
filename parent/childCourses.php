@@ -1,10 +1,5 @@
 <?php include '../database/db_con.php'; ?>
-<?php include '../session.php'; ?>
 
-<?php 
-	$query= mysqli_query($link,"select * from parent where parent_id = '$session_id'")or die(mysqli_error());
-	$row = mysqli_fetch_array($query);
-?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -18,18 +13,7 @@
 </head>
 
 <body>
-<div class="dropdown" style="float:right;">
-<div class="dropbtn">
-              <img src="./img/download (3).png"" alt="User Icon">
-                <?php echo $row['firstname']; ?>
-				<i class="fa fa-caret-down"></i>
-                </div>
-			  <div class="dropdown-content">
-				<a href="MyProfile.php"><i class="fa fa-fw fa-user"></i>Profile</a>
-				<a href="ResetPassword.php"><i class="fa fa-fw fa-unlock-alt"></i>Change Password</a>
-				<a href="../logout.php"><i class="fa fa-fw fa-sign-out-alt"></i>Log out</a>
-			  </div>
-			</div> 
+<?php include 'dropdown3.php'; ?> 
     <!-- Sidebar -->
     <div class="sidebar">
         <div class="logo">
@@ -62,7 +46,7 @@
             part of this course. </p>
             <p>Grade: 10</p>
             <p>Teacher:<a href="profile1.php"> M.M.S Samarasekara</a></p>
-            <p>Course fee: Rs.5000(pay it on or before the 25th of every month)</p>
+            <p>Course fee: Rs.1000(pay it on or before the 25th of every month)</p>
            
         </div>
 
@@ -72,7 +56,7 @@
             <p>Our mathematics course covers the full syllabus as per educational standards. With engaging classes and interactive sessions, we ensure a deep understanding of every topic. Students benefit from a mix of theory, practical applications, and problem-solving strategies, guided by experienced teachers.</p>
             <p>Grade: 10</p>
             <p>Teacher:<a href="profile1.php"> S.A Gallage</a></p>
-            <p>Course fee: Rs.5000(pay it on or before the 25th of every month)</p>
+            <p>Course fee: Rs.1000(pay it on or before the 25th of every month)</p>
            
         </div>
 
@@ -85,7 +69,7 @@
             </p>
             <p>Grade: 10</p>
             <p>Teacher:<a href="profile1.php"> J. A Rodrigo</a></p>
-            <p>Course fee: Rs.5000(pay it on or before the 25th of each month)</p>
+            <p>Course fee: Rs.1000(pay it on or before the 25th of each month)</p>
            
         </div>
 
@@ -97,7 +81,7 @@
             part of this course. </p>
             <p>Grade: 10</p>
             <p>Teacher:<a href="profile1.php"> Padmawathee Somapala</a></p>
-            <p>Course fee: Rs.5000(pay it on or before the 25th of each month)</p>
+            <p>Course fee: Rs.1000(pay it on or before the 25th of each month)</p>
            
         </div>
 
@@ -109,7 +93,7 @@
             part of this course. </p>
             <p>Grade: 10</p>
             <p>Teacher:<a href="profile1.php"> S.S Karunanayake</a></p>
-            <p>Course fee: Rs.5000(pay it on or before the 25th of each month)</p>
+            <p>Course fee: Rs.1000(pay it on or before the 25th of each month)</p>
            
         </div>
 
@@ -120,7 +104,7 @@
                 going to provide knowledge to students by interactive and attractive activities and simulations </p>
             <p>Grade: 10</p>
             <p>Teacher:<a href="profile1.php"> Namal Silva</a></p>
-            <p>Course fee: Rs.5000(pay it on or before the 25th of each month)</p>
+            <p>Course fee: Rs.1000(pay it on or before the 25th of each month)</p>
            
         </div>
 

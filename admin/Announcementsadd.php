@@ -52,7 +52,7 @@
 									<option value="For Teachers">For Teachers</option>
                                     <option value="For Students">For Students</option>
                                     <option value="For Parents">For Parents</option>
-                                    <option value="For Teachers">For All</option>
+                                    <option value="For All">For All</option>
 						</select>
                     </div>
 

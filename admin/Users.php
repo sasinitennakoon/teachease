@@ -52,13 +52,7 @@
             </div>
         </div>
         
-        <h2>Recently Added Users</h2>
-
-        <div class="panels">
-            <div class="panel">
-                
-            </div>
-        </div>
+        
         
     </div>
     

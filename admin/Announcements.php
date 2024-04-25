@@ -35,7 +35,7 @@
                 <li><a href="Users.php"><i class="fas fa-users"></i> Users</a></li>
                 <li><a href="Subjects.php"><i class="fas fa-flask"></i> Subjects</a></li>
                 <li><a href="Classes.php"><i class="fas fa-chalkboard"></i> Classes</a></li>
-                <li><a href="Certificates.php"><i class="fas fa-certificate"></i> Certificates</a></li>
+                
                 <li><a href="RankingSystem.php"><i class="fas fa-trophy"></i> Ranking System</a></li>
                 <li><a href="Feedback.php"><i class="fas fa-comment"></i> Feedback Collection</a></li>
 
@@ -52,7 +52,7 @@
            
         <div class="panels1">
             <div class="panel10">
-            <form method='post'>
+            <form method='post' onsubmit="return confirmDelete()">
             
         <?php
             $query = mysqli_query($link,"select * from announcement") or die(mysqli_error());
@@ -115,7 +115,11 @@
        
         
     </div>
-    
+    <script>
+         function confirmDelete() {
+            return confirm("Do you want to delete this Announcement?");
+        }
+    </script>
     
 </body>
 </html>

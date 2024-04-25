@@ -8,7 +8,7 @@
 
 <div class="dropdown" style="float:right;">
             <div class="dropbtn">
-              <img src="../signup/parentimage.jpeg" alt="User Icon">
+			<?php echo "<img id='preview-image' src='../signup/" . $row['image'] . "' alt='profile-image'>"; ?>
                 <?php echo $row['firstname']; ?>
 				<i class="fa fa-caret-down"></i>
             </div>

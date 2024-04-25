@@ -74,7 +74,7 @@
         
 </div>
 
-
+<!--
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             // Get all course panels
@@ -94,7 +94,7 @@
             });
         });
     </script>
-
+    -->
 </div>
 </body>
 </html>

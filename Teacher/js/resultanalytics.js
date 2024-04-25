@@ -1,10 +1,25 @@
 // ---------- CHARTS ----------
+// Function to fetch data and render charts
+function fetchDataAndRenderCharts(exam_id) {
+    const url = `backend_endpoint.php?exam_id=${exam_id}`;
+
+    fetch(url)
+        .then(response => response.json())
+        .then(data => {
+            renderGradeChart(data.grades);
+            renderPassFailChart(data.pass_fail);
+        })
+        .catch(error => console.error('Error fetching data:', error));
+}
+
+// Call the function with the exam_id
+fetchDataAndRenderCharts('your_exam_id');
 
 const barChartOptions = {
   series: [
     {
-      data: [25, 15, 17, 8, 2],
-      name: 'No of STudents',
+      data: grades.map(g => g.count),
+      name: 'No of Students',
     },
   ],
   chart: {
@@ -61,7 +76,7 @@ const barChartOptions = {
     theme: 'light',
   },
   xaxis: {
-    categories: ['A', 'B', 'C', 'S', 'W'],
+    categories: grades.map(g => g.grade),
     title: {
       style: {
         color: '#f5f7ff',
@@ -112,13 +127,13 @@ barChart.render();
 
 
 var options = {
-  series: [70, 20],
+  series: pass_fail.map(pf => pf.count),
+  labels: pass_fail.map(pf => pf.result),
   chart: {
     width: 500,
     type: 'pie',
     background: 'transparent',
   },
-  labels: ['Pass', 'Fail'],
   colors: ['#d32f2f', '#4caf50'],
   legend: {
     position: 'left',
