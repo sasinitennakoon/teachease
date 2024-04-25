@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 24, 2024 at 11:33 AM
+-- Generation Time: Apr 25, 2024 at 07:24 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -87,7 +87,6 @@ CREATE TABLE `average` (
 
 INSERT INTO `average` (`average_id`, `student_id`, `average_marks`, `term_id`, `rank`) VALUES
 (8, 11, 65, 1, 1),
-(9, 4, 41, 1, 3),
 (11, 7, 50, 1, 2);
 
 -- --------------------------------------------------------
@@ -231,6 +230,57 @@ INSERT INTO `files` (`file_id`, `floc`, `fdatein`, `fdesc`, `teacher_id`, `class
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `flashcards`
+--
+
+CREATE TABLE `flashcards` (
+  `id` int(11) NOT NULL,
+  `bundle_id` int(11) NOT NULL,
+  `question` text NOT NULL,
+  `answer` text NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `flashcards`
+--
+
+INSERT INTO `flashcards` (`id`, `bundle_id`, `question`, `answer`, `created_at`) VALUES
+(1, 1, '5+5', '10', '2024-04-24 17:50:18'),
+(2, 2, '10+5', '15', '2024-04-24 17:52:21'),
+(3, 2, '2+2', '4', '2024-04-24 17:52:21'),
+(4, 2, '5+8', '13', '2024-04-24 17:52:21'),
+(5, 2, '13+8', '21', '2024-04-24 17:52:21'),
+(6, 3, 'af', 'sedf', '2024-04-25 04:37:40'),
+(7, 3, 'asf', 'adf', '2024-04-25 04:37:40'),
+(8, 3, 'th', 'trh', '2024-04-25 04:37:40');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `flashcard_bundles`
+--
+
+CREATE TABLE `flashcard_bundles` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `subject` varchar(255) NOT NULL,
+  `bundle_name` varchar(255) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `flashcard_bundles`
+--
+
+INSERT INTO `flashcard_bundles` (`id`, `user_id`, `subject`, `bundle_name`, `created_at`) VALUES
+(1, 1, 'Shared Flashcards', 'gggg', '2024-04-24 17:50:18'),
+(2, 1, 'Shared Flashcards', 'Logarithms', '2024-04-24 17:52:21'),
+(3, 1, 'Shared Flashcards', 'asjdhasjhdg', '2024-04-25 04:37:40');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `leaverequests`
 --
 
@@ -337,7 +387,6 @@ CREATE TABLE `parent` (
 
 INSERT INTO `parent` (`parent_id`, `firstname`, `lastname`, `city`, `childrenname`, `username`, `password`, `status`, `language`, `image`, `reset_token`) VALUES
 (6, 'aaa', 'bbb', 'ccc', 'anu', 'anurajselvasothy@gmail.com', '$2y$10$EEQ', 'registered', 'English', '', NULL),
-(18, 'Selvasothy', 'Selva', 'Jaffna', 'anu', 'anuraj', '234', 'unregistered', 'Tamil', '', NULL),
 (19, 'www', 'abc', 'colombo', 'anu', 'www@gmail.com', '123', 'registered', 'Sinhala', '', NULL),
 (22, 'Selvasothy', 'Thangarajah', 'Jaffna', 'Anuraj', 'selva@gmail.com', '123', 'registered', 'Tamil', 'uploads/4783_File.png', NULL);
 
@@ -526,9 +575,8 @@ CREATE TABLE `student` (
 
 INSERT INTO `student` (`student_id`, `firstname`, `lastname`, `gender`, `username`, `password`, `language`, `grade`, `status`, `image`) VALUES
 (2, 'bbb', 'ccc', 'male', 'eee@gmail.com', '123', 'sinhala', '11', 'registered', ''),
-(4, 'Anu', 'Raj', 'male', 'anurajselvasothy@gmail.com', 'anu', 'Tamil', '11', 'registered', ''),
 (7, 'abc', 'def', 'male', 'anu@gmail.com', '111', 'Tamil', '10', 'registered', ''),
-(11, 'Anuraj', 'Selvasothy', 'male', 'anuraj@gmail.com', '2601', 'Tamil', '11', 'registered', 'uploads/1999_File.jpg');
+(11, 'Anuraj', 'Selvasothy', 'male', 'anuraj@gmail.com', '111111', 'Tamil', '11', 'registered', 'uploads/1999_File.jpg');
 
 -- --------------------------------------------------------
 
@@ -640,10 +688,9 @@ CREATE TABLE `teacher` (
 
 INSERT INTO `teacher` (`teacher_id`, `firstname`, `lastname`, `username`, `password`, `subject`, `status`, `language`, `image`) VALUES
 (3, 'aaaa', 'bbb', 'aaaa@gmail.com', '123', 'Maths', 'registered', 'English', ''),
-(4, 'Anuraj', 'Selvasothy', 'anuraj@gmail.com', '2601', 'History', 'unregistered', 'Tamil', ''),
 (5, 'aaa', 'bbb', 'aaa@gmail.com', '111', 'History', 'registered', 'Tamil', 'uploads/1629_File.png'),
 (6, 'rrr', 'qqq', 'rrr@gmail.com', '000000', 'Science', 'registered', 'english', 'uploads/3443_File.png'),
-(7, 'bbb', 'ccc', 'bbb@gmail.com', '111111', 'Buddhism', 'unregistered', 'sinhala', 'uploads/1053_File.png'),
+(7, 'bbb', 'ccc', 'bbb@gmail.com', '111111', 'Buddhism', 'registered', 'sinhala', 'uploads/1053_File.png'),
 (8, 'ccc', 'ddd', 'ccc@gmail.com', '222222', 'Sinhala', 'registered', 'sinhala', 'uploads/1476_File.jpeg'),
 (9, 'ddd', 'eee', 'ddd@gmail.com', '333333', 'English', 'registered', 'english', 'uploads/6806_File.png');
 
@@ -734,15 +781,15 @@ INSERT INTO `userlist` (`firstname`, `lastname`, `role`, `status`, `userlistid`,
 ('aaa', 'bbb', 'teacher', 'registered', 2, 'aaa@gmail.com', '111', NULL),
 ('Anuraj', 'yyy', 'parent', 'registered', 3, 'anurajselvasothy@gmail.com', '234', NULL),
 ('admin', 'admin', 'admin', 'registered', 4, 'admin@gmail.com', '1111', NULL),
-('abc', 'def', 'student', 'unregistered', 8, 'anu@gmail.com', '111', NULL),
-('www', 'abc', 'teacher', 'unregistered', 9, 'www@gmail.com', '123', NULL),
+('abc', 'def', 'student', 'registered', 8, 'anu@gmail.com', '111', NULL),
+('www', 'abc', 'parent', 'registered', 9, 'www@gmail.com', '123', NULL),
 ('aaaa', 'bbb', 'teacher', 'registered', 10, 'aaaa@gmail.com', '123', NULL),
-('Anuraj', 'Selvasothy', 'teacher', 'registered', 16, 'anuraj@gmail.com', '2601', NULL),
-('Selvasothy', 'Thangarajah', 'parent', 'unregistered', 17, 'selva@gmail.com', '123', NULL),
+('Selvasothy', 'Thangarajah', 'parent', 'registered', 17, 'selva@gmail.com', '123', NULL),
 ('rrr', 'qqq', 'teacher', 'registered', 19, 'rrr@gmail.com', '000000', NULL),
-('bbb', 'ccc', 'teacher', 'unregistered', 20, 'bbb@gmail.com', '111111', NULL),
-('ccc', 'ddd', 'teacher', 'unregistered', 21, 'ccc@gmail.com', '222222', NULL),
-('ddd', 'eee', 'teacher', 'registered', 22, 'ddd@gmail.com', '333333', NULL);
+('bbb', 'ccc', 'teacher', 'registered', 20, 'bbb@gmail.com', '111111', NULL),
+('ccc', 'ddd', 'teacher', 'registered', 21, 'ccc@gmail.com', '222222', NULL),
+('ddd', 'eee', 'teacher', 'registered', 22, 'ddd@gmail.com', '333333', NULL),
+('Anuraj', 'Selvasothy', 'student', 'registered', 23, 'anuraj@gmail.com', '111111', NULL);
 
 -- --------------------------------------------------------
 
@@ -832,6 +879,19 @@ ALTER TABLE `feedback`
 --
 ALTER TABLE `files`
   ADD PRIMARY KEY (`file_id`);
+
+--
+-- Indexes for table `flashcards`
+--
+ALTER TABLE `flashcards`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `bundle_id` (`bundle_id`);
+
+--
+-- Indexes for table `flashcard_bundles`
+--
+ALTER TABLE `flashcard_bundles`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `leaverequests`
@@ -979,7 +1039,7 @@ ALTER TABLE `answer`
 -- AUTO_INCREMENT for table `average`
 --
 ALTER TABLE `average`
-  MODIFY `average_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `average_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `class_announcements`
@@ -1018,6 +1078,18 @@ ALTER TABLE `files`
   MODIFY `file_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
+-- AUTO_INCREMENT for table `flashcards`
+--
+ALTER TABLE `flashcards`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT for table `flashcard_bundles`
+--
+ALTER TABLE `flashcard_bundles`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT for table `leaverequests`
 --
 ALTER TABLE `leaverequests`
@@ -1027,7 +1099,7 @@ ALTER TABLE `leaverequests`
 -- AUTO_INCREMENT for table `marks`
 --
 ALTER TABLE `marks`
-  MODIFY `marks_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=109;
+  MODIFY `marks_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=115;
 
 --
 -- AUTO_INCREMENT for table `notification`
@@ -1135,13 +1207,29 @@ ALTER TABLE `term`
 -- AUTO_INCREMENT for table `userlist`
 --
 ALTER TABLE `userlist`
-  MODIFY `userlistid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `userlistid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
   MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `flashcards`
+--
+ALTER TABLE `flashcards`
+  ADD CONSTRAINT `flashcards_ibfk_1` FOREIGN KEY (`bundle_id`) REFERENCES `flashcard_bundles` (`id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `flashcard_bundles`
+--
+ALTER TABLE `flashcard_bundles`
+  ADD CONSTRAINT `flashcard_bundles_ibfk_1` FOREIGN KEY (`id`) REFERENCES `userlist` (`userlistid`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
