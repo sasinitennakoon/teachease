@@ -1,34 +1,6 @@
 <?php
 include '../database/db_con.php';
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Check if all fields are filled
-    if(isset($_POST['Subjects']) && isset($_POST['classRating']) && isset($_POST['teacherRating']) && isset($_POST['comment'])) {
-        // Prepare and bind the SQL statement
-        $stmt = mysqli_prepare($link, "INSERT INTO feedback (subject, class_rating, teacher_rating, comment) VALUES (?, ?, ?, ?)");
-        mysqli_stmt_bind_param($stmt, "siss", $subject, $classRating, $teacherRating, $comment);
-        
-        // Set parameters
-        $subject = $_POST['Subjects'];
-        $classRating = $_POST['classRating'];
-        $teacherRating = $_POST['teacherRating'];
-        $comment = $_POST['comment'];
-        
-        // Execute the statement
-        if (mysqli_stmt_execute($stmt)) {
-            echo "Feedback submitted successfully!";
-        } else {
-            echo "Error: " . mysqli_stmt_error($stmt);
-        }
-        
-        // Close statement and connection
-        mysqli_stmt_close($stmt);
-        mysqli_close($link);
-    } else {
-        echo "All fields are required!";
-    }
-}
-
 ?>
 
 
@@ -65,7 +37,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </style>
 </head>
 <body>
-<?php include 'dropdown2.php'; ?>
+<?php include 'dropdown2.php'; 
+if (!isset($_SESSION['id']) || ($_SESSION['id'] == '')) {
+    header("location: index.php");
+    exit();
+}
+
+$session_id=$_SESSION['id']; ?>
+
 <div class="sidebar">
     <div class="logo">
         <img src="././img/logo1.png" alt="Logo">
@@ -152,6 +131,35 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <div class="popupContent" id="popupContent"></div>
     </div>
 </div>
+
+<?php 
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Check if all fields are filled
+    if(isset($_POST['Subjects']) && isset($_POST['classRating']) && isset($_POST['teacherRating']) && isset($_POST['comment'])) {
+        // Prepare and bind the SQL statement
+        $stmt = mysqli_prepare($link, "INSERT INTO feedback (student_id, subject, class_rating, teacher_rating, comment) VALUES ('$session_id',?, ?, ?, ?)");
+        mysqli_stmt_bind_param($stmt, "siss", $subject, $classRating, $teacherRating, $comment);
+        
+        // Set parameters
+        $subject = $_POST['Subjects'];
+        $classRating = $_POST['classRating'];
+        $teacherRating = $_POST['teacherRating'];
+        $comment = $_POST['comment'];
+        
+        // Execute the statement
+        if (mysqli_stmt_execute($stmt)) {
+            echo "Feedback submitted successfully!";
+        } else {
+            echo "Error: " . mysqli_stmt_error($stmt);
+        }
+        
+        // Close statement and connection
+        mysqli_stmt_close($stmt);
+        mysqli_close($link);
+    } else {
+        echo "All fields are required!";
+    }
+}?>
 <script>
     // Add JavaScript to set hidden input values before submitting the form
     const submitBtn = document.getElementById('submitBtn');

@@ -65,7 +65,8 @@
                             <td><?php echo $row['lastname']; ?></td>
                             <td><?php echo $row['language']; ?></td>
                             <td><?php echo $row['username']; ?></td>
-                            <input type="hidden" name="username" value='<?php $row['username']; ?>'>
+                            <input type="hidden" name="username[]" value='<?php echo $row['username']; ?>'>
+
                             <td><?php echo $row['grade']; ?></td>
                             <td><?php echo $row['status']; ?>
                             <?php
@@ -104,14 +105,21 @@
     if (isset($_POST['remove'])) {
         $id = $_POST['selector'];
         $N = count($id);
-            
+        
         for($i=0; $i < $N; $i++)
         {
-            $result = mysqli_query($link,"UPDATE `userlist` SET status = 'unregistered' WHERE username ='$username'");
+            
             $result1 = mysqli_query($link,"UPDATE `student` SET status = 'unregistered' WHERE student_id = '$id[$i]' ");
+            $query1 = mysqli_query($link,"select username from student where student_id = '$id[$i]'");
+            $row = mysqli_fetch_array($query1);
+            $username = $row['username'];
+            $result = mysqli_query($link,"UPDATE `userlist` SET status = 'unregistered' WHERE username ='$username'");
+
         }
 
         ?>
+
+        
         <script>
         window.location = 'studentdashboard.php';
         </script>
@@ -121,11 +129,16 @@
     else if (isset($_POST['approve'])) {
         $id = $_POST['selector'];
         $N = count($id);
-            
+        
         for($i=0; $i < $N; $i++)
         {
-            $result = mysqli_query($link,"UPDATE `userlist` SET status = 'registered' WHERE username ='$username'");
+            
             $result1 = mysqli_query($link,"UPDATE `student` SET status = 'registered' WHERE student_id = '$id[$i]' ");
+            $query1 = mysqli_query($link,"select username from student where student_id = '$id[$i]'");
+            $row = mysqli_fetch_array($query1);
+            $username = $row['username'];
+            $result = mysqli_query($link,"UPDATE `userlist` SET status = 'registered' WHERE username ='$username'");
+
         }
     ?>
         <script>

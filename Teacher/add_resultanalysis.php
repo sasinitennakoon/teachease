@@ -164,7 +164,7 @@ if(isset($_POST['save'])) {
                                 or die(mysqli_error($link));
 
             // Redirect to a success page or perform any other actions
-            header("Location: ResultAnalysis.php?exam_id=$exam_id");
+            header("Location: add_resultanalysis.php?exam_id=$exam_id");
             exit();
         } else {
             echo "Sorry, there was an error uploading your file.";
@@ -174,58 +174,59 @@ if(isset($_POST['save'])) {
 ?>
 
 <?php
-// Include necessary files and PhpSpreadsheet
-require './vendor/autoload.php'; // Path to PhpSpreadsheet autoload file
-include '../database/db_con.php'; // Database connection file
+include '../database/db_con.php';
+include '../xslx.php'; // Include the SimpleXLSX library
 
-use PhpOffice\PhpSpreadsheet\IOFactory; // Importing PhpSpreadsheet
-
-// Verify database connection
+// Error handling for database connection
 if (!$link) {
     die("Database connection failed: " . mysqli_connect_error());
 }
 
-// Check if the form is submitted and validate the uploaded Excel file
-if (isset($_POST['upload_excel'])) {
-    if (isset($_FILES['excel_file']) && $_FILES['excel_file']['error'] == 0) {
-        $file_tmp = $_FILES['excel_file']['tmp_name'];
-
+// Check if the form is submitted and the Excel file is uploaded
+if (isset($_POST['save'])) {
+    if (isset($_FILES['uploaded_file']) && $_FILES['uploaded_file']['error'] == 0) {
+        // File upload successful, proceed with SimpleXLSX parsing
+        $file_tmp = $_FILES['uploaded_file']['tmp_name'];
+        
         try {
-            $spreadsheet = IOFactory::load($file_tmp);
+            $xlsx = SimpleXLSX::parse($file_tmp); // Parse the uploaded Excel file
         } catch (Exception $e) {
             echo "Error loading Excel file: " . $e->getMessage();
             exit();
         }
-
-        // Access the first sheet in the Excel file
-        $sheet = $spreadsheet->getSheet(0);
-        $row_count = $sheet->getHighestRow(); // Get the total number of rows
-
-        if ($row_count < 2) {
-            echo "Excel file is empty or missing expected data.";
+        
+        if ($xlsx === false) {
+            echo "Error parsing Excel file.";
             exit();
         }
 
-        // Prepare the SQL statement for insertion
+        // Assume the first sheet contains the data
+        $sheet = $xlsx->rows(0); // Get the first sheet
+        if ($sheet === false || count($sheet) < 2) {
+            echo "Excel file is empty or doesn't contain enough data.";
+            exit();
+        }
+
+        // Prepare a parameterized SQL statement for insertion
         $stmt = $link->prepare("INSERT INTO result_file_marks (student_id, teacher_class_id, marks) VALUES (?, ?, ?)");
         if (!$stmt) {
             echo "Failed to prepare SQL statement: " . $link->error;
             exit();
         }
 
-        // Loop through the rows to insert data
-        for ($row = 2; $row <= $row_count; $row++) {
-            $student_id = $sheet->getCell("A$row")->getValue(); // Student ID in column A
-            $teacher_class_id = $sheet->getCell("B$row")->getValue(); // Teacher class ID in column B
-            $marks = $sheet->getCell("C$row")->getValue(); // Marks in column C
+        // Loop through the rows, skipping the header
+        for ($row = 1; $row < count($sheet); $row++) {
+            // Assume student_id is in column A, teacher_class_id in B, and marks in C
+            $student_id = $sheet[$row][0];
+            $teacher_class_id = $sheet[$row][1];
+            $marks = $sheet[$row][2];
 
-            // Validate data types to ensure correct insertion
+            // Validate the data before inserting
             if (is_numeric($student_id) && is_numeric($teacher_class_id) && is_numeric($marks)) {
                 $stmt->bind_param("iii", $student_id, $teacher_class_id, $marks);
                 $stmt->execute();
             } else {
-                echo "Invalid data format in row $row.";
-                exit();
+                echo "Invalid data in row " . ($row + 1); // +1 for human-readable row number
             }
         }
 
@@ -241,3 +242,4 @@ if (isset($_POST['upload_excel'])) {
     echo "Form not submitted.";
 }
 ?>
+

@@ -125,7 +125,7 @@
               <input type="text" name="city" id="city" placeholder="Enter Your City">
             </div>
             <div class="input-box">
-                <span class="details">File :</span>
+                <span class="details">Image :</span>
                 <input name="uploaded_file" id="fileInput" type="file">
                 <input type="hidden" name="MAX_FILE_SIZE" value="1000000" />
                 <input type="hidden" name="id" value="<?php echo $session_id ?>"/>
