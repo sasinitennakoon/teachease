@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Student Dashboard</title>
     <link rel="stylesheet" href="././css/dashboard.css">
+    
     <script type="text/javascript" 
         src="https://unpkg.com/@cometchat/chat-sdk-javascript@latest/CometChat.js">
     </script>

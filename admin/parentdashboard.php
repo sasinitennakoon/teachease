@@ -109,9 +109,12 @@
          
         for($i=0; $i < $N; $i++)
         {
-            $username = $_POST['username'][$i];   
-            $result = mysqli_query($link,"UPDATE `userlist` SET status = 'unregistered' WHERE username ='$username'");
             $result1 = mysqli_query($link,"UPDATE `parent` SET status = 'unregistered' WHERE parent_id = '$id[$i]' ");
+            $query1 = mysqli_query($link,"select username from parent where parent_id = '$id[$i]'");
+            $row = mysqli_fetch_array($query1);
+            $username = $row['username'];
+            $result = mysqli_query($link,"UPDATE `userlist` SET status = 'unregistered' WHERE username ='$username'");
+
         }
 
         ?>
@@ -127,9 +130,13 @@
         
         for($i=0; $i < $N; $i++)
         {
-            $username = $_POST['username'][$i];
-            $result = mysqli_query($link,"UPDATE `userlist` SET status = 'registered' WHERE username ='$username'");
+           
             $result1 = mysqli_query($link,"UPDATE `parent` SET status = 'registered' WHERE parent_id = '$id[$i]' ");
+            $query1 = mysqli_query($link,"select username from parent where parent_id = '$id[$i]'");
+            $row = mysqli_fetch_array($query1);
+            $username = $row['username'];
+            $result = mysqli_query($link,"UPDATE `userlist` SET status = 'registered' WHERE username ='$username'");
+
         }
     ?>
         <script>
