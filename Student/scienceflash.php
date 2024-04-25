@@ -12,112 +12,74 @@
 <body>
 <?php include 'dropdown2.php'; ?>
     
-    <button onclick="goBack()">Go to Dashboard</button>
+<button onclick="goBack()">Go to Dashboard</button>
 
-    <div class="content">
-    <h1>Study with Flash Cards&#128516;</h1>
+<div class="content">
+<h1>Study with Flash Cards&#128516;</h1>
 
-    <br>
-    <h2>Recent Flash Cards</h2>
-    <div class="panel1">
-       
-        <div class="card1" onclick="window.location.href='scienceflash.php';">
-            <p>Science</p>
-            <p>Created by you</p>
-            <p>2024-04-01, 12.08pm</p>
-        </div>
+<br>
+<h2>Recent Flash Cards</h2>
+<div class="panel1">
+    <!-- Your recent flashcard bundles here -->
+</div> 
 
-        <div class="card2" onclick="window.location.href='mathflash.php';">
-            <p>Science</p>
-            <p>Created by you</p>
-            <p>2024-04-01, 12.08pm</p>
-        </div>
+<h2>Newly Added Flash Cards</h2>
 
-        <div class="card1" onclick="window.location.href='scienceflash.php';">
-            <p>Mathematics</p>
-            <p>Created by Edirisinghe MMH</p>
-            <p>2024-03-29, 2.08pm</p>
-        </div>
+<div class="panel1">
+    <?php
+        include '../database/db_con.php'; // Include your database connection file
 
-        <div class="card1" onclick="window.location.href='scienceflash.php';">
-            <p>Science</p>
-            <p>Created by you</p>
-            <p>2024-03-25, 08.05pm</p>
-        </div>
+        // Fetch newly added flashcard bundles from the database
+        $sql = "SELECT * FROM flashcard_bundles ORDER BY id DESC LIMIT 4"; // Assuming you want to display the latest 4 bundles
+        $result = mysqli_query($link, $sql);
 
-        <br>
+        if ($result && mysqli_num_rows($result) > 0) {
+            // Output data of each row
+            while ($row = mysqli_fetch_assoc($result)) {
+                // Assuming the 'created_date' and 'created_time' columns are in 'Y-m-d' and 'H:i:s' format respectively
+                $created_date = isset($row["created_date"]) ? date("Y-m-d", strtotime($row["created_date"])) : "Unknown";
+                $created_time = isset($row["created_time"]) ? date("H:i:s", strtotime($row["created_time"])) : "Unknown";
+                
+                echo "<div class='card1' onclick=\"redirectToFlashPage(" . $row['id'] . ")\">";
+                echo "<p>" . $row["subject"] . "</p>";
+                echo "<p>Created by you</p>"; // You can customize this based on your user data
+                echo "<p>" . $created_date . ", " . $created_time . "</p>"; // Display the formatted date and time
+                echo "</div>";
+            }
+        } else {
+            echo "<p>No newly added flashcards found.</p>";
+        }
 
-        
-        
-    </div> 
+        // Close the database connection
+        mysqli_close($link);
+    ?>
+</div>
+<br>
+<br>
 
-    <h2>Newly Added Flash Cards</h2>
-
-    <div class="panel1">
-       
-        <div class="card1" onclick="window.location.href='scienceflash.php';">
-            <p>Science</p>
-            <p>Created by you</p>
-            <p>2024-04-01, 12.08pm</p>
-        </div>
-
-        <div class="card2" onclick="window.location.href='mathflash.php';">
-            <p>Science</p>
-            <p>Created by you</p>
-            <p>2024-04-01, 12.08pm</p>
-        </div>
-
-        <div class="card1" onclick="window.location.href='scienceflash.php';">
-            <p>Mathematics</p>
-            <p>Created by Edirisinghe MMH</p>
-            <p>2024-03-29, 2.08pm</p>
-        </div>
-
-        <div class="card1" onclick="window.location.href='scienceflash.php';">
-            <p>Science</p>
-            <p>Created by you</p>
-            <p>2024-03-25, 08.05pm</p>
-        </div>
-
-        </div>
-        <br>
-        <br>
-
-        <div class="panel2">
-            <div class="card3" onclick="window.location.href='createflash.php';">
-                <img src="./img/8-HhP2gIjmnHbB4FK.png">
-                <p>Create Flash Cards</p>
-            </div>
-
-            <div class="card3" onclick="window.location.href='listflash.php';">
-                <img src="./img/8-o225juUjxVlOy4l (1).png">
-                <p>See What You Created</p>
-            </div>
-
-            
-        </div> 
-
+<div class="panel2">
+    <div class="card3" onclick="window.location.href='createflash.php';">
+        <img src="./img/8-HhP2gIjmnHbB4FK.png">
+        <p>Create Flash Cards</p>
     </div>
 
+    <div class="card3" onclick="window.location.href='listflash.php';">
+        <img src="./img/8-o225juUjxVlOy4l (1).png">
+        <p>See What You Created</p>
+    </div>
+</div> 
 
+</div>
 
+<script>
+    function goBack() {
+            window.history.back();
+        }
 
+    function redirectToFlashPage(bundleId) {
+        window.location.href = 'scienceflash.php?bundle_id=' + bundleId;
+    }
+</script>
 
-
-
-
-
-
-
-
-
-
-
-    <script>
-        function goBack() {
-                window.history.back();
-            }
-    </script>
-
-    </body>
-    </html>
+</body>
+</html>

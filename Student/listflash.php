@@ -19,22 +19,38 @@
     <table id="myTable">
         <thead>
           <tr>
-            <th>Topic</th>
-            <th>Created Date</th>
-            <th>Created Time</th>
+            <th>Bundle Name</th>
+            <th>Subject</th>
             <th>Other Actions</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>Science</td>
-            <td>2024-01-02</td>
-            <td>12:08 PM</td>
-            <td>
-              <button onclick="shareAgain()">Share Again</button>
-              <button onclick="deleteEntry()">Delete</button>
-            </td>
-          </tr>
+          <?php
+            include '../database/db_con.php'; // Include your database connection file
+
+            // Fetch flashcard details from the database
+            $sql = "SELECT * FROM flashcard_bundles";
+            $result = mysqli_query($link, $sql);
+
+            if ($result && mysqli_num_rows($result) > 0) {
+                // Output data of each row
+                while ($row = mysqli_fetch_assoc($result)) {
+                    echo "<tr>";
+                    echo "<td>" . $row["bundle_name"] . "</td>";
+                    echo "<td>" . $row["subject"] . "</td>";
+                    echo "<td>
+                            <button onclick='shareAgain()'>Share Again</button>
+                            <button onclick='deleteEntry()'>Delete</button>
+                          </td>";
+                    echo "</tr>";
+                }
+            } else {
+                echo "<tr><td colspan='3'>No flashcards found.</td></tr>";
+            }
+
+            // Close the database connection
+            mysqli_close($link);
+          ?>
         </tbody>
       </table>
 
