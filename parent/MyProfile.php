@@ -23,8 +23,7 @@
         $language = $_POST['language'];
         $role = "parent";
         
-        $result = mysqli_query($link,$sql) or die(mysqli_error($link));
-        $count = mysqli_num_rows($result);
+        
 
           if (isset($_FILES['uploaded_file']) && $_FILES['uploaded_file']['error'] == 0) {
             // File upload was successful, proceed with validation
@@ -93,7 +92,7 @@
     <div class="forms">
       <div class="form-content">
         
-        <form id="studentForm" method="post" enctype="multipart/form-data" onsubmit="return validateForm()">
+        <form method="post">
           <div class="title"> My Profile</div>
   <script>
     function previewImage(event) {
@@ -110,7 +109,7 @@
       <!-- Profile Image -->
       <div class="profile-image">
       <?php echo "<img id='preview-image' src='../signup/" . $row['image'] . "' alt='profile-image'>"; ?>
-        <input type="file" name="uploaded_file" id="image-input" accept="image/*" onchange="previewImage(event)">
+        <input type="file" name="uploaded_file" id="image-input" onchange="previewImage(event)">
         <label for="image-input"><i class="fas fa-edit"></i></label>
       </div>
       <!-- Profile Information -->
@@ -128,7 +127,7 @@
             </div>
             <div class="input-box">
                   <span class="details">Children Name</span>
-                  <input type="text" id='childrenname' name="childrenname" placeholder="Enter Children Name">
+                  <input type="text" id='childrenname' name="childrenname" placeholder="Enter Children Name" value="<?php echo $row['childrenname'];?>">
             </div>
             
             <div class="input-box">
@@ -142,7 +141,7 @@
               <input type="password" name="password" id="password" placeholder="Enter Password" value="<?php echo $row['password']; ?>">
             </div>
             
-            <div>
+            <div class="input-box">
                 <label for="language" class="text1">Language:</label>
                 <select id="language" name="language" class="select" value="<?php echo $row['language']; ?>">
                     <option value="english">English</option>
@@ -154,7 +153,7 @@
            
           </div>
           <div class="button">
-            <input type="submit" name="Update" value="update" class="btn">
+            <input type="submit" name="update" value="update" class="btn">
           </div>
         </form>
       </div>

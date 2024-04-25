@@ -13,6 +13,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard</title>
     <link rel="stylesheet" href="././css/FirstPage.css">
+    <link rel="stylesheet" href="././css/term.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <!-- Latest FullCalendar CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.2/main.css" integrity="sha384-LiWsxj4vMfsO8uyNnTVqSfeLqqkKD2pwWqFnSa6UqVqwKn9FlnNy5wKb3bYxs84p" crossorigin="anonymous">
@@ -30,45 +31,39 @@
                 <li><a href="dashboard.php"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
                 <li><a href="Announcements.php"><i class="fas fa-bullhorn"></i> Announcements</a></li>
                 <li><a href="PaymentDetails.php"><i class="fas fa-dollar-sign"></i> Payment Details</a></li>
-                <li><a href="Users.php" class="active"><i class="fas fa-users"></i> Users</a></li>
+                <li><a href="Users.php"><i class="fas fa-users"></i> Users</a></li>
                 <li><a href="Subjects.php"><i class="fas fa-flask"></i> Subjects</a></li>
                 <li><a href="Classes.php"><i class="fas fa-chalkboard"></i> Classes</a></li>
                 
-                <li><a href="RankingSystem.php"><i class="fas fa-trophy"></i> Ranking System</a></li>
+                <li><a href="RankingSystem.php" class="active"><i class="fas fa-trophy"></i> Ranking System</a></li>
                 <li><a href="Feedback.php"><i class="fas fa-comment"></i> Feedback Collection</a></li>
 
             </ul>
         </nav>
     </div>
     <div class="content">
+        
         <!-- Your page content goes here -->
-        <h1>Users</h1>
+        <h1>Term1</h1>
 
-        <div class="panels">
-            <div class="panel">
-                <div class="but">
-                    <a href="Userlist.php"><button class="button"><b>Go to<br>Users List</b></button></a>
-                </div>
+        <div class="panels2">
+            <div class="panel_1" onclick="window.location.href='term1.php';">
+                <h3>Students Marks</h3>
+                
+            </div>
+
+            <div class="panel_3" onclick="window.location.href='term1rank.php';">
+               <h3>Students Rank</h3>
+               
             </div>
         </div>
         
-        
-        
-    </div>
-    
 
-    <script>
-        function openAddDetailsForm() {
-            var addDetailsForm = document.getElementById('addDetailsForm');
-            addDetailsForm.style.display = 'block';
-        }
-    
-        // Optional: Close the form when the page is loaded
-        document.addEventListener('DOMContentLoaded', function () {
-            var addDetailsForm = document.getElementById('addDetailsForm');
-            addDetailsForm.style.display = 'none';
-        });
-    </script>
+        <a href="RankingSystem.php"><button class="button"><b>Back</b></button</a>
+    </div>
+   
+
+   
     
 </body>
 </html>

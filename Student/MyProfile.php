@@ -139,7 +139,7 @@
               <input type="password" name="password" id="password" placeholder="Enter Password" value="<?php echo $row['password']; ?>">
             </div>
             
-            <div>
+            <div class="input-box">
                 <label for="language" class="text1">Language:</label>
                 <select id="language" name="language" class="select" value="<?php echo $row['language']; ?>">
                     <option value="english">English</option>
@@ -147,7 +147,7 @@
                     <option value="Tamil">Tamil</option>
                 </select>
             </div>
-            <div>
+            <div class='input-box'>
                 <label for="grade" class="text1">Grade:</label>
                 <select id="grade" name="grade" class="select" value="<?php echo $row['grade']; ?>">
                     <option value="10">Grade 10</option>

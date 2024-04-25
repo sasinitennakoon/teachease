@@ -14,6 +14,7 @@
         $city = $_POST['city'];
         $language = $_POST['language'];
         $childrenname = $_POST['childrenname'];
+        $role = 'parent';
 
         $sql = "select * from parent where username = '$username'";
 
@@ -154,10 +155,10 @@
       var fileInput = document.getElementById('fileInput').value.trim();
       var language = document.getElementById('language').value.trim();
       var childrenname = document.getElementById('childrenname').value.trim();
-      var gender = document.querySelector('input[name="gender"]:checked');
+      
 
       // Check if any field is empty
-      if (firstname === '' || lastname === '' || city === '' || username === '' || password === '' || fileInput === '' || language === '' || childrenname === '' || gender === null) {
+      if (firstname === '' || lastname === '' || city === '' || username === '' || password === '' || fileInput === '' || language === '' || childrenname === '') {
         alert('Please fill in all fields');
         return false;
       }
