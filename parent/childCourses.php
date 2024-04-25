@@ -26,7 +26,7 @@
                 <li><a href="childCourses.php"  class="active"><i class="fas fa-book-open"></i> My Child Courses</a></li>
                 <li><a href="childProgress.php"><i class="fas fa-chart-line"></i> My Child Progress</a></li>
                 <li><a href="Inbox.php"><i class="fas fa-inbox"></i> My Inbox</a></li>
-                <li><a href="meet.php"><i class="fas fa-calendar-check"></i>Meeting </a></li>
+                
                 <li><a href="pay.php"><i class="fas fa-money-bill"></i> Payements</a></li>
                 <li><a href="announce.php"><i class="fas fa-bullhorn"></i> Announcements</a></li>
 

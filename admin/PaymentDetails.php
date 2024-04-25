@@ -52,15 +52,17 @@
 
         <div class="panels1">
             <div class="panel10">
-            <form>
+            
         <table>
             <thead>
                 <tr>
+                <th>Payment ID</th>
                     <th>Amount</th>
-                    <th>Status</th>
-                    <th>Payment ID</th>
+                   
+                    
                     <th>Customer Email</th>
                     <th>Date</th>
+                    <th>Status</th>
                     <th></th>
                 </tr>
             </thead>
@@ -99,7 +101,16 @@
                     $date = date("F j, Y, g:i a", $timestamp);
                     ?>
                  <tr>   
+                 <td><?php echo  $payment->id ; ?></td>
                   <td><?php echo  $payment->amount . " " . strtoupper($payment->currency) ;?></td>
+                  
+
+                  
+                 
+                  <td><?php echo  $customer_email ;?></td>
+                  
+                  <td><?php echo  $date ;?></td>
+
                   <td><?php 
                    if($payment->status == 'succeeded')
                    {
@@ -111,13 +122,7 @@
                    }
                    ?></td>
 
-                  <td><?php echo  $payment->id ; ?></td>
-                 
-                  <td><?php echo  $customer_email ;?></td>
-                  
-                  <td><?php echo  $date ;?></td>
-
-                  <td><a href=""><button>More Details</button></a></td>
+                  <td><a href="https://dashboard.stripe.com/test/payments/<?php echo $payment->id; ?>"><button>More Details</button></a></td>
                 </tr>
                 <?php
                 }
@@ -128,7 +133,7 @@
            
         </table>
 
-        </form>   
+       
                 
             </div>
         </div>
