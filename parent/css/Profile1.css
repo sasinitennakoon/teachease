@@ -7,42 +7,62 @@
     height: 100vh;
   }
   
-  .profile-section {
+  @mixin object-center {
     display: flex;
+    justify-content: center;
     align-items: center;
   }
+
   
-  .profile-image {
+  .profile-pic {
+    color: transparent;
+    transition: all 0.3s ease;
+    @include object-center;
     position: relative;
-    width: 100px;
-    height: 100px;
-    overflow: hidden;
-    border-radius: 50%;
+    transition: all 0.3s ease;
+  
+    
+  
+    img {
+      position: relative;
+      object-fit: scale-down;
+      width: 165px;
+      height: 165px;
+      box-shadow: 0 0 10px 0 rgba(255, 255, 255, 0.35);
+      border-radius: 100px;
+      z-index: 0;
+      margin-right: 500px;
+    }
+  
+    .-label {
+      cursor: pointer;
+      height: 165px;
+      width: 165px;
+      color: black;
+    }
+  
+    &:hover {
+      .-label {
+        @include object-center;
+        background-color: rgba(0, 0, 0, 0.8);
+        z-index: 10000;
+        color: rgb(250, 250, 250);
+        transition: background-color 0.2s ease-in-out;
+        border-radius: 100px;
+        margin-bottom: 0;
+      }
+    }
+  
+    span.span1 {
+      display: inline-flex;
+      padding: 0.2em;
+      height: 2em;
+    }
   }
   
-  .profile-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
   
-  .profile-image input[type="file"] {
-    position: absolute;
-    opacity: 0;
-    width: 100%;
-    height: 100%;
-    cursor: pointer;
-  }
+ 
   
-  .profile-image label {
-    position: absolute;
-    bottom: 5px;
-    right: 5px;
-    background-color: #fff;
-    padding: 5px;
-    border-radius: 50%;
-    cursor: pointer;
-  }
   
   .profile-info {
     margin-left: 20px;

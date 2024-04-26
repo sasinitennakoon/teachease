@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 25, 2024 at 03:38 PM
+-- Generation Time: Apr 26, 2024 at 06:52 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -256,7 +256,8 @@ INSERT INTO `flashcards` (`id`, `bundle_id`, `question`, `answer`, `created_at`)
 (2, 2, '10+5', '15', '2024-04-24 17:52:21'),
 (3, 2, '2+2', '4', '2024-04-24 17:52:21'),
 (4, 2, '5+8', '13', '2024-04-24 17:52:21'),
-(5, 2, '13+8', '21', '2024-04-24 17:52:21');
+(5, 2, '13+8', '21', '2024-04-24 17:52:21'),
+(9, 4, 'edm2ji', 'di2jid', '2024-04-26 04:49:35');
 
 -- --------------------------------------------------------
 
@@ -278,7 +279,8 @@ CREATE TABLE `flashcard_bundles` (
 
 INSERT INTO `flashcard_bundles` (`id`, `user_id`, `subject`, `bundle_name`, `created_at`) VALUES
 (1, 1, 'Shared Flashcards', 'gggg', '2024-04-24 17:50:18'),
-(2, 1, 'Shared Flashcards', 'Logarithms', '2024-04-24 17:52:21');
+(2, 1, 'Shared Flashcards', 'Logarithms', '2024-04-24 17:52:21'),
+(4, 1, 'Shared Flashcards', 'vjivvij', '2024-04-26 04:49:35');
 
 -- --------------------------------------------------------
 
@@ -405,8 +407,8 @@ CREATE TABLE `parent` (
 --
 
 INSERT INTO `parent` (`parent_id`, `firstname`, `lastname`, `city`, `childrenname`, `username`, `password`, `status`, `language`, `image`) VALUES
-(22, 'Selvasothy', 'Thangarajah', 'Jaffna', 'Anuraj', 'selva@gmail.com', '123', 'registered', 'Tamil', 'uploads/4783_File.png'),
-(23, 'www', 'vvv', 'Colombo', 'bbb', 'anurajselvasothy@gmail.com', '123456', 'registered', 'english', 'uploads/3761_File.gif');
+(22, 'Selvasothy', 'Thangarajah', 'Jaffna', 'Anuraj', 'selva@gmail.com', '123', 'registered', 'Tamil', '../uploads/4783_File.png'),
+(23, 'www', 'vvv', 'Colombo', 'bbb', 'anurajselvasothy@gmail.com', '123456', 'registered', 'english', '../uploads/2502_File.gif');
 
 -- --------------------------------------------------------
 
@@ -592,9 +594,9 @@ CREATE TABLE `student` (
 --
 
 INSERT INTO `student` (`student_id`, `firstname`, `lastname`, `gender`, `username`, `password`, `language`, `grade`, `status`, `image`) VALUES
-(2, 'bbb', 'ccc', 'male', 'eee@gmail.com', '123', 'sinhala', '11', 'registered', 'uploads/5555_File.jpg'),
-(7, 'abc', 'def', 'male', 'anu@gmail.com', '111', 'Tamil', '10', 'registered', 'uploads/4444_File.jpg'),
-(11, 'Anuraj', 'Selvasothy', 'male', 'anuraj@gmail.com', '111111', 'Tamil', '11', 'registered', 'uploads/1999_File.jpg');
+(2, 'bbb', 'ccc', 'male', 'eee@gmail.com', '123', 'sinhala', '11', 'registered', '../uploads/5555_File.jpg'),
+(7, 'abc', 'def', 'male', 'anu@gmail.com', '111', 'Tamil', '10', 'registered', '../uploads/4444_File.jpg'),
+(11, 'Anuraj', 'Selvasothy', 'male', 'anuraj@gmail.com', '111111', 'Tamil', '11', 'registered', '../uploads/1999_File.jpg');
 
 -- --------------------------------------------------------
 
@@ -639,10 +641,11 @@ CREATE TABLE `student_class` (
 
 INSERT INTO `student_class` (`student_schedule_id`, `student_id`, `schedule_id`, `class_id`, `status`) VALUES
 (46, 2, 7, 8, 'joined'),
-(48, 2, 10, 12, 'joined'),
+(48, 2, 10, 12, 'leave'),
 (49, 2, 12, 13, 'joined'),
 (50, 2, 12, 13, 'joined'),
-(51, 2, 10, 12, 'joined');
+(51, 2, 10, 12, 'leave'),
+(52, 2, 10, 12, 'joined');
 
 -- --------------------------------------------------------
 
@@ -706,12 +709,12 @@ CREATE TABLE `teacher` (
 --
 
 INSERT INTO `teacher` (`teacher_id`, `firstname`, `lastname`, `username`, `password`, `subject`, `status`, `language`, `image`) VALUES
-(3, 'aaaa', 'bbb', 'aaaa@gmail.com', '123', 'Maths', 'registered', 'English', 'uploads/2222_File.jpeg'),
-(5, 'aaa', 'bbb', 'aaa@gmail.com', '111', 'History', 'registered', 'Tamil', 'uploads/1629_File.png'),
-(6, 'rrr', 'qqq', 'rrr@gmail.com', '000000', 'Science', 'registered', 'english', 'uploads/3443_File.png'),
-(7, 'bbb', 'ccc', 'bbb@gmail.com', '111111', 'Buddhism', 'registered', 'sinhala', 'uploads/1053_File.png'),
-(8, 'ccc', 'ddd', 'ccc@gmail.com', '222222', 'Sinhala', 'registered', 'sinhala', 'uploads/1476_File.jpeg'),
-(9, 'ddd', 'eee', 'ddd@gmail.com', '333333', 'English', 'registered', 'english', 'uploads/6806_File.png');
+(3, 'aaaa', 'bbb', 'aaaa@gmail.com', '123', 'Maths', 'registered', 'English', '../uploads/2222_File.jpeg'),
+(5, 'aaa', 'bbb', 'aaa@gmail.com', '111', 'History', 'registered', 'english', '../uploads/3528_File.png'),
+(6, 'rrr', 'qqq', 'rrr@gmail.com', '000000', 'Science', 'registered', 'english', '../uploads/3443_File.png'),
+(7, 'bbb', 'ccc', 'bbb@gmail.com', '111111', 'Buddhism', 'registered', 'sinhala', '../uploads/1053_File.png'),
+(8, 'ccc', 'ddd', 'ccc@gmail.com', '222222', 'Sinhala', 'registered', 'sinhala', '../uploads/1476_File.jpeg'),
+(9, 'ddd', 'eee', 'ddd@gmail.com', '333333', 'English', 'registered', 'english', '../uploads/6806_File.png');
 
 -- --------------------------------------------------------
 
@@ -1100,13 +1103,13 @@ ALTER TABLE `files`
 -- AUTO_INCREMENT for table `flashcards`
 --
 ALTER TABLE `flashcards`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `flashcard_bundles`
 --
 ALTER TABLE `flashcard_bundles`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `leaverequests`
@@ -1184,7 +1187,7 @@ ALTER TABLE `student_attendance`
 -- AUTO_INCREMENT for table `student_class`
 --
 ALTER TABLE `student_class`
-  MODIFY `student_schedule_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
+  MODIFY `student_schedule_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
 
 --
 -- AUTO_INCREMENT for table `student_class_quiz`
