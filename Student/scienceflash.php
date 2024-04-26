@@ -18,7 +18,7 @@
 <h1>Study with Flash Cards&#128516;</h1>
 
 <br>
-<h2>Recent Flash Cards</h2>
+
 <div class="panel1">
     <!-- Your recent flashcard bundles here -->
 </div> 

@@ -39,8 +39,7 @@
                     echo "<td>" . $row["bundle_name"] . "</td>";
                     echo "<td>" . $row["subject"] . "</td>";
                     echo "<td>
-                            <button onclick='shareAgain()'>Share Again</button>
-                            <button onclick='deleteEntry()'>Delete</button>
+                            <button onclick='deleteEntry(\"{$row["id"]}\")'>Delete</button>
                           </td>";
                     echo "</tr>";
                 }
@@ -62,17 +61,24 @@
             }
     
         
-                    function shareAgain() {
-        alert("Share action triggered!");
-        // Add your code for share action here
+        
+        function deleteEntry(bundleId) {
+            if (confirm("Are you sure you want to delete this entry?")) {
+                const xhr = new XMLHttpRequest();
+                xhr.open("POST", "delete_entry.php", true);
+                xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState === 4 && xhr.status === 200) {
+                        alert(xhr.responseText);
+                        // Reload the page to reflect the changes after deletion   
+                        location.reload();
+                    }
+                };
+                const params = "bundle_id=" + encodeURIComponent(bundleId);
+                xhr.send(params);
+            }
         }
-
-        function deleteEntry() {
-        alert("Delete action triggered!");
-        // Add your code for delete action here
-        }
-
     </script>
 
-    </body>
+</body>
 </html>
