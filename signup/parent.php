@@ -53,7 +53,7 @@
               $filename = basename($uploaded_file['name']);
               $ext = pathinfo($filename, PATHINFO_EXTENSION);
               $new_filename = mt_rand(1000, 9999) . "_File." . $ext;
-              $target_dir = "uploads/";
+              $target_dir = "../uploads/";
               $target_file = $target_dir . $new_filename;
       
               if (move_uploaded_file($uploaded_file['tmp_name'], $target_file)) {

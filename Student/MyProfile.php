@@ -23,8 +23,7 @@
         $language = $_POST['language'];
         $role = "student";
         
-        $result = mysqli_query($link,$sql) or die(mysqli_error($link));
-        $count = mysqli_num_rows($result);
+       
 
           if (isset($_FILES['uploaded_file']) && $_FILES['uploaded_file']['error'] == 0) {
             // File upload was successful, proceed with validation
@@ -32,11 +31,10 @@
                 $errmsg_arr[] = 'File selected exceeds 5MB size limit';
                 $errflag = true;
             }
-        } else {
-            // File upload failed or no file was selected
-            $errmsg_arr[] = 'File upload failed or no file selected';
-            $errflag = true;
-        }
+        } if ($_FILES['uploaded_file']['error'] !== UPLOAD_ERR_OK) {
+          $errmsg_arr[] = 'File upload failed: ' . $_FILES['uploaded_file']['error'];
+          $errflag = true;
+      }
     
         // Check for any validation errors before proceeding
         if ($errflag) {
@@ -50,7 +48,7 @@
             $filename = basename($uploaded_file['name']);
             $ext = pathinfo($filename, PATHINFO_EXTENSION);
             $new_filename = mt_rand(1000, 9999) . "_File." . $ext;
-            $target_dir = "uploads/";
+            $target_dir = "../uploads/";
             $target_file = $target_dir . $new_filename;
     
             if (move_uploaded_file($uploaded_file['tmp_name'], $target_file)) {
@@ -93,29 +91,23 @@
     <div class="forms">
       <div class="form-content">
         
-        <form id="studentForm" method="post" enctype="multipart/form-data" onsubmit="return validateForm()">
+        <form id="studentForm" method="post" enctype="multipart/form-data">
           <div class="title"> My Profile</div>
-  <script>
-    function previewImage(event) {
-      var reader = new FileReader();
-      reader.onload = function() {
-        var output = document.getElementById('preview-image');
-        output.src = reader.result;
-      }
-      reader.readAsDataURL(event.target.files[0]);
-    }
-  </script>
+          <script>
+         var loadFile = function (event) {
+  var image = document.getElementById("output");
+  image.src = URL.createObjectURL(event.target.files[0]);
+};
 
-    <div class="profile-section">
-      <!-- Profile Image -->
-      <div class="profile-image">
-      <?php echo "<img id='preview-image' src='../signup/" . $row['image'] . "' alt='profile-image'>"; ?>
-        <input type="file" name="uploaded_file" id="image-input" accept="image/*" onchange="previewImage(event)">
-        <label for="image-input"><i class="fas fa-edit"></i></label>
-      </div>
-      <!-- Profile Information -->
-      
-    </div>
+</script>
+
+<div class="profile-pic">
+  <label class="-label" for="file">
+    <span class='span1'>Change Image</span>
+  </label>
+  <input id="file" type="file" name="uploaded_file" onchange="loadFile(event)"/>
+  <?php echo "<img src='" . $row['image'] . "' id='output' width='200' />"; ?>
+</div>
 
           <div class="user-details">
             <div class="input-box">
@@ -157,7 +149,7 @@
            
           </div>
           <div class="button">
-            <input type="submit" name="Update" value="update" class="btn">
+            <input type="submit" name="update" value="update" class="btn">
           </div>
         </form>
       </div>
