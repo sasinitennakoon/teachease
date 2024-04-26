@@ -39,8 +39,9 @@
                     echo "<td>" . $row["bundle_name"] . "</td>";
                     echo "<td>" . $row["subject"] . "</td>";
                     echo "<td>
+
                             <button onclick='deleteEntry(\"{$row["id"]}\")'>Delete</button>
-                          </td>";
+             </td>";
                     echo "</tr>";
                 }
             } else {
@@ -80,5 +81,7 @@
         }
     </script>
 
+
 </body>
+
 </html>

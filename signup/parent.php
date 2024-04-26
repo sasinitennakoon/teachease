@@ -14,6 +14,7 @@
         $city = $_POST['city'];
         $language = $_POST['language'];
         $childrenname = $_POST['childrenname'];
+        $role = 'parent';
 
         $sql = "select * from parent where username = '$username'";
 
@@ -52,7 +53,7 @@
               $filename = basename($uploaded_file['name']);
               $ext = pathinfo($filename, PATHINFO_EXTENSION);
               $new_filename = mt_rand(1000, 9999) . "_File." . $ext;
-              $target_dir = "uploads/";
+              $target_dir = "../uploads/";
               $target_file = $target_dir . $new_filename;
       
               if (move_uploaded_file($uploaded_file['tmp_name'], $target_file)) {
@@ -154,10 +155,10 @@
       var fileInput = document.getElementById('fileInput').value.trim();
       var language = document.getElementById('language').value.trim();
       var childrenname = document.getElementById('childrenname').value.trim();
-      var gender = document.querySelector('input[name="gender"]:checked');
+      
 
       // Check if any field is empty
-      if (firstname === '' || lastname === '' || city === '' || username === '' || password === '' || fileInput === '' || language === '' || childrenname === '' || gender === null) {
+      if (firstname === '' || lastname === '' || city === '' || username === '' || password === '' || fileInput === '' || language === '' || childrenname === '') {
         alert('Please fill in all fields');
         return false;
       }

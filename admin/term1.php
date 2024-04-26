@@ -20,7 +20,7 @@
 <body>
 		<?php include 'dropdown1.php'; ?>
 		
-	<button><a href="RankingSystem.php"><i class='fa fa-fw fa arrow-left'></i>Go to Dashboard</a></button>
+	<button><a href="term1_page.php"><i class='fa fa-fw fa arrow-left'></i>Go to Dashboard</a></button>
 	<div class="content">
 		<h1>Student Marks For Term 1</h1>
 
@@ -47,7 +47,7 @@
                         <table border="0">
                             <thead>
                                 <tr>
-                                    <th>Check All <input type="checkbox"  name="selectAll" id="checkAll" /></th>
+                                    <th class="check">Check All <input type="checkbox"  name="selectAll" id="checkAll" /></th>
                                     <th>Student</th>
                                     <th>Subject</th>
                                     <th>Marks</th>
@@ -114,6 +114,7 @@ if (isset($_POST['delete'])){
     {
         $result = mysqli_query($link,"DELETE from marks
         where marks_id='$id[$i]'");
+       
     }
 ?>
 <script>

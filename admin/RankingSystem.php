@@ -46,7 +46,7 @@
 
         <div class="panelsD">
         
-            <div class="panel20" onclick="window.location.href='term1.php';">
+            <div class="panel20" onclick="window.location.href='term1_page.php';">
             
                 <h2>Term 1</h2>
               
@@ -55,14 +55,14 @@
              
                
            
-            <div class="panel23" onclick="window.location.href='term2.php';">
+            <div class="panel23" onclick="window.location.href='term2_page.php';">
             
                 <h2>Term 2</h2>
                
             </div>
             
             
-            <div class="panel22" onclick="window.location.href='term3.php';">
+            <div class="panel22" onclick="window.location.href='term3_page.php';">
             
                 <h2>Term 3</h2>
               
@@ -70,6 +70,8 @@
             </div>
             
         </div>
+
+        <!--
         <div class="panelsD2">
             <div class="panel30" onclick="window.location.href='term1rank.php';">
             <h2>Term 1 - Rank</h2>
@@ -83,6 +85,7 @@
             <h2>Term 3 - Rank</h2>
             </div>
         </div>
+-->
     </div>
 
    

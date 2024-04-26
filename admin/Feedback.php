@@ -48,35 +48,67 @@
         <!-- Your page content goes here -->
         <h1>Feedback Collection</h1>
         <?php
-            $query = mysqli_query($link,"SELECT * FROM feedback") or die(mysqli_error($link));
-            $count = mysqli_num_rows($query) or die(mysqli_error($query));
+            $sql = mysqli_query($link,"SELECT feedback.*,  
+                                        MAX(student.firstname) AS student_name
+                                        
+                                        FROM feedback 
+                                        INNER JOIN student ON student.student_id = feedback.student_id
+                                        GROUP BY feedback.id")
+                                        or die(mysqli_error($link));
+
+          
+                if(mysqli_num_rows($sql) == 0)
+                {
+                    echo "<b>There is No Classes available.</b>";
+                }
+                else
+                {
+                   
+                    ?>
+                
+
+        <div class="panels1">
+            <div class="panel10">
+                <table border="0">
+                    <thead>
+                        <tr>
+                            <th>Student Name</th>
+                            <th>Subject</th>
+                            <th>Class Rating</th>
+                            <th>Teacher Rating</th>
+                            <th>Comment</th>
+                            <th>Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                    while($row = mysqli_fetch_array($sql))
+                    {
+                        $id = $row['id'];
         ?>
-        <!-- Inserting small panels -->
-        <div class="panels">
-            <div class="panel">
-                <h2>No Of Feedback Forms</h2>
-                <p><count><?php echo $count; ?></count></p>
-                <div class="but">
-                    <a href="viewfeedback.php"><button class="button"><b>View</b></button></a>
-                </div>
-            </div>
-
-            <div class="panel">
-                <h2>No. Subjects Feedback Added</h2>
-                <p><count>0</count></p>
-                <div class="but">
-                    <button class="button"><b>View</b></button>
-                </div>
-            </div>
-
-            <div class="panel">
-                <h2>Total No. Of Feedbacks</h2>
-                <p><count>0</count></p>
-                <div class="but">
-                    <button class="button"><b>View</b></button>
-                </div>
+                        <tr>
+                        <td><?php echo $row['student_name']; ?></td>
+                        <td><?php echo $row['subject']; ?></td>
+                        <td><?php echo $row['class_rating']; ?></td>
+                        <td><?php echo $row['teacher_rating']; ?></td>
+                        <td><?php echo $row['comment']?></td>
+                        <td><?php echo $row['created_at']; ?></td>
+                        </tr>  
+                    </tbody>
+                    <?php
+    }
+            }
+        ?>
+                </table>
+                
             </div>
         </div>
+
+        
+      
+            
+        
+
     </div>
 
     

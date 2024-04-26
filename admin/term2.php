@@ -26,7 +26,7 @@
 <body>
 		<?php include 'dropdown1.php'; ?>
 		
-	<button><a href="RankingSystem.php"><i class='fa fa-fw fa arrow-left'></i>Go to Dashboard</a></button>
+	<button><a href="term2_page.php"><i class='fa fa-fw fa arrow-left'></i>Go to Dashboard</a></button>
 	<div class="content">
 		<h1>Student Marks For Term 2</h1>
 
@@ -53,7 +53,7 @@
                         <table border="0">
                             <thead>
                                 <tr>
-                                    <th><th>Check All <input type="checkbox"  name="selectAll" id="checkAll" /></th></th>
+                                    <th>Check All <input type="checkbox"  name="selectAll" id="checkAll" /></th>
                                     <th>Student</th>
                                     <th>Subject</th>
                                     <th>Marks</th>

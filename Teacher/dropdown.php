@@ -3,7 +3,7 @@
 
 <div class="dropdown" style="float:right;">
 			  <div class="dropbtn">
-              <?php echo "<img src='../signup/" . $row['image'] . "' alt='User Icon'>"; ?>
+              <?php echo "<img src='" . $row['image'] . "' alt='User Icon'>"; ?>
               <?php echo $row['firstname']; ?>
 			  <i class="fa fa-caret-down"></i>
               </div>

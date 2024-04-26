@@ -26,7 +26,7 @@
 <body>
 		<?php include 'dropdown1.php'; ?>
 		
-	<button><a href="RankingSystem.php"><i class='fa fa-fw fa arrow-left'></i>Go to Dashboard</a></button>
+	<button><a href="term2_page.php"><i class='fa fa-fw fa arrow-left'></i>Go to Dashboard</a></button>
 	<div class="content">
 		<h1>Student Rank For Term 2</h1>
 
@@ -56,7 +56,7 @@
                                     <th>Student</th>
                                     
                                     <th>Average Marks</th>
-                                    
+                                    <th>Rank</th>
                                     <!--<th></th> -->
                                 </tr>
                             </thead>
@@ -72,6 +72,7 @@
                                 <td><?php echo $row['firstname']; ?></td>
                                 
                                 <td><?php echo $row['average_marks']; ?></td>
+                                <td><?php echo $row['rank']; ?></td>
                                 <!--<td><a href="marksedit1.php?id=<?php //echo $id; ?>" class="button" style="color:black;"><i class="fa fa-fw fa-pencil">Edit</i></a></td> -->
                                 
                             </tr>
