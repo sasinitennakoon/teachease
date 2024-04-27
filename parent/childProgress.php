@@ -61,6 +61,7 @@
     <div class="panelsD">
         <h2>Overall Progress</h2>
 
+        
     <div class="chart-container">
         <canvas id="progress-chart"></canvas>
      </div>
@@ -77,7 +78,7 @@
 
 <?php 
     $query = mysqli_query($link,"select * from marks where student_id = '$student_id' AND term_id='1'");
-    $row = mysqli_fetch_array($query) or die($mysqli_error($query));
+    $row = mysqli_fetch_array($query) or die(mysqli_error($link));
  
         $sql = mysqli_query($link,"select * from marks where student_id='$student_id' AND subject_id = '14' AND term_id = '1'");
         $row = mysqli_fetch_array($sql);

@@ -38,7 +38,7 @@
                                              WHERE term_id = '1'
                                              GROUP BY marks.marks_id; ") or die(mysqli_error());
                 $count  = mysqli_num_rows($query);
-    
+                $total = 0;
                 if($count > 0)
                 {?>
     
@@ -63,15 +63,44 @@
                         
                         <tr>
                                 <td><input type="checkbox" name="selector[]" value="<?php echo $id; ?>"></td>
-                                <td><?php echo $row['firstname']; ?></td>
+                                <td><?php echo $row['firstname'];
+                                $name = $row['firstname']; ?></td>
                                 <td><?php echo $row['subject']; ?></td>
-                                <td><?php echo $row['marks']; ?></td>
+                                <td><?php echo $row['marks'];
+                                $marks = $row['marks']; ?></td>
+                               
                                 <!--<td><a href="marksedit1.php?id=<?php //echo $id; ?>" class="button" style="color:black;"><i class="fa fa-fw fa-pencil">Edit</i></a></td> -->
                                 
                             </tr>
                         </tbody>
     
-                       
+                        <?php
+                        /*$newname = $row['firstname'];
+                                if($name ==  $newname)
+                                {
+                                    $total += $marks;
+                                    $query = mysqli_query($link,"select * from student where firstname  = '$name'");
+                                }
+                                else
+                                {
+                                    $average = $total / 6;
+                                    $query1 = mysqli_query($link, "SELECT * FROM average WHERE term_id = '1' ORDER BY average_marks DESC") or die(mysqli_error($link));
+                                    $rank = 1;
+                                    while ($row = mysqli_fetch_array($query1)) {
+                                        $student_avg = $row['average_marks'];
+                                        $prev_student_id = $row['student_id'];
+                                        if ($average > $student_avg) {
+                                            mysqli_query($link, "UPDATE average SET rank = rank + 1 WHERE term_id = '1' AND rank >= '$rank'") or die(mysqli_error($link));
+                                            mysqli_query($link, "INSERT INTO average (student_id, average_marks, term_id, rank) VALUES ('$student_id', '$average', '1', '$rank')") or die(mysqli_error($link));
+                                            break;
+                                        }
+                                        $rank++;
+                                    }
+                                    if ($rank > mysqli_num_rows($query1)) {
+                                        mysqli_query($link, "INSERT INTO average (student_id, average_marks, term_id, rank) VALUES ('$student_id', '$average', '1', '$rank')") or die(mysqli_error($link));
+                                    }
+                                }*/
+                            ?>
     
                         <?php } }else{ ?>
                             <h3>There is no marks currently available</h3>

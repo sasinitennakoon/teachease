@@ -40,6 +40,21 @@ $query = mysqli_query($link,"select * from marks where student_id = '$session_id
               else if($count >= 1)
               {
 ?>
+<button onclick="printResultSheet()">Print Result Sheet</button>
+<script>
+    function printResultSheet() {
+        var printContent = document.querySelector('.panelsD').outerHTML;
+        var originalContent = document.body.innerHTML;
+        
+        document.body.innerHTML = printContent;
+
+        // Wait a short delay for rendering to complete, then trigger print
+        setTimeout(function() {
+            window.print();
+            document.body.innerHTML = originalContent;
+        }, 500);
+    }
+</script>
     <div class="panelsD">
             <h2>Result Sheet</h2>
             <h3>Term 02</h3>

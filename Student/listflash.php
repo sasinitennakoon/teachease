@@ -5,18 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Student Dashboard</title>
     <!--<link rel="stylesheet" href="../admin/css/dashboard.css"> -->
-    <link rel="stylesheet" href="./css/listflash.css">
+    
+    <link rel="stylesheet" href="./css/general2.css">
+    <link rel="stylesheet" href="././css/dashboard.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
 
 <body>
    
 <?php include 'dropdown2.php'; ?>   
-    <button onclick="goBack()">Go to Dashboard</button>
+    <a href="scienceflash.php"><button>Go to Dashboard</button></a>
     <div class="content">
-    <h1>The Flash Card List That Created By You</h1>
+    <b>The Flash Card List That Created By You</b>
 
-    <table id="myTable">
+    <table>
         <thead>
           <tr>
             <th>Bundle Name</th>
@@ -29,7 +31,7 @@
             include '../database/db_con.php'; // Include your database connection file
 
             // Fetch flashcard details from the database
-            $sql = "SELECT * FROM flashcard_bundles";
+            $sql = "SELECT * FROM scienceflashcrd_bundle where user_id = '$session_id'";
             $result = mysqli_query($link, $sql);
 
             if ($result && mysqli_num_rows($result) > 0) {
