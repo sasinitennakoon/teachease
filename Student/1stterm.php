@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student Dashboard</title>
+    <title>Exam Results</title>
     
     <link rel="stylesheet" href="./css/1stterm.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
@@ -43,7 +43,7 @@ $query = mysqli_query($link,"select * from marks where student_id = '$session_id
               else if($count >= 1)
               {
 ?>
-    
+    <button onclick="printResultSheet()">Print Result Sheet</button>
     <div class="panelsD">
             <h2>Result Sheet</h2>
             <h3>Term 01</h3>
@@ -291,6 +291,8 @@ $query = mysqli_query($link,"select * from marks where student_id = '$session_id
         
         
             </table>
+
+            
            
         
 
@@ -316,6 +318,21 @@ $query = mysqli_query($link,"select * from marks where student_id = '$session_id
 <?php 
     }
     ?>
+
+<script>
+    function printResultSheet() {
+        var printContent = document.querySelector('.panelsD').outerHTML;
+        var originalContent = document.body.innerHTML;
+        
+        document.body.innerHTML = printContent;
+
+        // Wait a short delay for rendering to complete, then trigger print
+        setTimeout(function() {
+            window.print();
+            document.body.innerHTML = originalContent;
+        }, 500);
+    }
+</script>
 
 </body>
 </html>

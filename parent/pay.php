@@ -33,9 +33,41 @@
                 </ul>
             </nav>
         </div>
+       
 
         <div class="content">
+        
             <h1>Your Payments</h1>
+            <?php
+            $query = mysqli_query($link,"select * from parent where parent_id = '$session_id'") or die(mysqli_error($link));
+            $row = mysqli_fetch_array($query) or die(mysqli_error($query));
+            $child = $row['childrenname'];
+          
+            $query1 = mysqli_query($link,"select * from student where firstname = '$child'") or die(mysqli_error($link));
+            $row = mysqli_fetch_array($query1) or die($query1);
+            $student = $row['firstname'];
+            $student_id = $row['student_id'];
+          
+
+					$query = mysqli_query($link, "SELECT student_class.*, teacher_class.class_name, subject.subject_title, schedule.date, schedule.time, teacher.firstname
+                    FROM student_class 
+                    INNER JOIN schedule ON schedule.schedule_id = student_class.schedule_id 
+                    INNER JOIN subject ON subject.subject_id = schedule.subject_id 
+                    INNER JOIN teacher_class ON teacher_class.teacher_class_id = student_class.class_id 
+                    INNER JOIN teacher ON teacher.teacher_id = schedule.teacher_id  
+                    WHERE student_class.student_id = '$student_id'
+                    AND subject.subject_title = 'Science' 
+                    ORDER BY student_class.student_schedule_id DESC") or die(mysqli_error($link));
+
+                    $row = mysqli_fetch_array($query);
+                    $count = mysqli_num_rows($query);
+                    if($count <= 0)
+                    {
+                        echo '<b><center>There is No Payments Available for you.<center></b>';
+                    }
+                    else
+                    {
+				?>
             <div class="panelsD">
             <div class="panel7" onclick="window.location.href='//buy.stripe.com/test_cN2g03alb6wf0OQ7sC';">
                 <p><b>Science</b></p>
@@ -65,7 +97,7 @@
             </div>
         </div>
 
-        
+        <?php } ?>
 </div>
 
 

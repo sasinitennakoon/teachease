@@ -26,6 +26,7 @@
                 <nav>
                     <ul>
                         <li><a href="studash.php"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                        <li><a href="announcements.php"><i class="fas fa-tachometer-alt"></i> Announcements</a></li>
                         <li><a href="MyCourses.php" class="active"><i class="fas fa-book"></i> My Courses</a></li>
                         <li><a href="StudyMaterials.php"><i class="fas fa-book-open"></i> Study Materials</a></li>
                         <li><a href="Tasks.php"><i class="far fa-sticky-note"></i></i> Flash Cards</a></li>
@@ -65,28 +66,31 @@
                             <th></th>
                             <th>Class</th>
                             <th>Subject</th>
+                            <th>Teacher Namer</th>
                             <th>Date</th>
                             <th>Time</th>
                         </tr>
                     </thead>
                     <tbody>
        <?php
-					$query = mysqli_query($link, "SELECT student_class.*, teacher_class.class_name, subject.subject_title
+					$query = mysqli_query($link, "SELECT student_class.*, teacher_class.class_name, subject.subject_title, schedule.date, schedule.time, teacher.firstname
                     FROM student_class 
                     INNER JOIN schedule ON schedule.schedule_id = student_class.schedule_id 
                     INNER JOIN subject ON subject.subject_id = schedule.subject_id 
-                    INNER JOIN teacher_class ON teacher_class.subject_id = subject.subject_id  
+                    INNER JOIN teacher_class ON teacher_class.teacher_class_id = student_class.class_id 
+                    INNER JOIN teacher ON teacher.teacher_id = schedule.teacher_id  
                     WHERE student_class.student_id = '$session_id'
                     AND subject.subject_title = 'Science'  
-                    ORDER BY schedule.schedule_id DESC") or die(mysqli_error($link));
+                    ORDER BY student_class.student_schedule_id DESC") or die(mysqli_error($link));
                     while($row = mysqli_fetch_array($query)){
-                    $id  = $row['schedule_id'];
+                    $id  = $row['student_schedule_id'];
 				?>
             
                         <tr>
                             <td><input type="checkbox" name="selector[]" value="<?php echo $id; ?>"></td>
                             <td><?php echo $row['class_name']; ?></td>
                             <td><?php echo $row['subject_title']; ?></td>
+                            <td><?php echo $row['firstname']; ?></td>
                             <td><?php echo $row['date']; ?></td>
                             <td><?php echo $row['time']; ?></td>
                         </tr>
@@ -104,7 +108,7 @@
                         <div class="but">
                 
                             <button class="btn btn-info">
-                            <a href="add_scienceclass.php" style='text-decoration:none;color:white;'>
+                            <a href="addscienceclass.php" style='text-decoration:none;color:white;'>
                                 <i class="fa fa-fw fa-plus"></i>&nbsp;Add Science Class</a>
                             </button>
                             <button type="submit" name="leave" class="btn btn-info">

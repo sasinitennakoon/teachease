@@ -1,12 +1,15 @@
+
 <?php
 include '../database/db_con.php'; // Include your database connection script
-
+include 'dropdown2.php';
 // Check if the request is a POST request and if the share button was clicked
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["share"])) {
     // Get the flashcard bundle name and data from the POST request
     $bundleName = $_POST["bundleName"];
     $flashcardsData = json_decode($_POST["flashcardsData"], true); // Decode JSON data
 
+
+    
     // Assuming you have a user ID for the user sharing the flashcards
     $userId = $session_id; // Replace with your actual user ID
 
@@ -56,7 +59,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["share"])) {
 </head>
 <body>
    
-    <?php include 'dropdown2.php'; ?>
+    
     <button onclick="goBack()">Go to Dashboard</button>
     <div class="container">
         <h1>Create Your Flash Cards Here!</h1>
@@ -269,3 +272,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["share"])) {
     </script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+

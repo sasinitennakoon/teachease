@@ -12,7 +12,7 @@
 <body>
 <?php include 'dropdown2.php'; ?>
     
-<button onclick="goBack()">Go to Dashboard</button>
+<a href="Tasks.php"><button>Go to Dashboard</button></a>
 
 <div class="content">
 <h1>Study with Flash Cards&#128516;</h1>
@@ -30,20 +30,20 @@
         include '../database/db_con.php'; // Include your database connection file
 
         // Fetch newly added flashcard bundles from the database
-        $sql = "SELECT * FROM flashcard_bundles ORDER BY id DESC LIMIT 4"; // Assuming you want to display the latest 4 bundles
+        $sql = "SELECT * FROM scienceflashcrd_bundle where user_id='$session_id' ORDER BY id DESC LIMIT 4"; // Assuming you want to display the latest 4 bundles
         $result = mysqli_query($link, $sql);
 
         if ($result && mysqli_num_rows($result) > 0) {
             // Output data of each row
             while ($row = mysqli_fetch_assoc($result)) {
                 // Assuming the 'created_date' and 'created_time' columns are in 'Y-m-d' and 'H:i:s' format respectively
-                $created_date = isset($row["created_date"]) ? date("Y-m-d", strtotime($row["created_date"])) : "Unknown";
-                $created_time = isset($row["created_time"]) ? date("H:i:s", strtotime($row["created_time"])) : "Unknown";
-                
+                //$created_date = isset($row["created_date"]) ? date("Y-m-d", strtotime($row["created_date"])) : "$session_id";
+                //$created_time = isset($row["created_time"]) ? date("H:i:s", strtotime($row["created_time"])) : "$session_id";
+                $created_date = $row['created_at'];
                 echo "<div class='card1' onclick=\"redirectToFlashPage(" . $row['id'] . ")\">";
                 echo "<p>" . $row["subject"] . "</p>";
                 echo "<p>Created by you</p>"; // You can customize this based on your user data
-                echo "<p>" . $created_date . ", " . $created_time . "</p>"; // Display the formatted date and time
+                echo "<p>" . $created_date . "</p>"; // Display the formatted date and time
                 echo "</div>";
             }
         } else {
@@ -77,7 +77,7 @@
         }
 
     function redirectToFlashPage(bundleId) {
-        window.location.href = 'scienceflash.php?bundle_id=' + bundleId;
+        window.location.href = 'viewflash.php?bundle_id=' + bundleId;
     }
 </script>
 
