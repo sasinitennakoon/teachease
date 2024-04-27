@@ -1,70 +1,46 @@
 <?php
+include '../database/db_con.php'; // Include your database connection script
+
 // Check if the request is a POST request and if the share button was clicked
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["share"])) {
     // Get the flashcard bundle name and data from the POST request
     $bundleName = $_POST["bundleName"];
     $flashcardsData = json_decode($_POST["flashcardsData"], true); // Decode JSON data
 
-    // Establish a database connection
-    $link = mysqli_connect("localhost", "root", "", "teachease");
-    if (!$link) {
-        die("Connection error: " . mysqli_connect_error());
-    }
+    // Assuming you have a user ID for the user sharing the flashcards
+    $userId = $session_id; // Replace with your actual user ID
 
-    // Insert the flashcard bundle into the flashcard_bundles table
-    $userId = 1; // Assuming you have a user ID for the user sharing the flashcards
-    $subject = "Shared Flashcards"; // You can customize this
-    $bundleId = insertFlashcardBundle($link, $userId, $subject, $bundleName);
+    // Insert the flashcard bundle into the scienceflashcrd_bundle table
+    $subject = "Sinhala"; // You can customize this
+    $sqlBundle = "INSERT INTO scienceflashcrd_bundle (user_id, subject,bundle_name, created_at) VALUES ('$userId', '$subject','$bundleName', NOW())";
 
-    if ($bundleId) {
-        // If the flashcard bundle was successfully inserted, insert each flashcard into the flashcards table
+    if (mysqli_query($link, $sqlBundle)) {
+        $bundleId = mysqli_insert_id($link); // Get the ID of the inserted bundle
+        // Insert each flashcard into the scienceflashcrd table
         foreach ($flashcardsData as $flashcard) {
-            $question = $flashcard["question"];
-            $answer = $flashcard["answer"];
-            // Pass the bundleId to the insertFlashcard function
-            insertFlashcard($link, $bundleId, $question, $answer);
+            $question = mysqli_real_escape_string($link, $flashcard["question"]);
+            $answer = mysqli_real_escape_string($link, $flashcard["answer"]);
+            $sqlFlashcard = "INSERT INTO scienceflashcrd (bundle_id, question, answer, created_at) VALUES ('$bundleId', '$question', '$answer', NOW())";
+            if (!mysqli_query($link, $sqlFlashcard)) {
+                echo "Error inserting flashcard: " . mysqli_error($link);
+                break; // Exit loop on error
+            }
         }
         echo "Flashcards shared successfully!";
     } else {
-        echo "Failed to share flashcards. Please try again.";
+        echo "Error sharing flashcards bundle: " . mysqli_error($link);
     }
 
     // Close the database connection
     mysqli_close($link);
-
-    // You can add additional error handling or success messages here
+    exit; // Stop further execution after handling POST request
 }
 
-// Function to insert flashcard bundle into the database
-function insertFlashcardBundle($link, $userId, $subject, $bundleName) {
-    $userId = mysqli_real_escape_string($link, $userId);
-    $subject = mysqli_real_escape_string($link, $subject);
-    $bundleName = mysqli_real_escape_string($link, $bundleName);
-
-    $sql = "INSERT INTO flashcard_bundles (user_id, subject, bundle_name) VALUES ('$userId', '$subject', '$bundleName')";
-    
-    if (mysqli_query($link, $sql)) {
-        return mysqli_insert_id($link); // Return the ID of the inserted bundle
-    } else {
-        return false; // Return false if insertion fails
-    }
-}
-
-// Function to insert flashcard into the database
-function insertFlashcard($link, $bundleId, $question, $answer) {
-    $bundleId = mysqli_real_escape_string($link, $bundleId);
-    $question = mysqli_real_escape_string($link, $question);
-    $answer = mysqli_real_escape_string($link, $answer);
-
-    $sql = "INSERT INTO flashcards (bundle_id, question, answer) VALUES ('$bundleId', '$question', '$answer')";
-    
-    if (mysqli_query($link, $sql)) {
-        return true; // Return true if insertion succeeds
-    } else {
-        return false; // Return false if insertion fails
-    }
-}
+// Additional PHP code can go here for other functionality or page rendering
 ?>
+
+
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -72,10 +48,10 @@ function insertFlashcard($link, $bundleId, $question, $answer) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Student Dashboard</title>
-    <link rel="stylesheet" href="./css/create.css">
+    <link rel="stylesheet" href="./css/createnew.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <style>
-        
+        /* Additional CSS styles can be added here */
     </style>
 </head>
 <body>
@@ -85,7 +61,6 @@ function insertFlashcard($link, $bundleId, $question, $answer) {
     <div class="container">
         <h1>Create Your Flash Cards Here!</h1>
         <div class="panel" id="panel1">
-            
             <button class="create-flashcards-button" onclick="openConfirmationModal()">Create Flash Cards</button>
         </div>
         <div id="flashcardContainer" class="flashcard-container"></div>
@@ -93,31 +68,33 @@ function insertFlashcard($link, $bundleId, $question, $answer) {
     </div>
 
     <!-- Popup modal for confirmation -->
-    <div id="confirmationModal" class="modal">
+    <div id="confirmationModal" class="modal" style="display: none;">
         <div class="modal-content">
-            <p>Select the subject and enter the number of flash cards you want to create:</p>
-            <select id="flashCardSubject">
-                <option value="Math">Science</option>
-                <option value="Science">Mathematics</option>
-                <option value="History">English</option>
-                <option value="History">Sinhala</option>
-                <option value="History">Buddhism</option>
-                <option value="History">English</option>
-                <!-- Add more subjects as needed -->
-            </select>
-            <input type="number" id="flashCardCount" min="1" value="1">
-            <input type="text" id="flashCardBundleName" placeholder="Enter the name for the flashcard bundle">
+            <h3>Create Flashcard</h3>
+            <div class="modal-section">
+                <h4>Your Subject:</h4>
+                <input type="text" id="flashCardSubject" value="Science" readonly> <!-- Display the subject as "Science" with readonly attribute -->
+            </div>
+            <div class="modal-section">
+                <h4>Enter the number of flashcards:</h4>
+                <input type="number" id="flashCardCount" min="1" value="1">
+            </div>
+            <div class="modal-section">
+                <h4>Enter the name for the flashcard bundle:</h4>
+                <input type="text" id="flashCardBundleName" placeholder="Flashcard Bundle Name">
+            </div>
             <div class="modal-buttons">
                 <button onclick="confirmCreation()">Confirm</button>
                 <button onclick="closeConfirmationModal()">Cancel</button>
             </div>
         </div>
     </div>
-
+    
     <!-- Popup modal for table -->
-    <div id="tableModal" class="modal">
+    <div id="tableModal" class="modal" style="display: none;">
         <div class="modal-content">
-            <h2>Flash Cards Table</h2>
+            <h2 id="flashCardBundleNameDisplay"></h2> <!-- Display the flashcard bundle name here -->
+            <h3>Flash Cards Table</h3>
             <table id="flashCardsTable">
                 <thead>
                     <tr>
@@ -138,7 +115,7 @@ function insertFlashcard($link, $bundleId, $question, $answer) {
 
     <script>
         let flashCardCount = 1;
-        let flashCardSubject = "";
+        let flashCardSubject = "Science"; // Set the subject to "Science" by default
         let flashCardBundleName = "";
 
         function openConfirmationModal() {
@@ -150,9 +127,9 @@ function insertFlashcard($link, $bundleId, $question, $answer) {
         }
 
         function confirmCreation() {
-            flashCardSubject = document.getElementById("flashCardSubject").value;
             flashCardCount = parseInt(document.getElementById("flashCardCount").value);
             flashCardBundleName = document.getElementById("flashCardBundleName").value;
+            document.getElementById("flashCardBundleNameDisplay").innerText = flashCardBundleName; // Display bundle name
             closeConfirmationModal();
             openTableModal();
         }
@@ -175,8 +152,8 @@ function insertFlashcard($link, $bundleId, $question, $answer) {
                 const answerCell = document.createElement("td");
                 const questionInput = document.createElement("input");
                 const answerTextarea = document.createElement("textarea");
-                questionInput.setAttribute("placeholder", `Question ${i}`);
-                answerTextarea.setAttribute("placeholder", `Answer ${i}`);
+                questionInput.setAttribute("placeholder", "Question " + i);
+                answerTextarea.setAttribute("placeholder", "Answer " + i);
                 questionCell.appendChild(questionInput);
                 answerCell.appendChild(answerTextarea);
                 row.appendChild(questionCell);
@@ -252,10 +229,15 @@ function insertFlashcard($link, $bundleId, $question, $answer) {
             xhr.open("POST", "<?php echo $_SERVER['PHP_SELF']; ?>", true);
             xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
             xhr.onreadystatechange = function () {
-                if (xhr.readyState === 4 && xhr.status === 200) {
-                    alert("Flashcards shared successfully!");
-                }
-            };
+    if (xhr.readyState === 4) {
+        if (xhr.status === 200) {
+            alert("Flashcards shared successfully!");
+        } else {
+            alert("Error: " + xhr.status + " - " + xhr.statusText);
+        }
+    }
+};
+
             const params = "share=true&flashcardsData=" + encodeURIComponent(flashCardsData) + "&bundleName=" + encodeURIComponent(flashCardBundleName);
             xhr.send(params);
         }
@@ -274,7 +256,7 @@ function insertFlashcard($link, $bundleId, $question, $answer) {
         function goBack() {
             window.history.back();
         }
-        
+
         function resizeTextToFit(element) {
             const fontSize = 24; // Initial font size
             const maxHeight = 160; // Max height of the flashcard content area
@@ -282,7 +264,7 @@ function insertFlashcard($link, $bundleId, $question, $answer) {
             let contentHeight = textElement.offsetHeight;
             let scaleFactor = maxHeight / contentHeight;
             let newFontSize = Math.min(fontSize * scaleFactor, fontSize);
-            textElement.style.fontSize = newFontSize + "px";
+            textElement.style.fontSize = newFontSize + "px"; // Corrected concatenation
         }
     </script>
 </body>

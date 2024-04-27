@@ -84,7 +84,7 @@
         <br>
 
         <div class="panel2">
-            <div class="card3" onclick="window.location.href='createflash.php';">
+            <div class="card3" onclick="window.location.href='createenglish.php';">
                 <img src="./img/8-HhP2gIjmnHbB4FK.png">
                 <p>Create Flash Cards</p>
             </div>
