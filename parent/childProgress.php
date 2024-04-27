@@ -34,6 +34,9 @@
             </nav>
         </div>
 
+
+
+<div class="content">
 <?php
   $query = mysqli_query($link,"select * from parent where parent_id = '$session_id'") or die(mysqli_error($link));
   $row = mysqli_fetch_array($query) or die(mysqli_error($query));
@@ -43,9 +46,18 @@
   $row = mysqli_fetch_array($query1) or die($query1);
   $student = $row['firstname'];
   $student_id = $row['student_id'];
-?>
 
-<div class="content">
+  $query2 = mysqli_query($link,"select * from marks where student_id = '$student_id'");
+  $count = mysqli_num_rows($query2);
+
+
+  if($count <= 0)
+  {
+    echo "<br/><br/><br/><br/><b>There is Children Progress not available.</b>";
+  }
+  else
+  {
+?>
     <div class="panelsD">
         <h2>Overall Progress</h2>
 
@@ -60,6 +72,8 @@
      <button class="but2" onclick="window.location.href='3progress.php';">3 rd Term</button>
 
 </div>
+
+<?php } ?>
 
 <?php 
     $query = mysqli_query($link,"select * from marks where student_id = '$student_id' AND term_id='1'");
