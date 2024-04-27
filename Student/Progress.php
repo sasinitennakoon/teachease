@@ -40,8 +40,21 @@
         <button onclick="goBack()">Go to Dashboard</button>
 
 <div class="content">
+<?php
+        $query = mysqli_query($link,"select * from marks where student_id = '$session_id'");
+        $count = mysqli_num_rows($query);
+
+        if($count <= 0)
+        {
+          echo '<b>There is No Results available to you.</b>';
+        }
+        else
+        {
+        ?>
     <div class="panelsD">
         <h2>Overall Progress</h2>
+
+       
 
     <div class="chart-container">
         <canvas id="progress-chart"></canvas>
@@ -55,6 +68,8 @@
 
 </div>
 
+<?php } ?>
+
 <?php
   /*$query = mysqli_query($link,"select * from parent where parent_id = '$session_id'") or die(mysqli_error($link));
   $row = mysqli_fetch_array($query) or die(mysqli_error($query));
@@ -66,25 +81,11 @@
   $student_id = $session_id;
 ?>
 
-<div class="content">
-    <div class="panelsD">
-        <h2>Overall Progress</h2>
 
-    <div class="chart-container">
-        <canvas id="progress-chart"></canvas>
-     </div>
-    </div>
-
-    <h3>You can analys Your Progress by this section</h3>
-     <button class="but2" onclick="window.location.href='1st progress.php';">1 st Term</button>
-     <button class="but2" onclick="window.location.href='2progress.php';">2 nd Term</button>
-     <button class="but2" onclick="window.location.href='3progress.php';">3 rd Term</button>
-
-</div>
 
 <?php 
     $query = mysqli_query($link,"select * from marks where student_id = '$student_id' AND term_id='1'");
-    $row = mysqli_fetch_array($query) or die($mysqli_error($query));
+    $row = mysqli_fetch_array($query) or die(mysqli_error($link));
  
         $sql = mysqli_query($link,"select * from marks where student_id='$student_id' AND subject_id = '14' AND term_id = '1'");
         $row = mysqli_fetch_array($sql);

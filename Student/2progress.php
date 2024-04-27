@@ -11,7 +11,14 @@
 
 <body>
 <?php include 'dropdown2.php'; ?>
+<?php
 
+
+  $query1 = mysqli_query($link,"select * from student where student_id = '$session_id'") or die(mysqli_error($link));
+  $row = mysqli_fetch_array($query1) or die($query1);
+  $student = $row['firstname'];
+  $student_id = $row['student_id'];
+?>
 <button onclick="goBack()">Go to Dashboard</button>
 
 <div class="content">
@@ -20,6 +27,11 @@
     <div class="chart-container">
       <canvas id="term1-chart"></canvas>
     </div>
+
+    <?php 
+    $query = mysqli_query($link,"select * from marks where student_id = '$student_id' AND term_id='2'");
+    $row = mysqli_fetch_array($query) or die($mysqli_error($query));
+    ?>
     
     <table>
       
@@ -29,27 +41,58 @@
       </tr>
       <tr>
         <td>Science</td>
-        <td>40</td>
+        <td><?php 
+        $sql = mysqli_query($link,"select * from marks where student_id='$student_id' AND subject_id = '14' AND term_id = '2'");
+        $row = mysqli_fetch_array($sql);
+        echo $row['marks'];
+        $sc = $row['marks'];
+        ?></td>
       </tr>
       <tr>
         <td>Mathematics</td>
-        <td>55</td>
+        <td><?php 
+        $sql = mysqli_query($link,"select * from marks where student_id='$student_id' AND subject_id = '9' AND term_id = '2'");
+        $row = mysqli_fetch_array($sql);
+        echo $row['marks'];
+        $math = $row['marks'];
+        ?></td>
       </tr>
       <tr>
         <td>English</td>
-        <td>80</td>
+        <td><?php 
+        $sql = mysqli_query($link,"select * from marks where student_id='$student_id' AND subject_id = '12' AND term_id = '2'");
+        $row = mysqli_fetch_array($sql);
+        echo $row['marks'];
+        $eng = $row['marks'];
+        ?></td>
       </tr>
       <tr>
         <td>Sinhala</td>
-        <td>95</td>
+        <td><?php 
+        $sql = mysqli_query($link,"select * from marks where student_id='$student_id' AND subject_id = '16' AND term_id = '2'");
+        $row = mysqli_fetch_array($sql);
+        echo $row['marks'];
+        $sin = $row['marks'];
+        ?></td>
       </tr>
       <tr>
         <td>Buddhism</td>
-        <td>85</td>
+        <td><?php 
+        $sql = mysqli_query($link,"select * from marks where student_id='$student_id' AND subject_id = '15' AND term_id = '2'");
+        $row = mysqli_fetch_array($sql);
+        echo $row['marks'];
+        $bu = $row['marks'];
+        ?></td>
       </tr>
       <tr>
         <td>History</td>
-        <td>63</td>
+        <td><?php 
+        $sql = mysqli_query($link,"select * from marks where student_id='$student_id' AND subject_id = '14' AND term_id = '2'");
+        $row = mysqli_fetch_array($sql);
+
+        echo $row['marks'];
+        $his = $row['marks'];
+        ?></td>
       </tr>
       <!-- Add more rows for other subjects -->
     </table>
@@ -71,7 +114,7 @@
       datasets: [
         {
           label: '2nd Term Marks',
-          data: [40,55,80,95,85,63],
+          data: [<?php echo $sc; ?>,<?php echo $math; ?>,<?php echo $eng; ?>,<?php echo $sin; ?>,<?php echo $bu; ?>,<?php echo $his; ?>],
           backgroundColor: [
             'rgba(29, 93, 11, 0.8)', 
             'rgba(273, 26, 26, 0.8)',  
