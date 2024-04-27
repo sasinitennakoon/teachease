@@ -155,6 +155,76 @@
             <div id="area-chart"></div>
           </div>
 
+          <?php 
+          $query = "
+          SELECT date, class_id, COUNT(*) AS present_count
+          FROM student_attendance
+          WHERE status = 'present'
+          GROUP BY date, class_id
+          ORDER BY date ASC
+          ";
+
+          $stmt = $link->prepare($query);
+         
+          // Store results in an array
+          if ($stmt === false) {
+            die("Failed to prepare statement: " . $conn->error);
+        }
+        
+        // Execute the statement
+        $stmt->execute();
+        
+        // Bind the result variables
+        $stmt->bind_result($date, $class_id, $present_count);
+        
+        // Fetch all rows into an array
+        $attendanceData = [];
+        
+        while ($stmt->fetch()) {
+            $attendanceData[] = [
+                'date' => $date,
+                'class_id' => $class_id,
+                'present_count' => $present_count,
+            ];
+        }
+
+          // Find unique dates
+$dates = array_unique(array_column($attendanceData, 'date'));
+sort($dates);
+
+// Find unique classes
+$classIds = array_unique(array_column($attendanceData, 'class_id'));
+sort($classIds);
+
+// Create series data for each class
+$series = [];
+foreach ($classIds as $classId) {
+    $seriesData = [];
+    foreach ($dates as $date) {
+        // Check if there's a record for this date and class_id
+        $presentCount = 0;
+        foreach ($attendanceData as $record) {
+            if ($record['date'] === $date && $record['class_id'] === $classId) {
+                $presentCount = $record['present_count'];
+                break;
+            }
+        }
+        $seriesData[] = $presentCount; // Add the count to the series data
+    }
+    
+    $series[] = [
+        'name' => 'Class ' . $classId,
+        'data' => $seriesData,
+    ];
+}
+
+// Convert data to JSON to pass to JavaScript
+$jsonSeries = json_encode($series);
+$jsonLabels = json_encode($dates);
+
+?>
+
+
           <div class="charts-card">
             <h2 class="chart-title">Average attendance of Students</h2>
             <div id="attendance-chart"></div>
@@ -175,7 +245,14 @@
     <!-- Scripts -->
     <!-- ApexCharts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.35.5/apexcharts.min.js"></script>
+    
     <!-- Custom JS -->
+    <script>
+        // Embed PHP-generated data into a JavaScript variable
+        var seriesData = <?php echo $jsonSeries; ?>;
+        var labelData = <?php echo $jsonLabels; ?>;
+    </script>
     <script src="js/analytics.js"></script>
+    
 </body>
 </html>

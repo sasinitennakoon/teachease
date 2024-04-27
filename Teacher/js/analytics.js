@@ -72,16 +72,7 @@ var options = {
 
 // AREA CHART
 const areaChartOptions = {
-  series: [
-    {
-      name: 'Grade 10',
-      data: [31, 40, 48, 51, 42, 66, 67, 78, 84, 72, 88, 94],
-    },
-    {
-      name: 'Grade 11',
-      data: [41, 52, 45, 69, 74, 72, 81,83, 87, 85, 92, 96],
-    },
-  ],
+  series:seriesData, 
   chart: {
     type: 'area',
     background: 'transparent',
@@ -92,7 +83,7 @@ const areaChartOptions = {
     },
   },
   colors: ['#00ab57', '#d50000'],
-  labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul','Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+  labels: labelData,
   dataLabels: {
     enabled: false,
   },

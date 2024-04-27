@@ -54,7 +54,7 @@ if(isset($_GET['exam_id'])) {
         <!-- Your page content goes here -->
 		<h1>Exam Results</h1>
 
-		<form method="post" action="">
+		<form method="POST" enctype="multipart/form-data">
 				<?php
 					$query = mysqli_query($link, "SELECT * FROM result_files 
                     WHERE teacher_id = '$session_id' 
@@ -80,6 +80,7 @@ if(isset($_GET['exam_id'])) {
 					<th>Description</th>
 					<th>Uploaded by</th>
                     <th>Class Name</th>
+                    <th></th>
                     <th></th>
 					<!--<th>Edit</th> -->
 				</tr>

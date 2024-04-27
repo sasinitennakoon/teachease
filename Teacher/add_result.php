@@ -58,7 +58,10 @@
                         <select name="subject_id" required>
 							<option></option>
                             <?php
-											$query = mysqli_query($link,"select * from subject order by subject_code");
+											$query = mysqli_query($link,"SELECT DISTINCT teacher_class.subject_id,subject.subject_id,subject.subject_title
+                                             from teacher_class
+                                             INNER JOIN subject ON subject.subject_id=teacher_class.subject_id
+                                             WHERE teacher_class.teacher_id=$session_id");
 											while($row = mysqli_fetch_array($query)){
 											
 											?>
@@ -86,40 +89,41 @@
 
 		
 
-                    <?php
-						if (isset($_POST['save'])){
-                            $session_id = $_POST['session_id'];
-                            $subject_id = $_POST['subject_id'];
-                            $class_id = $_POST['class_id'];
-                            
-                            
-                            $query = mysqli_query($link,"select * from exam_results where subject_id = '$subject_id' and class_id = '$class_id' and teacher_id = '$session_id' ")or die(mysqli_error());
-                            $count = mysqli_num_rows($query);
-                            if ($count > 0){ 
-                            echo "true";
-                        }else{
-                            
-                            mysqli_query($link,"insert into exam_results (teacher_id,subject_id,class_id) values('$session_id','$subject_id','$class_id')")or die(mysqli_error());
+<?php
+if (isset($_POST['save'])) {
+    $session_id = $_POST['session_id'];
+    $subject_id = $_POST['subject_id'];
+    $class_id = $_POST['class_id'];
 
-                            $exam_results = mysqli_query($link,"select * from exam_results order by exam_id DESC")or die(mysqli_error($link));
-                            $teacher_row = mysqli_fetch_array($exam_results);
-                            $teacher_id = $teacher_row['exam_id'];
+    // Insert the new exam result
+    $insert_query = "INSERT INTO exam_results (teacher_id, subject_id, class_id) 
+                     VALUES ('$session_id', '$subject_id', '$class_id')";
+    mysqli_query($link, $insert_query) or die(mysqli_error($link));
 
+    // Optionally, retrieve the exam_id for the new result
+    $exam_results = mysqli_query($link, "SELECT * FROM exam_results ORDER BY exam_id DESC LIMIT 1") or die(mysqli_error($link));
+    $exam_row = mysqli_fetch_array($exam_results);
+    $exam_id = $exam_row['exam_id'];
 
-                            /*$insert_query = mysqli_query($link,"select * from student where class_id = '$class_id'")or die(mysqli_error());
-                            while($row = mysqli_fetch_array($insert_query)){
-                            $id = $row['student_id'];
-                            mysqli_query($conn,"insert into exam_results_student (teacher_id,student_id,exam_results_id) value('$session_id','$id','$teacher_id')")or die(mysqli_error());
-                            echo "yes";*/
-                            }
-                            ?>
-                            <script>
-                                window.location = 'ExamResults.php';
-                            </script>
-                            
-                    <?php
-                        }
-					?>
+    // Insert associated student results, if needed (uncomment and modify as needed)
+    /*
+    $students_query = mysqli_query($link, "SELECT * FROM student WHERE class_id = '$class_id'") or die(mysqli_error($link));
+    while ($row = mysqli_fetch_array($students_query)) {
+        $student_id = $row['student_id'];
+        mysqli_query($link, "INSERT INTO exam_results_student (teacher_id, student_id, exam_results_id) 
+                             VALUES ('$session_id', '$student_id', '$exam_id')") or die(mysqli_error($link));
+    }
+    */
+
+    echo "Exam result saved successfully.";
+    ?>
+    <script>
+        window.location = 'ExamResults.php';
+    </script>
+    <?php
+}
+?>
+
 
        
 

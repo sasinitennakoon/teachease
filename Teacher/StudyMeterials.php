@@ -54,8 +54,8 @@
 
             <div class="panel_3">
                <h3>Past Papers</h3>
-               <button class="button1">View</button>
-                <button class="button1">Edit</button>
+               <button class="button1"><a href="view_pastpaper.php">View</a></button>
+                <button class="button1"><a href="edit_pastpapers.php">Edit</a></button>
             </div>
         </div>
         <div class="panels2">
