@@ -41,7 +41,7 @@
         <div class="content">
             
         <div class="panelsD2">
-                <div class="panel9" onclick="window.location.href='scienceflash.php';">
+                <div class="panel9" onclick="window.location.href='Scienceflash.php';">
                     <p style="font-size: 50px;"><b>Science</b></p>
                 </div>
 

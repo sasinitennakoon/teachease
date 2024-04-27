@@ -28,7 +28,7 @@
                 include '../database/db_con.php'; // Include your database connection file
 
                 // Fetch English flashcard bundles from the database
-                $sql = "SELECT * FROM scienceflashcrd_bundle WHERE subject = 'English'";
+                $sql = "SELECT * FROM scienceflashcrd_bundle WHERE subject = 'Buddhism'";
                 $result = mysqli_query($link, $sql);
 
                 if ($result && mysqli_num_rows($result) > 0) {

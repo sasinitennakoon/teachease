@@ -10,7 +10,7 @@
 <body>
    
     <?php include 'dropdown2.php'; ?>
-    <button onclick="goBack()">Go to Dashboard</button>
+    <button class="dashboard-button" onclick="goBack()">Go to Dashboard</button>
 
     <div class="content">
         <h1>English Flashcard Bundles</h1>
@@ -28,7 +28,7 @@
                 include '../database/db_con.php'; // Include your database connection file
 
                 // Fetch English flashcard bundles from the database
-                $sql = "SELECT * FROM scienceflashcrd_bundle WHERE subject = 'English'";
+                $sql = "SELECT * FROM scienceflashcrd_bundle WHERE subject = 'Science'";
                 $result = mysqli_query($link, $sql);
 
                 if ($result && mysqli_num_rows($result) > 0) {
@@ -38,12 +38,13 @@
                         echo "<td>" . htmlspecialchars($row["bundle_name"]) . "</td>";
                         echo "<td>" . htmlspecialchars($row["subject"]) . "</td>";
                         echo "<td>
+                                <button class='view-button' onclick='viewBundle(\"{$row["id"]}\")'>View</button>
                                 <button onclick='deleteBundle(\"{$row["id"]}\")'>Delete</button>
                             </td>";
                         echo "</tr>";
                     }
                 } else {
-                    echo "<tr><td colspan='3'>No  flashcard bundles found.</td></tr>";
+                    echo "<tr><td colspan='3'>No English flashcard bundles found.</td></tr>";
                 }
 
                 // Close the database connection
@@ -73,6 +74,11 @@
                 const params = "bundleId=" + encodeURIComponent(bundleId);
                 xhr.send(params);
             }
+        }
+
+        function viewBundle(bundleId) {
+            // Redirect to the view bundle page with the bundle ID
+            window.location.href = `view_bundle.php?id=${bundleId}`;
         }
     </script>
 
