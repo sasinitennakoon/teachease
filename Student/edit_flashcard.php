@@ -25,6 +25,7 @@
                 <title>Edit Flashcard</title>
                 <link rel="stylesheet" href="./css/flash.css">
                 <link rel="stylesheet" href="././css/dashboard.css">
+                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
             </head>
             <body>
                 <h1>Edit Flashcard</h1>

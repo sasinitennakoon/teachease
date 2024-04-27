@@ -3,39 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Student Dashboard</title>
-    <!--<link rel="stylesheet" href="../admin/css/dashboard.css"> -->
-    
-    <link rel="stylesheet" href="./css/general2.css">
-    <link rel="stylesheet" href="././css/dashboard.css">
-
+    <title>English Flashcard Bundles</title>
+    <link rel="stylesheet" href="./css/listflash.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
 <body>
    
+    <?php include 'dropdown2.php'; ?>
+    <button onclick="goBack()">Go to Dashboard</button>
 
-<?php include 'dropdown2.php'; ?>   
-    <a href="scienceflash.php"><button>Go to Dashboard</button></a>
     <div class="content">
-    <b>The Flash Card List That Created By You</b>
+        <h1>English Flashcard Bundles</h1>
 
-    <table>
-        <thead>
-          <tr>
-            <th>Bundle Name</th>
-            <th>Subject</th>
-            <th>Other Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          <?php
-            include '../database/db_con.php'; // Include your database connection file
+        <table id="flashcardTable">
+            <thead>
+                <tr>
+                    <th>Bundle Name</th>
+                    <th>Subject</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                include '../database/db_con.php'; // Include your database connection file
 
-            // Fetch flashcard details from the database
-            $sql = "SELECT * FROM scienceflashcrd_bundle where user_id = '$session_id'";
-            $result = mysqli_query($link, $sql);
-
+                // Fetch English flashcard bundles from the database
+                $sql = "SELECT * FROM scienceflashcrd_bundle WHERE subject = 'History'";
+                $result = mysqli_query($link, $sql);
 
                 if ($result && mysqli_num_rows($result) > 0) {
                     // Output data of each row

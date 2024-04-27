@@ -63,7 +63,7 @@
         <p>Create Flash Cards</p>
     </div>
 
-    <div class="card3" onclick="window.location.href='listflash.php';">
+    <div class="card3" onclick="window.location.href='sciencelist.php';">
         <img src="./img/8-o225juUjxVlOy4l (1).png">
         <p>See What You Created</p>
     </div>

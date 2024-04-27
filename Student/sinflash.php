@@ -84,12 +84,12 @@
         <br>
 
         <div class="panel2">
-            <div class="card3" onclick="window.location.href='createflash.php';">
+            <div class="card3" onclick="window.location.href='createsinhala.php';">
                 <img src="./img/8-HhP2gIjmnHbB4FK.png">
                 <p>Create Flash Cards</p>
             </div>
 
-            <div class="card3" onclick="window.location.href='listflash.php';">
+            <div class="card3" onclick="window.location.href='sinhallist.php';">
                 <img src="./img/8-o225juUjxVlOy4l (1).png">
                 <p>See What You Created</p>
             </div>
