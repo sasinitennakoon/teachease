@@ -19,8 +19,18 @@
   $student = $row['firstname'];
   $student_id = $row['student_id'];
 ?>
-<button onclick="goBack()">Go to Dashboard</button>
-
+<a href="Progress.php"><button>Go to Dashboard</button></a>
+<?php 
+    $query = mysqli_query($link,"select * from marks_new where student_id = '$student_id' AND term_id='1'");
+    $count = mysqli_num_rows($query);
+    if($count <= 0 || $count != 6)
+    {
+       echo '<br/></br><br/></br><center><b>There is no marks available</b></center>';
+    }
+    else
+    {
+    $row = mysqli_fetch_array($query) or die($mysqli_error($query));
+    ?>
 <div class="content">
   <div class="panelsD">
     <h2>3rd Term Marks</h2>
@@ -37,7 +47,7 @@
       <tr>
         <td>Science</td>
         <td><?php 
-        $sql = mysqli_query($link,"select * from marks where student_id='$student_id' AND subject_id = '14' AND term_id = '3'");
+        $sql = mysqli_query($link,"select * from marks_new where student_id='$student_id' AND subject_id = '14' AND term_id = '3'");
         $row = mysqli_fetch_array($sql);
         echo $row['marks'];
         $sc = $row['marks'];
@@ -46,7 +56,7 @@
       <tr>
         <td>Mathematics</td>
         <td><?php 
-        $sql = mysqli_query($link,"select * from marks where student_id='$student_id' AND subject_id = '9' AND term_id = '3'");
+        $sql = mysqli_query($link,"select * from marks_new where student_id='$student_id' AND subject_id = '9' AND term_id = '3'");
         $row = mysqli_fetch_array($sql);
         echo $row['marks'];
         $math = $row['marks'];
@@ -55,7 +65,7 @@
       <tr>
         <td>English</td>
         <td><?php 
-        $sql = mysqli_query($link,"select * from marks where student_id='$student_id' AND subject_id = '12' AND term_id = '3'");
+        $sql = mysqli_query($link,"select * from marks_new where student_id='$student_id' AND subject_id = '12' AND term_id = '3'");
         $row = mysqli_fetch_array($sql);
         echo $row['marks'];
         $eng = $row['marks'];
@@ -64,7 +74,7 @@
       <tr>
         <td>Sinhala</td>
         <td><?php 
-        $sql = mysqli_query($link,"select * from marks where student_id='$student_id' AND subject_id = '16' AND term_id = '3'");
+        $sql = mysqli_query($link,"select * from marks_new where student_id='$student_id' AND subject_id = '16' AND term_id = '3'");
         $row = mysqli_fetch_array($sql);
         echo $row['marks'];
         $sin = $row['marks'];
@@ -73,7 +83,7 @@
       <tr>
         <td>Buddhism</td>
         <td><?php 
-        $sql = mysqli_query($link,"select * from marks where student_id='$student_id' AND subject_id = '15' AND term_id = '3'");
+        $sql = mysqli_query($link,"select * from marks_new where student_id='$student_id' AND subject_id = '15' AND term_id = '3'");
         $row = mysqli_fetch_array($sql);
         echo $row['marks'];
         $bu = $row['marks'];
@@ -82,7 +92,7 @@
       <tr>
         <td>History</td>
         <td><?php 
-        $sql = mysqli_query($link,"select * from marks where student_id='$student_id' AND subject_id = '14' AND term_id = '3'");
+        $sql = mysqli_query($link,"select * from marks_new where student_id='$student_id' AND subject_id = '14' AND term_id = '3'");
         $row = mysqli_fetch_array($sql);
 
         echo $row['marks'];
@@ -95,7 +105,7 @@
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
+<?php } ?>
 <script>
   function goBack() {
     window.history.back();

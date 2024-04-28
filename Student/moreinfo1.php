@@ -26,7 +26,17 @@
 ?>
 
 <a href="1stterm.php"><button>Go to Dashboard</button></a>
+<?php
+      $query = mysqli_query($link,"select * from marks_new where student_id = '$session_id' AND term_id = '1' ");
+      $count = mysqli_num_rows($query);
 
+      if($count <= 0  || $count != 6)
+      {
+         echo '<center><b>There is no marks available</b></center>';
+      }
+      else
+      {
+?>
 <div class="content">
     <h1> Overall Result Analysis</h1>
 
@@ -41,7 +51,7 @@
                 <tr>
                     <td>Science</td>
                     <td><?php 
-        $sql = mysqli_query($link,"select * from marks where student_id='$student_id' AND subject_id = '14' AND term_id = '1'");
+        $sql = mysqli_query($link,"select * from marks_new where student_id='$student_id' AND subject_id = '14' AND term_id = '1'");
         $row = mysqli_fetch_array($sql);
         echo $row['marks'];
         $sc = $row['marks'];
@@ -50,7 +60,7 @@
                 <tr>
                     <td>Mathematics</td>
                     <td><?php 
-        $sql = mysqli_query($link,"select * from marks where student_id='$student_id' AND subject_id = '9' AND term_id = '1'");
+        $sql = mysqli_query($link,"select * from marks_new where student_id='$student_id' AND subject_id = '9' AND term_id = '1'");
         $row = mysqli_fetch_array($sql);
         echo $row['marks'];
         $math = $row['marks'];
@@ -59,7 +69,7 @@
                 <tr>
                     <td>English</td>
                     <td><?php 
-        $sql = mysqli_query($link,"select * from marks where student_id='$student_id' AND subject_id = '12' AND term_id = '1'");
+        $sql = mysqli_query($link,"select * from marks_new where student_id='$student_id' AND subject_id = '12' AND term_id = '1'");
         $row = mysqli_fetch_array($sql);
         echo $row['marks'];
         $eng = $row['marks'];
@@ -68,7 +78,7 @@
                 <tr>
                     <td>Sinhala</td>
                     <td><?php 
-        $sql = mysqli_query($link,"select * from marks where student_id='$student_id' AND subject_id = '16' AND term_id = '1'");
+        $sql = mysqli_query($link,"select * from marks_new where student_id='$student_id' AND subject_id = '16' AND term_id = '1'");
         $row = mysqli_fetch_array($sql);
         echo $row['marks'];
         $sin = $row['marks'];
@@ -77,7 +87,7 @@
                 <tr>
                     <td>Buddhism</td>
                     <td><?php 
-        $sql = mysqli_query($link,"select * from marks where student_id='$student_id' AND subject_id = '15' AND term_id = '1'");
+        $sql = mysqli_query($link,"select * from marks_new where student_id='$student_id' AND subject_id = '15' AND term_id = '1'");
         $row = mysqli_fetch_array($sql);
         echo $row['marks'];
         $bu = $row['marks'];
@@ -86,7 +96,7 @@
                 <tr>
                     <td>History</td>
                     <td><?php 
-        $sql = mysqli_query($link,"select * from marks where student_id='$student_id' AND subject_id = '14' AND term_id = '1'");
+        $sql = mysqli_query($link,"select * from marks_new where student_id='$student_id' AND subject_id = '14' AND term_id = '1'");
         $row = mysqli_fetch_array($sql);
 
         echo $row['marks'];
@@ -98,7 +108,17 @@
 
         </br>
         <?php 
-             $query = mysqli_query($link,"select * from average where student_id = '$session_id' ");
+             $query = mysqli_query($link,"select * from average where student_id = '$session_id' term_id = '1' ");
+             $count = mysqli_num_rows($query);
+
+             if($count <= 0 )
+             {
+                echo '<center><b>There is no average marks available</b></center>';
+             }
+             else
+             {
+
+             
              $row = mysqli_fetch_array($query);
  
              $averageMark = $row['average_marks'];
@@ -128,6 +148,9 @@
         
             
         </div>
+        <?php 
+             }
+        ?>
         <div class="card">
             <h2> Total Marks Distribution of the Class</h2>
             <canvas id="scatterPlot"></canvas>
@@ -178,6 +201,10 @@
     </div>
 
 </div>
+
+<?php } ?>
+
+
 
 <script>
    <?php
@@ -291,7 +318,7 @@ createScatterPlot('totalMarksScatterPlot', totalMarks);
 
 <?php
    $studentMarks = [];
-        $query = mysqli_query($link,"select * from marks where term_id = '1' AND subject_id = '14' ");
+        $query = mysqli_query($link,"select * from marks_new where term_id = '1' AND subject_id = '14' ");
         while($row = mysqli_fetch_array($query))
         {
             $mar = $row['marks'];
@@ -308,7 +335,7 @@ createScatterPlot('scienceScatterPlot', scienceMarks);
 
 <?php
    $studentMarks = [];
-        $query = mysqli_query($link,"select * from marks where term_id = '1' AND subject_id = '9' ");
+        $query = mysqli_query($link,"select * from marks_new where term_id = '1' AND subject_id = '9' ");
         while($row = mysqli_fetch_array($query))
         {
             $mar = $row['marks'];
@@ -324,7 +351,7 @@ createScatterPlot('mathematicsScatterPlot', mathematicsMarks);
 
 <?php
    $studentMarks = [];
-        $query = mysqli_query($link,"select * from marks where term_id = '1' AND subject_id = '12' ");
+        $query = mysqli_query($link,"select * from marks_new where term_id = '1' AND subject_id = '12' ");
         while($row = mysqli_fetch_array($query))
         {
             $mar = $row['marks'];
@@ -340,7 +367,7 @@ createScatterPlot('englishScatterPlot', englishMarks);
 
 <?php
    $studentMarks = [];
-        $query = mysqli_query($link,"select * from marks where term_id = '1' AND subject_id = '16' ");
+        $query = mysqli_query($link,"select * from marks_new where term_id = '1' AND subject_id = '16' ");
         while($row = mysqli_fetch_array($query))
         {
             $mar = $row['marks'];
@@ -356,7 +383,7 @@ createScatterPlot('sinhalaScatterPlot', sinhalaMarks);
 
 <?php
    $studentMarks = [];
-        $query = mysqli_query($link,"select * from marks where term_id = '1' AND subject_id = '15' ");
+        $query = mysqli_query($link,"select * from marks_new where term_id = '1' AND subject_id = '15' ");
         while($row = mysqli_fetch_array($query))
         {
             $mar = $row['marks'];
@@ -372,7 +399,7 @@ createScatterPlot('buddhismScatterPlot', buddhismMarks);
 
 <?php
    $studentMarks = [];
-        $query = mysqli_query($link,"select * from marks where term_id = '1' AND subject_id = '11' ");
+        $query = mysqli_query($link,"select * from marks_new where term_id = '1' AND subject_id = '11' ");
         while($row = mysqli_fetch_array($query))
         {
             $mar = $row['marks'];

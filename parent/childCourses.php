@@ -62,7 +62,7 @@
                     $count = mysqli_num_rows($query);
                     if($count <= 0)
                     {
-                        echo '<b><center>There is No subjects Available for you.<center></b>';
+                        echo '<b><center>There is no subjects Available for you.<center></b>';
                     }
                     else
                     {

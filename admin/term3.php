@@ -35,14 +35,14 @@
             <form method='post' onsubmit="return confirmDelete()">
             
             <?php
-                $query = mysqli_query($link,"SELECT marks.*, student.firstname, subject.subject_title,
+                $query = mysqli_query($link,"SELECT marks_new.*, student.firstname, subject.subject_title,
                                              MAX(student.firstname) AS firstname,
                                              MAX(subject.subject_title) AS subject
-                                             FROM marks
-                                             INNER JOIN student ON student.student_id = marks.student_id
-                                             INNER JOIN subject ON subject.subject_id = marks.subject_id
+                                             FROM marks_new
+                                             INNER JOIN student ON student.student_id = marks_new.student_id
+                                             INNER JOIN subject ON subject.subject_id = marks_new.subject_id
                                              WHERE term_id = '3'
-                                             GROUP BY marks.marks_id; ") or die(mysqli_error());
+                                             GROUP BY marks_new.marks_id; ") or die(mysqli_error());
                 $count  = mysqli_num_rows($query);
     
                 if($count > 0)
@@ -85,7 +85,7 @@
                     
                 <div class="but">
                     <button class="btn btn-info">
-                            <a href="addmarks3.php" style='text-decoration:none;color:white;'>
+                            <a href="addrank3.php" style='text-decoration:none;color:white;'>
                                 <i class="fa fa-fw fa-plus"></i>&nbsp;Add</a>
                             </button>
                             <button type="submit" name="delete" class="btn btn-info">

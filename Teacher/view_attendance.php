@@ -30,7 +30,7 @@ $row = mysqli_fetch_array($query);
             <li><a href="announcements.php"><i class="fas fa-bullhorn"></i> Announcements</a></li>
             <li><a href="MyClasses.php"><i class="fas fa-chalkboard-teacher"></i> My Classes</a></li>
             <li><a href="Schedule.php"><i class="fas fa-calendar-alt"></i> Schedule</a></li>
-            <li><a href="StudyMaterials.php"><i class="fas fa-book"></i> Study Materials</a></li>
+            <li><a href="StudyMeterials.php"><i class="fas fa-book"></i> Study Materials</a></li>
             <li><a href="Attendance.php" class="active"><i class="fas fa-check-circle"></i> Attendance</a></li>
             <li><a href="ExamResults.php"><i class="fas fa-poll"></i> Exam Results</a></li>
             <li><a href="Messages.php"><i class="fas fa-envelope"></i> Messages</a></li>

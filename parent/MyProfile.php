@@ -140,8 +140,8 @@
             
             <div class="input-box">
               <span class="details">Username (Email)</span>
-              <span id='username' style="text-align:center;"><?php echo $row['username']; ?></span>
-              <input type="hidden" name="username" value="<?php echo $row['username']; ?>">
+              <!--<span id='username' style="text-align:center;"><?php //echo $row['username']; ?></span> -->
+              <input type="text" name="username" value="<?php echo $row['username']; ?>">
             </div>
             
             <div class="input-box">

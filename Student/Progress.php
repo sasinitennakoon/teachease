@@ -25,7 +25,7 @@
             <nav>
                 <ul>
                 <li><a href="studash.php"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
-            <li><a href="announcements.php"><i class="fas fa-tachometer-alt"></i> Announcements</a></li>
+            <li><a href="announcements.php"><i class="fas fa-bullhorn"></i> Announcements</a></li>
             <li><a href="MyCourses.php"><i class="fas fa-book"></i> My Courses</a></li>
             <li><a href="StudyMaterials.php"><i class="fas fa-book-open"></i> Study Materials</a></li>
             <li><a href="Tasks.php"><i class="far fa-sticky-note"></i></i> Flash Cards</a></li>
@@ -41,10 +41,10 @@
 
 <div class="content">
 <?php
-        $query = mysqli_query($link,"select * from marks where student_id = '$session_id'");
+        $query = mysqli_query($link,"select * from marks_new where student_id = '$session_id'");
         $count = mysqli_num_rows($query);
 
-        if($count <= 0)
+        if($count <= 0 || $count != 18)
         {
           echo '<b>There is No Results available to you.</b>';
         }
@@ -68,7 +68,7 @@
 
 </div>
 
-<?php } ?>
+
 
 <?php
   /*$query = mysqli_query($link,"select * from parent where parent_id = '$session_id'") or die(mysqli_error($link));
@@ -84,115 +84,141 @@
 
 
 <?php 
-    $query = mysqli_query($link,"select * from marks where student_id = '$student_id' AND term_id='1'");
+    $query = mysqli_query($link,"select * from marks_new where student_id = '$student_id' AND term_id='1'");
+    $count = mysqli_num_rows($query);
+    if($count != 6)
+    {
+      echo '<b>Children Progress not available</b>';
+    }
+    else
+    {
     $row = mysqli_fetch_array($query) or die(mysqli_error($link));
  
-        $sql = mysqli_query($link,"select * from marks where student_id='$student_id' AND subject_id = '14' AND term_id = '1'");
+        $sql = mysqli_query($link,"select * from marks_new where student_id='$student_id' AND subject_id = '14' AND term_id = '1'");
         $row = mysqli_fetch_array($sql);
         //echo $row['marks'];
         $sc = $row['marks'];
         
-        $sql = mysqli_query($link,"select * from marks where student_id='$student_id' AND subject_id = '9' AND term_id = '1'");
+        $sql = mysqli_query($link,"select * from marks_new where student_id='$student_id' AND subject_id = '9' AND term_id = '1'");
         $row = mysqli_fetch_array($sql);
         //echo $row['marks'];
         $math = $row['marks'];
 
-        $sql = mysqli_query($link,"select * from marks where student_id='$student_id' AND subject_id = '12' AND term_id = '1'");
+        $sql = mysqli_query($link,"select * from marks_new where student_id='$student_id' AND subject_id = '12' AND term_id = '1'");
         $row = mysqli_fetch_array($sql);
        // echo $row['marks'];
         $eng = $row['marks'];
 
-        $sql = mysqli_query($link,"select * from marks where student_id='$student_id' AND subject_id = '16' AND term_id = '1'");
+        $sql = mysqli_query($link,"select * from marks_new where student_id='$student_id' AND subject_id = '16' AND term_id = '1'");
         $row = mysqli_fetch_array($sql);
        // echo $row['marks'];
         $sin = $row['marks'];
 
-        $sql = mysqli_query($link,"select * from marks where student_id='$student_id' AND subject_id = '15' AND term_id = '1'");
+        $sql = mysqli_query($link,"select * from marks_new where student_id='$student_id' AND subject_id = '15' AND term_id = '1'");
         $row = mysqli_fetch_array($sql);
        // echo $row['marks'];
         $bu = $row['marks'];
 
-        $sql = mysqli_query($link,"select * from marks where student_id='$student_id' AND subject_id = '14' AND term_id = '1'");
+        $sql = mysqli_query($link,"select * from marks_new where student_id='$student_id' AND subject_id = '14' AND term_id = '1'");
         $row = mysqli_fetch_array($sql);
 
         //echo $row['marks'];
         $his = $row['marks'];
+    }
 
 ?>
 
 <?php 
-    $query = mysqli_query($link,"select * from marks where student_id = '$student_id' AND term_id='2'");
+    $query = mysqli_query($link,"select * from marks_new where student_id = '$student_id' AND term_id='2'");
+    $count = mysqli_num_rows($query);
+    if($count != 6)
+    {
+      echo '<b>Children Progress not available</b>';
+    }
+    else
+    {
     $row = mysqli_fetch_array($query) or die($mysqli_error($query));
  
-        $sql = mysqli_query($link,"select * from marks where student_id='$student_id' AND subject_id = '14' AND term_id = '2'");
+        $sql = mysqli_query($link,"select * from marks_new where student_id='$student_id' AND subject_id = '14' AND term_id = '2'");
         $row = mysqli_fetch_array($sql);
         //echo $row['marks'];
         $sc2 = $row['marks'];
         
-        $sql = mysqli_query($link,"select * from marks where student_id='$student_id' AND subject_id = '9' AND term_id = '2'");
+        $sql = mysqli_query($link,"select * from marks_new where student_id='$student_id' AND subject_id = '9' AND term_id = '2'");
         $row = mysqli_fetch_array($sql);
        // echo $row['marks'];
         $math2 = $row['marks'];
 
-        $sql = mysqli_query($link,"select * from marks where student_id='$student_id' AND subject_id = '12' AND term_id = '2'");
+        $sql = mysqli_query($link,"select * from marks_new where student_id='$student_id' AND subject_id = '12' AND term_id = '2'");
         $row = mysqli_fetch_array($sql);
        // echo $row['marks'];
         $eng2 = $row['marks'];
 
-        $sql = mysqli_query($link,"select * from marks where student_id='$student_id' AND subject_id = '16' AND term_id = '2'");
+        $sql = mysqli_query($link,"select * from marks_new where student_id='$student_id' AND subject_id = '16' AND term_id = '2'");
         $row = mysqli_fetch_array($sql);
        // echo $row['marks'];
         $sin2 = $row['marks'];
 
-        $sql = mysqli_query($link,"select * from marks where student_id='$student_id' AND subject_id = '15' AND term_id = '2'");
+        $sql = mysqli_query($link,"select * from marks_new where student_id='$student_id' AND subject_id = '15' AND term_id = '2'");
         $row = mysqli_fetch_array($sql);
         //echo $row['marks'];
         $bu2 = $row['marks'];
 
-        $sql = mysqli_query($link,"select * from marks where student_id='$student_id' AND subject_id = '14' AND term_id = '2'");
+        $sql = mysqli_query($link,"select * from marks_new where student_id='$student_id' AND subject_id = '14' AND term_id = '2'");
         $row = mysqli_fetch_array($sql);
 
        // echo $row['marks'];
         $his2 = $row['marks'];
+    }
 
 ?>
 
 <?php 
-    $query = mysqli_query($link,"select * from marks where student_id = '$student_id' AND term_id='1'");
+    $query = mysqli_query($link,"select * from marks_new where student_id = '$student_id' AND term_id='3'");
+    $count = mysqli_num_rows($query);
+    if($count != 6)
+    {
+      echo '<b>Children Progress not available</b>';
+    }
+    else
+    {
     $row = mysqli_fetch_array($query) or die($mysqli_error($query));
  
-        $sql = mysqli_query($link,"select * from marks where student_id='$student_id' AND subject_id = '14' AND term_id = '3'");
+        $sql = mysqli_query($link,"select * from marks_new where student_id='$student_id' AND subject_id = '14' AND term_id = '3'");
         $row = mysqli_fetch_array($sql);
        // echo $row['marks'];
         $sc3 = $row['marks'];
         
-        $sql = mysqli_query($link,"select * from marks where student_id='$student_id' AND subject_id = '9' AND term_id = '3'");
+        $sql = mysqli_query($link,"select * from marks_new where student_id='$student_id' AND subject_id = '9' AND term_id = '3'");
         $row = mysqli_fetch_array($sql);
        // echo $row['marks'];
         $math3 = $row['marks'];
 
-        $sql = mysqli_query($link,"select * from marks where student_id='$student_id' AND subject_id = '12' AND term_id = '3'");
+        $sql = mysqli_query($link,"select * from marks_new where student_id='$student_id' AND subject_id = '12' AND term_id = '3'");
         $row = mysqli_fetch_array($sql);
        // echo $row['marks'];
         $eng3 = $row['marks'];
 
-        $sql = mysqli_query($link,"select * from marks where student_id='$student_id' AND subject_id = '16' AND term_id = '3'");
+        $sql = mysqli_query($link,"select * from marks_new where student_id='$student_id' AND subject_id = '16' AND term_id = '3'");
         $row = mysqli_fetch_array($sql);
         //echo $row['marks'];
         $sin3 = $row['marks'];
 
-        $sql = mysqli_query($link,"select * from marks where student_id='$student_id' AND subject_id = '15' AND term_id = '3'");
+        $sql = mysqli_query($link,"select * from marks_new where student_id='$student_id' AND subject_id = '15' AND term_id = '3'");
         $row = mysqli_fetch_array($sql);
        // echo $row['marks'];
         $bu3 = $row['marks'];
 
-        $sql = mysqli_query($link,"select * from marks where student_id='$student_id' AND subject_id = '14' AND term_id = '3'");
+        $sql = mysqli_query($link,"select * from marks_new where student_id='$student_id' AND subject_id = '14' AND term_id = '3'");
         $row = mysqli_fetch_array($sql);
 
         //echo $row['marks'];
         $his3 = $row['marks'];
+    }
 
 ?>
+
+<?php } ?>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
