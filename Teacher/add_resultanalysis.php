@@ -64,11 +64,10 @@ if(isset($_GET['exam_id'])) {
                         <select name="class_id" required>
                             <option></option>
                             <?php
-                                 $query = mysqli_query($link,"SELECT exam_results.* ,teacher_class.class_name
+                                 $query = mysqli_query($link,"SELECT exam_results.exam_id ,exam_results.class_id,teacher_class.class_name
                                  FROM exam_results
-                                 INNER JOIN teacher_class on teacher_class.teacher_id=exam_results.teacher_id
-                                 WHERE exam_results.teacher_id = '$session_id' AND exam_results.exam_id='$exam_id'
-                                 GROUP BY exam_id; ")or die(mysqli_error());
+                                 INNER JOIN teacher_class on teacher_class.teacher_class_id=exam_results.class_id
+                                 WHERE exam_results.teacher_id = '$session_id' AND exam_results.exam_id='$exam_id' ")or die(mysqli_error());
                                     while ($row = mysqli_fetch_array($query)){ $id = $row['class_id'];
                                         $class_id = $row['class_id'];
                                 ?>
@@ -177,7 +176,7 @@ if(isset($_POST['save'])) {
                 $rank=$row[6];
                 $exam_id = $_GET['exam_id'];
 
-                $studentQuery = "INSERT INTO result_file_marks (student_id, teacher_class_id, marks, grade,exam_id) VALUES ('$id', '$class', '$mark', '$grade','$exam_id')";
+                $studentQuery = "INSERT INTO result_file_marks (student_id, teacher_class_id, marks, grade,exam_id,date) VALUES ('$id', '$class', '$mark', '$grade','$exam_id',now())";
                 mysqli_query($link, $studentQuery) or die(mysqli_error($link));
 
                 $markQuery = "INSERT INTO marks_new (student_id, subject_id, marks, term_id,rank) VALUES ('$id', '$subject', '$mark', '$term','$rank')";

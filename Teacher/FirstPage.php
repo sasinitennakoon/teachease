@@ -20,18 +20,6 @@
 
 </head>
 <body>
-           <!-- <div class="dropdown" style="float:right;">
-			  <div class="dropbtn">
-              <img src="./IMG/man1.jpg" alt="User Icon">
-                <?php //echo $row['firstname']; ?>
-				<i class="fa fa-caret-down"></i>
-                </div>
-			  <div class="dropdown-content">
-				<a href="MyProfile.php"><i class="fa fa-fw fa-user"></i>Profile</a>
-				<a href="ResetPassword.php"><i class="fa fa-fw fa-unlock-alt"></i>Change Password</a>
-				<a href="../logout.php"><i class="fa fa-fw fa-sign-out-alt"></i>Log out</a>
-			  </div>
-			</div>-->
       <?php include 'dropdown.php' ?>
     <!-- Sidebar -->
     <div class="sidebar">
@@ -119,120 +107,131 @@
 
 
         </div>
-
-        <!--<div class="charts">
-
-          <div class="charts-card">
-            <h2 class="chart-title">Top 5 Scoring Students</h2>
-            <div id="bar-chart"></div>
-          </div>
-
-          <div class="charts-card">
-            <h2 class="chart-title">Average Marks of Students</h2>
-            <div id="area-chart"></div>
-          </div>
-
-          <div class="charts-card">
-            <h2 class="chart-title">Average attendance of Students</h2>
-            <div id="attendance-chart"></div>
-          </div>
-
-          <div class="charts-card">
-            <h2 class="chart-title">Overall Student Assessment Completion Rate</h2>
-            <div id="radialBarchart"></div>
-          </div>
-
-        </div>-->
         <div class="charts">
 
           <div class="charts-card">
-            <h2 class="chart-title">Attendance Mark Correlation</h2>
-            <div id="Scatterchart"></div>
-          </div>
-
-          <div class="charts-card">
             <h2 class="chart-title">Average Marks of Students</h2>
             <div id="area-chart"></div>
           </div>
+          <?php
+ob_start();
 
-          <?php 
-          $query = "
-          SELECT date, class_id, COUNT(*) AS present_count
-          FROM student_attendance
-          WHERE status = 'present'
-          GROUP BY date, class_id
-          ORDER BY date ASC
-          ";
+// Database connection
+$included = include_once('../database/db_con.php');
+if (!$included) {
+    die("Error: Could not include db_connection.php");
+}
 
-          $stmt = $link->prepare($query);
-         
-          // Store results in an array
-          if ($stmt === false) {
-            die("Failed to prepare statement: " . $conn->error);
-        }
-        
-        // Execute the statement
-        $stmt->execute();
-        
-        // Bind the result variables
-        $stmt->bind_result($date, $class_id, $present_count);
-        
-        // Fetch all rows into an array
-        $attendanceData = [];
-        
-        while ($stmt->fetch()) {
-            $attendanceData[] = [
-                'date' => $date,
-                'class_id' => $class_id,
-                'present_count' => $present_count,
-            ];
-        }
+// Queries for attendance and marks
+$attendanceQuery = "SELECT date, class_id, COUNT(*) AS present_count FROM student_attendance WHERE status = 'present' GROUP BY date, class_id ORDER BY date ASC";
+$marksQuery = "SELECT date, teacher_class_id AS class_id, AVG(marks) AS average_marks FROM result_file_marks GROUP BY date, class_id ORDER BY date ASC";
 
-          // Find unique dates
-$dates = array_unique(array_column($attendanceData, 'date'));
-sort($dates);
+// Function to execute a query and return results
+function getQueryResults($link, $query) {
+    $stmt = $link->prepare($query);
+    if ($stmt === false) {
+        die("Failed to prepare statement: " . $link->error);
+    }
+    $stmt->execute();
+    return $stmt;
+}
 
-// Find unique classes
-$classIds = array_unique(array_column($attendanceData, 'class_id'));
-sort($classIds);
+// Get attendance data
+$attendanceStmt = getQueryResults($link, $attendanceQuery);
+$attendanceStmt->bind_result($date, $class_id, $present_count);
 
-// Create series data for each class
-$series = [];
-foreach ($classIds as $classId) {
+$attendanceData = [];
+while ($attendanceStmt->fetch()) {
+    $attendanceData[] = [
+        'date' => $date,
+        'class_id' => $class_id,
+        'present_count' => $present_count,
+    ];
+}
+
+// Get marks data
+$marksStmt = getQueryResults($link, $marksQuery);
+$marksStmt->bind_result($date, $class_id, $average_marks);
+
+$marksData = [];
+while ($marksStmt->fetch()) {
+    $marksData[] = [
+        'date' => $date,
+        'class_id' => $class_id,
+        'average_marks' => $average_marks,
+    ];
+}
+
+// Find unique dates for attendance and marks
+$attendanceDates = array_unique(array_column($attendanceData, 'date'));
+sort($attendanceDates);
+
+$marksDates = array_unique(array_column($marksData, 'date'));
+sort($marksDates);
+
+// Find unique class IDs from both attendance and marks
+$attendanceclassIds = array_unique(array_merge(array_column($attendanceData, 'class_id')));
+sort($attendanceclassIds);
+
+$marksclassIds = array_unique(array_merge(array_column($marksData, 'class_id')));
+sort($marksclassIds);
+
+
+
+// Create series for attendance
+$attendanceSeries = [];
+foreach ($attendanceclassIds as $attendanceclassId) {
     $seriesData = [];
-    foreach ($dates as $date) {
-        // Check if there's a record for this date and class_id
+    foreach ($attendanceDates as $date) {
         $presentCount = 0;
         foreach ($attendanceData as $record) {
-            if ($record['date'] === $date && $record['class_id'] === $classId) {
+            if ($record['date'] === $date && $record['class_id'] === $attendanceclassId) {
                 $presentCount = $record['present_count'];
                 break;
             }
         }
-        $seriesData[] = $presentCount; // Add the count to the series data
+        $seriesData[] = $presentCount;
     }
-    
-    $series[] = [
-        'name' => 'Class ' . $classId,
+    $attendanceSeries[] = [
+        'name' => 'Class ' . $attendanceclassId,
         'data' => $seriesData,
     ];
 }
 
-// Convert data to JSON to pass to JavaScript
-$jsonSeries = json_encode($series);
-$jsonLabels = json_encode($dates);
+// Create series for marks grouped by class
+$marksSeries = [];
+foreach ($marksclassIds as $marksclassId) {
+    $seriesData = [];
+    foreach ($marksDates as $date) {
+        $averageMarks = 0;
+        foreach ($marksData as $record) {
+            if ($record['date'] === $date && $record['class_id'] === $marksclassId) {
+                $averageMarks = $record['average_marks'];
+                break;
+            }
+        }
+        $seriesData[] = $averageMarks;
+    }
+    $marksSeries[] = [
+        'name' => 'Class ' . $marksclassId,
+        'data' => $seriesData,
+    ];
+}
 
+$jsonAttendanceSeries = json_encode($attendanceSeries);
+$jsonMarksSeries = json_encode($marksSeries);
+$jsonAttendanceDates = json_encode($attendanceDates);
+$jsonMarksDates = json_encode($marksDates);
+
+ob_end_flush();
 ?>
+
+
 
 
           <div class="charts-card">
             <h2 class="chart-title">Average attendance of Students</h2>
             <div id="attendance-chart"></div>
-          </div>
-
-          <div class="charts-card">
-            <h2 class="chart-title">Overall Student Assessment Completion Rate</h2>
-            <div id="radialBarchart"></div>
           </div>
 
         </div>
@@ -249,8 +248,10 @@ $jsonLabels = json_encode($dates);
     <!-- Custom JS -->
     <script>
         // Embed PHP-generated data into a JavaScript variable
-        var seriesData = <?php echo $jsonSeries; ?>;
-        var labelData = <?php echo $jsonLabels; ?>;
+        var attendanceseriesData = <?php echo $jsonAttendanceSeries; ?>;
+        var marksseriesData = <?php echo $jsonMarksSeries; ?>;
+        var AData = <?php echo $jsonAttendanceDates; ?>;
+        var MData = <?php echo $jsonMarksDates; ?>;
     </script>
     <script src="js/analytics.js"></script>
     
