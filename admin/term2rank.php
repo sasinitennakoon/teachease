@@ -84,7 +84,28 @@
                             <h3>There is no ranks currently available</h3>
                         <?php  } ?>
                     
-               
+                        <?php 
+                        $query = mysqli_query($link,"select * from marks_new where term_id = '2'");
+                        $count = mysqli_num_rows($query);
+
+                        if($count <= 0)
+                        {
+                            //echo '<b>There is no marks in Term 2</b>';
+                        }
+                        else
+                        {
+                    ?>
+                        <div class="but">
+                    <button class="btn btn-info">
+                            <a href="addrank2.php" style='text-decoration:none;color:white;'>
+                                <i class="fa fa-fw fa-plus"></i>&nbsp;Add Rank</a>
+                            </button>
+                            <button type="submit" name="delete" class="btn btn-info">
+                                <i class="fa fa-fw fa-trash"></i> Delete
+                            </button>
+                    </div>
+                       <?php } ?>
+                
                        
                 
                 </form>
@@ -106,7 +127,7 @@ if (isset($_POST['delete'])){
         
     for($i=0; $i < $N; $i++)
     {
-        $result = mysqli_query($link,"DELETE from marks
+        $result = mysqli_query($link,"DELETE from marks_new
         where marks_id='$id[$i]'");
     }
 ?>

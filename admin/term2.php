@@ -84,10 +84,7 @@
                         <?php  } ?>
                     
                 <div class="but">
-                    <button class="btn btn-info">
-                            <a href="addrank2.php" style='text-decoration:none;color:white;'>
-                                <i class="fa fa-fw fa-plus"></i>&nbsp;Add</a>
-                            </button>
+                   
                             <button type="submit" name="delete" class="btn btn-info">
                                 <i class="fa fa-fw fa-trash"></i> Delete
                             </button>
