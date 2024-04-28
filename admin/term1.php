@@ -44,7 +44,7 @@
     
             
                 
-                        <table border="0">
+                        <table border="0" id='#dataTable'>
                             <thead>
                                 <tr>
                                     <th class="check">Check All <input type="checkbox"  name="selectAll" id="checkAll" /></th>
@@ -78,19 +78,24 @@
                         <?php } }else{ ?>
                             <h3>There is no marks currently available</h3>
                         <?php  } ?>
-                    
+                        
                 <div class="but">
-                   
+                
                             <button type="submit" name="delete" class="btn btn-info">
                                 <i class="fa fa-fw fa-trash"></i> Delete
                             </button>
+
                     </div>
+                    
                        
-                
+                    </table>
                 </form>
             </div>
         </div>
     </div>
+    
+
+
 
 </body>
 
