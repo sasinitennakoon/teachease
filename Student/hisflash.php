@@ -29,6 +29,11 @@
                 <p>Create Flash Cards</p>
             </div>
 
+            <div class="card3" onclick="window.location.href='historyother.php';">
+            <img src="./img/8-Mcv73IvIqSwXbno.png">
+            <p>Let's Learn With Others</p>
+        </div>
+
             <div class="card3" onclick="window.location.href='hislist.php';">
                 <img src="./img/8-o225juUjxVlOy4l (1).png">
                 <p>See What You Created</p>

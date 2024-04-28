@@ -1,3 +1,27 @@
+<?php
+// Check if session is not already started
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+
+// Include your database connection file
+include '../database/db_con.php';
+
+// Check if the user is logged in
+if (!isset($_SESSION['id']) || empty($_SESSION['id'])) {
+    die("User ID not provided. Please log in."); // Handle the case where user is not logged in
+}
+
+$userId = $_SESSION['id']; // Retrieve user ID from session
+
+// Fetch flashcard bundles created by the logged-in user
+$sql = "SELECT * FROM scienceflashcrd_bundle WHERE subject = 'Science' AND user_id = '$userId'";
+$result = mysqli_query($link, $sql);
+
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,10 +51,17 @@
                 <p>Create Flash Cards</p>
             </div>
 
+            <div class="card3" onclick="window.location.href='buddhismother.php';">
+            <img src="./img/8-Mcv73IvIqSwXbno.png">
+            <p>Let's Learn With Others</p>
+        </div>
+
             <div class="card3" onclick="window.location.href='bhlist.php';">
                 <img src="./img/8-o225juUjxVlOy4l (1).png">
                 <p>See What You Created</p>
             </div>
+
+            
 
             
         </div> 
