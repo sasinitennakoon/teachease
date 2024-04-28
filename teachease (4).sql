@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 27, 2024 at 07:27 AM
+-- Generation Time: Apr 28, 2024 at 02:18 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -178,9 +178,16 @@ CREATE TABLE `exam_results` (
 --
 
 INSERT INTO `exam_results` (`exam_id`, `teacher_id`, `class_id`, `subject_id`) VALUES
-(10, 5, 10, 11),
-(11, 5, 11, 11),
-(12, 4, 14, 11);
+(4, 5, 10, 11),
+(5, 5, 11, 11),
+(6, 5, 10, 11),
+(7, 5, 12, 11),
+(8, 5, 12, 11),
+(9, 3, 15, 9),
+(10, 8, 20, 16),
+(11, 9, 16, 12),
+(12, 7, 19, 15),
+(13, 6, 18, 14);
 
 -- --------------------------------------------------------
 
@@ -231,58 +238,8 @@ CREATE TABLE `files` (
 --
 
 INSERT INTO `files` (`file_id`, `floc`, `fdatein`, `fdesc`, `teacher_id`, `class_id`, `fname`, `uploaded_by`) VALUES
-(11, 'teacher/uploads/5042_File.pdf', '2024-04-15 00:39:36', 'Term 1 Results', 5, 9, 'Grade 10', 'aaa bbb');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `flashcards`
---
-
-CREATE TABLE `flashcards` (
-  `id` int(11) NOT NULL,
-  `bundle_id` int(11) NOT NULL,
-  `question` text NOT NULL,
-  `answer` text NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `flashcards`
---
-
-INSERT INTO `flashcards` (`id`, `bundle_id`, `question`, `answer`, `created_at`) VALUES
-(1, 1, '5+5', '10', '2024-04-24 17:50:18'),
-(2, 2, '10+5', '15', '2024-04-24 17:52:21'),
-(3, 2, '2+2', '4', '2024-04-24 17:52:21'),
-(4, 2, '5+8', '13', '2024-04-24 17:52:21'),
-(5, 2, '13+8', '21', '2024-04-24 17:52:21'),
-(9, 4, 'edm2ji', 'di2jid', '2024-04-26 04:49:35'),
-(10, 8, 'zzzzzz', 'dddddddddd', '2024-04-26 05:17:11');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `flashcard_bundles`
---
-
-CREATE TABLE `flashcard_bundles` (
-  `id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL,
-  `subject` varchar(255) NOT NULL,
-  `bundle_name` varchar(255) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `flashcard_bundles`
---
-
-INSERT INTO `flashcard_bundles` (`id`, `user_id`, `subject`, `bundle_name`, `created_at`) VALUES
-(1, 1, 'Shared Flashcards', 'gggg', '2024-04-24 17:50:18'),
-(2, 1, 'Shared Flashcards', 'Logarithms', '2024-04-24 17:52:21'),
-(4, 1, 'Shared Flashcards', 'vjivvij', '2024-04-26 04:49:35'),
-(8, 1, 'Shared Flashcards', 'sssssssss', '2024-04-26 05:17:11');
+(11, 'teacher/uploads/5042_File.pdf', '2024-04-15 00:39:36', 'Term 1 Results', 5, 9, 'Grade 10', 'aaa bbb'),
+(12, 'teacher/uploads/1102_File.pdf', '2024-04-27 03:15:05', 'Lecture 1 slides', 5, 10, 'Lecture 1', 'aaa bbb');
 
 -- --------------------------------------------------------
 
@@ -305,10 +262,8 @@ CREATE TABLE `leaverequests` (
 
 INSERT INTO `leaverequests` (`leaverequest_id`, `student_schedule_id`, `student_id`, `teacher_id`, `request_date`, `status`) VALUES
 (3, 47, 2, 5, '2024-04-23', 'approved'),
-(4, 51, 2, 5, '2024-04-27', 'approved'),
-(5, 48, 2, 5, '2024-04-27', 'Pending'),
-(6, 51, 2, 5, '2024-04-27', 'approved'),
-(7, 48, 2, 5, '2024-04-27', 'approved');
+(4, 52, 2, 5, '2024-04-26', 'approved'),
+(5, 51, 2, 5, '2024-04-26', 'approved');
 
 -- --------------------------------------------------------
 
@@ -318,10 +273,10 @@ INSERT INTO `leaverequests` (`leaverequest_id`, `student_schedule_id`, `student_
 
 CREATE TABLE `marks` (
   `marks_id` int(11) NOT NULL,
-  `student_id` int(11) NOT NULL,
-  `subject_id` int(11) NOT NULL,
-  `term_id` int(11) NOT NULL,
-  `marks` int(50) NOT NULL
+  `student_id` varchar(11) NOT NULL,
+  `subject_id` varchar(11) NOT NULL,
+  `term_id` varchar(11) NOT NULL,
+  `marks` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -329,42 +284,122 @@ CREATE TABLE `marks` (
 --
 
 INSERT INTO `marks` (`marks_id`, `student_id`, `subject_id`, `term_id`, `marks`) VALUES
-(85, 11, 14, 1, 45),
-(86, 11, 9, 1, 90),
-(87, 11, 12, 1, 60),
-(88, 11, 11, 1, 67),
-(89, 11, 16, 1, 50),
-(90, 11, 15, 1, 79),
-(91, 4, 14, 1, 45),
-(92, 4, 9, 1, 34),
-(93, 4, 12, 1, 10),
-(94, 4, 11, 1, 67),
-(95, 4, 16, 1, 39),
-(96, 4, 15, 1, 51),
-(103, 7, 14, 1, 33),
-(104, 7, 9, 1, 66),
-(105, 7, 12, 1, 77),
-(106, 7, 11, 1, 88),
-(107, 7, 16, 1, 22),
-(108, 7, 15, 1, 11),
-(115, 2, 14, 1, 80),
-(116, 2, 9, 1, 66),
-(117, 2, 12, 1, 77),
-(118, 2, 11, 1, 67),
-(119, 2, 16, 1, 90),
-(120, 2, 15, 1, 87),
-(121, 2, 14, 2, 45),
-(122, 2, 9, 2, 57),
-(123, 2, 12, 2, 10),
-(124, 2, 11, 2, 67),
-(125, 2, 16, 2, 90),
-(126, 2, 15, 2, 45),
-(127, 2, 14, 3, 60),
-(128, 2, 9, 3, 60),
-(129, 2, 12, 3, 60),
-(130, 2, 11, 3, 79),
-(131, 2, 16, 3, 22),
-(132, 2, 15, 3, 11);
+(85, '11', '14', '1', '45'),
+(86, '11', '9', '1', '90'),
+(87, '11', '12', '1', '60'),
+(88, '11', '11', '1', '67'),
+(89, '11', '16', '1', '50'),
+(90, '11', '15', '1', '79'),
+(91, '4', '14', '1', '45'),
+(92, '4', '9', '1', '34'),
+(93, '4', '12', '1', '10'),
+(94, '4', '11', '1', '67'),
+(95, '4', '16', '1', '39'),
+(96, '4', '15', '1', '51'),
+(103, '7', '14', '1', '33'),
+(104, '7', '9', '1', '66'),
+(105, '7', '12', '1', '77'),
+(106, '7', '11', '1', '88'),
+(107, '7', '16', '1', '22'),
+(108, '7', '15', '1', '11'),
+(115, '2', '14', '1', '80'),
+(116, '2', '9', '1', '66'),
+(117, '2', '12', '1', '77'),
+(118, '2', '11', '1', '67'),
+(119, '2', '16', '1', '90'),
+(120, '2', '15', '1', '87'),
+(121, '2', '14', '2', '45'),
+(122, '2', '9', '2', '57'),
+(123, '2', '12', '2', '10'),
+(124, '2', '11', '2', '67'),
+(125, '2', '16', '2', '90'),
+(126, '2', '15', '2', '45'),
+(127, '2', '14', '3', '60'),
+(128, '2', '9', '3', '60'),
+(129, '2', '12', '3', '60'),
+(130, '2', '11', '3', '79'),
+(131, '2', '16', '3', '22'),
+(132, '2', '15', '3', '11'),
+(133, '2', '11', '1', '82'),
+(134, '3', '11', '1', '90'),
+(135, '7', '11', '1', '40'),
+(136, '2', '11', '1', '82'),
+(137, '3', '11', '1', '90'),
+(138, '7', '11', '1', '40'),
+(139, '2', '11', '1', '82'),
+(140, '3', '11', '1', '90'),
+(141, '7', '11', '1', '40'),
+(142, '2', '11', '1', '82'),
+(143, '3', '11', '1', '90'),
+(144, '7', '11', '1', '40'),
+(145, '2', '11', '1', '82'),
+(146, '3', '11', '1', '90'),
+(147, '7', '11', '1', '40'),
+(148, '2', '11', '1', '82'),
+(149, '3', '11', '1', '90'),
+(150, '7', '11', '1', '40');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `marks_new`
+--
+
+CREATE TABLE `marks_new` (
+  `marks_id` int(11) NOT NULL,
+  `student_id` varchar(11) NOT NULL,
+  `subject_id` varchar(11) NOT NULL,
+  `term_id` varchar(11) NOT NULL,
+  `marks` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `marks_new`
+--
+
+INSERT INTO `marks_new` (`marks_id`, `student_id`, `subject_id`, `term_id`, `marks`) VALUES
+(1, '2', '11', '1', '91'),
+(2, '7', '11', '1', '23'),
+(3, '11', '11', '1', '67'),
+(4, '13', '11', '1', '77'),
+(5, '12', '11', '1', '54'),
+(6, '14', '11', '1', '87'),
+(7, '2', '11', '2', '97'),
+(8, '7', '11', '2', '44'),
+(9, '11', '11', '2', '68'),
+(10, '13', '11', '2', '77'),
+(11, '12', '11', '2', '65'),
+(12, '14', '11', '2', '89'),
+(19, '2', '9', '1', '56'),
+(20, '7', '9', '1', '78'),
+(21, '11', '9', '1', '90'),
+(22, '12', '9', '1', '34'),
+(23, '13', '9', '1', '67'),
+(24, '14', '9', '1', '87'),
+(25, '2', '16', '1', '69'),
+(26, '7', '16', '1', '78'),
+(27, '11', '16', '1', '64'),
+(28, '13', '16', '1', '83'),
+(29, '14', '16', '1', '92'),
+(30, '12', '16', '1', '100'),
+(31, '2', '12', '1', '90'),
+(32, '7', '12', '1', '89'),
+(33, '11', '12', '1', '76'),
+(34, '13', '12', '1', '54'),
+(35, '14', '12', '1', '32'),
+(36, '12', '12', '1', '67'),
+(37, '2', '15', '1', '54'),
+(38, '7', '15', '1', '68'),
+(39, '11', '15', '1', '98'),
+(40, '13', '15', '1', '23'),
+(41, '14', '15', '1', '43'),
+(42, '12', '15', '1', '90'),
+(43, '2', '14', '1', '42'),
+(44, '7', '14', '1', '51'),
+(45, '11', '14', '1', '60'),
+(46, '13', '14', '1', '74'),
+(47, '14', '14', '1', '85'),
+(48, '12', '14', '1', '12');
 
 -- --------------------------------------------------------
 
@@ -415,14 +450,26 @@ CREATE TABLE `parent` (
 INSERT INTO `parent` (`parent_id`, `firstname`, `lastname`, `city`, `childrenname`, `username`, `password`, `status`, `language`, `image`) VALUES
 (22, 'Selvasothy', 'Thangarajah', 'Jaffna', 'Anuraj', 'selva@gmail.com', '123', 'registered', 'Tamil', '../uploads/4783_File.png'),
 (23, 'www', 'vvv', 'Colombo', 'bbb', 'anurajselvasothy@gmail.com', '123456', 'registered', 'english', '../uploads/2502_File.gif'),
-(24, 'Aslam', 'Anwar', 'Kandy', 'Abdul', 'aslam@gmail.com', '88888888', 'registered', 'english', '../uploads/4174_File.png'),
-(25, 'Anderson', 'Williams', 'Colombo', 'Angela', 'anderson@gmail.com', '666666', 'registered', 'english', '../uploads/3056_File.jpeg'),
-(26, 'Paul', 'Raj', 'Galle', 'Lucy', 'paul@gmail.com', '777777', 'registered', 'english', '../uploads/5261_File.jpeg'),
-(27, 'Jimmy', 'Johns', 'Nuwara Eliya', 'Alison', 'jimmy@gmail.com', 'bbbbbb', 'registered', 'english', '../uploads/3320_File.png'),
-(28, 'John', 'mathew', 'Vavuniya', 'abc', 'john@gmail.com', 'cccccc', 'registered', 'english', '../uploads/2918_File.jpeg'),
-(29, 'Bruce', 'Wayne', 'Matara', 'Rose', 'bruce@gmail.com', 'eeeeee', 'registered', 'english', '../uploads/7159_File.jpeg'),
-(30, 'Willson', 'Thomas', 'Kegalle', 'Wade', 'willson@gmail.com', 'iiiiii', 'registered', 'english', '../uploads/1579_File.jpg'),
-(31, 'Dan', 'Thomas', 'Jaffna', 'Alex', 'dan@gmail.com', 'jjjjjj', 'registered', 'english', '../uploads/8026_File.jpg');
+(24, 'Amal', 'Perera', 'Kandy', 'Nethuni', 'Amal@gmail.com', '123456', 'registered', 'english', '../uploads/8872_File.png'),
+(25, 'Gayani', 'Jayaratne', 'Galle', 'Amali', 'Gayani@gmail.com', '123456', 'registered', 'english', '../uploads/7864_File.png'),
+(26, 'Jayantha', 'Silva', 'Colombo', 'Saman ', 'Jayantha@gmail.com', '123456', 'registered', 'english', '../uploads/3145_File.png');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `pastpapers`
+--
+
+CREATE TABLE `pastpapers` (
+  `file_id` int(11) NOT NULL,
+  `floc` varchar(500) NOT NULL,
+  `fdatein` varchar(200) NOT NULL,
+  `fdesc` varchar(100) NOT NULL,
+  `teacher_id` int(11) NOT NULL,
+  `class_id` int(11) NOT NULL,
+  `fname` varchar(100) NOT NULL,
+  `uploaded_by` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -519,6 +566,22 @@ INSERT INTO `quiz_question` (`quiz_question_id`, `quiz_id`, `question_text`, `qu
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `rankfiles`
+--
+
+CREATE TABLE `rankfiles` (
+  `id` int(11) NOT NULL,
+  `fdesc` varchar(100) NOT NULL,
+  `floc` varchar(500) NOT NULL,
+  `fdatein` varchar(500) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `fname` varchar(50) NOT NULL,
+  `uploaded_by` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `result_files`
 --
 
@@ -529,20 +592,25 @@ CREATE TABLE `result_files` (
   `fdatein` varchar(200) NOT NULL,
   `fdesc` varchar(100) NOT NULL,
   `teacher_id` int(11) NOT NULL,
-  `class_id` int(11) NOT NULL,
   `fname` varchar(100) NOT NULL,
-  `uploaded_by` varchar(100) NOT NULL
+  `uploaded_by` varchar(100) NOT NULL,
+  `class_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `result_files`
 --
 
-INSERT INTO `result_files` (`exam_id`, `file_id`, `floc`, `fdatein`, `fdesc`, `teacher_id`, `class_id`, `fname`, `uploaded_by`) VALUES
-(10, 9, 'teacher/uploads/6429_File.xlsx', '2024-04-22 00:23:05', 'Lesson 1', 5, 10, 'Grade 10', 'aaa bbb'),
-(10, 10, 'teacher/uploads/7833_File.xlsx', '2024-04-22 00:26:34', 'Term 1 Results', 5, 10, 'Grade 10', 'aaa bbb'),
-(10, 11, 'teacher/uploads/4707_File.xlsx', '2024-04-22 00:28:34', 'Term 1 Results', 5, 10, 'Grade 10', 'aaa bbb'),
-(10, 12, 'teacher/uploads/5723_File.xlsx', '2024-04-22 00:59:20', 'Session 1', 5, 10, 'Nethma k', 'aaa bbb');
+INSERT INTO `result_files` (`exam_id`, `file_id`, `floc`, `fdatein`, `fdesc`, `teacher_id`, `fname`, `uploaded_by`, `class_id`) VALUES
+(7, 4, 'teacher/uploads/7179_File.xlsx', '2024-04-28 15:53:36', '11C Term Test', 5, '11C Term 1 History Results.xlsx', 'aaa bbb', 12),
+(8, 5, 'teacher/uploads/6989_File.xlsx', '2024-04-28 15:55:26', '11C Term Test', 5, '11C Term 2 History Results.xlsx', 'aaa bbb', 12),
+(9, 6, 'teacher/uploads/9701_File.xlsx', '2024-04-28 16:31:45', 'Term 1 maths marks', 3, 'Maths.xlsx', 'aaaa bbb', 15),
+(9, 7, 'teacher/uploads/4372_File.xlsx', '2024-04-28 16:33:11', 'Term 1 maths marks', 3, 'Maths.xlsx', 'aaaa bbb', 15),
+(9, 8, 'teacher/uploads/3170_File.xlsx', '2024-04-28 16:38:56', 'Term 1 maths marks', 3, 'Maths.xlsx', 'aaaa bbb', 15),
+(10, 9, 'teacher/uploads/6603_File.xlsx', '2024-04-28 16:54:24', 'Students marks for Term 1 Sinhala', 8, 'Sinhala.xlsx', 'ccc ddd', 20),
+(11, 10, 'teacher/uploads/9445_File.xlsx', '2024-04-28 16:55:52', 'Students marks for Term 1 English', 9, 'English.xlsx', 'ddd eee', 16),
+(12, 11, 'teacher/uploads/7326_File.xlsx', '2024-04-28 17:01:08', 'Student Term1 Buddhism Subject marks', 7, 'Buddhism.xlsx', 'bbb ccc', 19),
+(13, 12, 'teacher/uploads/9026_File.xlsx', '2024-04-28 17:02:55', 'Students marks for Term 1', 6, 'Science.xlsx', 'rrr qqq', 18);
 
 -- --------------------------------------------------------
 
@@ -551,12 +619,62 @@ INSERT INTO `result_files` (`exam_id`, `file_id`, `floc`, `fdatein`, `fdesc`, `t
 --
 
 CREATE TABLE `result_file_marks` (
+  `result_id` int(11) NOT NULL,
   `student_id` int(11) NOT NULL,
-  `teacher_class_id` int(11) NOT NULL,
-  `marks` int(11) NOT NULL,
-  `exam_id` int(11) NOT NULL,
-  `grade` varchar(10) NOT NULL
+  `teacher_class_id` varchar(11) NOT NULL,
+  `marks` varchar(11) NOT NULL,
+  `grade` varchar(100) NOT NULL,
+  `exam_id` varchar(11) NOT NULL,
+  `date` date NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `result_file_marks`
+--
+
+INSERT INTO `result_file_marks` (`result_id`, `student_id`, `teacher_class_id`, `marks`, `grade`, `exam_id`, `date`) VALUES
+(1, 2, '12', '91', 'A', '7', '2024-03-12'),
+(2, 7, '12', '23', 'W', '7', '2024-03-12'),
+(3, 11, '12', '67', 'B', '7', '2024-03-12'),
+(4, 13, '12', '77', 'A', '7', '2024-03-12'),
+(5, 12, '12', '54', 'C', '7', '2024-03-12'),
+(6, 14, '12', '87', 'A', '7', '2024-03-12'),
+(7, 2, '12', '97', 'A', '8', '2024-04-28'),
+(8, 7, '12', '44', 'S', '8', '2024-04-28'),
+(9, 11, '12', '68', 'B', '8', '2024-04-28'),
+(10, 13, '12', '77', 'A', '8', '2024-04-28'),
+(11, 12, '12', '65', 'B', '8', '2024-04-28'),
+(12, 14, '12', '89', 'A', '8', '2024-04-28'),
+(20, 2, '15', '56', 'C', '9', '2024-04-28'),
+(21, 7, '15', '78', 'A', '9', '2024-04-28'),
+(22, 11, '15', '90', 'A', '9', '2024-04-28'),
+(23, 12, '15', '34', 'S', '9', '2024-04-28'),
+(24, 13, '15', '67', 'B', '9', '2024-04-28'),
+(25, 14, '15', '87', 'A', '9', '2024-04-28'),
+(26, 2, '20', '69', 'B', '10', '2024-04-28'),
+(27, 7, '20', '78', 'A', '10', '2024-04-28'),
+(28, 11, '20', '64', 'B', '10', '2024-04-28'),
+(29, 13, '20', '83', 'A', '10', '2024-04-28'),
+(30, 14, '20', '92', 'A', '10', '2024-04-28'),
+(31, 12, '20', '100', 'A', '10', '2024-04-28'),
+(32, 2, '16', '90', 'A', '11', '2024-04-28'),
+(33, 7, '16', '89', 'A', '11', '2024-04-28'),
+(34, 11, '16', '76', 'A', '11', '2024-04-28'),
+(35, 13, '16', '54', 'C', '11', '2024-04-28'),
+(36, 14, '16', '32', 'W', '11', '2024-04-28'),
+(37, 12, '16', '67', 'B', '11', '2024-04-28'),
+(38, 2, '19', '54', 'C', '12', '2024-04-28'),
+(39, 7, '19', '68', 'B', '12', '2024-04-28'),
+(40, 11, '19', '98', 'A', '12', '2024-04-28'),
+(41, 13, '19', '23', 'W', '12', '2024-04-28'),
+(42, 14, '19', '43', 'S', '12', '2024-04-28'),
+(43, 12, '19', '90', 'A', '12', '2024-04-28'),
+(44, 2, '18', '42', 'S', '13', '2024-04-28'),
+(45, 7, '18', '51', 'C', '13', '2024-04-28'),
+(46, 11, '18', '60', 'B', '13', '2024-04-28'),
+(47, 13, '18', '74', 'B', '13', '2024-04-28'),
+(48, 14, '18', '85', 'A', '13', '2024-04-28'),
+(49, 12, '18', '12', 'W', '13', '2024-04-28');
 
 -- --------------------------------------------------------
 
@@ -578,15 +696,71 @@ CREATE TABLE `schedule` (
 --
 
 INSERT INTO `schedule` (`schedule_id`, `teacher_id`, `subject_id`, `class_id`, `date`, `time`) VALUES
-(9, 5, 11, 10, 'Monday', '15:00'),
 (10, 5, 11, 12, 'Tuesday', '18:00'),
 (11, 4, 11, 14, 'Wednesday', '12:00:00'),
 (12, 4, 11, 13, 'Saturday', '08:30:00'),
 (13, 9, 12, 16, 'Tuesday', '09:00:00'),
-(14, 6, 14, 18, 'Wednesday', '09:00:00'),
-(15, 7, 15, 19, 'Friday', '10:30:00'),
-(16, 8, 16, 20, 'Thursday', '15:00:00'),
-(17, 3, 9, 15, 'Sunday', '18:00:00');
+(14, 3, 9, 15, 'Tuesday', '08:30:00'),
+(15, 6, 14, 18, 'Sunday', '15:00:00'),
+(16, 7, 15, 19, 'Monday', '09:00:00'),
+(17, 8, 16, 20, 'Wednesday', '12:00:00');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `scienceflashcrd`
+--
+
+CREATE TABLE `scienceflashcrd` (
+  `id` int(11) NOT NULL,
+  `bundle_id` int(11) NOT NULL,
+  `question` text NOT NULL,
+  `answer` text NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `scienceflashcrd`
+--
+
+INSERT INTO `scienceflashcrd` (`id`, `bundle_id`, `question`, `answer`, `created_at`) VALUES
+(1, 0, 'aaaa', 'drfrf', '2024-04-27 07:15:15'),
+(2, 2, 'asa', 'ada', '2024-04-27 07:21:47'),
+(3, 2, 'fgd', 'dfgfd', '2024-04-27 07:21:47'),
+(4, 3, 'what is the power', 'power is the strength that someone has', '2024-04-27 07:30:07'),
+(5, 4, 'definition', 'asd', '2024-04-27 07:40:03'),
+(6, 5, '', '', '2024-04-27 07:53:24'),
+(7, 6, '', '', '2024-04-27 07:55:29'),
+(8, 7, 'Zsdsd', 'qqwq', '2024-04-27 08:15:17'),
+(9, 8, 'qqq', 'dsds', '2024-04-27 08:16:55');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `scienceflashcrd_bundle`
+--
+
+CREATE TABLE `scienceflashcrd_bundle` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `subject` text NOT NULL,
+  `bundle_name` text NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `scienceflashcrd_bundle`
+--
+
+INSERT INTO `scienceflashcrd_bundle` (`id`, `user_id`, `subject`, `bundle_name`, `created_at`) VALUES
+(1, 1, 'Shared Flashcards', '', '2024-04-27 07:15:15'),
+(2, 0, 'Shared Flashcards', '', '2024-04-27 07:21:47'),
+(3, 0, 'Science', '', '2024-04-27 07:30:07'),
+(4, 0, 'Science', '', '2024-04-27 07:40:03'),
+(5, 0, 'Science', '', '2024-04-27 07:53:24'),
+(6, 0, 'Science', '', '2024-04-27 07:55:29'),
+(7, 0, 'History', '', '2024-04-27 08:15:17'),
+(8, 0, 'Science', 'aasa', '2024-04-27 08:16:55');
 
 -- --------------------------------------------------------
 
@@ -615,13 +789,9 @@ INSERT INTO `student` (`student_id`, `firstname`, `lastname`, `gender`, `usernam
 (2, 'bbb', 'ccc', 'male', 'eee@gmail.com', '123', 'sinhala', '11', 'registered', '../uploads/5555_File.jpg'),
 (7, 'abc', 'def', 'male', 'anu@gmail.com', '111', 'Tamil', '10', 'registered', '../uploads/4444_File.jpg'),
 (11, 'Anuraj', 'Selvasothy', 'male', 'anuraj@gmail.com', '111111', 'Tamil', '11', 'registered', '../uploads/1999_File.jpg'),
-(12, 'Abdul', 'Anwar', 'male', 'abdul@gmail.com', '12345678', 'english', '10', 'registered', '../uploads/8801_File.png'),
-(13, 'Angela', 'Anderson', 'female', 'angela@gmail.com', '555555', 'english', '10', 'registered', '../uploads/1704_File.jpeg'),
-(14, 'Lucy', 'Paul', 'female', 'lucy@gmail.com', '999999', 'english', '10', 'registered', '../uploads/6997_File.png'),
-(15, 'Alison', 'Jimmy', 'female', 'alison@gmail.com', 'aaaaaa', 'english', '10', 'registered', '../uploads/3682_File.jpeg'),
-(16, 'Rose', 'Bruce', 'female', 'rose@gmail.com', 'dddddd', 'english', '10', 'registered', '../uploads/4320_File.jpeg'),
-(17, 'Wade ', 'Willson', 'male', 'wade123@gmail.com', 'eeeeee', 'english', '10', 'registered', '../uploads/2816_File.jpg'),
-(18, 'Alex', 'Dan', 'male', 'alex345@gmail.com', 'ffffff', 'english', '10', 'registered', '../uploads/5084_File.jpeg');
+(12, 'Nethuni', 'Perera', 'female', 'nethuni@gmail.com', '123456', 'english', '10', 'registered', '../uploads/4546_File.png'),
+(13, 'Amali', 'Jayaratne', 'female', 'amali@gmail.com', '123456', 'english', '10', 'registered', '../uploads/8780_File.png'),
+(14, 'Saman', 'Silva', 'male', 'saman@gmail.com', '123456', 'english', '10', 'registered', '../uploads/6915_File.png');
 
 -- --------------------------------------------------------
 
@@ -643,10 +813,16 @@ CREATE TABLE `student_attendance` (
 --
 
 INSERT INTO `student_attendance` (`attendance_id`, `student_id`, `teacher_id`, `class_id`, `date`, `status`) VALUES
-(1, 2, 5, 12, '2024-04-30', 'present'),
-(2, 2, 5, 12, '2024-04-23', 'present'),
-(3, 18, 5, 12, '2024-04-23', 'absent'),
-(4, 17, 5, 12, '2024-04-23', 'present');
+(1, 0, 5, 12, '2024-05-07', 'absent'),
+(2, 2, 5, 12, '2024-04-16', 'present'),
+(3, 7, 5, 12, '2024-04-16', 'present'),
+(4, 11, 5, 12, '2024-04-16', 'present'),
+(5, 2, 5, 12, '2024-04-23', 'present'),
+(6, 7, 5, 12, '2024-04-23', 'absent'),
+(7, 11, 5, 12, '2024-04-23', 'present'),
+(8, 2, 5, 12, '2024-04-09', 'present'),
+(9, 7, 5, 12, '2024-04-09', 'absent'),
+(10, 11, 5, 12, '2024-04-09', 'absent');
 
 -- --------------------------------------------------------
 
@@ -668,11 +844,20 @@ CREATE TABLE `student_class` (
 
 INSERT INTO `student_class` (`student_schedule_id`, `student_id`, `schedule_id`, `class_id`, `status`) VALUES
 (46, 2, 7, 8, 'joined'),
+(48, 2, 10, 12, 'leave'),
 (49, 2, 12, 13, 'joined'),
 (50, 2, 12, 13, 'joined'),
-(52, 2, 10, 12, 'leave'),
-(53, 18, 10, 12, 'joined'),
-(54, 17, 10, 12, 'joined');
+(53, 2, 10, 12, 'joined'),
+(54, 7, 10, 12, 'joined'),
+(55, 11, 10, 12, 'joined'),
+(56, 13, 10, 12, 'joined'),
+(57, 12, 10, 12, 'joined'),
+(58, 14, 10, 12, 'joined'),
+(59, 2, 15, 18, 'joined'),
+(60, 2, 14, 15, 'joined'),
+(61, 2, 13, 16, 'joined'),
+(62, 2, 17, 20, 'joined'),
+(63, 2, 16, 19, 'joined');
 
 -- --------------------------------------------------------
 
@@ -737,7 +922,7 @@ CREATE TABLE `teacher` (
 
 INSERT INTO `teacher` (`teacher_id`, `firstname`, `lastname`, `username`, `password`, `subject`, `status`, `language`, `image`) VALUES
 (3, 'aaaa', 'bbb', 'aaaa@gmail.com', '123', 'Maths', 'registered', 'English', '../uploads/2222_File.jpeg'),
-(5, 'aaa', 'bbb', 'aaa@gmail.com', '111', 'History', 'registered', 'english', '../uploads/5681_File.png'),
+(5, 'aaa', 'bbb', 'aaa@gmail.com', '111', 'History', 'registered', 'english', '../uploads/3528_File.png'),
 (6, 'rrr', 'qqq', 'rrr@gmail.com', '000000', 'Science', 'registered', 'english', '../uploads/3443_File.png'),
 (7, 'bbb', 'ccc', 'bbb@gmail.com', '111111', 'Buddhism', 'registered', 'sinhala', '../uploads/1053_File.png'),
 (8, 'ccc', 'ddd', 'ccc@gmail.com', '222222', 'Sinhala', 'registered', 'sinhala', '../uploads/1476_File.jpeg'),
@@ -764,13 +949,13 @@ CREATE TABLE `teacher_class` (
 INSERT INTO `teacher_class` (`teacher_class_id`, `class_name`, `teacher_id`, `grade_id`, `subject_id`) VALUES
 (10, '11A', 5, 102, 11),
 (11, '11B', 5, 102, 11),
-(12, 'History', 5, 101, 11),
+(12, '11C', 5, 101, 11),
 (13, 'History1', 4, 101, 11),
 (14, 'History 10A', 4, 101, 11),
 (15, 'Maths 101', 3, 101, 9),
 (16, 'English 01', 9, 102, 12),
 (17, 'English 02', 9, 101, 12),
-(18, 'English 01', 6, 101, 14),
+(18, 'Science 101', 6, 101, 14),
 (19, 'Buddhism 01', 7, 101, 15),
 (20, 'Sinhala 101', 8, 101, 16);
 
@@ -810,6 +995,28 @@ INSERT INTO `term` (`term_id`, `term_name`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `test`
+--
+
+CREATE TABLE `test` (
+  `fullname` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `email` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `phone` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `course` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+--
+-- Dumping data for table `test`
+--
+
+INSERT INTO `test` (`fullname`, `email`, `phone`, `course`) VALUES
+('a', 'a@gmai.com', '12345', 'mba'),
+('b', 'b@gmail.com', '12345', 'mba'),
+('c', 'c@gmail.com', '12345', 'mba');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `userlist`
 --
 
@@ -842,21 +1049,12 @@ INSERT INTO `userlist` (`firstname`, `lastname`, `role`, `status`, `userlistid`,
 ('ddd', 'eee', 'teacher', 'registered', 22, 'ddd@gmail.com', '333333', NULL),
 ('Anuraj', 'Selvasothy', 'student', 'registered', 23, 'anuraj@gmail.com', '111111', NULL),
 ('www', 'vvv', 'parent', 'registered', 24, 'anurajselvasothy@gmail.com', '123456', NULL),
-('Abdul', 'Anwar', 'student', 'registered', 25, 'abdul@gmail.com', '12345678', NULL),
-('Aslam', 'Anwar', 'parent', 'registered', 26, 'aslam@gmail.com', '88888888', NULL),
-('Angela', 'Anderson', 'student', 'registered', 27, 'angela@gmail.com', '555555', NULL),
-('Anderson', 'Williams', 'parent', 'registered', 28, 'anderson@gmail.com', '666666', NULL),
-('Lucy', 'Paul', 'student', 'registered', 29, 'lucy@gmail.com', '999999', NULL),
-('Paul', 'Raj', 'parent', 'registered', 30, 'paul@gmail.com', '777777', NULL),
-('Alison', 'Jimmy', 'student', 'registered', 31, 'alison@gmail.com', 'aaaaaa', NULL),
-('Jimmy', 'Johns', 'parent', 'registered', 32, 'jimmy@gmail.com', 'bbbbbb', NULL),
-('John', 'mathew', 'parent', 'registered', 33, 'john@gmail.com', 'cccccc', NULL),
-('Rose', 'Bruce', 'student', 'registered', 34, 'rose@gmail.com', 'dddddd', NULL),
-('Bruce', 'Wayne', 'parent', 'registered', 35, 'bruce@gmail.com', 'eeeeee', NULL),
-('Wade ', 'Willson', 'student', 'registered', 36, 'wade123@gmail.com', 'eeeeee', NULL),
-('Willson', 'Thomas', 'parent', 'registered', 37, 'willson@gmail.com', 'iiiiii', NULL),
-('Alex', 'Dan', 'student', 'registered', 38, 'alex345@gmail.com', 'ffffff', NULL),
-('Dan', 'Thomas', 'parent', 'registered', 39, 'dan@gmail.com', 'jjjjjj', NULL);
+('Nethuni', 'Perera', 'student', 'registered', 25, 'nethuni@gmail.com', '123456', NULL),
+('Amal', 'Perera', 'parent', 'registered', 26, 'Amal@gmail.com', '123456', NULL),
+('Amali', 'Jayaratne', 'student', 'registered', 27, 'amali@gmail.com', '123456', NULL),
+('Gayani', 'Jayaratne', 'parent', 'registered', 28, 'Gayani@gmail.com', '123456', NULL),
+('Saman', 'Silva', 'student', 'registered', 29, 'saman@gmail.com', '123456', NULL),
+('Jayantha', 'Silva', 'parent', 'registered', 30, 'Jayantha@gmail.com', '123456', NULL);
 
 -- --------------------------------------------------------
 
@@ -932,8 +1130,7 @@ ALTER TABLE `class_subject_overview`
 -- Indexes for table `exam_results`
 --
 ALTER TABLE `exam_results`
-  ADD PRIMARY KEY (`exam_id`),
-  ADD UNIQUE KEY `unique_subject_class_exam` (`subject_id`,`class_id`);
+  ADD PRIMARY KEY (`exam_id`);
 
 --
 -- Indexes for table `feedback`
@@ -948,19 +1145,6 @@ ALTER TABLE `files`
   ADD PRIMARY KEY (`file_id`);
 
 --
--- Indexes for table `flashcards`
---
-ALTER TABLE `flashcards`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `bundle_id` (`bundle_id`);
-
---
--- Indexes for table `flashcard_bundles`
---
-ALTER TABLE `flashcard_bundles`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indexes for table `leaverequests`
 --
 ALTER TABLE `leaverequests`
@@ -970,6 +1154,12 @@ ALTER TABLE `leaverequests`
 -- Indexes for table `marks`
 --
 ALTER TABLE `marks`
+  ADD PRIMARY KEY (`marks_id`);
+
+--
+-- Indexes for table `marks_new`
+--
+ALTER TABLE `marks_new`
   ADD PRIMARY KEY (`marks_id`);
 
 --
@@ -983,6 +1173,12 @@ ALTER TABLE `notification`
 --
 ALTER TABLE `parent`
   ADD PRIMARY KEY (`parent_id`);
+
+--
+-- Indexes for table `pastpapers`
+--
+ALTER TABLE `pastpapers`
+  ADD PRIMARY KEY (`file_id`);
 
 --
 -- Indexes for table `products`
@@ -1009,16 +1205,40 @@ ALTER TABLE `quiz_question`
   ADD PRIMARY KEY (`quiz_question_id`);
 
 --
+-- Indexes for table `rankfiles`
+--
+ALTER TABLE `rankfiles`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `result_files`
 --
 ALTER TABLE `result_files`
   ADD PRIMARY KEY (`file_id`);
 
 --
+-- Indexes for table `result_file_marks`
+--
+ALTER TABLE `result_file_marks`
+  ADD PRIMARY KEY (`result_id`);
+
+--
 -- Indexes for table `schedule`
 --
 ALTER TABLE `schedule`
   ADD PRIMARY KEY (`schedule_id`);
+
+--
+-- Indexes for table `scienceflashcrd`
+--
+ALTER TABLE `scienceflashcrd`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `scienceflashcrd_bundle`
+--
+ALTER TABLE `scienceflashcrd_bundle`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `student`
@@ -1130,7 +1350,7 @@ ALTER TABLE `class_subject_overview`
 -- AUTO_INCREMENT for table `exam_results`
 --
 ALTER TABLE `exam_results`
-  MODIFY `exam_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `exam_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `feedback`
@@ -1142,31 +1362,25 @@ ALTER TABLE `feedback`
 -- AUTO_INCREMENT for table `files`
 --
 ALTER TABLE `files`
-  MODIFY `file_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
-
---
--- AUTO_INCREMENT for table `flashcards`
---
-ALTER TABLE `flashcards`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
-
---
--- AUTO_INCREMENT for table `flashcard_bundles`
---
-ALTER TABLE `flashcard_bundles`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `file_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `leaverequests`
 --
 ALTER TABLE `leaverequests`
-  MODIFY `leaverequest_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `leaverequest_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `marks`
 --
 ALTER TABLE `marks`
-  MODIFY `marks_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=133;
+  MODIFY `marks_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=151;
+
+--
+-- AUTO_INCREMENT for table `marks_new`
+--
+ALTER TABLE `marks_new`
+  MODIFY `marks_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 
 --
 -- AUTO_INCREMENT for table `notification`
@@ -1178,7 +1392,13 @@ ALTER TABLE `notification`
 -- AUTO_INCREMENT for table `parent`
 --
 ALTER TABLE `parent`
-  MODIFY `parent_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `parent_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+
+--
+-- AUTO_INCREMENT for table `pastpapers`
+--
+ALTER TABLE `pastpapers`
+  MODIFY `file_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `products`
@@ -1205,10 +1425,22 @@ ALTER TABLE `quiz_question`
   MODIFY `quiz_question_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
+-- AUTO_INCREMENT for table `rankfiles`
+--
+ALTER TABLE `rankfiles`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `result_files`
 --
 ALTER TABLE `result_files`
   MODIFY `file_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
+-- AUTO_INCREMENT for table `result_file_marks`
+--
+ALTER TABLE `result_file_marks`
+  MODIFY `result_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 
 --
 -- AUTO_INCREMENT for table `schedule`
@@ -1217,22 +1449,34 @@ ALTER TABLE `schedule`
   MODIFY `schedule_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
+-- AUTO_INCREMENT for table `scienceflashcrd`
+--
+ALTER TABLE `scienceflashcrd`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
+-- AUTO_INCREMENT for table `scienceflashcrd_bundle`
+--
+ALTER TABLE `scienceflashcrd_bundle`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
 -- AUTO_INCREMENT for table `student`
 --
 ALTER TABLE `student`
-  MODIFY `student_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `student_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `student_attendance`
 --
 ALTER TABLE `student_attendance`
-  MODIFY `attendance_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `attendance_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `student_class`
 --
 ALTER TABLE `student_class`
-  MODIFY `student_schedule_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
+  MODIFY `student_schedule_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
 
 --
 -- AUTO_INCREMENT for table `student_class_quiz`
@@ -1274,29 +1518,13 @@ ALTER TABLE `term`
 -- AUTO_INCREMENT for table `userlist`
 --
 ALTER TABLE `userlist`
-  MODIFY `userlistid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+  MODIFY `userlistid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
   MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
---
--- Constraints for dumped tables
---
-
---
--- Constraints for table `flashcards`
---
-ALTER TABLE `flashcards`
-  ADD CONSTRAINT `flashcards_ibfk_1` FOREIGN KEY (`bundle_id`) REFERENCES `flashcard_bundles` (`id`) ON DELETE CASCADE;
-
---
--- Constraints for table `flashcard_bundles`
---
-ALTER TABLE `flashcard_bundles`
-  ADD CONSTRAINT `flashcard_bundles_ibfk_1` FOREIGN KEY (`id`) REFERENCES `userlist` (`userlistid`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -126,12 +126,12 @@ if (isset($_POST['delete'])){
         
     for($i=0; $i < $N; $i++)
     {
-        $result = mysqli_query($link,"DELETE from marks_new
-        where marks_id='$id[$i]'");
+        $result = mysqli_query($link,"DELETE from average
+        where average_id='$id[$i]'");
     }
 ?>
 <script>
-    window.location = "term1.php";
+    window.location = "term1rank.php";
 </script>
 
 <?php
