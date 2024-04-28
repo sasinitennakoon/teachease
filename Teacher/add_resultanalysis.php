@@ -168,18 +168,17 @@ if(isset($_POST['save'])) {
         foreach ($data as $row) {
             if ($count > 0) {
                 $id = $row[0];
-                $class = $row[1];
-                $mark = $row[2];
-                $grade = $row[3];
-                $subject = $row[4];
-                $term = $row[5];
-                $rank=$row[6];
+                $class = $_POST['class_id'];
+                $mark = $row[1];
+                $grade = $row[2];
+                $subject = $row[3];
+                $term = $row[4];
                 $exam_id = $_GET['exam_id'];
 
                 $studentQuery = "INSERT INTO result_file_marks (student_id, teacher_class_id, marks, grade,exam_id,date) VALUES ('$id', '$class', '$mark', '$grade','$exam_id',now())";
                 mysqli_query($link, $studentQuery) or die(mysqli_error($link));
 
-                $markQuery = "INSERT INTO marks_new (student_id, subject_id, marks, term_id,rank) VALUES ('$id', '$subject', '$mark', '$term','$rank')";
+                $markQuery = "INSERT INTO marks_new (student_id, subject_id, marks, term_id) VALUES ('$id', '$subject', '$mark', '$term')";
                 mysqli_query($link, $markQuery) or die(mysqli_error($link));
             } else {
                 $count = 1; // Skip the first (header) row
