@@ -65,7 +65,7 @@
                 <p><b>Buddhism</b></p>
             </div>
 
-            <div class="panel12" onclick="window.location.href='historymate.php';">
+            <div class="panel12" onclick="window.location.href='historymaterial.php';">
                 <p><b>History</b></p>
             </div>
         </div>

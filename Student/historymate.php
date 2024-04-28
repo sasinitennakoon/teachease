@@ -1,92 +1,105 @@
+<?php
+include '../database/db_con.php';
+
+// Retrieve schedule_id from GET parameters
+$schedule_id = $_GET['schedule_id'];
+
+// Check if schedule_id is valid
+if ($schedule_id === null) {
+    echo "No schedule ID provided.";
+    exit;
+}
+
+// Query to get class_id based on schedule_id
+$classQuery = $link->prepare("SELECT class_id FROM schedule WHERE schedule_id = ?");
+$classQuery->bind_param("i", $schedule_id);
+$classQuery->execute();
+
+// Fetch the class_id
+$classResult = $classQuery->get_result();
+$class_id = null;
+
+if ($classResult->num_rows > 0) {
+    $classRow = $classResult->fetch_assoc();
+    $class_id = $classRow['class_id'];
+} else {
+    echo "Invalid schedule ID.";
+    exit;
+}
+
+// Query to fetch data from the 'files' table based on class_id
+$sql = "SELECT files.*, schedule.schedule_id
+        FROM files
+        INNER JOIN schedule ON schedule.class_id = files.class_id
+        WHERE schedule.schedule_id = ?";
+
+// Prepare and bind the parameter
+$stmt = $link->prepare($sql);
+$stmt->bind_param("i", $schedule_id);
+
+// Execute the query and fetch the result
+$stmt->execute();
+$result = $stmt->get_result();
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Student Dashboard</title>
-    <!--<link rel="stylesheet" href="../admin/css/dashboard.css"> -->
+    <link rel="stylesheet" href="././css/dashboard.css">
+    <link rel="stylesheet" href="././css/general.css">
     <link rel="stylesheet" href="./css/sciencemate.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+
 </head>
-
 <body>
-<?php include 'dropdown2.php'; ?>
-
-<button onclick="goBack()">Go to Dashboard</button>
 
 <div class="content">
-     
-    <div class="panel21">
-        <div class="image-container">
-            <img src="./img/HI.gif">
-            
-        </div> 
-        <div class="card"> 
-            <p>1.Industrial Revolution</p>
-                <a href="./docs/s10tim110.pdf"><i class="fas fa-file-pdf fa-2x" style="color: red;"></i>&nbsp;2024.01.25 Slide Set</a><br><br>
-                <a href="./docs/s10tim110.pdf"><i class="far fa-sticky-note fa-2x" style="color: blue;"></i>&nbsp;Notes</a><br><br>
-                <a href="./docs/s10tim110.pdf"><i class="fas fa-external-link-alt fa-2x" style="color: rgb(0, 0, 0);"></i>&nbsp;Additional References</a>
-        </div>   
-        <hr>
-        <div class="card"> 
-            <p>2.Establishment of Bitish Power in Sri Lanka</p>
-            <a href="./docs/s10tim110.pdf"><i class="fas fa-file-pdf fa-2x" style="color: red;"></i>&nbsp;2024.01.25 Slide Set</a><br><br>
-            <a href="./docs/s10tim110.pdf"><i class="far fa-sticky-note fa-2x" style="color: blue;"></i>&nbsp;Notes</a><br><br>
-            <a href="./docs/s10tim110.pdf"><i class="fas fa-external-link-alt fa-2x" style="color: rgb(0, 0, 0);"></i>&nbsp;Additional References</a>
-        </div>
-        <hr>
-        <div class="card"> 
-            <p>3.National Renaissance in Sri Lanka</p>
-            <a href="./docs/s10tim110.pdf"><i class="fas fa-file-pdf fa-2x" style="color: red;"></i>&nbsp;2024.01.25 Slide Set</a><br><br>
-            <a href="./docs/s10tim110.pdf"><i class="far fa-sticky-note fa-2x" style="color: blue;"></i>&nbsp;Notes</a><br><br>
-            <a href="./docs/s10tim110.pdf"><i class="fas fa-external-link-alt fa-2x" style="color: rgb(0, 0, 0);"></i>&nbsp;Additional References</a>
-        </div>
-        <hr>
-        <div class="card"> 
-            <p>4.Political Chnages in Sri Lanka under the British</p>
-            <a href="./docs/s10tim110.pdf"><i class="fas fa-file-pdf fa-2x" style="color: red;"></i>&nbsp;2024.01.25 Slide Set</a><br><br>
-            <a href="./docs/s10tim110.pdf"><i class="far fa-sticky-note fa-2x" style="color: blue;"></i>&nbsp;Notes</a><br><br>
-            <a href="./docs/s10tim110.pdf"><i class="fas fa-external-link-alt fa-2x" style="color: rgb(0, 0, 0);"></i>&nbsp;Additional References</a>
-        </div>
-        <hr>
-        <div class="card"> 
-            <p>Social Changes in Sri Lanka under the British</p>
-            <a href="./docs/s10tim110.pdf"><i class="fas fa-file-pdf fa-2x" style="color: red;"></i>&nbsp;2024.01.25 Slide Set</a><br><br>
-            <a href="./docs/s10tim110.pdf"><i class="far fa-sticky-note fa-2x" style="color: blue;"></i>&nbsp;Notes</a><br><br>
-            <a href="./docs/s10tim110.pdf"><i class="fas fa-external-link-alt fa-2x" style="color: rgb(0, 0, 0);"></i>&nbsp;Additional References</a>
-        </div>
-        <hr>
-        <div class="card"> 
-            <p> 6.Receiving of Independence to Sri Lanka</p>
-            <a href="./docs/s10tim110.pdf"><i class="fas fa-file-pdf fa-2x" style="color: red;"></i>&nbsp;2024.01.25 Slide Set</a><br><br>
-            <a href="./docs/s10tim110.pdf"><i class="far fa-sticky-note fa-2x" style="color: blue;"></i>&nbsp;Notes</a><br><br>
-            <a href="./docs/s10tim110.pdf"><i class="fas fa-external-link-alt fa-2x" style="color: rgb(0, 0, 0);"></i>&nbsp;Additional References</a>
-        </div>
-        <hr>
-        <div class="card"> 
-            <p>7.Significant Revolutions in thr World</p>
-            <a href="./docs/s10tim110.pdf"><i class="fas fa-file-pdf fa-2x" style="color: red;"></i>&nbsp;2024.01.25 Slide Set</a><br><br>
-            <a href="./docs/s10tim110.pdf"><i class="far fa-sticky-note fa-2x" style="color: blue;"></i>&nbsp;Notes</a><br><br>
-            <a href="./docs/s10tim110.pdf"><i class="fas fa-external-link-alt fa-2x" style="color: rgb(0, 0, 0);"></i>&nbsp;Additional References</a>
-        </div>
-        <hr>
-        <div class="card"> 
-            <p>8.World Wars and Conventions</p>
-            <a href="./docs/s10tim110.pdf"><i class="fas fa-file-pdf fa-2x" style="color: red;"></i>&nbsp;2024.01.25 Slide Set</a><br><br>
-            <a href="./docs/s10tim110.pdf"><i class="far fa-sticky-note fa-2x" style="color: blue;"></i>&nbsp;Notes</a><br><br>
-            <a href="./docs/s10tim110.pdf"><i class="fas fa-external-link-alt fa-2x" style="color: rgb(0, 0, 0);"></i>&nbsp;Additional References</a>
-        </div>
+    <!-- Display the class_id -->
+    <h2>Slides for Class</h2>
+    <div class="panels1">
+                        <div class="panel10">
+                        <form method='post'>
+
+                        <table border="0">
+                    <thead>
+                        <tr>
+                            <th>File Name</th>
+                            <th>File Description</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+        <?php
+        // Check if the result has data
+        $filequery= mysqli_query($link,"SELECT files.*, schedule.schedule_id
+        FROM files
+        INNER JOIN schedule ON schedule.class_id = files.class_id
+        WHERE schedule.schedule_id = $schedule_id")or die(mysqli_error($link));
+        while($row = mysqli_fetch_array($filequery)){
+            $id  = $row['file_id'];
+        ?>
+    <tr>
+                            <td><?php echo $row['fname']; ?></td>
+                            <td><?php echo $row['fdesc']; ?></td>
+                            <td><div class="but"><button class="btn btn-info" onclick="window.location.href='<?php echo $row['floc']; ?>'">View </button></td>
+                        </tr>
+                    </tbody>
+				
+                </div>
+            </div>
     </div>
-    
+    <?php
+					}
+				
+				?>
+                    </body>
+                    </html>
 
-</div>
-
-
-
-
-<script>
-    function goBack() {
-            window.history.back();
-        }
-</script>
-
+<?php
+$stmt->close();
+$link->close();
+?>
