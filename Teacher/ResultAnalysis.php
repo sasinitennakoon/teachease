@@ -18,9 +18,10 @@ if(isset($_GET['exam_id'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Teacher Dashboard</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="./CSS/resultanalysischarts.css">
     <link rel="stylesheet" href="./CSS/FirstPage.css">
     <link rel="stylesheet" href="./CSS/ResultAnalysis.css">
-    <link rel="stylesheet" href="./CSS/resultanalysischarts.css">
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
     <!-- Latest FullCalendar CSS -->
@@ -143,7 +144,28 @@ if(isset($_GET['exam_id'])) {
 		</form>
 
         <div class="charts">
+<?php
+$query = "SELECT grade, marks FROM result_file_marks WHERE exam_id = $exam_id";
+$result = $link->query($query);
 
+// Data arrays
+$grades = [];
+$marks = [];
+
+if ($result->num_rows > 0) {
+    while ($row = $result->fetch_assoc()) {
+        $grades[] = $row['grade'];
+        $marks[] = $row['marks'];
+    }
+}
+
+$link->close();
+
+// Step 3: Convert data to JSON
+$grades_json = json_encode($grades);
+$marks_json = json_encode($marks);
+
+?>
         
         <div class="charts-card">
             <h2 class="chart-title" style="color: white;">Analysis of Overall Grades</h2>
@@ -187,6 +209,11 @@ if(isset($_GET['exam_id'])) {
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.35.5/apexcharts.min.js"></script>
     <!-- Custom JS -->
+    <script> // Step 4: Extract the data sent from PHP
+        const grades = <?php echo $grades_json; ?>;
+        const marks = <?php echo $marks_json; ?>;
+
+        </script>
 <script src="js/resultanalytics.js"></script>
 </body>
 </html>

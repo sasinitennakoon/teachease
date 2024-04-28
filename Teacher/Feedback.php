@@ -59,7 +59,7 @@
                              FROM teacher_class
                              WHERE teacher_id = '$session_id' 
                                AND teacher_class_id IN 
-                               (SELECT class_id FROM schedule)"
+                               (SELECT class_id FROM feedback)"
                         ) or die("Query failed: " . mysqli_error($link));
 
                         while ($class_row = mysqli_fetch_array($class_query)) {
