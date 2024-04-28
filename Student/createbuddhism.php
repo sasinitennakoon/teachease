@@ -73,7 +73,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["share"])) {
             <h3>Create Flashcard</h3>
             <div class="modal-section">
                 <h4>Your Subject:</h4>
-                <input type="text" id="flashCardSubject" value="Science" readonly> <!-- Display the subject as "Science" with readonly attribute -->
+                <input type="text" id="flashCardSubject" value="Buddhism" readonly> <!-- Display the subject as "Science" with readonly attribute -->
             </div>
             <div class="modal-section">
                 <h4>Enter the number of flashcards:</h4>

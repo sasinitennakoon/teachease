@@ -1,5 +1,3 @@
-<?php include 'dropdown2.php'; ?>
-
 <?php
     // Include your database connection file
     include '../database/db_con.php';
@@ -22,48 +20,115 @@
                 <title>View Flashcards</title>
                 <link rel="stylesheet" href="./css/flash.css">
                 <link rel="stylesheet" href="./css/general2.css">
-    <link rel="stylesheet" href="././css/dashboard.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+                <link rel="stylesheet" href="./css/dashboard.css">
+                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+                <style>
+                    /* Styling for flashcards */
+                    .flashcard-container {
+                        display: flex;
+                        flex-wrap: wrap;
+                        justify-content: center;
+                        gap: 20px;
+                        margin-top: 20px;
+                    }
+                .flashcard {
+                    width: 300px;
+                    height: 200px;
+                    perspective: 1000px;
+                    position: relative;
+                    margin-bottom: 20px;
+                }
+                .flashcard .front, .flashcard .back {
+                    width: 100%;
+                    height: 100%;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    backface-visibility: hidden;
+                    transition: transform 0.5s;
+                    border-radius: 10px;
+                    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                }
+                .flashcard .front {
+                    background-color: #FFD700; /* Golden */
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    font-size: 24px;
+                }
+                .flashcard .back {
+                    background-color: #90EE90; /* Light Green */
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    font-size: 24px;
+                    transform: rotateY(180deg);
+                }
+                .flashcard.flipped .front {
+                    transform: rotateY(180deg);
+                }
+                .flashcard.flipped .back {
+                    transform: rotateY(0deg);
+                }
+            
+                .flashcard .card-inner {
+                    width: 100%;
+                    height: 100%;
+                    position: absolute;
+                    transition: transform 0.8s ease;
+                    transform-style: preserve-3d;
+                    border-radius: 10px;
+                }
+                
+                .flashcard .front {
+                    background-color: #3498db; /* Blue */
+                }
+                .flashcard .back {
+                    background-color: #2ecc71; /* Green */
+                    transform: rotateY(180deg);
+                }
+                .flashcard.flipped .card-inner {
+                    transform: rotateY(180deg);
+                }
+                .flashcard {
+                    width: 300px;
+                    height: 200px;
+                    position: relative;
+                    margin-bottom: 20px;
+                    perspective: 1000px;
+                }
+                
+                </style>
             </head>
             <body>
-            <a href="scienceflash.php"><button>Go to Dashboard</button></a>
-                <h1><center>Flashcards in Bundle <?php echo $bundle_id; ?></center></h1>
+                <a href="scienceflash.php"><button>Go to Dashboard</button></a>
+                <h1 style="text-align: center;">Flashcards in Bundle <?php echo $bundle_id; ?></h1>
                 
-                <div class="content">
-   
-
-                <table id="myTable">
-                    <thead>
-                    <tr>
-                        <th></th>
-                        <th>Question</th>
-                        <th>Answer</th>
-                        <th>Edit</th>
-                        <th>Delete</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                       
+                <div class="flashcard-container">
                     <?php
-                        // Output flashcards
-                        while ($row = mysqli_fetch_assoc($result)) {
-                            echo "<div class='flashcard'>";?>
-                            <tr>
-                                <td></td>
-                         <td><?php echo $row["question"]; ?></td>
-                         <td><?php echo $row['answer']; ?></td>
-                           
-                          <td><?php  echo "<a style='text-decoration:none;' href='edit_flashcard.php?flashcard_id=" . $row['id'] . "'>Edit</a>"; ?></td>
-                          <td><?php  echo "<a style='text-decoration:none;'href='delete_flashcard.php?flashcard_id=" . $row['id'] . "'>Delete</a>"; ?></td>
-                        </tr>
-                          <?php
-                        }
+                    // Output flashcards
+                    while ($row = mysqli_fetch_assoc($result)) {
+                        ?>
+                        <div class="flashcard" onclick="flipCard(this)">
+                            <div class="front">
+                                <!-- Front side content (Question) -->
+                                <p><?php echo htmlspecialchars($row["question"]); ?></p>
+                            </div>
+                            <div class="back">
+                                <!-- Back side content (Answer) -->
+                                <p><?php echo htmlspecialchars($row["answer"]); ?></p>
+                            </div>
+                        </div>
+                        <?php
+                    }
                     ?>
-
-                    
-                    </tbody>
-                    </table>
                 </div>
+
+                <script>
+                    function flipCard(card) {
+                        card.classList.toggle('flipped');
+                    }
+                </script>
             </body>
             </html>
             <?php
@@ -77,5 +142,3 @@
     // Close the database connection
     mysqli_close($link);
 ?>
-
-
