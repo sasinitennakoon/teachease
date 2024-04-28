@@ -29,8 +29,19 @@
   $student_id = $row['student_id'];
 ?>
 
-<button onclick="goBack()">Go to Dashboard</button>
-
+<a href="childProgress.php"><button>Go to Dashboard</button></a>
+<?php 
+    $query = mysqli_query($link,"select * from marks_new where student_id = '$student_id' AND term_id='2'");
+    $count = mysqli_num_rows($query);
+    if($count < 6)
+    {
+       echo '<br/></br><br/></br><center><b>There is no marks available</b></center>';
+    }
+    else
+    {
+      $query = mysqli_query($link,"select * from marks_new where student_id = '$student_id' AND term_id='2'");
+    $row = mysqli_fetch_array($query) or die($mysqli_error($query));
+    ?>
 <div class="content">
   <div class="panelsD">
     <h2>2nd Term Marks</h2>
@@ -108,7 +119,7 @@
     </table>
   </div>
 </div>
-
+<?php } ?>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <script>

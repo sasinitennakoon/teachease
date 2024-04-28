@@ -108,7 +108,7 @@
 
         </br>
         <?php 
-             $query = mysqli_query($link,"select * from average where student_id = '$session_id' term_id = '1' ");
+             $query = mysqli_query($link,"select * from average where student_id = '$session_id' AND term_id = '1' ");
              $count = mysqli_num_rows($query);
 
              if($count <= 0 )

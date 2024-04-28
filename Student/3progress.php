@@ -21,7 +21,7 @@
 ?>
 <a href="Progress.php"><button>Go to Dashboard</button></a>
 <?php 
-    $query = mysqli_query($link,"select * from marks_new where student_id = '$student_id' AND term_id='1'");
+    $query = mysqli_query($link,"select * from marks_new where student_id = '$student_id' AND term_id='3'");
     $count = mysqli_num_rows($query);
     if($count <= 0 || $count != 6)
     {

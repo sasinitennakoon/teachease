@@ -44,7 +44,7 @@
         $query = mysqli_query($link,"select * from marks_new where student_id = '$session_id'");
         $count = mysqli_num_rows($query);
 
-        if($count <= 0 || $count != 18)
+        if($count < 6)
         {
           echo '<b>There is No Results available to you.</b>';
         }
@@ -61,7 +61,7 @@
      </div>
     </div>
 
-    <h3>You can analys Your Progress by this section</h3>
+    <h3>You can analyze Your Progress by this section</h3>
      <button class="but2" onclick="window.location.href='1progress.php';">1 st Term</button>
      <button class="but2" onclick="window.location.href='2progress.php';">2 nd Term</button>
      <button class="but2" onclick="window.location.href='3progress.php';">3 rd Term</button>
@@ -84,11 +84,12 @@
 
 
 <?php 
+     $student_id = $session_id;
     $query = mysqli_query($link,"select * from marks_new where student_id = '$student_id' AND term_id='1'");
     $count = mysqli_num_rows($query);
-    if($count != 6)
+    if($count < 6)
     {
-      echo '<b>Children Progress not available</b>';
+      echo '<b><center>Your Progress not available for Term 1</center></b>';
     }
     else
     {
@@ -96,7 +97,7 @@
  
         $sql = mysqli_query($link,"select * from marks_new where student_id='$student_id' AND subject_id = '14' AND term_id = '1'");
         $row = mysqli_fetch_array($sql);
-        //echo $row['marks'];
+        echo $row['marks'];
         $sc = $row['marks'];
         
         $sql = mysqli_query($link,"select * from marks_new where student_id='$student_id' AND subject_id = '9' AND term_id = '1'");
@@ -131,9 +132,11 @@
 <?php 
     $query = mysqli_query($link,"select * from marks_new where student_id = '$student_id' AND term_id='2'");
     $count = mysqli_num_rows($query);
-    if($count != 6)
+    if($count < 6)
     {
-      echo '<b>Children Progress not available</b>';
+      echo '<b><center>Your Progress not available for Term 2</center></b>';
+      $sc2 = $bu2 = $his2 = $eng2 = $math2 = $sin2 = 0;
+
     }
     else
     {
@@ -176,9 +179,10 @@
 <?php 
     $query = mysqli_query($link,"select * from marks_new where student_id = '$student_id' AND term_id='3'");
     $count = mysqli_num_rows($query);
-    if($count != 6)
+    if($count < 6)
     {
-      echo '<b>Children Progress not available</b>';
+      echo '<b><center>your Progress not available for Term 3</center></b>';
+      $sc3 = $bu3 = $his3 = $eng3 = $math3 = $sin3 = 0;
     }
     else
     {
