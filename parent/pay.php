@@ -63,7 +63,7 @@
                     $count = mysqli_num_rows($query);
                     if($count <= 0)
                     {
-                        echo '<b><center>There is No Payments Available for you.<center></b>';
+                        echo '<b><center>There is no Payments available for you.<center></b>';
                     }
                     else
                     {

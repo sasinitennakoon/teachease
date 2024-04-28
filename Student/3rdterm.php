@@ -41,10 +41,10 @@ $query2 = mysqli_query($link,"select * from parent where childrenname = '$studen
 $parent = mysqli_fetch_array($query2);
 $pname = $parent['firstname'];
 
-$query = mysqli_query($link,"select * from marks where student_id = '$session_id' AND term_id = '3'");
+$query = mysqli_query($link,"select * from marks_new where student_id = '$session_id' AND term_id = '3'");
               $count = mysqli_num_rows($query);
 
-              if($count <= 0)
+              if($count <= 0 || $count != 6)
               {
                   echo '<b><center>There is No Marks records to you.<center><b/>';
               }

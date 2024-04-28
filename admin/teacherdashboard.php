@@ -63,7 +63,8 @@
                             <td><?php echo $row['firstname']; ?></td>
                             <td><?php echo $row['lastname']; ?></td>
                             <td><?php echo $row['language']; ?></td>
-                            <td><?php echo $row['username']; ?></td>
+                            <?php $email=  $row['username']; ?>
+                            <td><?php echo "<a style='text-decoration:none;' href='mailto:$email'>$email</a>"; ?></td>
                             <input type="hidden" name="username[]" value='<?php echo $row['username']; ?>'>
                             <td><?php echo $row['subject']; ?></td>
                             <td><?php echo $row['status']; ?>

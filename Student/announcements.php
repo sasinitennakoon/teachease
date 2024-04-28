@@ -24,7 +24,7 @@
                 <ul>
                 <li><a href="studash.php"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
 
-            <li><a href="announcements.php" class="active"><i class="fas fa-tachometer-alt"></i> Announcements</a></li>
+            <li><a href="announcements.php" class="active"><i class="fas fa-bullhorn"></i> Announcements</a></li>
 
             <li><a href="MyCourses.php"><i class="fas fa-book"></i> My Courses</a></li>
             <li><a href="StudyMaterials.php"><i class="fas fa-book-open"></i> Study Materials</a></li>

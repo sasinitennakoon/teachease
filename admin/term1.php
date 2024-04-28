@@ -29,14 +29,14 @@
             <form method='post' onsubmit="return confirmDelete()">
             
             <?php
-                $query = mysqli_query($link,"SELECT marks.*, student.firstname, subject.subject_title,
+                $query = mysqli_query($link,"SELECT marks_new.*, student.firstname, subject.subject_title,
                                              MAX(student.firstname) AS firstname,
                                              MAX(subject.subject_title) AS subject
-                                             FROM marks
-                                             INNER JOIN student ON student.student_id = marks.student_id
-                                             INNER JOIN subject ON subject.subject_id = marks.subject_id
+                                             FROM marks_new
+                                             INNER JOIN student ON student.student_id = marks_new.student_id
+                                             INNER JOIN subject ON subject.subject_id = marks_new.subject_id
                                              WHERE term_id = '1'
-                                             GROUP BY marks.marks_id; ") or die(mysqli_error());
+                                             GROUP BY marks_new.marks_id; ") or die(mysqli_error());
                 $count  = mysqli_num_rows($query);
                 $total = 0;
                 if($count > 0)
@@ -74,34 +74,7 @@
                             </tr>
                         </tbody>
     
-                        <?php
-                        /*$newname = $row['firstname'];
-                                if($name ==  $newname)
-                                {
-                                    $total += $marks;
-                                    $query = mysqli_query($link,"select * from student where firstname  = '$name'");
-                                }
-                                else
-                                {
-                                    $average = $total / 6;
-                                    $query1 = mysqli_query($link, "SELECT * FROM average WHERE term_id = '1' ORDER BY average_marks DESC") or die(mysqli_error($link));
-                                    $rank = 1;
-                                    while ($row = mysqli_fetch_array($query1)) {
-                                        $student_avg = $row['average_marks'];
-                                        $prev_student_id = $row['student_id'];
-                                        if ($average > $student_avg) {
-                                            mysqli_query($link, "UPDATE average SET rank = rank + 1 WHERE term_id = '1' AND rank >= '$rank'") or die(mysqli_error($link));
-                                            mysqli_query($link, "INSERT INTO average (student_id, average_marks, term_id, rank) VALUES ('$student_id', '$average', '1', '$rank')") or die(mysqli_error($link));
-                                            break;
-                                        }
-                                        $rank++;
-                                    }
-                                    if ($rank > mysqli_num_rows($query1)) {
-                                        mysqli_query($link, "INSERT INTO average (student_id, average_marks, term_id, rank) VALUES ('$student_id', '$average', '1', '$rank')") or die(mysqli_error($link));
-                                    }
-                                }*/
-                            ?>
-    
+                        
                         <?php } }else{ ?>
                             <h3>There is no marks currently available</h3>
                         <?php  } ?>
@@ -141,7 +114,7 @@ if (isset($_POST['delete'])){
         
     for($i=0; $i < $N; $i++)
     {
-        $result = mysqli_query($link,"DELETE from marks
+        $result = mysqli_query($link,"DELETE from marks_new
         where marks_id='$id[$i]'");
        
     }

@@ -33,12 +33,12 @@ $query2 = mysqli_query($link,"select * from parent where childrenname = '$studen
 $parent = mysqli_fetch_array($query2);
 $pname = $parent['firstname'];
 
-$query = mysqli_query($link,"select * from marks where student_id = '$session_id' AND term_id = '1'");
+$query = mysqli_query($link,"select * from marks_new where student_id = '$session_id' AND term_id = '1'");
               $count = mysqli_num_rows($query);
 
-              if($count <= 0)
+              if($count <= 0 || $count != 6)
               {
-                  echo '<b><center>There is No Marks records to you.<center><b/>';
+                  echo '<b><center>There is no Marks records to you.<center><b/>';
               }
               else if($count >= 1)
               {
@@ -60,7 +60,7 @@ $query = mysqli_query($link,"select * from marks where student_id = '$session_id
                 $row = mysqli_fetch_array($query);
                 if($count < 0)
                 {
-                    echo '<b>There is No Marks Available for you</b>';
+                    echo '<b>There is no Marks Available for you</b>';
                     
                 }
                 else
@@ -99,11 +99,11 @@ $query = mysqli_query($link,"select * from marks where student_id = '$session_id
                 <th>Remarks</th>
                     </tr>
                     <?php
-                     $query = mysqli_query($link,"select * from marks where student_id = '$student_id' AND term_id='1'");
+                     $query = mysqli_query($link,"select * from marks_new where student_id = '$student_id' AND term_id='1'");
                      $row2 = mysqli_fetch_array($query) or die(mysqli_error($link));
                 ?>
                 <?php 
-                    $sql = mysqli_query($link,"select * from marks where student_id='$student_id' AND subject_id = '14' AND term_id = '1'");
+                    $sql = mysqli_query($link,"select * from marks_new where student_id='$student_id' AND subject_id = '14' AND term_id = '1'");
                     $row = mysqli_fetch_array($sql);
                     $mar = $row['marks'];
                     if($mar < 35)
@@ -128,7 +128,7 @@ $query = mysqli_query($link,"select * from marks where student_id = '$session_id
                                 echo 'Fail'; ?></th>
                 </tr>
                 <?php
-                $sql = mysqli_query($link,"select * from marks where student_id='$student_id' AND subject_id = '9' AND term_id = '1'");
+                $sql = mysqli_query($link,"select * from marks_new where student_id='$student_id' AND subject_id = '9' AND term_id = '1'");
                 $row = mysqli_fetch_array($sql);
                 $mar = $row['marks'];
                 if($mar < 35)
@@ -155,7 +155,7 @@ $query = mysqli_query($link,"select * from marks where student_id = '$session_id
                 </tr>
         
                 <?php
-                $sql = mysqli_query($link,"select * from marks where student_id='$student_id' AND subject_id = '12' AND term_id = '1'");
+                $sql = mysqli_query($link,"select * from marks_new where student_id='$student_id' AND subject_id = '12' AND term_id = '1'");
                 $row = mysqli_fetch_array($sql);
                 $mar = $row['marks'];
                 if($mar < 35)
@@ -182,7 +182,7 @@ $query = mysqli_query($link,"select * from marks where student_id = '$session_id
                 </tr>
 
                 <?php
-                $sql = mysqli_query($link,"select * from marks where student_id='$student_id' AND subject_id = '16' AND term_id = '1'");
+                $sql = mysqli_query($link,"select * from marks_new where student_id='$student_id' AND subject_id = '16' AND term_id = '1'");
                 $row = mysqli_fetch_array($sql);
                 $mar = $row['marks'];
                 if($mar < 35)
@@ -209,7 +209,7 @@ $query = mysqli_query($link,"select * from marks where student_id = '$session_id
                 </tr>
 
                 <?php
-                $sql = mysqli_query($link,"select * from marks where student_id='$student_id' AND subject_id = '15' AND term_id = '1'");
+                $sql = mysqli_query($link,"select * from marks_new where student_id='$student_id' AND subject_id = '15' AND term_id = '1'");
                 $row = mysqli_fetch_array($sql);
                 $mar = $row['marks'];
                 if($mar < 35)
@@ -236,7 +236,7 @@ $query = mysqli_query($link,"select * from marks where student_id = '$session_id
                 </tr>
 
                 <?php
-                $sql = mysqli_query($link,"select * from marks where student_id='$student_id' AND subject_id = '14' AND term_id = '1'");
+                $sql = mysqli_query($link,"select * from marks_new where student_id='$student_id' AND subject_id = '14' AND term_id = '1'");
                 $row = mysqli_fetch_array($sql);
                 $mar = $row['marks'];
                 if($mar < 35)
