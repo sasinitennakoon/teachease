@@ -23,9 +23,9 @@
     <!-- Your recent flashcard bundles here -->
 </div> 
 
-<h2>Newly Added Flash Cards</h2>
 
-<div class="panel1">
+
+<!--div class="panel1">
     <?php
         include '../database/db_con.php'; // Include your database connection file
 
@@ -55,7 +55,7 @@
     ?>
 </div>
 <br>
-<br>
+<br-->
 
 <div class="panel2">
     <div class="card3" onclick="window.location.href='createscience.php';">
