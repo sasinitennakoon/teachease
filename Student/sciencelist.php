@@ -13,7 +13,7 @@
     <button class="dashboard-button" onclick="goBack()">Go to Dashboard</button>
 
     <div class="content">
-        <h1>English Flashcard Bundles</h1>
+        <h1>Science Flashcard Bundles</h1>
 
         <table id="flashcardTable">
             <thead>
@@ -77,8 +77,12 @@
         }
 
         function viewBundle(bundleId) {
-            // Redirect to the view bundle page with the bundle ID
-            window.location.href = `view_bundle.php?id=${bundleId}`;
+            // Redirect to the viewflash.php page with the bundle ID
+            if (bundleId) {
+                window.location.href = `view_bundle.php?bundle_id=${bundleId}`;
+            } else {
+                alert("Invalid bundle ID.");
+            }
         }
     </script>
 

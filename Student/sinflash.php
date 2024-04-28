@@ -18,70 +18,7 @@
     <h1>Study with Flash Cards&#128516;</h1>
 
     <br>
-    <h2>Recent Flash Cards</h2>
-    <div class="panel1">
-       
-        <div class="card1" onclick="window.location.href='scienceflash.php';">
-            <p>Science</p>
-            <p>Created by you</p>
-            <p>2024-04-01, 12.08pm</p>
-        </div>
-
-        <div class="card2" onclick="window.location.href='mathflash.php';">
-            <p>Science</p>
-            <p>Created by you</p>
-            <p>2024-04-01, 12.08pm</p>
-        </div>
-
-        <div class="card1" onclick="window.location.href='scienceflash.php';">
-            <p>Mathematics</p>
-            <p>Created by Edirisinghe MMH</p>
-            <p>2024-03-29, 2.08pm</p>
-        </div>
-
-        <div class="card1" onclick="window.location.href='scienceflash.php';">
-            <p>Science</p>
-            <p>Created by you</p>
-            <p>2024-03-25, 08.05pm</p>
-        </div>
-
-        <br>
-
-        
-        
-    </div> 
-
-    <h2>Newly Added Flash Cards</h2>
-
-    <div class="panel1">
-       
-        <div class="card1" onclick="window.location.href='scienceflash.php';">
-            <p>Science</p>
-            <p>Created by you</p>
-            <p>2024-04-01, 12.08pm</p>
-        </div>
-
-        <div class="card2" onclick="window.location.href='mathflash.php';">
-            <p>Science</p>
-            <p>Created by you</p>
-            <p>2024-04-01, 12.08pm</p>
-        </div>
-
-        <div class="card1" onclick="window.location.href='scienceflash.php';">
-            <p>Mathematics</p>
-            <p>Created by Edirisinghe MMH</p>
-            <p>2024-03-29, 2.08pm</p>
-        </div>
-
-        <div class="card1" onclick="window.location.href='scienceflash.php';">
-            <p>Science</p>
-            <p>Created by you</p>
-            <p>2024-03-25, 08.05pm</p>
-        </div>
-
-        </div>
-        <br>
-        <br>
+    
 
         <div class="panel2">
             <div class="card3" onclick="window.location.href='createsinhala.php';">
@@ -98,18 +35,6 @@
         </div> 
 
     </div>
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

@@ -13,7 +13,7 @@
     <button onclick="goBack()">Go to Dashboard</button>
 
     <div class="content">
-        <h1>English Flashcard Bundles</h1>
+        <h1>History Flashcard Bundles</h1>
 
         <table id="flashcardTable">
             <thead>
@@ -38,6 +38,7 @@
                         echo "<td>" . htmlspecialchars($row["bundle_name"]) . "</td>";
                         echo "<td>" . htmlspecialchars($row["subject"]) . "</td>";
                         echo "<td>
+                        <button class='view-button' onclick='viewBundle(\"{$row["id"]}\")'>View</button>
                                 <button onclick='deleteBundle(\"{$row["id"]}\")'>Delete</button>
                             </td>";
                         echo "</tr>";
@@ -72,6 +73,14 @@
                 };
                 const params = "bundleId=" + encodeURIComponent(bundleId);
                 xhr.send(params);
+            }
+        }
+        function viewBundle(bundleId) {
+            // Redirect to the viewflash.php page with the bundle ID
+            if (bundleId) {
+                window.location.href = `view_bundle.php?bundle_id=${bundleId}`;
+            } else {
+                alert("Invalid bundle ID.");
             }
         }
     </script>
