@@ -124,7 +124,7 @@ if (!$included) {
 
 // Queries for attendance and marks
 $attendanceQuery = "SELECT date, class_id, COUNT(*) AS present_count FROM student_attendance WHERE status = 'present' GROUP BY date, class_id ORDER BY date ASC";
-$marksQuery = "SELECT date, teacher_class_id AS class_id, AVG(marks) AS average_marks FROM result_file_marks GROUP BY date, class_id ORDER BY date ASC";
+$marksQuery = "SELECT date, teacher_class_id AS class_id, ROUND(AVG(marks), 2) AS average_marks FROM result_file_marks GROUP BY date, class_id ORDER BY date ASC";
 
 // Function to execute a query and return results
 function getQueryResults($link, $query) {

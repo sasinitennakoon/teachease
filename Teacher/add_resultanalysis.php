@@ -168,12 +168,13 @@ if(isset($_POST['save'])) {
         foreach ($data as $row) {
             if ($count > 0) {
                 $id = $row[0];
-                $class = $row[1];
-                $mark = $row[2];
-                $grade = $row[3];
-                $subject = $row[4];
-                $term = $row[5];
-                
+
+                $class = $_POST['class_id'];
+                $mark = $row[1];
+                $grade = $row[2];
+                $subject = $row[3];
+                $term = $row[4];
+
                 $exam_id = $_GET['exam_id'];
 
                 $studentQuery = "INSERT INTO result_file_marks (student_id, teacher_class_id, marks, grade,exam_id,date) VALUES ('$id', '$class', '$mark', '$grade','$exam_id',now())";
