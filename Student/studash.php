@@ -47,7 +47,7 @@
 
         <!-- Inserting small panels -->
         <div class="panelsD">
-            <div class="panel">
+            <div class="panel" onclick="window.location.href='moreinfo1.php';">
                 <h2>Your Rank</h2>
             </div>
 
@@ -69,7 +69,7 @@
             </div>
         </div>
 
-        <div class="panelsD">
+        <!--div class="panelsD">
             <div class="panel7">
                 <h2>Newly Added Course Content</h2>
             </div>
@@ -78,7 +78,7 @@
                 <h2>Upcoming Activity</h2>
                 
             </div>
-        </div>
+        </div-->
     </div>
 <!--
 <script>
