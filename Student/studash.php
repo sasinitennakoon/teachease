@@ -51,7 +51,7 @@
                 <h2>Your Rank</h2>
             </div>
 
-            <div class="panel4">
+            <div class="panel4" onclick="window.location.href='leave.php' ;">
                 <h2>Leave Requests</h2>
                 
             </div>

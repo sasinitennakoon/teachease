@@ -33,7 +33,7 @@
                    
 
                   
-                    WHERE b.user_id = '$userId'
+                    WHERE b.user_id = '$userId' AND b.subject='Buddhism' OR b.subject='buddhism'
 
                     ORDER BY b.created_at DESC
                     LIMIT 4";
