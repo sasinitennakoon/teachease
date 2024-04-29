@@ -1,9 +1,6 @@
 <?php
 // Check if session is not already started
-if (session_status() == PHP_SESSION_NONE) {
-    session_start();
-}
-
+ include 'dropdown2.php';
 // Include your database connection file
 include '../database/db_con.php';
 
@@ -31,7 +28,7 @@ $result = mysqli_query($link, $sql);
 </head>
 <body>
    
-    <?php include 'dropdown2.php'; ?>
+    <?php //include 'dropdown2.php'; ?>
     <button class="dashboard-button" onclick="goBack()">Go to Dashboard</button>
 
     <div class="content">
