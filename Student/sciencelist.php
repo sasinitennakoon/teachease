@@ -2,9 +2,17 @@
 // Check if session is not already started
 
 
+
 // Include your database connection file
 include '../database/db_con.php';
 include 'dropdown2.php';
+
+
+// Include your database connection file
+include '../database/db_con.php';
+
+
+
 // Check if the user is logged in
 if (!isset($_SESSION['id']) || empty($_SESSION['id'])) {
     die("User ID not provided. Please log in."); // Handle the case where user is not logged in

@@ -47,22 +47,15 @@
 
         <!-- Inserting small panels -->
         <div class="panelsD">
-            <div class="panel">
+            <div class="panel" onclick="window.location.href='moreinfo1.php';">
                 <h2>Your Rank</h2>
             </div>
 
             <div class="panel4">
-                <h2>Completed </br>Tasks</h2>
+                <h2>Leave Requests</h2>
                 
             </div>
 
-            <div class="panel5">
-                <h2>Stars You Got</h2>
-            </div>
-
-            <div class="panel6">
-                <h2> Active Hours</h2>
-            </div>
         </div>
 
         <!-- Calendar Panel -->
@@ -76,7 +69,7 @@
             </div>
         </div>
 
-        <div class="panelsD">
+        <!--div class="panelsD">
             <div class="panel7">
                 <h2>Newly Added Course Content</h2>
             </div>
@@ -85,7 +78,7 @@
                 <h2>Upcoming Activity</h2>
                 
             </div>
-        </div>
+        </div-->
     </div>
 <!--
 <script>
