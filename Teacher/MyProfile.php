@@ -110,7 +110,7 @@
   <label class="-label" for="file">
     <span class='span1'>Change Image</span>
   </label>
-  <input id="file" type="file" name="uploaded_file" onchange="loadFile(event)"/>
+  <input id="file" type="file" name="uploaded_file" value="<?php echo "<img src='" . $row['image'] . "' id='output' width='200' />"; ?>" onchange="loadFile(event)"/>
   <?php echo "<img src='" . $row['image'] . "' id='output' width='200' />"; ?>
 </div>
 
