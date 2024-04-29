@@ -1,9 +1,16 @@
 <?php
 // Check if session is not already started
 
+
+
 // Include your database connection file
 include '../database/db_con.php';
 include 'dropdown2.php';
+
+
+// Include your database connection file
+include '../database/db_con.php';
+
 
 // Check if the user is logged in
 if (!isset($_SESSION['id']) || empty($_SESSION['id'])) {
@@ -23,17 +30,17 @@ $result = mysqli_query($link, $sql);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Science Flashcard Bundles</title>
+    <title>Sinahala Flashcard Bundles</title>
     <link rel="stylesheet" href="./css/listflash.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
 <body>
    
-    <?php// include 'dropdown2.php'; ?>
+    <?php //include 'dropdown2.php'; ?>
     <button class="dashboard-button" onclick="goBack()">Go to Dashboard</button>
 
     <div class="content">
-        <h1>Science Flashcard Bundles</h1>
+        <h1>Sinahala Flashcard Bundles</h1>
 
         <table id="flashcardTable">
             <thead>
@@ -58,7 +65,7 @@ $result = mysqli_query($link, $sql);
                         echo "</tr>";
                     }
                 } else {
-                    echo "<tr><td colspan='3'>No Science flashcard bundles found.</td></tr>";
+                    echo "<tr><td colspan='3'>No Sinahala flashcard bundles found.</td></tr>";
                 }
                 ?>
             </tbody>

@@ -1,8 +1,5 @@
 <?php
 // Check if session is not already started
-if (session_status() == PHP_SESSION_NONE) {
-    session_start();
-}
 
 // Include your database connection file
 include '../database/db_con.php';

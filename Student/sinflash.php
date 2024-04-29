@@ -33,7 +33,7 @@
                    
 
                   
-                    WHERE b.user_id = '$userId'
+                    WHERE b.user_id = '$userId' AND b.subject='Sinhala' OR b.subject='sinhala'
 
                     ORDER BY b.created_at DESC
                     LIMIT 4";
@@ -74,12 +74,12 @@
             <p>Create Flash Cards</p>
         </div>
 
-        <div class="card3" onclick="window.location.href='sinhalather.php';">
+        <div class="card3" onclick="window.location.href='sinhalaother.php';">
             <img src="./img/8-Mcv73IvIqSwXbno.png">
             <p>Let's Learn With Others</p>
         </div>
 
-        <div class="card3" onclick="window.location.href='sinlist.php';">
+        <div class="card3" onclick="window.location.href='sinhallist.php';">
             <img src="./img/8-o225juUjxVlOy4l (1).png">
             <p>See What You Created</p>
         </div>

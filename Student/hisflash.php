@@ -33,7 +33,7 @@
                    
 
                   
-                    WHERE b.user_id = '$userId'
+                    WHERE b.user_id = '$userId' AND b.subject='History' OR b.subject='history'
 
                     ORDER BY b.created_at DESC
                     LIMIT 4";
