@@ -56,7 +56,7 @@
             </div>
 
 
-        <h2> Assignments and Quizes</h2>
+        <!--<h2> Assignments and Quizes</h2>
         
             <div class="panelsD2">
                 <div class="panelsub2">
@@ -70,4 +70,4 @@
             </div>
 
         
-       </div>
+       </div>-->

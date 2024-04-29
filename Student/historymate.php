@@ -71,7 +71,7 @@ $result = $stmt->get_result();
                             $id = $row['file_id'];
                             $currentPath = $row['floc'];
                             $newPath = preg_replace('/Student/', '', $currentPath);
-                            $fullPath = "http://localhost/teachease/Teacher/" . $newPath;
+                            $fullPath = "http://localhost/Group_Project/Teacher/" . $newPath;
                         ?>
                         <tr>
                             <td><?php echo $row['fname']; ?></td>

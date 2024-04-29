@@ -47,7 +47,7 @@ $query= mysqli_query($link,"select * from student where student_id = '$session_i
                             <th>Class Name</th>
                             <th>Request Date</th>
                             <th>Status</th>
-                            <th></th>
+                            
                         </tr>
                     </thead>
                     <?php
