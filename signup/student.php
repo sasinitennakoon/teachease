@@ -28,7 +28,7 @@
 
         if($count > 0)
         {
-            echo "<script>alert(username already exist);</script>";
+            echo "<script>alert(Username already exist);</script>";
         }
         else
         {
