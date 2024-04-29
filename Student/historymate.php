@@ -51,8 +51,9 @@ $result = $stmt->get_result();
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 <body>
+<button class="dashboard-button" onclick="goBack()">Go to Dashboard</button>
 <div class="content">
-    <h2>Slides for Class</h2>
+    <h1>Slides for Class</h1>
     <div class="panels1">
         <div class="panel10">
             <form method='post'>
@@ -75,7 +76,7 @@ $result = $stmt->get_result();
                         <tr>
                             <td><?php echo $row['fname']; ?></td>
                             <td><?php echo $row['fdesc']; ?></td>
-                            <td><div class="button"><a class="btn btn-info" href="<?php echo $fullPath; ?>">View</a></div></td>
+                            <td><a href="<?php echo $fullPath; ?>"><button class="btn btn-info">View</button></a></div></td>
                         </tr>
                         <?php
                         }
@@ -86,6 +87,12 @@ $result = $stmt->get_result();
         </div>
     </div>
 </div>
+
+<script>
+    function goBack() {
+        window.history.back();
+    }
+</script>
 </body>
 </html>
 

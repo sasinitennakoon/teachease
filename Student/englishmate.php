@@ -1,3 +1,7 @@
+<?php include '../database/db_con.php'; ?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,87 +9,102 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Student Dashboard</title>
     <!--<link rel="stylesheet" href="../admin/css/dashboard.css"> -->
-    <link rel="stylesheet" href="./css/sciencemate.css">
+    <link rel="stylesheet" href="././css/dashboard.css">
+    <link rel="stylesheet" href="././css/general.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
 
 <body>
 <?php include 'dropdown2.php'; ?>
 
+            <!-- Sidebar -->
+            <div class="sidebar">
+                <div class="logo">
+                    <img src="././img/logo1.png" alt="Logo">
+                </div>
+                <hr color="white">
+                <nav>
+                    <ul>
+                        <li><a href="studash.php"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                        <li><a href="announcements.php"><i class="fas fa-bullhorn"></i> Announcements</a></li>
+                        <li><a href="MyCourses.php" class="active"><i class="fas fa-book"></i> My Courses</a></li>
+                        <li><a href="StudyMaterials.php"><i class="fas fa-book-open"></i> Study Materials</a></li>
+                        <li><a href="Tasks.php"><i class="far fa-sticky-note"></i></i> Flash Cards</a></li>
+                        <li><a href="Progress.php"><i class="fas fa-chart-line"></i> Progress Report</a></li>
+                        <li><a href="ExamR.php"><i class="fas fa-chalkboard"></i> Exam Results</a></li>
+                        <li><a href="msg.php"><i class="fas fa-envelope"></i> Messages</a></li>
+                        <li><a href="Feedback.php"><i class="fas fa-comment"></i> Feedback Collection</a></li>
+        
+                    </ul>
+                </nav>
+            </div>
+
 <button onclick="goBack()">Go to Dashboard</button>
 
 <div class="content">
-     
-    <div class="panel21">
-        <div class="image-container">
-            <img src="./img/SCIENCE (1).gif">
+        <h1>EnglsihClass</h1>
+    </script>
+
+										
+    <?php
+					$query = mysqli_query($link,"select * FROM student_class where student_id = '$session_id'  order by student_schedule_id DESC ")or die(mysqli_error());
+                    $count = mysqli_fetch_array($query);
+
+					if($count <= 0)
+					{
+						echo "<b>Currently you have not registered for any English classes</b>";
+					}
+					else
+					{?>
+                    <div class="panels1">
+                        <div class="panel10">
+                        <form method='post'>
+
+                        <table border="0">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>Class</th>
+                            <th>Subject</th>
+                            <th>Teacher Namer</th>
+                            <th>Date</th>
+                            <th>Time</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+       <?php
+					$query = mysqli_query($link, "SELECT student_class.*, teacher_class.class_name, subject.subject_title, schedule.date, schedule.time, teacher.firstname
+                    FROM student_class 
+                    INNER JOIN schedule ON schedule.schedule_id = student_class.schedule_id 
+                    INNER JOIN subject ON subject.subject_id = schedule.subject_id 
+                    INNER JOIN teacher_class ON teacher_class.teacher_class_id = student_class.class_id 
+                    INNER JOIN teacher ON teacher.teacher_id = schedule.teacher_id  
+                    WHERE student_class.student_id = '$session_id'
+                    AND subject.subject_title = 'English'  
+                    ORDER BY student_class.student_schedule_id DESC") or die(mysqli_error($link));
+                    while($row = mysqli_fetch_array($query)){
+                    $id  = $row['student_schedule_id'];
+				?>
             
-        </div> 
-        <div class="card"> 
-            <p>1.Our Responsibilities</p>
-                <a href="./docs/s10tim110.pdf"><i class="fas fa-file-pdf fa-2x" style="color: red;"></i>&nbsp;2024.01.25 Slide Set</a><br><br>
-                <a href="./docs/s10tim110.pdf"><i class="far fa-sticky-note fa-2x" style="color: blue;"></i>&nbsp;Notes</a><br><br>
-                <a href="./docs/s10tim110.pdf"><i class="fas fa-external-link-alt fa-2x" style="color: rgb(0, 0, 0);"></i>&nbsp;Additional References</a>
-        </div>   
-        <hr>
-        <div class="card"> 
-            <p>2.Facing Challenges</p>
-            <a href="./docs/s10tim110.pdf"><i class="fas fa-file-pdf fa-2x" style="color: red;"></i>&nbsp;2024.01.25 Slide Set</a><br><br>
-            <a href="./docs/s10tim110.pdf"><i class="far fa-sticky-note fa-2x" style="color: blue;"></i>&nbsp;Notes</a><br><br>
-            <a href="./docs/s10tim110.pdf"><i class="fas fa-external-link-alt fa-2x" style="color: rgb(0, 0, 0);"></i>&nbsp;Additional References</a>
-        </div>
-        <hr>
-        <div class="card"> 
-            <p>3.Great Lanka</p>
-            <a href="./docs/s10tim110.pdf"><i class="fas fa-file-pdf fa-2x" style="color: red;"></i>&nbsp;2024.01.25 Slide Set</a><br><br>
-            <a href="./docs/s10tim110.pdf"><i class="far fa-sticky-note fa-2x" style="color: blue;"></i>&nbsp;Notes</a><br><br>
-            <a href="./docs/s10tim110.pdf"><i class="fas fa-external-link-alt fa-2x" style="color: rgb(0, 0, 0);"></i>&nbsp;Additional References</a>
-        </div>
-        <hr>
-        <div class="card"> 
-            <p>    4.For A Better Tomorrow</p>
-            <a href="./docs/s10tim110.pdf"><i class="fas fa-file-pdf fa-2x" style="color: red;"></i>&nbsp;2024.01.25 Slide Set</a><br><br>
-            <a href="./docs/s10tim110.pdf"><i class="far fa-sticky-note fa-2x" style="color: blue;"></i>&nbsp;Notes</a><br><br>
-            <a href="./docs/s10tim110.pdf"><i class="fas fa-external-link-alt fa-2x" style="color: rgb(0, 0, 0);"></i>&nbsp;Additional References</a>
-        </div>
-        <hr>
-        <div class="card"> 
-            <p> 5.Best Use of Time</p>
-            <a href="./docs/s10tim110.pdf"><i class="fas fa-file-pdf fa-2x" style="color: red;"></i>&nbsp;2024.01.25 Slide Set</a><br><br>
-            <a href="./docs/s10tim110.pdf"><i class="far fa-sticky-note fa-2x" style="color: blue;"></i>&nbsp;Notes</a><br><br>
-            <a href="./docs/s10tim110.pdf"><i class="fas fa-external-link-alt fa-2x" style="color: rgb(0, 0, 0);"></i>&nbsp;Additional References</a>
-        </div>
-        <hr>
-        <div class="card"> 
-            <p> 6.A Moment of Fun</p>
-            <a href="./docs/s10tim110.pdf"><i class="fas fa-file-pdf fa-2x" style="color: red;"></i>&nbsp;2024.01.25 Slide Set</a><br><br>
-            <a href="./docs/s10tim110.pdf"><i class="far fa-sticky-note fa-2x" style="color: blue;"></i>&nbsp;Notes</a><br><br>
-            <a href="./docs/s10tim110.pdf"><i class="fas fa-external-link-alt fa-2x" style="color: rgb(0, 0, 0);"></i>&nbsp;Additional References</a>
-        </div>
-        <hr>
-        <div class="card"> 
-            <p>7.A Simple Living</p>
-            <a href="./docs/s10tim110.pdf"><i class="fas fa-file-pdf fa-2x" style="color: red;"></i>&nbsp;2024.01.25 Slide Set</a><br><br>
-            <a href="./docs/s10tim110.pdf"><i class="far fa-sticky-note fa-2x" style="color: blue;"></i>&nbsp;Notes</a><br><br>
-            <a href="./docs/s10tim110.pdf"><i class="fas fa-external-link-alt fa-2x" style="color: rgb(0, 0, 0);"></i>&nbsp;Additional References</a>
-        </div>
-        <hr>
-        <div class="card"> 
-            <p>8.Reading Is Fun</p>
-            <a href="./docs/s10tim110.pdf"><i class="fas fa-file-pdf fa-2x" style="color: red;"></i>&nbsp;2024.01.25 Slide Set</a><br><br>
-            <a href="./docs/s10tim110.pdf"><i class="far fa-sticky-note fa-2x" style="color: blue;"></i>&nbsp;Notes</a><br><br>
-            <a href="./docs/s10tim110.pdf"><i class="fas fa-external-link-alt fa-2x" style="color: rgb(0, 0, 0);"></i>&nbsp;Additional References</a>
-        </div>
+                        <tr>
+                            <td><input type="checkbox" name="selector[]" value="<?php echo $id; ?>"></td>
+                            <td><?php echo $row['class_name']; ?></td>
+                            <td><?php echo $row['subject_title']; ?></td>
+                            <td><?php echo $row['firstname']; ?></td>
+                            <td><?php echo $row['date']; ?></td>
+                            <td><?php echo $row['time']; ?></td>
+                            <td><div class="but"><button class="btn btn-info"><a href="englishmate.php?schedule_id=<?php echo $row['schedule_id']?>;" style='text-decoration:none;color:white;'>View Study material</a></button></td>
+                        </tr>
+                    </tbody>
+				
+                </div>
+            </div>
     </div>
-
-</div>
-
-
-
-
-<script>
-    function goBack() {
-            window.history.back();
-        }
-</script>
-
+    <?php
+					}
+				}
+				?>
+    
+                    </body>
+                    </html>

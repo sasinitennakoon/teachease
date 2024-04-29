@@ -1,21 +1,22 @@
-
 <?php
 include '../database/db_con.php'; // Include your database connection script
-include 'dropdown2.php';
+
 // Check if the request is a POST request and if the share button was clicked
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["share"])) {
     // Get the flashcard bundle name and data from the POST request
+    if (empty($_POST["bundleName"])) {
+        die("Error: Flashcard bundle name is required.");
+    }
+
     $bundleName = $_POST["bundleName"];
     $flashcardsData = json_decode($_POST["flashcardsData"], true); // Decode JSON data
 
-
-    
     // Assuming you have a user ID for the user sharing the flashcards
     $userId = $session_id; // Replace with your actual user ID
 
     // Insert the flashcard bundle into the scienceflashcrd_bundle table
     $subject = "Science"; // You can customize this
-    $sqlBundle = "INSERT INTO scienceflashcrd_bundle (user_id, subject,bundle_name, created_at) VALUES ('$userId', '$subject','$bundleName', NOW())";
+    $sqlBundle = "INSERT INTO scienceflashcrd_bundle (user_id, subject, bundle_name, created_at) VALUES ('$userId', '$subject', '$bundleName', NOW())";
 
     if (mysqli_query($link, $sqlBundle)) {
         $bundleId = mysqli_insert_id($link); // Get the ID of the inserted bundle
@@ -45,6 +46,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["share"])) {
 
 
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -58,8 +60,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["share"])) {
     </style>
 </head>
 <body>
-   
-    
     <button onclick="goBack()">Go to Dashboard</button>
     <div class="container">
         <h1>Create Your Flash Cards Here!</h1>
@@ -84,7 +84,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["share"])) {
             </div>
             <div class="modal-section">
                 <h4>Enter the name for the flashcard bundle:</h4>
-                <input type="text" id="flashCardBundleName" placeholder="Flashcard Bundle Name">
+                <input type="text" id="flashCardBundleName" placeholder="Flashcard Bundle Name" required>
             </div>
             <div class="modal-buttons">
                 <button onclick="confirmCreation()">Confirm</button>
@@ -132,6 +132,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["share"])) {
         function confirmCreation() {
             flashCardCount = parseInt(document.getElementById("flashCardCount").value);
             flashCardBundleName = document.getElementById("flashCardBundleName").value;
+            if (flashCardBundleName.trim() === "") {
+                alert("Please enter a name for the flashcard bundle.");
+                return;
+            }
             document.getElementById("flashCardBundleNameDisplay").innerText = flashCardBundleName; // Display bundle name
             closeConfirmationModal();
             openTableModal();
@@ -228,18 +232,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["share"])) {
             const flashCardsData = JSON.stringify(getFlashCardsData());
             const flashCardBundleName = document.getElementById("flashCardBundleName").value;
             
+            if (flashCardBundleName.trim() === "") {
+                alert("Please enter a name for the flashcard bundle.");
+                return;
+            }
+
             const xhr = new XMLHttpRequest();
             xhr.open("POST", "<?php echo $_SERVER['PHP_SELF']; ?>", true);
             xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
             xhr.onreadystatechange = function () {
-    if (xhr.readyState === 4) {
-        if (xhr.status === 200) {
-            alert("Flashcards shared successfully!");
-        } else {
-            alert("Error: " + xhr.status + " - " + xhr.statusText);
-        }
-    }
-};
+                if (xhr.readyState === 4) {
+                    if (xhr.status === 200) {
+                        alert("Flashcards shared successfully!");
+                    } else {
+                        alert("Error: " + xhr.status + " - " + xhr.statusText);
+                    }
+                }
+            };
 
             const params = "share=true&flashcardsData=" + encodeURIComponent(flashCardsData) + "&bundleName=" + encodeURIComponent(flashCardBundleName);
             xhr.send(params);
@@ -267,17 +276,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["share"])) {
             let contentHeight = textElement.offsetHeight;
             let scaleFactor = maxHeight / contentHeight;
             let newFontSize = Math.min(fontSize * scaleFactor, fontSize);
-            textElement.style.fontSize = newFontSize + "px"; // Corrected concatenation
+            textElement.style.fontSize = newFontSize + "px";
         }
     </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-

@@ -37,7 +37,7 @@
                    
 
                   
-                    WHERE b.user_id == '$userId'
+                    WHERE b.user_id = '$userId'
 
 
                     ORDER BY b.created_at DESC

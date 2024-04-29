@@ -1,18 +1,4 @@
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 body {
     margin: 0;
     font-family: 'Poppins', sans-serif;
@@ -58,8 +44,8 @@ nav a {
     border-radius: 10px;
 }
 .content h1 {
-    text-align: left;
-    padding-left: 30%;
+    text-align: center;
+    
 }
 
 
