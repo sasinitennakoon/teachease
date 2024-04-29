@@ -37,7 +37,7 @@
                    
 
                   
-                    WHERE b.user_id = '$userId'
+                    WHERE b.user_id = '$userId' AND b.subject='Science' OR b.subject='science'
 
 
                     ORDER BY b.created_at DESC
