@@ -47,11 +47,11 @@ if (isset($_POST['update'])) {
             <div class="panel10">
     <form method="post" onsubmit="return validateForm();">
         <div>
-            <label>Class Name:</label>
+            <label style="text-align:left;">Class Name:</label>
             <input type="text" name="class_name" value="<?php echo $class['class_name']; ?>" required>
         </div>
         <div>
-            <label>Grade:</label>
+            <label style="text-align:left;">Grade:</label>
             <select name="grade_id" required>
                 <option></option>
                 <?php
@@ -63,7 +63,7 @@ if (isset($_POST['update'])) {
             </select>
         </div>
         <div>
-            <label>Subject:</label>
+            <label style="text-align:left;">Subject:</label>
             <select name="subject_id" required>
                 <option></option>
                 <?php
@@ -75,7 +75,7 @@ if (isset($_POST['update'])) {
             </select>
         </div>
         <div>
-            <label>Number of Participants:</label>
+            <label style="text-align:left;">Number of Participants:</label>
             <input type="text" name="noofparticipant" value="<?php echo $class['noofparticipant']; ?>" >
         </div>
         <div>
