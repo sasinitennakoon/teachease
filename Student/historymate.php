@@ -87,6 +87,12 @@ $result = $stmt->get_result();
         </div>
     </div>
 </div>
+
+<script>
+    function goBack() {
+        window.history.back();
+    }
+</script>
 </body>
 </html>
 
