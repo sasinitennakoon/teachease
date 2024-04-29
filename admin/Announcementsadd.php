@@ -32,13 +32,13 @@
 
         <div class="panels1">
             <div class="panel10">
-                <form method="post">
+                <form method="post" onsubmit="return validateForm()">
                 
                 <div class="user-details">
 
                     <div class="input-box">
                         <span class="details">Announcement Content</span>
-                        <textarea name="content" id="ckeditor_full" required></textarea>
+                        <textarea name="content" id="ckeditor_full"></textarea>
                         <script>
                             CKEDITOR.replace( 'ckeditor_full' );
                         </script>
@@ -46,7 +46,7 @@
 
                     <div class="input-box">
                         <span class="details">Content Type</span>
-                        <select id="qtype" name="type" required>
+                        <select id="qtype" name="type">
 							<option value=""></option>
 								
 									<option value="For Teachers">For Teachers</option>
@@ -94,3 +94,25 @@
 		    }
 		?>
 
+<script>
+    function validateForm() {
+      var content = document.getElementById('ckeditor_full').value.trim();
+      var type = document.getElementById('qtype').value.trim();
+     
+
+      // Check if any field is empty
+      if (content === '' || type ===  null) {
+        alert('Please fill in all fields');
+        return false;
+      }
+
+      // Validate email format
+      
+
+      // Validate password length
+      
+
+      // Add additional checks as needed
+      return true;
+    }
+  </script>

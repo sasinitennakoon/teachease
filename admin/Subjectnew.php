@@ -28,23 +28,23 @@
         
         <div class="panels1">
             <div class="panel10">
-                <form method="post">
+                <form method="post" onsubmit = "return validateForm()">
                 
                 <div class="user-details">
 
                     <div class="input-box">
                         <span class="details">Subject Code</span>
-                        <input type="text" name="subject_code" placeholder="Enter Subject Code" required>
+                        <input type="text" name="subject_code" id="subject_code" placeholder="Enter Subject Code">
                     </div>
 
                     <div class="input-box">
                         <span class="details">Subject Title</span>
-                        <input type="text" name="subject_title" placeholder="Enter Subject title" required>
+                        <input type="text" name="subject_title" id="subject_title" placeholder="Enter Subject title">
                     </div>
 
                     <div class="input-box">
                         <span class="details">Description</span>
-                        <textarea name="description" id="ckeditor_full" required></textarea>
+                        <textarea name="description" id="ckeditor_full"></textarea>
                         <script>
                             CKEDITOR.replace( 'ckeditor_full' );
                         </script>
@@ -77,9 +77,11 @@
 	
 
 		$sql = mysqli_query($link,"insert into subject(subject_code,subject_title,description) values('$subject_code','$subject_title','$description')") or die(mysqli_error($link));
+        
 	?>
 
 		<script>
+            alert('Subject Successfully added');
 			window.location="subjects.php";
 		</script>
 
@@ -87,5 +89,34 @@
 	}
 ?>
         
+
+        <script>
+    function validateForm() {
+      var content = document.getElementById('ckeditor_full').value.trim();
+      var code = document.getElementById('subject_code').value.trim();
+      var title = document.getElementById('subject_title').value.trim();
+     
+
+      // Check if any field is empty
+      if (content === '' || code ===''|| title ===  null) {
+        alert('Please fill in all fields');
+        return false;
+      }
+
+      if (isNaN(code)) {
+        alert('Subject Code must be a number');
+        return false;
+    }
+
+      // Validate email format
+      
+
+      // Validate password length
+      
+
+      // Add additional checks as needed
+      return true;
+    }
+  </script>
     
 
