@@ -66,6 +66,7 @@
                             <th>Subject</th>
                             <th>Number of Students</th>
                             <th>More Details</th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -82,6 +83,8 @@
                             <td><?php echo $row['subject_title']; ?></td>
                             <td><?php echo $row['noofparticipant']; ?></td>
                             <td><a href="MyClasses1.php?teacher_class_id=<?php echo $id; ?>" style="text-decoration:none;color:white;"><button type='button' class="button1">More</button></a></td>
+                            <td><a href="edit_class.php?teacher_class_id=<?php echo $id; ?>" style="text-decoration:none;color:white;">
+                            <button type='button' class="button1">Edit</button></a></td>
                         </tr>
                     </tbody>
 				
