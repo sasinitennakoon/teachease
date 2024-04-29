@@ -71,18 +71,5 @@
                 <button class="button1"><a href="edit_quiz1.php">Edit</a></button>
             </div>
         </div>
-        <div class="panels2">
-            <div class="panel_2">
-                <h3>Questionnaries</h3>
-                <button class="button1">View</button>
-                <button class="button1">Edit</button>
-            </div>
-
-            <div class="panel_6">
-               <h3>Flashcards</h3>
-               <button class="button1">View</button>
-                <button class="button1">Edit</button>
-             </div>
-        </div>
 </body>
 </html>

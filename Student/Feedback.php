@@ -43,7 +43,27 @@ if (!isset($_SESSION['id']) || ($_SESSION['id'] == '')) {
     exit();
 }
 
-$session_id=$_SESSION['id']; ?>
+$session_id=$_SESSION['id'];
+$classes = [];
+$class_ids = [];
+$stmt = mysqli_prepare($link, "SELECT class_id, teacher_class.class_name FROM student_class INNER JOIN teacher_class on teacher_class.teacher_class_id = student_class.class_id WHERE student_id = ?");
+if ($stmt) {
+    mysqli_stmt_bind_param($stmt, "i", $session_id);
+    mysqli_stmt_execute($stmt);
+
+    // Bind both class_id and class_name
+    mysqli_stmt_bind_result($stmt, $class_id, $class_name);
+
+    while (mysqli_stmt_fetch($stmt)) {
+        // Store both class_id and class_name in arrays
+        $class_ids[] = $class_id;
+        $classes[] = $class_name;
+    }
+
+    mysqli_stmt_close($stmt);
+}
+
+?>
 
 <div class="sidebar">
     <div class="logo">
@@ -99,6 +119,19 @@ $session_id=$_SESSION['id']; ?>
             <input type="hidden" name="classRating" id="classRatingInput">
             <input type="hidden" name="teacherRating" id="teacherRatingInput">
         </div>
+
+        <div class="rating">
+    <h3>Choose Your Class:</h3>
+    <select name="class_id">
+        <option value="">Select a class</option>
+        <?php
+        // Display the class names, but use class_ids as the option values
+        foreach ($classes as $index => $class) {
+            echo "<option value=\"" . htmlspecialchars($class_ids[$index]) . "\">" . htmlspecialchars($class) . "</option>";
+        }
+        ?>
+    </select>
+</div>
         <div class="rating">
             <h3>Rate for the class:</h3>
             <div class="stars" id="classRating">
@@ -135,16 +168,18 @@ $session_id=$_SESSION['id']; ?>
 <?php 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Check if all fields are filled
-    if(isset($_POST['Subjects']) && isset($_POST['classRating']) && isset($_POST['teacherRating']) && isset($_POST['comment'])) {
+    if(isset($_POST['Subjects']) && isset($_POST['class_id']) && isset($_POST['classRating']) && isset($_POST['teacherRating']) && isset($_POST['comment'])) {
         // Prepare and bind the SQL statement
-        $stmt = mysqli_prepare($link, "INSERT INTO feedback (student_id, subject, class_rating, teacher_rating, comment) VALUES ('$session_id',?, ?, ?, ?)");
-        mysqli_stmt_bind_param($stmt, "siss", $subject, $classRating, $teacherRating, $comment);
+        $stmt = mysqli_prepare($link, "INSERT INTO feedback (student_id,class_id, subject, class_rating, teacher_rating, comment) VALUES ('$session_id',?,?, ?, ?, ?)");
+        mysqli_stmt_bind_param($stmt, "isiss",$class_id, $subject, $classRating, $teacherRating, $comment);
         
         // Set parameters
+        $class_id = $_POST['class_id'];
         $subject = $_POST['Subjects'];
         $classRating = $_POST['classRating'];
         $teacherRating = $_POST['teacherRating'];
         $comment = $_POST['comment'];
+       
         
         // Execute the statement
         if (mysqli_stmt_execute($stmt)) {
