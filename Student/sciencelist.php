@@ -12,6 +12,7 @@ include 'dropdown2.php';
 include '../database/db_con.php';
 
 
+
 // Check if the user is logged in
 if (!isset($_SESSION['id']) || empty($_SESSION['id'])) {
     die("User ID not provided. Please log in."); // Handle the case where user is not logged in

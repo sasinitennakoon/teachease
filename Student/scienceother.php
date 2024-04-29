@@ -1,8 +1,6 @@
 <?php
 // Check if session is not already started
 
-
-
 // Include your database connection file
 include '../database/db_con.php';
 include 'dropdown2.php';
