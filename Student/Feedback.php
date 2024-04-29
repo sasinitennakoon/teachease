@@ -3,7 +3,6 @@ include '../database/db_con.php';
 
 ?>
 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -29,10 +28,11 @@ include '../database/db_con.php';
         }
 
         .emoji.enlarged {
-            transform: scale(1.5); /* Adjust the scale factor as needed */
+            transform: scale(1.5);
         }
+
         .star {
-            color: #ccc; /* Default star color */
+            color: #ccc;
         }
     </style>
 </head>
@@ -51,11 +51,9 @@ if ($stmt) {
     mysqli_stmt_bind_param($stmt, "i", $session_id);
     mysqli_stmt_execute($stmt);
 
-    // Bind both class_id and class_name
     mysqli_stmt_bind_result($stmt, $class_id, $class_name);
 
     while (mysqli_stmt_fetch($stmt)) {
-        // Store both class_id and class_name in arrays
         $class_ids[] = $class_id;
         $classes[] = $class_name;
     }
@@ -96,67 +94,63 @@ if ($stmt) {
     <div class="feedback-form">
         <h2>Feedback Form</h2>
         <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
-        <div class="rating">
-            <h3>Choose Your Subject:</h3>
-            <input type="radio" id="html" name="Subjects" value="Science">
-            <label for="Science">Science</label><br>
+            <div class="rating">
+                <h3>Choose Your Subject:</h3>
+                <input type="radio" id="html" name="Subjects" value="Science">
+                <label for="Science">Science</label><br>
 
-            <input type="radio" id="html" name="Subjects" value="Mathematics">
-            <label for="Mathematics">Mathematics</label><br>
+                <input type="radio" id="html" name="Subjects" value="Mathematics">
+                <label for="Mathematics">Mathematics</label><br>
 
-            <input type="radio" id="html" name="Subjects" value="English">
-            <label for="English">English</label><br>
+                <input type="radio" id="html" name="Subjects" value="English">
+                <label for="English">English</label><br>
 
-            <input type="radio" id="html" name="Subjects" value="Sinahla">
-            <label for="Sinahla">Sinahala</label><br>
+                <input type="radio" id="html" name="Subjects" value="Sinahla">
+                <label for="Sinahla">Sinahala</label><br>
 
-            <input type="radio" id="html" name="Subjects" value="Buddhism">
-            <label for="Buddhism">Buddhism</label><br>
+                <input type="radio" id="html" name="Subjects" value="Buddhism">
+                <label for="Buddhism">Buddhism</label><br>
 
-            <input type="radio" id="html" name="Subjects" value="History">
-            <label for="History">History</label><br>
-            <!-- Add hidden input fields for ratings -->
-            <input type="hidden" name="classRating" id="classRatingInput">
-            <input type="hidden" name="teacherRating" id="teacherRatingInput">
-        </div>
-
-        <div class="rating">
-    <h3>Choose Your Class:</h3>
-    <select name="class_id">
-        <option value="">Select a class</option>
-        <?php
-        // Display the class names, but use class_ids as the option values
-        foreach ($classes as $index => $class) {
-            echo "<option value=\"" . htmlspecialchars($class_ids[$index]) . "\">" . htmlspecialchars($class) . "</option>";
-        }
-        ?>
-    </select>
-</div>
-        <div class="rating">
-            <h3>Rate for the class:</h3>
-            <div class="stars" id="classRating">
-                <span class="star" data-value="1">&#9733;</span>
-                <span class="star" data-value="2">&#9733;</span>
-                <span class="star" data-value="3">&#9733;</span>
-                <span class="star" data-value="4">&#9733;</span>
-                <span class="star" data-value="5">&#9733;</span>
+                <input type="radio" id="html" name="Subjects" value="History">
+                <label for="History">History</label><br>
             </div>
-        </div>
-        <div class="rating">
-            <h3>Rate for your teacher:</h3>
-            <div class="emojis" id="teacherRating">
-                <span class="emoji" data-value="very-bad">&#128545;</span>
-                <span class="emoji" data-value="bad">&#128542;</span>
-                <span class="emoji" data-value="neutral">&#128528;</span>
-                <span class="emoji" data-value="satisfied">&#128522;</span>
-                <span class="emoji" data-value="highly-satisfied">&#128525;</span>
+
+            <div class="rating">
+                <h3>Choose Your Class:</h3>
+                <select name="class_id">
+                    <option value="">Select a class</option>
+                    <?php
+                    foreach ($classes as $index => $class) {
+                        echo "<option value=\"" . htmlspecialchars($class_ids[$index]) . "\">" . htmlspecialchars($class) . "</option>";
+                    }
+                    ?>
+                </select>
             </div>
-        </div>
-        <div class="comment">
-            <h3>Add a comment:</h3>
-            <textarea id="commentText" name="comment" rows="4" cols="50" placeholder="Enter your comment here..."></textarea>
-        </div>
-        <button id="submitBtn" type="submit">Submit</button>
+            <div class="rating">
+                <h3>Rate for the class:</h3>
+                <div class="stars" id="classRating">
+                    <span class="star" data-value="1">&#9733;</span>
+                    <span class="star" data-value="2">&#9733;</span>
+                    <span class="star" data-value="3">&#9733;</span>
+                    <span class="star" data-value="4">&#9733;</span>
+                    <span class="star" data-value="5">&#9733;</span>
+                </div>
+            </div>
+            <div class="rating">
+                <h3>Rate for your teacher:</h3>
+                <div class="emojis" id="teacherRating">
+                    <span class="emoji" data-value="very-bad">&#128545;</span>
+                    <span class="emoji" data-value="bad">&#128542;</span>
+                    <span class="emoji" data-value="neutral">&#128528;</span>
+                    <span class="emoji" data-value="satisfied">&#128522;</span>
+                    <span class="emoji" data-value="highly-satisfied">&#128525;</span>
+                </div>
+            </div>
+            <div class="comment">
+                <h3>Add a comment:</h3>
+                <textarea id="commentText" name="comment" rows="4" cols="50" placeholder="Enter your comment here..."></textarea>
+            </div>
+            <button id="submitBtn" type="submit">Submit</button>
         </form>
     </div>
     <div class="popup" id="popup">
@@ -179,7 +173,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $classRating = $_POST['classRating'];
         $teacherRating = $_POST['teacherRating'];
         $comment = $_POST['comment'];
-       
         
         // Execute the statement
         if (mysqli_stmt_execute($stmt)) {
@@ -229,6 +222,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         const classRating = getSelectedClassRating();
         const teacherRating = getSelectedTeacherRating();
         const comment = document.getElementById('commentText').value.trim();
+
+        if (!classRating || !teacherRating || comment === '') {
+            alert('Please fill in all fields.');
+            return false; // Prevent form submission if fields are not filled
+        }
 
         // Set hidden input values
         classRatingInput.value = classRating;
@@ -294,3 +292,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </script>
 </body>
 </html>
+

@@ -53,7 +53,7 @@ $result = mysqli_query($link, $sql);
                         echo "<td>" . htmlspecialchars($row["subject"]) . "</td>";
                         echo "<td>
                                 <button class='view-button' onclick='viewBundle(\"{$row["id"]}\")'>View</button>
-                                <button onclick='deleteBundle(\"{$row["id"]}\")'>Delete</button>
+                                
                             </td>";
                         echo "</tr>";
                     }
