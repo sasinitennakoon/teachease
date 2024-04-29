@@ -28,8 +28,8 @@
             $userId = $_SESSION['id'];
             $sql = "SELECT b.*, u.username AS creator_name
                     FROM scienceflashcrd_bundle b
-                    LEFT JOIN users u ON b.user_id = u.user_id
-                    WHERE b.user_id != '$userId'
+                    LEFT JOIN student u ON b.user_id = u.student_id
+                   
                     ORDER BY b.created_at DESC
                     LIMIT 4";
 

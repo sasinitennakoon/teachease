@@ -52,17 +52,10 @@
             </div>
 
             <div class="panel4">
-                <h2>Completed </br>Tasks</h2>
+                <h2>Leave Requests</h2>
                 
             </div>
 
-            <div class="panel5">
-                <h2>Stars You Got</h2>
-            </div>
-
-            <div class="panel6">
-                <h2> Active Hours</h2>
-            </div>
         </div>
 
         <!-- Calendar Panel -->
