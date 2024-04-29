@@ -14,8 +14,8 @@ if (!isset($_SESSION['id']) || empty($_SESSION['id'])) {
 
 $userId = $_SESSION['id']; // Retrieve user ID from session
 
-// Fetch flashcard bundles created by the logged-in user
-$sql = "SELECT * FROM scienceflashcrd_bundle WHERE subject = 'Science' AND user_id = '$userId'";
+// Fetch flashcard bundles created by other users (excluding the logged-in user)
+$sql = "SELECT * FROM scienceflashcrd_bundle WHERE subject = 'Mathematics' AND user_id != '$userId'";
 $result = mysqli_query($link, $sql);
 
 ?>

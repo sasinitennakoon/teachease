@@ -86,7 +86,7 @@ nav a {
     border-radius: 5px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     width: 200px;
-    height: 350px;
+    height: 380px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -98,14 +98,14 @@ nav a {
     margin-top: 10px;
     margin-bottom: 10px;
     position: relative;
-    float: left;
+    float:top;
     
 }
 
 .card3 p{
     font-size: larger;
     float:middle;
-    margin-top: 160px;
+   
 }
 
 

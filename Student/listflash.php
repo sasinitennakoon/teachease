@@ -1,24 +1,45 @@
+<?php
+// Check if session is not already started
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+
+// Include your database connection file
+include '../database/db_con.php';
+
+// Check if the user is logged in
+if (!isset($_SESSION['id']) || empty($_SESSION['id'])) {
+    die("User ID not provided. Please log in."); // Handle the case where user is not logged in
+}
+
+$userId = $_SESSION['id']; // Retrieve user ID from session
+
+// Fetch flashcard bundles created by the logged-in user
+$sql = "SELECT * FROM scienceflashcrd_bundle WHERE subject = 'English' AND user_id = '$userId'";
+$result = mysqli_query($link, $sql);
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>English Flashcard Bundles</title>
+    <title>Science Flashcard Bundles</title>
     <link rel="stylesheet" href="./css/listflash.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
 <body>
    
     <?php include 'dropdown2.php'; ?>
-    <button onclick="goBack()">Go to Dashboard</button>
+    <button class="dashboard-button" onclick="goBack()">Go to Dashboard</button>
 
     <div class="content">
-        <h1>English Flashcard Bundles</h1>
+        <h1>Science Flashcard Bundles</h1>
 
         <table id="flashcardTable">
             <thead>
                 <tr>
-                    <th>Bundle ID</th> <!-- Added column for Bundle ID -->
                     <th>Bundle Name</th>
                     <th>Subject</th>
                     <th>Actions</th>
@@ -26,32 +47,21 @@
             </thead>
             <tbody>
                 <?php
-                include '../database/db_con.php'; // Include your database connection file
-
-                // Fetch English flashcard bundles from the database
-                $sql = "SELECT * FROM scienceflashcrd_bundle WHERE subject = 'English'";
-                $result = mysqli_query($link, $sql);
-
                 if ($result && mysqli_num_rows($result) > 0) {
                     // Output data of each row
                     while ($row = mysqli_fetch_assoc($result)) {
                         echo "<tr>";
-                        echo "<td>" . htmlspecialchars($row["id"]) . "</td>"; // Display bundle_id
                         echo "<td>" . htmlspecialchars($row["bundle_name"]) . "</td>";
                         echo "<td>" . htmlspecialchars($row["subject"]) . "</td>";
                         echo "<td>
-                        <button onclick='viewBundle(\"{$row["id"]}\")'>View</button>
+                                <button class='view-button' onclick='viewBundle(\"{$row["id"]}\")'>View</button>
                                 <button onclick='deleteBundle(\"{$row["id"]}\")'>Delete</button>
-                                
                             </td>";
                         echo "</tr>";
                     }
                 } else {
-                    echo "<tr><td colspan='4'>No flashcard bundles found.</td></tr>";
+                    echo "<tr><td colspan='3'>No Science flashcard bundles found.</td></tr>";
                 }
-
-                // Close the database connection
-                mysqli_close($link);
                 ?>
             </tbody>
         </table>
@@ -80,10 +90,19 @@
         }
 
         function viewBundle(bundleId) {
-            // Redirect to view_bundle.php with the selected bundle_id
-            window.location.href = `view_bundle.php?bundle_id=${bundleId}`;
+            // Redirect to the view_bundle.php page with the bundle ID
+            if (bundleId) {
+                window.location.href = `view_bundle.php?bundle_id=${bundleId}`;
+            } else {
+                alert("Invalid bundle ID.");
+            }
         }
     </script>
 
 </body>
 </html>
+
+<?php
+// Close the database connection
+mysqli_close($link);
+?>
