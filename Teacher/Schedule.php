@@ -66,6 +66,7 @@
                             <th>Subject</th>
                             <th>Date</th>
                             <th>Time</th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -86,6 +87,8 @@
                             <td><?php echo $row['subject_title']; ?></td>
                             <td><?php echo $row['date']; ?></td>
                             <td><?php echo $row['time']; ?></td>
+                            <td><a href="edit_schedule.php?schedule_id=<?php echo $id; ?>" style="text-decoration:none;color:white;">
+                            <button type='button' class="button1">Edit</button></a></td>
                         </tr>
                     </tbody>
 				
