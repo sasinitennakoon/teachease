@@ -42,7 +42,7 @@
 <button onclick="goBack()">Go to Dashboard</button>
 
 <div class="content">
-        <h1>EnglsihClass</h1>
+        <h1>EnglishClass</h1>
     </script>
 
 										

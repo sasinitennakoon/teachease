@@ -1,6 +1,6 @@
 <?php
 include '../database/db_con.php'; // Include your database connection script
-
+include 'dropdown2.php';
 // Check if the request is a POST request and if the share button was clicked
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["share"])) {
     // Get the flashcard bundle name and data from the POST request
