@@ -109,7 +109,7 @@ $query = mysqli_query($link,"select * from marks_new where student_id = '$sessio
                     if($mar < 35)
                     {
                 ?>
-                <tr style="background-color: lightred;">
+                <tr style="background-color:  #FFCCCB;">
                 <?php }else { ?>
                 <tr>
                 <?php } ?>
@@ -136,7 +136,7 @@ $query = mysqli_query($link,"select * from marks_new where student_id = '$sessio
 
                 ?>
         
-                <tr style="background-color: lightred;">
+                <tr style="background-color:  #FFCCCB;">
                 <?php }else { ?>
                 <tr>
                 <?php } ?>
@@ -163,7 +163,7 @@ $query = mysqli_query($link,"select * from marks_new where student_id = '$sessio
 
                 ?>
         
-                <tr style="background-color: lightred;">
+                <tr style="background-color:  #FFCCCB;">
                 <?php }else { ?>
                 <tr>
                 <?php } ?>
@@ -190,7 +190,7 @@ $query = mysqli_query($link,"select * from marks_new where student_id = '$sessio
 
                 ?>
         
-                <tr style="background-color: lightred;">
+                <tr style="background-color:  #FFCCCB;">
                 <?php }else { ?>
                 <tr>
                 <?php } ?>
@@ -217,7 +217,7 @@ $query = mysqli_query($link,"select * from marks_new where student_id = '$sessio
 
                 ?>
         
-                <tr style="background-color: lightred;">
+                <tr style="background-color:  #FFCCCB;">
                 <?php }else { ?>
                 <tr>
                 <?php } ?>
@@ -244,7 +244,7 @@ $query = mysqli_query($link,"select * from marks_new where student_id = '$sessio
 
                 ?>
         
-                <tr style="background-color: lightred;">
+                <tr style="background-color:  #FFCCCB;">
                 <?php }else { ?>
                 <tr>
                 <?php } ?>
