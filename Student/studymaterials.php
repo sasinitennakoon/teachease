@@ -42,7 +42,7 @@
     
     <h1>STUDY MATERIALS</h1>
     <div class="panelsD">
-            <div class="panel7" onclick="window.location.href='sciencemate.php';">
+            <div class="panel7" onclick="window.location.href='sciencematerial.php';">
                 <p><b>Science</b></p>
                 
             </div>
@@ -57,7 +57,7 @@
         </div>
 
         <div class="panelsD2">
-            <div class="panel10" onclick="window.location.href='sinhalamate.php';">
+            <div class="panel10" onclick="window.location.href='sinhalamaterial.php';">
                 <p><b>Sinhala</b></p>
             </div>
 
