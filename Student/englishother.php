@@ -34,7 +34,7 @@ $result = mysqli_query($link, $sql);
     <button class="dashboard-button" onclick="goBack()">Go to Dashboard</button>
 
     <div class="content">
-        <h1>Science Flashcard Bundles</h1>
+        <h1>English Flashcard Bundles</h1>
 
         <table id="flashcardTable">
             <thead>
