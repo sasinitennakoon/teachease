@@ -56,7 +56,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["share"])) {
 </head>
 <body>
    
-    <?php include 'dropdown2.php'; ?>
+    <?php //include 'dropdown2.php'; ?>
     <button onclick="goBack()">Go to Dashboard</button>
     <div class="container">
         <h1>Create Your Flash Cards Here!</h1>
