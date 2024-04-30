@@ -1,110 +1,98 @@
-<?php include '../database/db_con.php'; ?>
+<?php
+include '../database/db_con.php';
 
+// Get the schedule_id from the GET request
+$schedule_id = $_GET['schedule_id'];
 
+// Validate the schedule_id
+if (!$schedule_id) {
+    echo "No schedule ID provided.";
+    exit;
+}
 
+// Get the class_id based on the schedule_id
+$classQuery = $link->prepare("SELECT class_id FROM schedule WHERE schedule_id = ?");
+$classQuery->bind_param("i", $schedule_id);
+$classQuery->execute();
+
+// Fetch class_id from the result
+$classResult = $classQuery->get_result();
+$class_id = null;
+
+if ($classResult->num_rows > 0) {
+    $classRow = $classResult->fetch_assoc();
+    $class_id = $classRow['class_id'];
+} else {
+    echo "Invalid schedule ID.";
+    exit;
+}
+
+// Query to fetch data from the 'files' table based on class_id
+$sql = "SELECT files.*, schedule.schedule_id
+        FROM files
+        INNER JOIN schedule ON schedule.class_id = files.class_id
+        WHERE schedule.schedule_id = ?";
+
+// Prepare and bind the parameter
+$stmt = $link->prepare($sql);
+$stmt->bind_param("i", $schedule_id);
+$stmt->execute();
+$result = $stmt->get_result();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Student Dashboard</title>
-    <!--<link rel="stylesheet" href="../admin/css/dashboard.css"> -->
     <link rel="stylesheet" href="././css/dashboard.css">
     <link rel="stylesheet" href="././css/general.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="./css/sciencemate.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
-
 <body>
-<?php include 'dropdown2.php'; ?>
-
-            <!-- Sidebar -->
-            <div class="sidebar">
-                <div class="logo">
-                    <img src="././img/logo1.png" alt="Logo">
-                </div>
-                <hr color="white">
-                <nav>
-                    <ul>
-                        <li><a href="studash.php"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
-                        <li><a href="announcements.php"><i class="fas fa-bullhorn"></i> Announcements</a></li>
-                        <li><a href="MyCourses.php"><i class="fas fa-book"></i> My Courses</a></li>
-                        <li><a href="StudyMaterials.php"  class="active"><i class="fas fa-book-open"></i> Study Materials</a></li>
-                        <li><a href="Tasks.php"><i class="far fa-sticky-note"></i></i> Flash Cards</a></li>
-                        <li><a href="Progress.php"><i class="fas fa-chart-line"></i> Progress Report</a></li>
-                        <li><a href="ExamR.php"><i class="fas fa-chalkboard"></i> Exam Results</a></li>
-                        <li><a href="msg.php"><i class="fas fa-envelope"></i> Messages</a></li>
-                        <li><a href="Feedback.php"><i class="fas fa-comment"></i> Feedback Collection</a></li>
-        
-                    </ul>
-                </nav>
-            </div>
-
-<button onclick="goBack()">Go to Dashboard</button>
-
+<a href="sciencematerial.php"target="_blank" ><button class="dashboard-button">Go to Dashboard</button></a>
 <div class="content">
-        <h1>Sinhala Class</h1>
-    </script>
-
-										
-    <?php
-					$query = mysqli_query($link,"select * FROM student_class where student_id = '$session_id'  order by student_schedule_id DESC ")or die(mysqli_error());
-                    $count = mysqli_fetch_array($query);
-
-					if($count <= 0)
-					{
-						echo "<b>Currently you have not registered for any Sinhala classes</b>";
-					}
-					else
-					{?>
-                    <div class="panels1">
-                        <div class="panel10">
-                        <form method='post'>
-
-                        <table border="0">
+    <h1>Slides for Class</h1>
+    <div class="panels1">
+        <div class="panel10">
+            <form method='post'>
+                <table>
                     <thead>
                         <tr>
-                            <th></th>
-                            <th>Class</th>
-                            <th>Subject</th>
-                            <th>Teacher Namer</th>
-                            <th>Date</th>
-                            <th>Time</th>
-                            <th></th>
+                            <th>File Name</th>
+                            <th>File Description</th>
+                            <th>Download</th>
                         </tr>
                     </thead>
                     <tbody>
-       <?php
-					$query = mysqli_query($link, "SELECT student_class.*, teacher_class.class_name, subject.subject_title, schedule.date, schedule.time, teacher.firstname
-                    FROM student_class 
-                    INNER JOIN schedule ON schedule.schedule_id = student_class.schedule_id 
-                    INNER JOIN subject ON subject.subject_id = schedule.subject_id 
-                    INNER JOIN teacher_class ON teacher_class.teacher_class_id = student_class.class_id 
-                    INNER JOIN teacher ON teacher.teacher_id = schedule.teacher_id  
-                    WHERE student_class.student_id = '$session_id'
-                    AND subject.subject_title = 'Sinahala'  
-                    ORDER BY student_class.student_schedule_id DESC") or die(mysqli_error($link));
-                    while($row = mysqli_fetch_array($query)){
-                    $id  = $row['student_schedule_id'];
-				?>
-            
+                        <?php
+                        while ($row = $result->fetch_assoc()) {
+                            $id = $row['file_id'];
+                            $currentPath = $row['floc'];
+                            $newPath = preg_replace('/Student/', '', $currentPath);
+                            $fullPath = "http://localhost/Group_Project/Teacher/" . $newPath;
+                        ?>
                         <tr>
-                            <td><input type="checkbox" name="selector[]" value="<?php echo $id; ?>"></td>
-                            <td><?php echo $row['class_name']; ?></td>
-                            <td><?php echo $row['subject_title']; ?></td>
-                            <td><?php echo $row['firstname']; ?></td>
-                            <td><?php echo $row['date']; ?></td>
-                            <td><?php echo $row['time']; ?></td>
-                            <td><div class="but"><button class="btn btn-info"><a href="sinhalamate.php?schedule_id=<?php echo $row['schedule_id']?>;" style='text-decoration:none;color:white;'>View Study material</a></button></td>
+                            <td><?php echo $row['fname']; ?></td>
+                            <td><?php echo $row['fdesc']; ?></td>
+                            <td><button class="btn btn-info"><a href="<?php echo $fullPath; ?>" target="_blank">View</a></button></td>
+
                         </tr>
+                        <?php
+                        }
+                        ?>
                     </tbody>
-				
-                </div>
-            </div>
+                </table>
+            </form>
+        </div>
     </div>
-    <?php
-					}
-				}
-				?>
-    
-                    </body>
-                    </html>
+</div>
+
+</body>
+</html>
+
+<?php
+$stmt->close();
+$link->close();
+?>
