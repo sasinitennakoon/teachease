@@ -28,14 +28,16 @@
 						//session_start();
 						$result1 = mysqli_query($link,"SELECT * FROM `$role` WHERE username='$username'") or die(mysqli_error($link));
 						$row = mysqli_fetch_array($result1);
+						$fname = $row['firstname'];
 						$_SESSION['id']=$row['parent_id'];
-						echo "<script>alert('Login Successful. Welcome, $fname!'); window.location='parent/dashboard.php';</script>";
+						echo "<script>alert('Login Successful. Welcome, $fname !'); window.location='parent/dashboard.php';</script>";
 					}
 					else if($role == 'teacher')
 					{
 						//session_start();
 						$result1 = mysqli_query($link,"SELECT * FROM `$role` WHERE username='$username'") or die(mysqli_error($link));
 						$row = mysqli_fetch_array($result1);
+						$fname = $row['firstname'];
 						$_SESSION['id']=$row['teacher_id'];
 						echo "<script>alert('Login Successful. Welcome, $fname!'); window.location='Teacher/FirstPage.php';</script>";
 					}
@@ -44,6 +46,7 @@
 						//session_start();
 						$result1 = mysqli_query($link,"SELECT * FROM `$role` WHERE username='$username'") or die(mysqli_error($link));
 						$row = mysqli_fetch_array($result1);
+						$fname = $row['firstname'];
 						$_SESSION['id']=$row['student_id'];
 						echo "<script>alert('Login Successful. Welcome, $fname!'); window.location='Student/studash.php';</script>";
 					}
@@ -52,6 +55,7 @@
 						//session_start();
 						$result1 = mysqli_query($link,"SELECT * FROM `users` WHERE username='$username'") or die(mysqli_error($link));
 						$row = mysqli_fetch_array($result1);
+						$fname = $row['firstname'];
 						$_SESSION['id']=$row['user_id'];
 						echo "<script>alert('Login Successful. Welcome, $fname!'); window.location='Admin/dashboard.php';</script>";
 					}
