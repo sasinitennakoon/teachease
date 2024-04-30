@@ -51,7 +51,7 @@ $result = $stmt->get_result();
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 <body>
-<a href="sciencematerial.php"target="_blank" ><button class="dashboard-button">Go to Dashboard</button></a>
+<a href="sciencematerial.php"><button class="dashboard-button">Go to Dashboard</button></a>
 <div class="content">
     <h1>Slides for Class</h1>
     <div class="panels1">
