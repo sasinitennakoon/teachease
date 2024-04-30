@@ -123,8 +123,24 @@ if (!$included) {
 }
 
 // Queries for attendance and marks
-$attendanceQuery = "SELECT date, class_id, COUNT(*) AS present_count FROM student_attendance WHERE status = 'present' GROUP BY date, class_id ORDER BY date ASC";
-$marksQuery = "SELECT date, teacher_class_id AS class_id, ROUND(AVG(marks), 2) AS average_marks FROM result_file_marks GROUP BY date, class_id ORDER BY date ASC";
+$attendanceQuery = "SELECT date, class_id, COUNT(*) AS present_count FROM student_attendance WHERE status = 'present' AND teacher_id='$session_id' GROUP BY date, class_id ORDER BY date ASC";
+$marksQuery = "SELECT 
+rfm.date, 
+rfm.teacher_class_id AS class_id, 
+ROUND(AVG(rfm.marks), 2) AS average_marks,
+tc.class_name
+FROM 
+result_file_marks rfm
+INNER JOIN 
+teacher_class tc 
+ON rfm.teacher_class_id = tc.teacher_class_id
+WHERE 
+tc.teacher_id = '$session_id'
+GROUP BY 
+rfm.date, class_id
+ORDER BY 
+rfm.date ASC;
+";
 
 // Function to execute a query and return results
 function getQueryResults($link, $query) {
@@ -151,7 +167,7 @@ while ($attendanceStmt->fetch()) {
 
 // Get marks data
 $marksStmt = getQueryResults($link, $marksQuery);
-$marksStmt->bind_result($date, $class_id, $average_marks);
+$marksStmt->bind_result($date, $class_id, $average_marks,$class_name);
 
 $marksData = [];
 while ($marksStmt->fetch()) {
@@ -159,6 +175,7 @@ while ($marksStmt->fetch()) {
         'date' => $date,
         'class_id' => $class_id,
         'average_marks' => $average_marks,
+        'class_name' => $class_name
     ];
 }
 
@@ -207,13 +224,15 @@ foreach ($marksclassIds as $marksclassId) {
         foreach ($marksData as $record) {
             if ($record['date'] === $date && $record['class_id'] === $marksclassId) {
                 $averageMarks = $record['average_marks'];
+                $className = $record['class_name'];
                 break;
             }
         }
         $seriesData[] = $averageMarks;
+
     }
     $marksSeries[] = [
-        'name' => 'Class ' . $marksclassId,
+        'name' => 'Class ' . $className,
         'data' => $seriesData,
     ];
 }

@@ -93,15 +93,12 @@
         INNER JOIN 
             student ON student.student_id = feedback.student_id
         INNER JOIN 
-            student_class ON student_class.student_id = feedback.student_id
-        INNER JOIN 
-            teacher_class ON teacher_class.teacher_class_id = student_class.class_id
+            teacher_class ON teacher_class.teacher_class_id = feedback.class_id
         INNER JOIN
         subject ON subject.subject_id = teacher_class.subject_id
         WHERE 
             teacher_class.teacher_id = '$session_id'
-            AND teacher_class.teacher_class_id = '$selected_class'
-            AND feedback.subject = subject.subject_title
+            AND teacher_class.teacher_class_id= '$selected_class'
         "
         ) or die(mysqli_error($link));
         
@@ -112,11 +109,8 @@
                 <table>
                     <thead>
                         <tr>
-                            <th>Student ID</th>
-                            <th>First Name</th>
-                            <th>Last Name</th>
                             <th>Date Submittied</th>
-                            <th>CLass Rating</th>
+                            <th>Class Rating</th>
                             <th>Teacher Rating</th>
                             <th>Comment</th>
                         </tr>
@@ -129,9 +123,6 @@
                             $student_id = $row['student_id'];
                             ?>
                             <tr>
-                                <td><?php echo $student_id; ?></td>
-                                <td><?php echo $row['firstname']; ?></td>
-                                <td><?php echo $row['lastname']; ?></td>
                                 <td><?php echo $row['created_at']; ?></td>
                                 <td><?php echo $row['class_rating']; ?></td>
                                 <td><?php echo $row['teacher_rating']; ?></td>
