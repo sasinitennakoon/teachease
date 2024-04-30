@@ -92,25 +92,25 @@
           <img src="teacher.jpeg" height="400" width="380" alt="signupImage" class="signup-image">
           
         </div>
-            <form method="post" enctype="multipart/form-data">
+            <form method="post" enctype="multipart/form-data" onsubmit = "return validateForm()">
               <div class="title"> Teacher Sign Up</div>
 
               <div class="user-details">
                 <div class="input-box">
                   <span class="details">First Name</span>
-                  <input type="text" name="firstname" placeholder="Enter Your First Name">
+                  <input type="text" name="firstname" id="firstname" placeholder="Enter Your First Name">
                 </div>
                 <div class="input-box">
                   <span class="details">Last Name</span>
-                  <input type="text" name="lastname" placeholder="Enter Your Last Name">
+                  <input type="text" name="lastname" id="lastname" placeholder="Enter Your Last Name">
                 </div>
                 <div class="input-box">
                   <span class="details">Subject</span>
-                  <input type="text" name="subject" placeholder="Enter Your Subject">
+                  <input type="text" name="subject" id="subject" placeholder="Enter Your Subject">
                 </div>
                 <div class="input-box">
                         <span class="details">File</span>
-                        <input name="uploaded_file" id="fileInput" type="file" required>
+                        <input name="uploaded_file" id="fileInput" type="file">
                         <input type="hidden" name="MAX_FILE_SIZE" value="1000000" />
                         <input type="hidden" name="id" value="<?php echo $session_id ?>"/>
               </div>
@@ -124,11 +124,11 @@
                 </div>
                 <div class="input-box">
                   <span class="details">Usename (Email)</span>
-                  <input type="text" name="username" placeholder="Enter Your Username">
+                  <input type="text" name="username" id="username" placeholder="Enter Your Username">
                 </div>
                 <div class="input-box">
                   <span class="details">Password</span>
-                  <input type="password" name="password" placeholder="Enter Password">
+                  <input type="password" name="password" id="password" placeholder="Enter Password">
                 </div>
               </div>
               <label><input type="checkbox">I hereby declare that the above information provided is true</label>
