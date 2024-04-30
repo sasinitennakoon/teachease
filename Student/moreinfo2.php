@@ -151,12 +151,7 @@
         </div>
     </div>
 
-    <div class="positioncrd">
-        <div class="card1">
-            <h2>See Your Position Here!</h2>
-        </div>
-       
-    </div>
+    
 
     <div class="card-container">
         <div class="card">
@@ -192,6 +187,63 @@
             <h2> History Mark Distribution of the Class</h2>
             <svg id="historyScatterPlot" width="600" height="400"></svg>
         </div>
+    </div>
+
+    <div class="positioncrd">
+        <div class="card1">
+            <h2>See Your Position Here!</h2>
+            <?php
+                $query = mysqli_query($link,"SELECT average.*, student.firstname, 
+                                             MAX(student.firstname) AS firstname
+                                             FROM average
+                                             INNER JOIN student ON student.student_id = average.student_id
+                                            
+                                             WHERE term_id = '1'
+                                             GROUP BY average.average_id
+                                             ORDER BY average.rank ASC; ") or die(mysqli_error());
+                $count  = mysqli_num_rows($query);
+    
+                if($count > 0)
+                {?>
+    
+            
+                
+                        <table border="0">
+                            <thead>
+                                <tr>
+                                <th></th>
+                                    <th>Student</th>
+                                    
+                                    <th>Average Marks</th>
+                                    <th>Rank</th>
+                                    <!--<th></th> -->
+                                </tr>
+                            </thead>
+                        <tbody>
+                        <?php
+                        while($row = mysqli_fetch_array($query)){
+                        $id = $row['average_id'];
+    
+                        ?>
+                        
+                        <tr>
+                                <td><input type="checkbox" name="selector[]" value="<?php echo $id; ?>"></td>
+                                <td><?php echo $row['firstname']; ?></td>
+                                
+                                <td><?php echo $row['average_marks']; ?></td>
+                                <td><?php echo $row['rank']; ?></td>
+                                <!--<td><a href="marksedit1.php?id=<?php //echo $id; ?>" class="button" style="color:black;"><i class="fa fa-fw fa-pencil">Edit</i></a></td> -->
+                                
+                            </tr>
+                        </tbody>
+    
+                       
+    
+                        <?php } }else{ ?>
+                            <h3>There is no ranks currently available</h3>
+                        <?php  } ?>
+        </div>
+       
     </div>
 
 </div>
